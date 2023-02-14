@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        PlayerHandler = FindObjectOfType<ExamplePlayer>();
     }
 
     public void Update()
