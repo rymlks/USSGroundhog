@@ -81,7 +81,10 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
 
             // Build the CharacterInputs struct
             characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
-            characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
+            if (!Character.useMouse)
+            {
+                characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
+            }
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);
