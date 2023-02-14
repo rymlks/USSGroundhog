@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="tab-content" focusable="false" class="full-frame" style="overflow: hidden;">
+        <ui:VisualElement name="background" class="full-frame" />
+        <ui:VisualElement name="container" picking-mode="Ignore" style="position: absolute;">
+            <ui:VisualElement name="connections" picking-mode="Ignore" style="position: relative;" />
+            <ui:VisualElement name="nodes" />
+            <ui:VisualElement name="notes" picking-mode="Ignore" style="position: relative;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

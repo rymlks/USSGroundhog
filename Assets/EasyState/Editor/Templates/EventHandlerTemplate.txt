@@ -1,0 +1,41 @@
+﻿using EasyState;
+using EasyState.Core;
+using EasyState.Models;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+$using-namespace
+public class $class-name : EventHandler<$data-type>
+{
+    public override void OnInitialize(EasyStateMachine stateMachine, $data-type data)
+    {
+    }
+
+    public override void OnPreUpdate($data-type data)
+    {
+    }
+
+    public override void OnStateEntered(State stateEntered, $data-type data)
+    {
+    }
+
+    public override void OnStateUpdated(State stateUpdated, $data-type data)
+    {
+    }
+
+    public override void OnStateExited(State stateExited, $data-type data)
+    {
+    }
+
+    public override void OnExitDelayStarted(IStateMachine stateMachine, float delayAmount)
+    {
+    }
+
+    public override void OnPostUpdate($data-type data)
+    {
+    }
+
+    public override void OnStopped(EasyStateMachine<$data-type> stateMachineStopped)
+    {
+    }
+}

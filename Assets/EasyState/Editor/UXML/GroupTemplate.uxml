@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+ 
+    <ui:VisualElement name="group-container" focusable="true" class="group-container"  picking-mode="Ignore">
+        <ui:VisualElement name="header" style="flex-direction: row; font-size: 13px; min-width: auto; margin-right: 0; padding-right: 0; padding-left: 0; padding-top: 0; padding-bottom: 7px; justify-content: center;">
+            <ui:Label text="Label" tooltip="Double click to edit" name="group-title" style="align-items: auto; flex-grow: 1; -unity-text-align: upper-center; font-size: 16px; display: flex;" />
+            <ui:TextField picking-mode="Ignore" value="enter group name" password="false" max-length="255" style="min-width: 285px; display: none; -unity-text-align: upper-left; flex-grow: 0; padding-top: 4px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="group-content" style="flex-grow: 1;"   picking-mode="Ignore"/>
+    </ui:VisualElement>
+</ui:UXML>
