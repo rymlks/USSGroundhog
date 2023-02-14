@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
 
     public MyPlayer PlayerHandler;
     public GameObject playerPrefab;
-    private HashSet<string> gatheredPermanentItems = new HashSet<string>();
+    private HashSet<string> permanentItems = new HashSet<string>();
+    private HashSet<string> transientItems = new HashSet<string>();
 
     private void OnEnable()
     {
@@ -35,9 +36,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Gather(string gatheredItemName)
+    public void Gather(string gatheredItemName, bool persistsThroughDeath = false)
     {
-        this.gatheredPermanentItems.Add(gatheredItemName);
+        if (persistsThroughDeath)
+        {
+            this.permanentItems.Add(gatheredItemName);
+        }
+        else
+        {
+            this.transientItems.Add(gatheredItemName);
+        }
     }
 
     public void Respawn()
@@ -56,7 +64,7 @@ public class GameManager : MonoBehaviour
         copy.transform.position = PlayerHandler.Character.transform.position;
         copy.transform.rotation = PlayerHandler.Character.transform.rotation;
         PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
-        Debug.Log("permanent item count gathered at death: " + this.gatheredPermanentItems.Count);
-        DisplaySet(this.gatheredPermanentItems);
+        Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
+        DisplaySet(this.permanentItems);
     }
 }

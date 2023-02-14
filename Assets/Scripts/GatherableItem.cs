@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using KinematicCharacterController.Examples;
 using UnityEngine;
 
-public class PermanentGatherableItem : MonoBehaviour
+public class GatherableItem : MonoBehaviour
 {
     public String itemName;
+    public bool persistsThroughDeath = false;
     public void Start()
     {
         this.GetComponent<Collider>().isTrigger = true;
@@ -22,7 +23,7 @@ public class PermanentGatherableItem : MonoBehaviour
         if (isCollisionWithPlayer(triggeredCollider))
         {
             Debug.Log("Player gathered permanent item "+itemName+"!");
-            GameManager.instance.Gather(itemName);
+            GameManager.instance.Gather(itemName, persistsThroughDeath);
         }
     }
 }
