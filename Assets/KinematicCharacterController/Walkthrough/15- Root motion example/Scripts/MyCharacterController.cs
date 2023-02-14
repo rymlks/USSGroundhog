@@ -74,14 +74,20 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             CharacterAnimator.SetFloat("Turn", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
 
+            if (Input.GetAxis("Mouse X") != 0)
+            {
+                if (useMouse)
+                {
+                    float mousex = Input.GetAxis("Mouse X");
+                    _rightAxis = Mathf.Lerp(mousex, _targetRightAxis, 1f - Mathf.Exp(-TurnAxisSharpness * Time.deltaTime));
+                    Motor.SetRotation(Quaternion.Euler(new Vector3(0, Camera.transform.rotation.eulerAngles.y, 0)));
+                    CharacterAnimator.SetFloat("Turn", _rightAxis);
+                }
+            }
+
             if (Input.GetKeyDown(KeyCode.M))
             {
                 useMouse = !useMouse;
-            }
-
-            if (useMouse)
-            {
-                Motor.SetRotation(Quaternion.Euler(new Vector3(0, Camera.transform.rotation.eulerAngles.y, 0)));
             }
         }
 
