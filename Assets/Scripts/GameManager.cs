@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool itemIsPossessed(string itemName)
+    {
+        return this.permanentItems.Contains(itemName) || this.transientItems.Contains(itemName);
+    }
+
     public void Respawn()
     {
         void DisplaySet(HashSet<string> collection)
