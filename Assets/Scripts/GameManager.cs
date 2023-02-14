@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public ExamplePlayer PlayerHandler;
+    public GameObject playerPrefab;
 
     private void OnEnable()
     {
@@ -33,7 +34,9 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
-        Instantiate(PlayerHandler.Character.gameObject);
+        GameObject copy = Instantiate(playerPrefab);
+        copy.transform.position = PlayerHandler.Character.transform.position;
+        copy.transform.rotation = PlayerHandler.Character.transform.rotation;
         PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
     }
 }

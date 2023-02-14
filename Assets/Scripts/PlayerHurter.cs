@@ -13,7 +13,7 @@ public class PlayerHurter : MonoBehaviour
 
     bool isCollisionWithPlayer(Collider triggeredCollider)
     {
-        return triggeredCollider.gameObject.GetComponent<ExampleCharacterController>() != null;
+        return triggeredCollider.gameObject.CompareTag("Player");
     }
 
     void OnTriggerEnter(Collider triggeredCollider)
