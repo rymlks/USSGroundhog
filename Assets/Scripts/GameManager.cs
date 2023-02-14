@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController.Examples;
 using KinematicCharacterController;
+using KinematicCharacterController.Walkthrough.RootMotionExample;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public ExamplePlayer PlayerHandler;
+    public MyPlayer PlayerHandler;
     public GameObject playerPrefab;
 
     private void OnEnable()
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        PlayerHandler = FindObjectOfType<ExamplePlayer>();
+        PlayerHandler = FindObjectOfType<MyPlayer>();
     }
 
     public void Update()
