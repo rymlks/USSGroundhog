@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealthState : MonoBehaviour
 {
     private float secondsToSuffocation;
-    public float secondsAirCapacity;
+    public float secondsAirCapacity = 4.5f;
     //how fast you choke vs. recover from choking; should be >1
     public float chokeFactor = 2;
     
