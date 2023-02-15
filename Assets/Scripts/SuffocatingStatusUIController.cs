@@ -28,7 +28,8 @@ public class SuffocatingStatusUIController : MonoBehaviour
         }
         else
         {
-            this.textMesh.color = Color.clear;
+            if(this.textMesh)
+                this.textMesh.color = Color.clear;
         }
 
     }

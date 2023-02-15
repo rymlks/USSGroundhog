@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
         copy.transform.position = PlayerHandler.Character.transform.position;
         copy.transform.rotation = PlayerHandler.Character.transform.rotation;
         PlayerHandler.Character.gameObject.SetActive(false);
+        copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("FallDead", true);
 
         foreach (KeyValuePair<string, object> entry in args)
         {
@@ -100,6 +101,9 @@ public class GameManager : MonoBehaviour
             {
                 case "explosion":
                     copy.GetComponentInChildren<Rigidbody>().AddForce((Vector3)entry.Value);
+                    break;
+                case "suffocate":
+                    copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("DeadAsphyxiated", true);
                     break;
                 default:
                     Debug.LogError("Unknown respawn arg: " + entry.Key);
