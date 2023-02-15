@@ -4,32 +4,39 @@ using System.Linq;
 using KinematicCharacterController.Examples;
 using UnityEngine;
 
-public class PlayerHurter : MonoBehaviour
+public class PlayerKiller : MonoBehaviour
 {
     public List<string> immunityGrantingItems;
+    public string deathReason = "generic hazard";
 
     public void Start()
     {
         this.GetComponent<Collider>().isTrigger = true;
     }
 
-    bool isCollisionWithPlayer(Collider triggeredCollider)
+    protected bool isCollisionWithPlayer(Collider triggeredCollider)
     {
         return triggeredCollider.gameObject.CompareTag("Player");
     }
 
-    bool immunityIsGranted()
+    protected bool immunityIsGranted()
     {
         return immunityGrantingItems.Any(item => GameManager.instance.itemIsPossessed(item));
     }
 
-    void OnTriggerEnter(Collider triggeredCollider)
+    protected virtual void OnTriggerEnter(Collider triggeredCollider)
     {
         if (isCollisionWithPlayer(triggeredCollider))
         {
-            if(!immunityIsGranted()){}
-            Debug.Log("Killing player via collider!");
-            GameManager.instance.Respawn();
+            if (!immunityIsGranted())
+            {
+                DoConsequences();
+            }
         }
+    }
+
+    protected virtual void DoConsequences()
+    {
+        GameManager.instance.CommitDie(deathReason);
     }
 }
