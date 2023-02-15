@@ -123,6 +123,6 @@ public class GameManager : MonoBehaviour
 
     private void resetPlayerHealthState()
     {
-        FindObjectOfType<PlayerHealthState>().Reset();
+        FindObjectOfType<PlayerHealthState>().ResetAllStatuses();
     }
 }
