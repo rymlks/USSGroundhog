@@ -8,6 +8,8 @@ using KinematicCharacterController.Walkthrough.RootMotionExample;
 
 public class GameManager : MonoBehaviour
 {
+    public float DeathSeconds;
+
     public static GameManager instance;
 
     public MyPlayer PlayerHandler;
@@ -55,6 +57,12 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
+        StartCoroutine(Respawn_Coroutine());
+    }
+
+    public IEnumerator Respawn_Coroutine()
+    {
+
         void DisplaySet(HashSet<string> collection)
         {
             Debug.Log("{");
@@ -64,12 +72,21 @@ public class GameManager : MonoBehaviour
             }
             Debug.Log(" }");
         }
-        
+
         GameObject copy = Instantiate(playerPrefab);
+        foreach(var rb in copy.GetComponentsInChildren<Rigidbody>())
+        {
+            rb.mass = 0.001f;
+        }
         copy.transform.position = PlayerHandler.Character.transform.position;
         copy.transform.rotation = PlayerHandler.Character.transform.rotation;
+        PlayerHandler.Character.gameObject.SetActive(false);
+        yield return new WaitForSeconds(DeathSeconds);
         PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
+        PlayerHandler.Character.gameObject.SetActive(true);
         Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
         DisplaySet(this.permanentItems);
+
     }
+
 }
