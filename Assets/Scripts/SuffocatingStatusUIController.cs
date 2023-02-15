@@ -7,16 +7,22 @@ public class SuffocatingStatusUIController : MonoBehaviour
 {
 
     public TextMeshProUGUI textMesh;
-    private bool suffocatingNow = false;
+    private float lastSuffocationTime = -1;
+
     void Start()
     {
-        this.suffocatingNow = false;
         this.textMesh = this.GetComponent<TextMeshProUGUI>();
+    }
+
+    bool suffocatingNow()
+    {
+        float timeSinceLastSuffocation = Time.time - this.lastSuffocationTime;
+        return timeSinceLastSuffocation > 0 && timeSinceLastSuffocation < 1;
     }
 
     void LateUpdate()
     {
-        if (this.suffocatingNow)
+        if (this.suffocatingNow())
         {
             this.textMesh.color = Color.red;
         }
@@ -25,11 +31,10 @@ public class SuffocatingStatusUIController : MonoBehaviour
             this.textMesh.color = Color.clear;
         }
 
-        this.suffocatingNow = false;
     }
 
     public void SuffocatingThisFrame()
     {
-        this.suffocatingNow = true;
+        this.lastSuffocationTime = Time.time;
     }
 }
