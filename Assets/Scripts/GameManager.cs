@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
         GameObject copy = Instantiate(playerPrefab);
         foreach(var rb in copy.GetComponentsInChildren<Rigidbody>())
         {
-            rb.mass = 0.001f;
+            rb.mass = 0.00001f;
         }
         copy.transform.position = PlayerHandler.Character.transform.position;
         copy.transform.rotation = PlayerHandler.Character.transform.rotation;
