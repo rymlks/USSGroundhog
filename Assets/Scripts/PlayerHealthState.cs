@@ -6,10 +6,17 @@ public class PlayerHealthState : MonoBehaviour
 {
     private float secondsToSuffocation;
     public float secondsAirCapacity;
-
+    //how fast you choke vs. recover from choking; should be >1
+    public float chokeFactor = 2;
+    
     void Start()
     {
         Reset();
+    }
+
+    void Update()
+    {
+        this.secondsToSuffocation = Mathf.Min(secondsAirCapacity, secondsToSuffocation + Time.deltaTime / chokeFactor);
     }
 
     public void Reset()
