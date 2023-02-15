@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     private HashSet<string> permanentItems = new HashSet<string>();
     private HashSet<string> transientItems = new HashSet<string>();
 
+    private const Dictionary<string, object> defaultArgs = null;
+
     private void OnEnable()
     {
         if (instance == null)
@@ -55,12 +57,16 @@ public class GameManager : MonoBehaviour
         return this.permanentItems.Contains(itemName) || this.transientItems.Contains(itemName);
     }
 
-    public void Respawn()
+    public void Respawn(Dictionary<string, object> args = defaultArgs)
     {
-        StartCoroutine(Respawn_Coroutine());
+        if (args == null)
+        {
+            args = new Dictionary<string, object>();
+        }
+        StartCoroutine(Respawn_Coroutine(args));
     }
 
-    public IEnumerator Respawn_Coroutine()
+    public IEnumerator Respawn_Coroutine(Dictionary<string, object> args)
     {
 
         void DisplaySet(HashSet<string> collection)
@@ -81,6 +87,21 @@ public class GameManager : MonoBehaviour
         copy.transform.position = PlayerHandler.Character.transform.position;
         copy.transform.rotation = PlayerHandler.Character.transform.rotation;
         PlayerHandler.Character.gameObject.SetActive(false);
+
+        foreach (KeyValuePair<string, object> entry in args)
+        {
+            switch(entry.Key)
+            {
+                case "explosion":
+                    copy.GetComponentInChildren<Rigidbody>().AddForce((Vector3)entry.Value);
+                    break;
+                default:
+                    Debug.LogError("Unknown respawn arg: " + entry.Key);
+                    break;
+            }
+        }
+
+
         yield return new WaitForSeconds(DeathSeconds);
         PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
         PlayerHandler.Character.gameObject.SetActive(true);
