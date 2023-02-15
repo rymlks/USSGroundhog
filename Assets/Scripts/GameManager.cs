@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         copy.transform.position = PlayerHandler.Character.transform.position;
         copy.transform.rotation = PlayerHandler.Character.transform.rotation;
         PlayerHandler.Character.gameObject.SetActive(false);
-
+        copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("FallDead", true);
 
         foreach (KeyValuePair<string, object> entry in args)
         {
