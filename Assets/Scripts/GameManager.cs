@@ -32,6 +32,12 @@ public class GameManager : MonoBehaviour
         PlayerHandler = FindObjectOfType<MyPlayer>();
     }
 
+    public void CommitDie(string reason)
+    {
+        Debug.Log("Player has died by " + reason + "!  Respawning.");
+        this.Respawn();
+    }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
@@ -107,7 +113,12 @@ public class GameManager : MonoBehaviour
         PlayerHandler.Character.gameObject.SetActive(true);
         Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
         DisplaySet(this.permanentItems);
+        resetPlayerHealthState();
 
     }
 
+    private void resetPlayerHealthState()
+    {
+        FindObjectOfType<PlayerHealthState>().Reset();
+    }
 }
