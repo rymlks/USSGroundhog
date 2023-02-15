@@ -20,6 +20,7 @@ public class PlayerHealthState : MonoBehaviour
     public void Suffocate(float deltaSeconds)
     {
         Debug.Log("Player suffocating! Time remaining: " + secondsToSuffocation);
+        FindObjectOfType<SuffocatingStatusUIController>().SuffocatingThisFrame();
         this.secondsToSuffocation = Mathf.Max(0f, this.secondsToSuffocation - deltaSeconds);
         if (secondsToSuffocation <= 0f)
         {
