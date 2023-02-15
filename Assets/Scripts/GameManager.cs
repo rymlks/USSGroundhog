@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
             copy = Instantiate(playerPrefab);
             copy.GetComponent<Animator>().SetBool("FallDead", true);
 
-            
+            /*
             CapsuleCollider cap = copy.GetComponentInChildren<CapsuleCollider>();
             cap.direction = 2;
             cap.height = 0.1f;
@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
             Destroy(cap);
             Rigidbody rb = copy.GetComponent<Rigidbody>();
             rb.useGravity = false;
+            */
             
         }
         copy.transform.position = PlayerHandler.Character.transform.position;
