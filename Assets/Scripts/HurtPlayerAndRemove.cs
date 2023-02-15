@@ -18,7 +18,6 @@ public class HurtPlayerAndRemove : MonoBehaviour
 
     void OnTriggerEnter(Collider triggeredCollider)
     {
-        Debug.Log("hitted me :(");
         if (isCollisionWithPlayer(triggeredCollider))
         {
             Debug.Log("Killing player via collider!");
