@@ -3808,7 +3808,6 @@ GameObject:
   - component: {fileID: 7149932148144093478}
   - component: {fileID: 1122412303584516061}
   - component: {fileID: 4103428561534111672}
-  - component: {fileID: 4039303467905209849}
   m_Layer: 0
   m_Name: MainCharacterWithAnim
   m_TagString: Untagged
@@ -3910,30 +3909,6 @@ MonoBehaviour:
   CheckMovementInitialOverlaps: 1
   KillVelocityWhenExceedMaxMovementIterations: 1
   KillRemainingMovementWhenExceedMaxMovementIterations: 1
---- !u!114 &4039303467905209849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7255851155168619035}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96594aad710a0b43a67031fa15f8a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Motor: {fileID: 4103428561534111672}
-  MaxStableMoveSpeed: 10
-  StableMovementSharpness: 15
-  OrientationSharpness: 10
-  MaxAirMoveSpeed: 10
-  AirAccelerationSpeed: 5
-  Drag: 0.1
-  CharacterAnimator: {fileID: 1122412303584516061}
-  ForwardAxisSharpness: 10
-  TurnAxisSharpness: 5
-  Gravity: {x: 0, y: -30, z: 0}
-  MeshRoot: {fileID: 7321803996176118433}
 --- !u!1 &7348337779505000204
 GameObject:
   m_ObjectHideFlags: 0

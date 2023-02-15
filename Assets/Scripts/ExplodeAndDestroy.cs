@@ -22,9 +22,11 @@ public class ExplodeAndDestroy : MonoBehaviour
         if (isCollisionWithPlayer(triggeredCollider))
         {
             Debug.Log("Killing player via collider!");
-            GameManager.instance.Respawn(new Dictionary<string, object>() {
-                {"explosion", (triggeredCollider.transform.position - transform.position).normalized * explosionStrength},
-            });
+            GameManager.instance.Respawn(
+                new Dictionary<string, object> {
+                    {"explosion", (triggeredCollider.transform.position - transform.position).normalized * explosionStrength},
+                    {"ragdoll", true},
+                });
             Destroy(this.gameObject);
         }
     }
