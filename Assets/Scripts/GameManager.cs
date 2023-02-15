@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public MyPlayer PlayerHandler;
     public GameObject playerPrefab;
+    public GameObject RagdollPrefab;
     private HashSet<string> permanentItems = new HashSet<string>();
     private HashSet<string> transientItems = new HashSet<string>();
 
@@ -85,15 +86,35 @@ public class GameManager : MonoBehaviour
             Debug.Log(" }");
         }
 
-        GameObject copy = Instantiate(playerPrefab);
-        foreach(var rb in copy.GetComponentsInChildren<Rigidbody>())
+        GameObject copy;
+        if (args.ContainsKey("ragdoll")) {
+            copy = Instantiate(RagdollPrefab);
+
+            foreach (var rb in copy.GetComponentsInChildren<Rigidbody>())
+            {
+                rb.mass = 0.001f;
+            }
+        } else
         {
-            rb.mass = 0.00001f;
+            copy = Instantiate(playerPrefab);
+            copy.GetComponent<Animator>().SetBool("FallDead", true);
+
+            
+            CapsuleCollider cap = copy.GetComponentInChildren<CapsuleCollider>();
+            cap.direction = 2;
+            cap.height = 0.1f;
+            Vector3 center = cap.center;
+            center.y = cap.radius;
+            cap.center = center;
+            cap.enabled = false;
+            Destroy(cap);
+            Rigidbody rb = copy.GetComponent<Rigidbody>();
+            rb.useGravity = false;
+            
         }
         copy.transform.position = PlayerHandler.Character.transform.position;
         copy.transform.rotation = PlayerHandler.Character.transform.rotation;
         PlayerHandler.Character.gameObject.SetActive(false);
-        copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("FallDead", true);
 
         foreach (KeyValuePair<string, object> entry in args)
         {
@@ -104,6 +125,9 @@ public class GameManager : MonoBehaviour
                     break;
                 case "suffocate":
                     copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("DeadAsphyxiated", true);
+                    break;
+                case "ragdoll":
+                    // Do nothing
                     break;
                 default:
                     Debug.LogError("Unknown respawn arg: " + entry.Key);

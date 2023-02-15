@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Explode : MonoBehaviour
 {
+    public float explosionStrength = 10;
+    public bool persist = true;
 
     public void Start()
     {
@@ -22,8 +24,13 @@ public class Explode : MonoBehaviour
         {
             Debug.Log("Killing player via collider!");
             GameManager.instance.Respawn(new Dictionary<string, object>() {
-                {"explosion", (triggeredCollider.transform.position - transform.position).normalized * 10},
+                {"explosion", (triggeredCollider.transform.position - transform.position).normalized * explosionStrength},
+                {"ragdoll", true},
             });
+            if (!persist)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
