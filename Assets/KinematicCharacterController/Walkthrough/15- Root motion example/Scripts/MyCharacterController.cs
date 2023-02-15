@@ -15,6 +15,9 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
     public class MyCharacterController : MonoBehaviour, ICharacterController
     {
         public KinematicCharacterMotor Motor;
+        public GameObject Camera;
+        public bool useMouse = false;
+        private float mousex = 0;
 
         [Header("Stable Movement")]
         public float MaxStableMoveSpeed = 10f;
@@ -71,6 +74,19 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             CharacterAnimator.SetFloat("Forward", _forwardAxis);
             CharacterAnimator.SetFloat("Turn", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
+
+            if (useMouse)
+            {
+                mousex = Mathf.Lerp(mousex, Input.GetAxis("Mouse X"), 0.2f);
+                _rightAxis = mousex;
+                Motor.SetRotation(Quaternion.Euler(new Vector3(0, Camera.transform.rotation.eulerAngles.y, 0)));
+                CharacterAnimator.SetFloat("Turn", _rightAxis);
+            }
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                useMouse = !useMouse;
+            }
         }
 
         /// <summary>
