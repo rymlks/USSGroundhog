@@ -71,7 +71,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             // Handle toggling zoom level
             if (Input.GetMouseButtonDown(1))
             {
-                OrbitCamera.TargetDistance = (OrbitCamera.TargetDistance == 0f) ? OrbitCamera.DefaultDistance : 0f;
+                //OrbitCamera.TargetDistance = (OrbitCamera.TargetDistance == 0f) ? OrbitCamera.DefaultDistance : 0f;
             }
         }
 
