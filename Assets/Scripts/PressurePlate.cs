@@ -9,6 +9,7 @@ public class PressurePlate : MonoBehaviour
     public float activationTimeSeconds = 0.01f;
     public String[] tagsToRecognize;
     private Dictionary<Collider, float> objectsWithinCollider = new Dictionary<Collider, float>();
+    public GameObject affectedGameObject;
 
     bool tagMatches(Collider collider)
     {
@@ -17,7 +18,7 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (tagMatches(other))
+        if (tagMatches(other) && !objectsWithinCollider.ContainsKey(other))
         {
             objectsWithinCollider.Add(other, 0);
         }
@@ -46,6 +47,7 @@ public class PressurePlate : MonoBehaviour
 
     void DoConsequence()
     {
-        Debug.Log("Consequence of pressure plate enacted");
+        IConsequence consequence = this.GetComponent<IConsequence>();
+        consequence?.execute();
     }
 }

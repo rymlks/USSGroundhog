@@ -7,10 +7,24 @@ public class SlideToDestination: MonoBehaviour
     public Transform destination;
     public float speed = 0.1f;
     public bool start = false;
+    public Transform objectToSlide = null;
+
 
     private void Start()
     {
         destination.parent = null;
+    }
+
+    protected Transform getTransform()
+    {
+        if (this.objectToSlide)
+        {
+            return objectToSlide;
+        }
+        else
+        {
+            return this.transform;
+        }
     }
 
     // Update is called once per frame
@@ -18,13 +32,13 @@ public class SlideToDestination: MonoBehaviour
     {
         if (start)
         {
-            if ((destination.position - transform.position).magnitude > speed)
+            if ((destination.position - getTransform().position).magnitude > speed)
             {
-                transform.position += (destination.position - transform.position).normalized * speed;
+                getTransform().position += (destination.position - getTransform().position).normalized * speed;
             }
             else
             {
-                transform.position = destination.position;
+                getTransform().position = destination.position;
                 Destroy(this);
             }
         }
