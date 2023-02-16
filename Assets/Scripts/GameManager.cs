@@ -36,7 +36,9 @@ public class GameManager : MonoBehaviour
     public void CommitDie(string reason)
     {
         Debug.Log("Player has died by " + reason + "!  Respawning.");
-        this.Respawn();
+        Dictionary<string,object> args = new Dictionary<string, object>();
+        args.Add(reason, null);
+        this.Respawn(args);
     }
 
     public void Update()
@@ -128,8 +130,14 @@ public class GameManager : MonoBehaviour
                 case "suffocate":
                     copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("DeadAsphyxiated", true);
                     break;
+                case "freezing":
+                    //Do nothing
+                    break;
                 case "ragdoll":
                     // Do nothing
+                    break;
+                case "burning":
+                    Destroy(copy);
                     break;
                 default:
                     Debug.LogError("Unknown respawn arg: " + entry.Key);

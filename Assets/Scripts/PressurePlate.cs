@@ -29,11 +29,11 @@ public class PressurePlate : MonoBehaviour
         if (tagMatches(other))
         {
             objectsWithinCollider[other] += Time.deltaTime;
-        }
 
-        if (objectsWithinCollider[other] > activationTimeSeconds)
-        {
-            DoConsequence();
+            if (objectsWithinCollider[other] > activationTimeSeconds)
+            {
+                DoConsequence();
+            }
         }
     }
 
