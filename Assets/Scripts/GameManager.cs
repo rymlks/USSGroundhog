@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
         }
         copy.transform.position = PlayerHandler.Character.transform.position;
         copy.transform.rotation = PlayerHandler.Character.transform.rotation;
+        copy.tag = "Corpse";
         PlayerHandler.Character.gameObject.SetActive(false);
 
         foreach (KeyValuePair<string, object> entry in args)

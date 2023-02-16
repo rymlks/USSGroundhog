@@ -6,6 +6,7 @@ using UnityEngine;
 public class ExplodeAndDestroy : MonoBehaviour
 {
     public float explosionStrength = 10;
+    public GameObject ExplosionPrefab;
 
     public void Start()
     {
@@ -21,6 +22,12 @@ public class ExplodeAndDestroy : MonoBehaviour
     {
         if (isCollisionWithPlayer(triggeredCollider))
         {
+            if (ExplosionPrefab != null)
+            {
+                var explode = Instantiate(ExplosionPrefab);
+                explode.transform.position = transform.position;
+                explode.transform.parent = null;
+            }
             Debug.Log("Killing player via collider!");
             GameManager.instance.Respawn(
                 new Dictionary<string, object> {
