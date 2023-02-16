@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    public Animator CharacterAnimator;
+
     public MyPlayer PlayerHandler;
     public GameObject playerPrefab;
     public GameObject RagdollPrefab;
@@ -99,7 +101,10 @@ public class GameManager : MonoBehaviour
         } else
         {
             copy = Instantiate(playerPrefab);
-            copy.GetComponent<Animator>().SetBool("FallDead", true);
+
+            
+            Debug.Log(copy.GetComponent<Animator>().GetParameter(0));
+            //CharacterAnimator.SetBool("IsFallDead", true);
 
             /*
             CapsuleCollider cap = copy.GetComponentInChildren<CapsuleCollider>();
@@ -113,7 +118,7 @@ public class GameManager : MonoBehaviour
             Rigidbody rb = copy.GetComponent<Rigidbody>();
             rb.useGravity = false;
             */
-            
+
         }
         copy.transform.position = PlayerHandler.Character.transform.position;
         copy.transform.rotation = PlayerHandler.Character.transform.rotation;
