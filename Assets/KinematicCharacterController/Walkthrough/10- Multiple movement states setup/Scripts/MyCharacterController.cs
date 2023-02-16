@@ -9,6 +9,7 @@ namespace KinematicCharacterController.Walkthrough.MultipleMovementStates
     public enum CharacterState
     {
         Default,
+        Charging,
     }
 
     public struct PlayerCharacterInputs

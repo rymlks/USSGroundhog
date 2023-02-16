@@ -74,6 +74,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             CharacterAnimator.SetFloat("Forward", _forwardAxis);
             CharacterAnimator.SetFloat("Turn", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
+            //CharacterAnimator.SetBool("IsDeadFall", false);
 
             if (useMouse)
             {
@@ -87,6 +88,13 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             {
                 useMouse = !useMouse;
             }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                
+                CharacterAnimator.SetBool("IsFallDead", true);
+            }
+
         }
 
         /// <summary>
