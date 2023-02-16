@@ -7,6 +7,7 @@ public class Explode : MonoBehaviour
 {
     public float explosionStrength = 10;
     public bool persist = true;
+    public GameObject ExplosionPrefab;
 
     public void Start()
     {
@@ -22,7 +23,15 @@ public class Explode : MonoBehaviour
     {
         if (isCollisionWithPlayer(triggeredCollider))
         {
-            Debug.Log("Killing player via collider!");
+            foreach(var part in GetComponentsInChildren<ParticleSystem>())
+            {
+                part.Play();
+            }
+            if (ExplosionPrefab != null)
+            {
+                var explode = Instantiate(ExplosionPrefab);
+                explode.transform.position = transform.position;
+            }
             GameManager.instance.Respawn(new Dictionary<string, object>() {
                 {"explosion", (triggeredCollider.transform.position - transform.position).normalized * explosionStrength},
                 {"ragdoll", true},
