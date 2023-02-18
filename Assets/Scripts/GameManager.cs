@@ -63,10 +63,7 @@ public class GameManager : MonoBehaviour
 
             PlayerHandler.Character.gameObject.GetComponent<Animator>().SetBool("IsFallDead", true);
 
-            new WaitForSeconds(DeathSeconds);
-            PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
-            PlayerHandler.Character.gameObject.SetActive(true);
-            resetPlayerHealthState();
+            Respawn();
 
         }
 
@@ -122,28 +119,11 @@ public class GameManager : MonoBehaviour
             {
                 rb.mass = 0.001f;
             }
-        } else if (args.ContainsKey("falldead"))
-        {
-            //CharacterAnimator.SetBool("IsFallDead", true);
-            Debug.Log("falldead ");
-
-            PlayerHandler.Character.gameObject.GetComponent<Animator>().SetBool("IsFallDead", true);
-            yield return new WaitForSeconds(DeathSeconds);
-            PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
-            PlayerHandler.Character.gameObject.SetActive(true);
-            Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
-            DisplaySet(this.permanentItems);
-            resetPlayerHealthState();
-
-        }
-
+        } 
         else
         {
 
             copy = Instantiate(playerPrefab);
-
-
-            Debug.Log(copy.GetComponent<Animator>().GetParameter(0));
 
             /*
             CapsuleCollider cap = copy.GetComponentInChildren<CapsuleCollider>();
@@ -164,8 +144,6 @@ public class GameManager : MonoBehaviour
             copy.transform.rotation = PlayerHandler.Character.transform.rotation;
             copy.tag = "Corpse";
 
-            PlayerHandler.Character.gameObject.GetComponent<Animator>().SetBool("IsFallDead", true);
-
             PlayerHandler.Character.gameObject.SetActive(false);
 
             foreach (KeyValuePair<string, object> entry in args)
@@ -179,7 +157,6 @@ public class GameManager : MonoBehaviour
 
                         Debug.Log(entry.Key + " death animation triggered!");
                         copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("IsFallDead", true);
-
 
                         break;
                     case "freezing":
