@@ -153,8 +153,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5876356058588389695}
   - component: {fileID: 8895298795471996293}
-  - component: {fileID: 6052629471578757178}
-  - component: {fileID: 8952097442021067910}
   m_Layer: 0
   m_Name: SM_Chr_Psionic_01
   m_TagString: Untagged
@@ -279,36 +277,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000059604645, y: 0.844977, z: -0.019301236}
     m_Extent: {x: 1.0245616, y: 0.94607043, z: 0.24331278}
   m_DirtyAABB: 0
---- !u!64 &6052629471578757178
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409121490469361647}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: e5f55a3fa27e3174697a3262c26efb38, type: 3}
---- !u!54 &8952097442021067910
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409121490469361647}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &432531682992650125
 GameObject:
   m_ObjectHideFlags: 0
