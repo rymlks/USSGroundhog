@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private HashSet<string> transientItems = new HashSet<string>();
 
     private const Dictionary<string, object> defaultArgs = null;
+    private Vector3 respawnLocation;
 
     private void OnEnable()
     {
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
         {
             PlayerHandler = FindObjectOfType<MyPlayer>();
         }
+
+        respawnLocation = PlayerHandler.Character.transform.position;
     }
 
     public void CommitDie(string reason)
@@ -156,7 +159,7 @@ public class GameManager : MonoBehaviour
                 case "suffocation":
 
                     Debug.Log(entry.Key + " death animation triggered!");
-                    copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("IsFallDead", true);
+                    copy.GetComponentInChildren<Animator>().SetBool("IsFallDead", true);
 
                     break;
                 case "freezing":
@@ -176,7 +179,7 @@ public class GameManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(DeathSeconds);
-        PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
+        PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(respawnLocation);
         PlayerHandler.Character.gameObject.SetActive(true);
         Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
         DisplaySet(this.permanentItems);

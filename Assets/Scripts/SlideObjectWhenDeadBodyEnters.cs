@@ -28,6 +28,11 @@ public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
         }
     }
 
+    public void OnTriggerStay(Collider other)
+    {
+        OnTriggerEnter(other);
+    }
+
     public void OnTriggerExit(Collider other)
     {
         if ((CustomTag == "" || other.CompareTag(CustomTag)) && reverseOnExit)
