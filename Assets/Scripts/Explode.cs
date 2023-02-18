@@ -31,6 +31,7 @@ public class Explode : MonoBehaviour
             {
                 var explode = Instantiate(ExplosionPrefab);
                 explode.transform.position = transform.position;
+
             }
             GameManager.instance.Respawn(new Dictionary<string, object>() {
                 {"explosion", (triggeredCollider.transform.position - transform.position).normalized * explosionStrength},
