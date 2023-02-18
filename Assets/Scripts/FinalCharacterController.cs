@@ -5,48 +5,50 @@ using KinematicCharacterController;
 using System;
 
 
-public enum CharacterState
-{
-    Default,
-}
 
-public enum OrientationMethod
-{
-    TowardsCamera,
-    TowardsMovement,
-}
 
-public struct PlayerCharacterInputs
-{
-    public float MoveAxisForward;
-    public float MoveAxisRight;
-    public Quaternion CameraRotation;
-    public bool JumpDown;
-    public bool CrouchDown;
-    public bool CrouchUp;
-}
+    public enum CharacterState
+    {
+        Default,
+    }
 
-public struct AICharacterInputs
-{
-    public Vector3 MoveVector;
-    public Vector3 LookVector;
-}
+    public enum OrientationMethod
+    {
+        TowardsCamera,
+        TowardsMovement,
+    }
 
-public enum BonusOrientationMethod
-{
-    None,
-    TowardsGravity,
-    TowardsGroundSlopeAndGravity,
-}
+    public struct PlayerCharacterInputs
+    {
+        public float MoveAxisForward;
+        public float MoveAxisRight;
+        public Quaternion CameraRotation;
+        public bool JumpDown;
+        public bool CrouchDown;
+        public bool CrouchUp;
+    }
 
-public class FinalCharacterController : MonoBehaviour, ICharacterController
+    public struct AICharacterInputs
+    {
+        public Vector3 MoveVector;
+        public Vector3 LookVector;
+    }
+
+    public enum BonusOrientationMethod
+    {
+        None,
+        TowardsGravity,
+        TowardsGroundSlopeAndGravity,
+    }
+
+    public class FinalCharacterController : MonoBehaviour, ICharacterController
     {
         public KinematicCharacterMotor Motor;
         public GameObject Camera;
         public bool useMouse = false;
         private float mousex = 0;
 
-    [Header("Stable Movement")]
+        [Header("Stable Movement")]
         public float MaxStableMoveSpeed = 10f;
         public float StableMovementSharpness = 15f;
         public float OrientationSharpness = 10f;
@@ -96,7 +98,7 @@ public class FinalCharacterController : MonoBehaviour, ICharacterController
         private float _targetRightAxis;
         private Vector3 _rootMotionPositionDelta;
         private Quaternion _rootMotionRotationDelta;
-        
+
         private bool _shouldBeCrouching = false;
         private bool _isCrouching = false;
 
@@ -171,7 +173,7 @@ public class FinalCharacterController : MonoBehaviour, ICharacterController
             _targetForwardAxis = inputs.MoveAxisForward;
             _targetRightAxis = inputs.MoveAxisRight;
 
-        switch (CurrentCharacterState)
+            switch (CurrentCharacterState)
             {
                 case CharacterState.Default:
                     {
@@ -228,6 +230,11 @@ public class FinalCharacterController : MonoBehaviour, ICharacterController
 
         private Quaternion _tmpTransientRot;
 
+        /// <summary>
+        /// (Called by KinematicCharacterMotor during its update cycle)
+        /// This is called before the character begins its movement update
+        /// </summary>
+
         private void Start()
         {
             _rootMotionPositionDelta = Vector3.zero;
@@ -247,18 +254,18 @@ public class FinalCharacterController : MonoBehaviour, ICharacterController
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
             //CharacterAnimator.SetBool("IsDeadFall", false);
 
-            if (useMouse)
-            {
-                mousex = Mathf.Lerp(mousex, Input.GetAxis("Mouse X"), 0.2f);
-                _rightAxis = mousex;
-                Motor.SetRotation(Quaternion.Euler(new Vector3(0, Camera.transform.rotation.eulerAngles.y, 0)));
-                CharacterAnimator.SetFloat("Turn", _rightAxis);
-            }
+            //if (useMouse)
+            //{
+            //    mousex = Mathf.Lerp(mousex, Input.GetAxis("Mouse X"), 0.2f);
+            //    _rightAxis = mousex;
+            //    Motor.SetRotation(Quaternion.Euler(new Vector3(0, Camera.transform.rotation.eulerAngles.y, 0)));
+            //    CharacterAnimator.SetFloat("Turn", _rightAxis);
+            //}
 
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                useMouse = !useMouse;
-            }
+            //if (Input.GetKeyDown(KeyCode.M))
+            //{
+            //    useMouse = !useMouse;
+            //}
 
         }
 
@@ -473,13 +480,13 @@ public class FinalCharacterController : MonoBehaviour, ICharacterController
                                 _timeSinceLastAbleToJump += deltaTime;
                             }
                         }
-                    // Reset root motion deltas
-                    _rootMotionPositionDelta = Vector3.zero;
-                    _rootMotionRotationDelta = Quaternion.identity;
+                        // Reset root motion deltas
+                        _rootMotionPositionDelta = Vector3.zero;
+                        _rootMotionRotationDelta = Quaternion.identity;
 
 
-                    // Handle uncrouching
-                    if (_isCrouching && !_shouldBeCrouching)
+                        // Handle uncrouching
+                        if (_isCrouching && !_shouldBeCrouching)
                         {
                             // Do an overlap test with the character's standing height to see if there are any obstructions
                             Motor.SetCapsuleDimensions(0.5f, 2f, 1f);
@@ -564,7 +571,7 @@ public class FinalCharacterController : MonoBehaviour, ICharacterController
             _rootMotionRotationDelta = CharacterAnimator.deltaRotation * _rootMotionRotationDelta;
         }
 
-    protected void OnLanded()
+        protected void OnLanded()
         {
         }
 

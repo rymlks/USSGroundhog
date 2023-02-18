@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController.Examples;
 using KinematicCharacterController;
-using KinematicCharacterController.Walkthrough.RootMotionExample;
+using Assets.Scripts;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public Animator CharacterAnimator;
 
-    public MyPlayer PlayerHandler;
+    public FinalMyPlayer PlayerHandler;
     public GameObject playerPrefab;
     public GameObject RagdollPrefab;
     private HashSet<string> permanentItems = new HashSet<string>();
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         
         if (PlayerHandler == null)
         {
-            PlayerHandler = FindObjectOfType<MyPlayer>();
+            PlayerHandler = FindObjectOfType<FinalMyPlayer>();
         }
 
         respawnLocation = PlayerHandler.Character.transform.position;
@@ -67,10 +67,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("P Key Press Detected!");
             //CharacterAnimator.SetBool("IsFallDead", true);
 
-            PlayerHandler.Character.gameObject.GetComponent<Animator>().SetBool("IsFallDead", true);
+            //PlayerHandler.Character.gameObject.GetComponent<Animator>().SetBool("IsFallDead", true);
 
             Respawn(new Dictionary<string, object>() {
-                {"suffocation", false},
+                {"electrocution", false},
             });
 
         }
@@ -157,10 +157,17 @@ public class GameManager : MonoBehaviour
                     copy.GetComponentInChildren<Rigidbody>().AddForce((Vector3)entry.Value);
                     break;
                 case "suffocation":
-
                     Debug.Log(entry.Key + " death animation triggered!");
+<<<<<<< Updated upstream
                     copy.GetComponentInChildren<Animator>().SetBool("IsFallDead", true);
 
+=======
+                    copy.GetComponent<FinalCharacterController>().CharacterAnimator.SetBool("IsFallDead", true);
+                    break;
+                case "electrocution":
+                    Debug.Log(entry.Key + " death animation triggered!");
+                    copy.GetComponent<FinalCharacterController>().CharacterAnimator.SetBool("IsElectrocuted", true);
+>>>>>>> Stashed changes
                     break;
                 case "freezing":
                     //Do nothing
