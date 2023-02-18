@@ -5,6 +5,7 @@ using UnityEngine;
 public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
 {
     public bool destroy = false;
+    public bool reverseOnExit = false;
     public SlideToDestination slideMe;
 
     public string CustomTag = "Corpse";
@@ -12,17 +13,27 @@ public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(CustomTag))
+        if (CustomTag == "" || other.CompareTag(CustomTag))
         {
             if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
             {
                 return;
             }
             slideMe.start = true;
+            slideMe.forward = true;
             if (destroy)
             {
                 Destroy(gameObject);
             }
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if ((CustomTag == "" || other.CompareTag(CustomTag)) && reverseOnExit)
+        {
+            slideMe.start = true;
+            slideMe.forward = false;
         }
     }
 }
