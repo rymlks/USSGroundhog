@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public Animator CharacterAnimator;
 
-    public MyPlayer PlayerHandler;
+    public FinalMyPlayer PlayerHandler;
     public GameObject playerPrefab;
     public GameObject RagdollPrefab;
     private HashSet<string> permanentItems = new HashSet<string>();
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        PlayerHandler = FindObjectOfType<MyPlayer>();
+        PlayerHandler = FindObjectOfType<FinalMyPlayer>();
     }
 
     public void CommitDie(string reason)
@@ -63,7 +63,9 @@ public class GameManager : MonoBehaviour
 
             PlayerHandler.Character.gameObject.GetComponent<Animator>().SetBool("IsFallDead", true);
 
-            Respawn();
+            Respawn(new Dictionary<string, object>() {
+                {"suffocation", false},
+            });
 
         }
 

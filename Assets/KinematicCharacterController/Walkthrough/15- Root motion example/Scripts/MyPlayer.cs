@@ -86,8 +86,13 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
                 characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
             }
 
+            characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
+            characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
+
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);
+
+
         }
     }
 }
