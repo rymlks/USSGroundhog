@@ -158,16 +158,14 @@ public class GameManager : MonoBehaviour
                     break;
                 case "suffocation":
                     Debug.Log(entry.Key + " death animation triggered!");
-<<<<<<< Updated upstream
+                   
                     copy.GetComponentInChildren<Animator>().SetBool("IsFallDead", true);
-
-=======
-                    copy.GetComponent<FinalCharacterController>().CharacterAnimator.SetBool("IsFallDead", true);
                     break;
                 case "electrocution":
                     Debug.Log(entry.Key + " death animation triggered!");
-                    copy.GetComponent<FinalCharacterController>().CharacterAnimator.SetBool("IsElectrocuted", true);
->>>>>>> Stashed changes
+
+                    copy.GetComponentInChildren<Animator>().SetBool("IsElectrocuted", true);
+                    
                     break;
                 case "freezing":
                     //Do nothing
