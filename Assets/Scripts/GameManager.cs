@@ -37,18 +37,39 @@ public class GameManager : MonoBehaviour
 
     public void CommitDie(string reason)
     {
+
         Debug.Log("Player has died by " + reason + "!  Respawning.");
         Dictionary<string,object> args = new Dictionary<string, object>();
         args.Add(reason, null);
         this.Respawn(args);
+
     }
 
     public void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.K))
         {
             Respawn();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+
+            //playerPrefab.GetComponent<Animator>().SetBool("IsFallDead", true);
+
+            Debug.Log("P Key Press Detected!");
+            //CharacterAnimator.SetBool("IsFallDead", true);
+
+            PlayerHandler.Character.gameObject.GetComponent<Animator>().SetBool("IsFallDead", true);
+
+            new WaitForSeconds(DeathSeconds);
+            PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
+            PlayerHandler.Character.gameObject.SetActive(true);
+            resetPlayerHealthState();
+
+        }
+
     }
 
     public void Gather(string gatheredItemName, bool persistsThroughDeath = false)
@@ -90,7 +111,10 @@ public class GameManager : MonoBehaviour
             Debug.Log(" }");
         }
 
+        
+
         GameObject copy;
+
         if (args.ContainsKey("ragdoll")) {
             copy = Instantiate(RagdollPrefab);
 
@@ -98,13 +122,28 @@ public class GameManager : MonoBehaviour
             {
                 rb.mass = 0.001f;
             }
-        } else
+        } else if (args.ContainsKey("falldead"))
         {
+            //CharacterAnimator.SetBool("IsFallDead", true);
+            Debug.Log("falldead ");
+
+            PlayerHandler.Character.gameObject.GetComponent<Animator>().SetBool("IsFallDead", true);
+            yield return new WaitForSeconds(DeathSeconds);
+            PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
+            PlayerHandler.Character.gameObject.SetActive(true);
+            Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
+            DisplaySet(this.permanentItems);
+            resetPlayerHealthState();
+
+        }
+
+        else
+        {
+
             copy = Instantiate(playerPrefab);
 
-            
+
             Debug.Log(copy.GetComponent<Animator>().GetParameter(0));
-            //CharacterAnimator.SetBool("IsFallDead", true);
 
             /*
             CapsuleCollider cap = copy.GetComponentInChildren<CapsuleCollider>();
@@ -119,44 +158,53 @@ public class GameManager : MonoBehaviour
             rb.useGravity = false;
             */
 
-        }
-        copy.transform.position = PlayerHandler.Character.transform.position;
-        copy.transform.rotation = PlayerHandler.Character.transform.rotation;
-        copy.tag = "Corpse";
-        PlayerHandler.Character.gameObject.SetActive(false);
 
-        foreach (KeyValuePair<string, object> entry in args)
-        {
-            switch(entry.Key)
+
+            copy.transform.position = PlayerHandler.Character.transform.position;
+            copy.transform.rotation = PlayerHandler.Character.transform.rotation;
+            copy.tag = "Corpse";
+
+            PlayerHandler.Character.gameObject.GetComponent<Animator>().SetBool("IsFallDead", true);
+
+            PlayerHandler.Character.gameObject.SetActive(false);
+
+            foreach (KeyValuePair<string, object> entry in args)
             {
-                case "explosion":
-                    copy.GetComponentInChildren<Rigidbody>().AddForce((Vector3)entry.Value);
-                    break;
-                case "suffocate":
-                    copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("DeadAsphyxiated", true);
-                    break;
-                case "freezing":
-                    //Do nothing
-                    break;
-                case "ragdoll":
-                    // Do nothing
-                    break;
-                case "burning":
-                    Destroy(copy);
-                    break;
-                default:
-                    Debug.LogError("Unknown respawn arg: " + entry.Key);
-                    break;
+                switch (entry.Key)
+                {
+                    case "explosion":
+                        copy.GetComponentInChildren<Rigidbody>().AddForce((Vector3)entry.Value);
+                        break;
+                    case "suffocation":
+
+                        Debug.Log(entry.Key + " death animation triggered!");
+                        copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("IsFallDead", true);
+
+
+                        break;
+                    case "freezing":
+                        //Do nothing
+                        break;
+                    case "ragdoll":
+                        // Do nothing
+                        break;
+                    case "burning":
+                        Destroy(copy);
+                        break;
+                    default:
+                        Debug.LogError("Unknown respawn arg: " + entry.Key);
+                        break;
+                }
             }
+
+
+            yield return new WaitForSeconds(DeathSeconds);
+            PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
+            PlayerHandler.Character.gameObject.SetActive(true);
+            Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
+            DisplaySet(this.permanentItems);
+            resetPlayerHealthState();
         }
-
-
-        yield return new WaitForSeconds(DeathSeconds);
-        PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
-        PlayerHandler.Character.gameObject.SetActive(true);
-        Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
-        DisplaySet(this.permanentItems);
-        resetPlayerHealthState();
 
     }
 

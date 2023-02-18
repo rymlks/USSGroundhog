@@ -89,12 +89,6 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
                 useMouse = !useMouse;
             }
 
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                
-                CharacterAnimator.SetBool("IsFallDead", true);
-            }
-
         }
 
         /// <summary>
