@@ -7,12 +7,15 @@ public class SlideToDestination: MonoBehaviour
     public Transform destination;
     public float speed = 0.1f;
     public bool start = false;
+    public bool forward = true;
     public Transform objectToSlide = null;
+    public Vector3 startPos;
 
 
     private void Start()
     {
         destination.parent = null;
+        startPos = transform.position;
     }
 
     protected Transform getTransform()
@@ -32,14 +35,15 @@ public class SlideToDestination: MonoBehaviour
     {
         if (start)
         {
-            if ((destination.position - getTransform().position).magnitude > speed)
+            Vector3 dest = forward ? destination.position : startPos;
+            if ((dest - getTransform().position).magnitude > speed)
             {
-                getTransform().position += (destination.position - getTransform().position).normalized * speed;
+                getTransform().position += (dest - getTransform().position).normalized * speed;
             }
             else
             {
-                getTransform().position = destination.position;
-                Destroy(this);
+                getTransform().position = dest;
+                //Destroy(this);
             }
         }
     }

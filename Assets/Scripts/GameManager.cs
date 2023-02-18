@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public Animator CharacterAnimator;
 
-    public FinalMyPlayer PlayerHandler;
+    public MyPlayer PlayerHandler;
     public GameObject playerPrefab;
     public GameObject RagdollPrefab;
     private HashSet<string> permanentItems = new HashSet<string>();
@@ -31,8 +31,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        PlayerHandler = FindObjectOfType<FinalMyPlayer>();
+        
+        if (PlayerHandler == null)
+        {
+            PlayerHandler = FindObjectOfType<MyPlayer>();
+        }
     }
 
     public void CommitDie(string reason)
@@ -110,8 +113,6 @@ public class GameManager : MonoBehaviour
             Debug.Log(" }");
         }
 
-        
-
         GameObject copy;
 
         if (args.ContainsKey("ragdoll")) {
@@ -124,66 +125,62 @@ public class GameManager : MonoBehaviour
         } 
         else
         {
-
             copy = Instantiate(playerPrefab);
-
-            /*
-            CapsuleCollider cap = copy.GetComponentInChildren<CapsuleCollider>();
-            cap.direction = 2;
-            cap.height = 0.1f;
-            Vector3 center = cap.center;
-            center.y = cap.radius;
-            cap.center = center;
-            cap.enabled = false;
-            Destroy(cap);
-            Rigidbody rb = copy.GetComponent<Rigidbody>();
-            rb.useGravity = false;
-            */
-
-
-
-            copy.transform.position = PlayerHandler.Character.transform.position;
-            copy.transform.rotation = PlayerHandler.Character.transform.rotation;
-            copy.tag = "Corpse";
-
-            PlayerHandler.Character.gameObject.SetActive(false);
-
-            foreach (KeyValuePair<string, object> entry in args)
-            {
-                switch (entry.Key)
-                {
-                    case "explosion":
-                        copy.GetComponentInChildren<Rigidbody>().AddForce((Vector3)entry.Value);
-                        break;
-                    case "suffocation":
-
-                        Debug.Log(entry.Key + " death animation triggered!");
-                        copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("IsFallDead", true);
-
-                        break;
-                    case "freezing":
-                        //Do nothing
-                        break;
-                    case "ragdoll":
-                        // Do nothing
-                        break;
-                    case "burning":
-                        Destroy(copy);
-                        break;
-                    default:
-                        Debug.LogError("Unknown respawn arg: " + entry.Key);
-                        break;
-                }
-            }
-
-
-            yield return new WaitForSeconds(DeathSeconds);
-            PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
-            PlayerHandler.Character.gameObject.SetActive(true);
-            Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
-            DisplaySet(this.permanentItems);
-            resetPlayerHealthState();
         }
+
+        /*
+        CapsuleCollider cap = copy.GetComponentInChildren<CapsuleCollider>();
+        cap.direction = 2;
+        cap.height = 0.1f;
+        Vector3 center = cap.center;
+        center.y = cap.radius;
+        cap.center = center;
+        cap.enabled = false;
+        Destroy(cap);
+        Rigidbody rb = copy.GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        */
+        copy.transform.position = PlayerHandler.Character.transform.position;
+        copy.transform.rotation = PlayerHandler.Character.transform.rotation;
+        copy.tag = "Corpse";
+
+        PlayerHandler.Character.gameObject.SetActive(false);
+
+        foreach (KeyValuePair<string, object> entry in args)
+        {
+            switch (entry.Key)
+            {
+                case "explosion":
+                    copy.GetComponentInChildren<Rigidbody>().AddForce((Vector3)entry.Value);
+                    break;
+                case "suffocation":
+
+                    Debug.Log(entry.Key + " death animation triggered!");
+                    copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("IsFallDead", true);
+
+                    break;
+                case "freezing":
+                    //Do nothing
+                    break;
+                case "ragdoll":
+                    // Do nothing
+                    break;
+                case "burning":
+                    Destroy(copy);
+                    break;
+                default:
+                    Debug.LogError("Unknown respawn arg: " + entry.Key);
+                    break;
+            }
+        }
+
+
+        yield return new WaitForSeconds(DeathSeconds);
+        PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
+        PlayerHandler.Character.gameObject.SetActive(true);
+        Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
+        DisplaySet(this.permanentItems);
+        resetPlayerHealthState();
 
     }
 

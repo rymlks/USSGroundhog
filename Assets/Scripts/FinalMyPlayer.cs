@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController;
+using KinematicCharacterController.Walkthrough.RootMotionExample;
 
-public class FinalMyPlayer : MonoBehaviour
+public class FinalMyPlayer : MyPlayer
 {
     public FinalCharacterController Character;
     public FinalCharacterCamera CharacterCamera;
