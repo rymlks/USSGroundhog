@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController;
-
+using KinematicCharacterController.Walkthrough.RootMotionExample;
 
 namespace Assets.Scripts
 {
-    public class FinalMyPlayer : MonoBehaviour
+    public class FinalMyPlayer : MyPlayer
     {
         public FinalCharacterController Character;
         public FinalCharacterCamera CharacterCamera;
