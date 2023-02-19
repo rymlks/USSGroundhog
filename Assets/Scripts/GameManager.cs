@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController.Examples;
 using KinematicCharacterController;
+using Assets.Scripts;
 using KinematicCharacterController.Walkthrough.RootMotionExample;
 
 public class GameManager : MonoBehaviour
@@ -12,12 +13,16 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    public Animator CharacterAnimator;
+
     public MyPlayer PlayerHandler;
     public GameObject playerPrefab;
+    public GameObject RagdollPrefab;
     private HashSet<string> permanentItems = new HashSet<string>();
     private HashSet<string> transientItems = new HashSet<string>();
 
     private const Dictionary<string, object> defaultArgs = null;
+    public Vector3 respawnLocation;
 
     private void OnEnable()
     {
@@ -28,22 +33,49 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        
+        if (PlayerHandler == null)
+        {
+            PlayerHandler = FindObjectOfType<MyPlayer>();
+        }
 
-        PlayerHandler = FindObjectOfType<MyPlayer>();
+        respawnLocation = PlayerHandler.Character.transform.position;
     }
 
     public void CommitDie(string reason)
     {
+
         Debug.Log("Player has died by " + reason + "!  Respawning.");
-        this.Respawn();
+        Dictionary<string,object> args = new Dictionary<string, object>();
+        args.Add(reason, null);
+        this.Respawn(args);
+
     }
 
     public void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.K))
         {
             Respawn();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+
+            //playerPrefab.GetComponent<Animator>().SetBool("IsFallDead", true);
+
+            Debug.Log("P Key Press Detected!");
+            //CharacterAnimator.SetBool("IsFallDead", true);
+
+            //PlayerHandler.Character.gameObject.GetComponent<Animator>().SetBool("IsFallDead", true);
+
+            Respawn(new Dictionary<string, object>() {
+                {"electrocution", false},
+            });
+
+        }
+
     }
 
     public void Gather(string gatheredItemName, bool persistsThroughDeath = false)
@@ -85,25 +117,70 @@ public class GameManager : MonoBehaviour
             Debug.Log(" }");
         }
 
-        GameObject copy = Instantiate(playerPrefab);
-        foreach(var rb in copy.GetComponentsInChildren<Rigidbody>())
+        GameObject copy;
+
+        if (args.ContainsKey("ragdoll")) {
+            copy = Instantiate(RagdollPrefab);
+
+            foreach (var rb in copy.GetComponentsInChildren<Rigidbody>())
+            {
+                rb.mass = 0.001f;
+            }
+        } 
+        else
         {
-            rb.mass = 0.001f;
+            copy = Instantiate(playerPrefab);
         }
+
+        /*
+        CapsuleCollider cap = copy.GetComponentInChildren<CapsuleCollider>();
+        cap.direction = 2;
+        cap.height = 0.1f;
+        Vector3 center = cap.center;
+        center.y = cap.radius;
+        cap.center = center;
+        cap.enabled = false;
+        Destroy(cap);
+        Rigidbody rb = copy.GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        */
         copy.transform.position = PlayerHandler.Character.transform.position;
         copy.transform.rotation = PlayerHandler.Character.transform.rotation;
+        copy.tag = "Corpse";
+
         PlayerHandler.Character.gameObject.SetActive(false);
-        copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("FallDead", true);
 
         foreach (KeyValuePair<string, object> entry in args)
         {
-            switch(entry.Key)
+            switch (entry.Key)
             {
                 case "explosion":
+
                     copy.GetComponentInChildren<Rigidbody>().AddForce((Vector3)entry.Value);
+
                     break;
-                case "suffocate":
-                    copy.GetComponent<MyCharacterController>().CharacterAnimator.SetBool("DeadAsphyxiated", true);
+                case "suffocation":
+
+                    Debug.Log(entry.Key + " death animation triggered!");
+                   
+                    copy.GetComponentInChildren<Animator>().SetBool("IsFallDead", true);
+
+                    break;
+                case "electrocution":
+
+                    Debug.Log(entry.Key + " death animation triggered!");
+
+                    copy.GetComponentInChildren<Animator>().SetBool("IsElectrocuted", true);
+                    
+                    break;
+                case "freezing":
+                    //Do nothing
+                    break;
+                case "ragdoll":
+                    // Do nothing
+                    break;
+                case "burning":
+                    Destroy(copy);
                     break;
                 default:
                     Debug.LogError("Unknown respawn arg: " + entry.Key);
@@ -111,9 +188,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
         yield return new WaitForSeconds(DeathSeconds);
-        PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(new Vector3(-7.668f, 1.025f, 7.58f));
+        PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(respawnLocation);
         PlayerHandler.Character.gameObject.SetActive(true);
         Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
         DisplaySet(this.permanentItems);
@@ -123,6 +199,6 @@ public class GameManager : MonoBehaviour
 
     private void resetPlayerHealthState()
     {
-        FindObjectOfType<PlayerHealthState>().Reset();
+        FindObjectOfType<PlayerHealthState>().ResetAllStatuses();
     }
 }

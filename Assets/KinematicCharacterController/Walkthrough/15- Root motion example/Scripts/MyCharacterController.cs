@@ -10,6 +10,8 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
     {
         public float MoveAxisForward;
         public float MoveAxisRight;
+        public bool CrouchDown;
+        public bool CrouchUp;
     }
 
     public class MyCharacterController : MonoBehaviour, ICharacterController
@@ -35,9 +37,10 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
         public float TurnAxisSharpness = 5;
 
         [Header("Misc")]
+        public float CrouchedCapsuleHeight = 1f;
         public Vector3 Gravity = new Vector3(0, -30f, 0);
         public Transform MeshRoot;
-
+        private Collider[] _probedColliders = new Collider[8];
         private Vector3 _moveInputVector;
         private Vector3 _lookInputVector;
         private float _forwardAxis;
@@ -46,6 +49,8 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
         private float _targetRightAxis;
         private Vector3 _rootMotionPositionDelta;
         private Quaternion _rootMotionRotationDelta;
+        private bool _shouldBeCrouching = false;
+        private bool _isCrouching = false;
 
         /// <summary>
         /// This is called every frame by MyPlayer in order to tell the character what its inputs are
@@ -74,6 +79,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             CharacterAnimator.SetFloat("Forward", _forwardAxis);
             CharacterAnimator.SetFloat("Turn", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
+            //CharacterAnimator.SetBool("IsDeadFall", false);
 
             if (useMouse)
             {
@@ -87,6 +93,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             {
                 useMouse = !useMouse;
             }
+
         }
 
         /// <summary>
@@ -155,6 +162,26 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             // Reset root motion deltas
             _rootMotionPositionDelta = Vector3.zero;
             _rootMotionRotationDelta = Quaternion.identity;
+            // Handle uncrouching
+            if (_isCrouching && !_shouldBeCrouching)
+            {
+                // Do an overlap test with the character's standing height to see if there are any obstructions
+                Motor.SetCapsuleDimensions(0.5f, 2f, 1f);
+                if (Motor.CharacterCollisionsOverlap(
+                        Motor.TransientPosition,
+                        Motor.TransientRotation,
+                        _probedColliders) > 0)
+                {
+                    // If obstructions, just stick to crouching dimensions
+                    Motor.SetCapsuleDimensions(0.5f, 1f, 0.5f);
+                }
+                else
+                {
+                    // If no obstructions, uncrouch
+                    MeshRoot.localScale = new Vector3(1f, 1f, 1f);
+                    _isCrouching = false;
+                }
+            }
         }
 
         public bool IsColliderValidForCollisions(Collider coll)

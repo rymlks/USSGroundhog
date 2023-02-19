@@ -11,7 +11,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
     {
         public ExampleCharacterCamera OrbitCamera;
         public Transform CameraFollowPoint;
-        public MyCharacterController Character;
+        public MonoBehaviour Character;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -71,7 +71,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             // Handle toggling zoom level
             if (Input.GetMouseButtonDown(1))
             {
-                OrbitCamera.TargetDistance = (OrbitCamera.TargetDistance == 0f) ? OrbitCamera.DefaultDistance : 0f;
+                //OrbitCamera.TargetDistance = (OrbitCamera.TargetDistance == 0f) ? OrbitCamera.DefaultDistance : 0f;
             }
         }
 
@@ -81,13 +81,18 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
 
             // Build the CharacterInputs struct
             characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
-            if (!Character.useMouse)
+            if (!((MyCharacterController)Character).useMouse)
             {
                 characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
             }
 
+            characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
+            characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
+
             // Apply inputs to character
-            Character.SetInputs(ref characterInputs);
+            ((MyCharacterController)Character).SetInputs(ref characterInputs);
+
+
         }
     }
 }

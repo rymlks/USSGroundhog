@@ -8,6 +8,8 @@ public class GatherableItem : MonoBehaviour
 {
     public String itemName;
     public bool persistsThroughDeath = false;
+    public bool destroyOnCollect = false;
+
     public void Start()
     {
         this.GetComponent<Collider>().isTrigger = true;
@@ -24,6 +26,10 @@ public class GatherableItem : MonoBehaviour
         {
             Debug.Log("Player gathered permanent item "+itemName+"!");
             GameManager.instance.Gather(itemName, persistsThroughDeath);
+            if (destroyOnCollect)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

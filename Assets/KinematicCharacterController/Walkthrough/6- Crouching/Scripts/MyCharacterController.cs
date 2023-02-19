@@ -106,6 +106,7 @@ namespace KinematicCharacterController.Walkthrough.Crouching
             {
                 _shouldBeCrouching = false;
             }
+
         }
 
         /// <summary>
