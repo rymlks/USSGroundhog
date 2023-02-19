@@ -8,8 +8,9 @@ public class Explode : MonoBehaviour
     public float explosionStrength = 10;
     public bool persist = true;
     public GameObject ExplosionPrefab;
+    [SerializeField] private AudioSource _audioSource;
 
-    public void Start()
+        public void Start()
     {
         this.GetComponent<Collider>().isTrigger = true;
     }
@@ -29,6 +30,12 @@ public class Explode : MonoBehaviour
             }
             if (ExplosionPrefab != null)
             {
+                if (_audioSource != null && _audioSource.gameObject.activeSelf)
+                {
+                    //Debug.LogWarning($"Playing Sound on {gameObject.name}");
+                    _audioSource.Play();
+                }
+                
                 var explode = Instantiate(ExplosionPrefab);
                 explode.transform.position = transform.position;
 
