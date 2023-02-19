@@ -12,7 +12,7 @@ public class SoundFXManager : MonoBehaviour
 
     public void LoadClip(string clipName)
     {
-        AudioClip audioClip = Load
+        //AudioClip audioClip = Load
     }
 
     public void PlayAudio()
