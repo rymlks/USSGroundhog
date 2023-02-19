@@ -26,16 +26,14 @@ public class Explode : MonoBehaviour
     {
         if (isCollisionWithPlayer(triggeredCollider))
         {
+            Debug.LogWarning($"{gameObject.name} is in Collision");
             foreach(var part in GetComponentsInChildren<ParticleSystem>())
             {
                 part.Play();
             }
             if (ExplosionPrefab != null)
             {
-                if (_audioSource != null && _audioSource.gameObject.activeSelf)
-                {
-                    _audioSource.Play();
-                }
+                GameObject.FindWithTag("MainCamera").GetComponent<audiosfx>().Play_Small_explosion();
 
                 var explode = Instantiate(ExplosionPrefab);
                 explode.transform.position = transform.position;
