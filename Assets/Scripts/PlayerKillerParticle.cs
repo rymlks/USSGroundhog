@@ -17,7 +17,6 @@ public class PlayerKillerParticle : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-        Debug.Log("yoooo!");
         if (other.CompareTag("Player"))
         {
             GameManager.instance.CommitDie(deathReason);
