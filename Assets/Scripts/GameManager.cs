@@ -197,6 +197,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
                 default:
+                    copy.GetComponentInChildren<Animator>().SetBool("IsFallDead", true);
                     Debug.LogError("Unknown respawn arg: " + entry.Key);
                     break;
             }
