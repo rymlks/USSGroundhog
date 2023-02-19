@@ -48,9 +48,7 @@ public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
     {
         if (_audioSource != null && !_audioSource.isPlaying)
         {
-            Debug.Log("Playing");
             _audioSource.Play();
-            Debug.Log("After Playing");
         }
     }
 
