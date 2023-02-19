@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PlayerStatusEffect;
 using UnityEngine;
 
 public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
@@ -10,6 +11,15 @@ public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
 
     public string CustomTag = "Corpse";
     public string RequireItem = "";
+    private KeyStatusUIController keyUI;
+
+    void Start()
+    {
+        if (keyUI == null)
+        {
+            keyUI = FindObjectOfType<KeyStatusUIController>();
+        }
+    }
 
     public void OnTriggerEnter(Collider other)
     {
@@ -17,6 +27,7 @@ public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
         {
             if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
             {
+                this.keyUI.showStatusNextFrame();
                 return;
             }
             slideMe.start = true;
