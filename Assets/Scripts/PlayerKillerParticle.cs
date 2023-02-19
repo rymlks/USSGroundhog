@@ -9,12 +9,18 @@ public class PlayerKillerParticle : MonoBehaviour
 
     void Start()
     {
-        particleSystem = GetComponentInParent<ParticleSystem>();
+        if (particleSystem != null)
+        {
+            particleSystem = GetComponentInParent<ParticleSystem>();
+        }
     }
 
     void OnParticleCollision(GameObject other)
     {
-        if(other.tag == "Player")
+        Debug.Log("yoooo!");
+        if (other.CompareTag("Player"))
+        {
             GameManager.instance.CommitDie(deathReason);
+        }
     }
 }

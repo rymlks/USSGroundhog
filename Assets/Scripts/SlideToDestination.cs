@@ -10,6 +10,7 @@ public class SlideToDestination: MonoBehaviour
     public bool forward = true;
     public Transform objectToSlide = null;
     public Vector3 startPos;
+    public bool shouldReturn;
 
 
     private void Start()
@@ -30,7 +31,6 @@ public class SlideToDestination: MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (start)
@@ -43,7 +43,7 @@ public class SlideToDestination: MonoBehaviour
             else
             {
                 getTransform().position = dest;
-                //Destroy(this);
+                forward = !forward;
             }
         }
     }
