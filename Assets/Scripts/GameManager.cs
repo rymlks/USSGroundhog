@@ -182,6 +182,12 @@ public class GameManager : MonoBehaviour
                 case "burning":
                     Destroy(copy);
                     break;
+                case "dontRespawn":
+                    if ((bool)entry.Value == true)
+                    {
+                        yield break;
+                    }
+                    break;
                 default:
                     Debug.LogError("Unknown respawn arg: " + entry.Key);
                     break;
