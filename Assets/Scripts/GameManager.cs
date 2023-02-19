@@ -5,7 +5,7 @@ using UnityEngine;
 using KinematicCharacterController.Examples;
 using KinematicCharacterController;
 using Assets.Scripts;
-using KinematicCharacterController.Walkthrough.RootMotionExample;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -15,14 +15,14 @@ public class GameManager : MonoBehaviour
 
     public Animator CharacterAnimator;
 
-    public MyPlayer PlayerHandler;
+    public FinalMyPlayer PlayerHandler;
     public GameObject playerPrefab;
     public GameObject RagdollPrefab;
     private HashSet<string> permanentItems = new HashSet<string>();
     private HashSet<string> transientItems = new HashSet<string>();
 
     private const Dictionary<string, object> defaultArgs = null;
-    public Vector3 respawnLocation;
+    private Vector3 respawnLocation;
 
     private void OnEnable()
     {
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         
         if (PlayerHandler == null)
         {
-            PlayerHandler = FindObjectOfType<MyPlayer>();
+            PlayerHandler = FindObjectOfType<FinalMyPlayer>();
         }
 
         respawnLocation = PlayerHandler.Character.transform.position;
@@ -155,14 +155,19 @@ public class GameManager : MonoBehaviour
             switch (entry.Key)
             {
                 case "explosion":
+
                     copy.GetComponentInChildren<Rigidbody>().AddForce((Vector3)entry.Value);
+
                     break;
                 case "suffocation":
+
                     Debug.Log(entry.Key + " death animation triggered!");
                    
                     copy.GetComponentInChildren<Animator>().SetBool("IsFallDead", true);
+
                     break;
                 case "electrocution":
+
                     Debug.Log(entry.Key + " death animation triggered!");
 
                     copy.GetComponentInChildren<Animator>().SetBool("IsElectrocuted", true);
@@ -182,7 +187,6 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
-
 
         yield return new WaitForSeconds(DeathSeconds);
         PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(respawnLocation);

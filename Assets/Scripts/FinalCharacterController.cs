@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController;
 using System;
-
+using Assets.Scripts;
 
 
 
@@ -47,6 +47,7 @@ using System;
         public GameObject Camera;
         public bool useMouse = false;
         private float mousex = 0;
+        
 
         [Header("Stable Movement")]
         public float MaxStableMoveSpeed = 10f;
@@ -206,12 +207,20 @@ using System;
                             {
                                 _isCrouching = true;
                                 Motor.SetCapsuleDimensions(0.5f, CrouchedCapsuleHeight, CrouchedCapsuleHeight * 0.5f);
-                                MeshRoot.localScale = new Vector3(1f, 0.5f, 1f);
+                                //PlayerHandler.Character.gameObject.GetComponent<>().SetBool("IsFallDead", true)
+
+                                CharacterAnimator.SetBool("IsCrouching", true);
+                                
+                            //MeshRoot.localScale = new Vector3(1f, 0.5f, 1f);
+
                             }
                         }
                         else if (inputs.CrouchUp)
                         {
                             _shouldBeCrouching = false;
+
+                            CharacterAnimator.SetBool("IsCrouching", false);
+
                         }
 
                         break;
