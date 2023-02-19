@@ -9,6 +9,8 @@ public class Explode : MonoBehaviour
     public bool persist = true;
     public GameObject ExplosionPrefab;
 
+    public bool dontRespawn = false;
+
     public void Start()
     {
         this.GetComponent<Collider>().isTrigger = true;
@@ -36,6 +38,7 @@ public class Explode : MonoBehaviour
             GameManager.instance.Respawn(new Dictionary<string, object>() {
                 {"explosion", (triggeredCollider.transform.position - transform.position).normalized * explosionStrength},
                 {"ragdoll", true},
+                {"dontRespawn", dontRespawn}
             });
             if (!persist)
             {
