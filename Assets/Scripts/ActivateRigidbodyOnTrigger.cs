@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PlayerStatusEffect;
 using UnityEngine;
 
 public class ActivateRigidbodyOnTrigger : MonoBehaviour
@@ -11,6 +12,12 @@ public class ActivateRigidbodyOnTrigger : MonoBehaviour
 
     public string CustomTag = "Player";
     public string RequireItem = "";
+    private KeyStatusUIController keyUI;
+
+    void Start()
+    {
+        this.keyUI = FindObjectOfType<KeyStatusUIController>();
+    }
 
     public void OnTriggerEnter(Collider other)
     {
@@ -18,6 +25,7 @@ public class ActivateRigidbodyOnTrigger : MonoBehaviour
         {
             if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
             {
+                keyUI.showStatusNextFrame();
                 return;
             }
             rb.isKinematic = false;
