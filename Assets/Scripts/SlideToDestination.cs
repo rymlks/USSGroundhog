@@ -10,7 +10,7 @@ public class SlideToDestination: MonoBehaviour
     public bool forward = true;
     public Transform objectToSlide = null;
     public Vector3 startPos;
-    public bool shouldReturn;
+    public bool shouldReturn = true;
 
 
     private void Start()
@@ -43,7 +43,10 @@ public class SlideToDestination: MonoBehaviour
             else
             {
                 getTransform().position = dest;
-                forward = !forward;
+                if (shouldReturn)
+                {
+                    forward = !forward;
+                }
             }
         }
     }
