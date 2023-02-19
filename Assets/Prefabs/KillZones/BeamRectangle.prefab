@@ -23740,6 +23740,7 @@ GameObject:
   - component: {fileID: 222775462075583150}
   - component: {fileID: 118963888737477652}
   - component: {fileID: 134507635411549518}
+  - component: {fileID: 4916825706312314950}
   m_Layer: 0
   m_Name: BeamRectangle
   m_TagString: Untagged
@@ -28569,6 +28570,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4916825706312314950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224512599441754744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42cde395659793d46be0c7b629337f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 118963888737477652}
+  deathReason: laser
 --- !u!1 &224516299114446138
 GameObject:
   m_ObjectHideFlags: 0
@@ -38126,7 +38141,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6649116941248332953}
-  - component: {fileID: 6803792790934985065}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -38149,17 +38163,3 @@ Transform:
   m_Father: {fileID: 222775462075583150}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6803792790934985065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4755487560585987537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42cde395659793d46be0c7b629337f2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleSystem: {fileID: 118963888737477652}
-  deathReason: laser

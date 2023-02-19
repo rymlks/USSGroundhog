@@ -23741,6 +23741,7 @@ GameObject:
   - component: {fileID: 118963888737477652}
   - component: {fileID: 134507635411549518}
   - component: {fileID: 2582480617674554718}
+  - component: {fileID: 7595179968550594194}
   m_Layer: 0
   m_Name: ScootyBeamRectangle
   m_TagString: Untagged
@@ -23765,7 +23766,6 @@ Transform:
   - {fileID: 218908021928269360}
   - {fileID: 222593537969583968}
   - {fileID: 218595162506582616}
-  - {fileID: 6649116941248332953}
   - {fileID: 3318288115335129432}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -28590,6 +28590,20 @@ MonoBehaviour:
   objectToSlide: {fileID: 222775462075583150}
   startPos: {x: 0, y: 0, z: 0}
   shouldReturn: 0
+--- !u!114 &7595179968550594194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224512599441754744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42cde395659793d46be0c7b629337f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 118963888737477652}
+  deathReason: laser
 --- !u!1 &224516299114446138
 GameObject:
   m_ObjectHideFlags: 0
@@ -38167,51 +38181,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 222775462075583150}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4755487560585987537
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6649116941248332953}
-  - component: {fileID: 6803792790934985065}
-  m_Layer: 0
-  m_Name: Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6649116941248332953
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4755487560585987537}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 222775462075583150}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6803792790934985065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4755487560585987537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42cde395659793d46be0c7b629337f2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleSystem: {fileID: 118963888737477652}
-  deathReason: laser
