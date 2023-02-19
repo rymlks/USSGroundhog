@@ -10,6 +10,7 @@ public class Explode : MonoBehaviour
     public GameObject ExplosionPrefab;
 
     public bool dontRespawn = false;
+    [SerializeField] private AudioSource _audioSource;
 
     public void Start()
     {
@@ -31,6 +32,11 @@ public class Explode : MonoBehaviour
             }
             if (ExplosionPrefab != null)
             {
+                if (_audioSource != null && _audioSource.gameObject.activeSelf)
+                {
+                    _audioSource.Play();
+                }
+
                 var explode = Instantiate(ExplosionPrefab);
                 explode.transform.position = transform.position;
 
