@@ -13,8 +13,11 @@ public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
     public string RequireItem = "";
     private KeyStatusUIController keyUI;
 
+    private AudioSource _audioSource;
+
     void Start()
     {
+        _audioSource = slideMe.gameObject.GetComponent<AudioSource>();
         if (keyUI == null)
         {
             keyUI = FindObjectOfType<KeyStatusUIController>();
@@ -30,12 +33,22 @@ public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
                 this.keyUI.showStatusNextFrame();
                 return;
             }
+
+            playSoundIfSourcePresent();
             slideMe.start = true;
             slideMe.forward = true;
             if (destroy)
             {
                 Destroy(gameObject);
             }
+        }
+    }
+
+    private void playSoundIfSourcePresent()
+    {
+        if (_audioSource != null && !_audioSource.isPlaying)
+        {
+            _audioSource.Play();
         }
     }
 
