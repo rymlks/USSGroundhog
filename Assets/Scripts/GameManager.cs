@@ -76,6 +76,14 @@ public class GameManager : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+            Application.Quit();
+        }
+
     }
 
     public void Gather(string gatheredItemName, bool persistsThroughDeath = false)
@@ -181,6 +189,12 @@ public class GameManager : MonoBehaviour
                     break;
                 case "burning":
                     Destroy(copy);
+                    break;
+                case "dontRespawn":
+                    if ((bool)entry.Value == true)
+                    {
+                        yield break;
+                    }
                     break;
                 default:
                     Debug.LogError("Unknown respawn arg: " + entry.Key);
