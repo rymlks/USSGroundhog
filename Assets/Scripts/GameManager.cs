@@ -5,7 +5,7 @@ using UnityEngine;
 using KinematicCharacterController.Examples;
 using KinematicCharacterController;
 using Assets.Scripts;
-
+using KinematicCharacterController.Walkthrough.RootMotionExample;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     public Animator CharacterAnimator;
 
-    public FinalMyPlayer PlayerHandler;
+    public MyPlayer PlayerHandler;
     public GameObject playerPrefab;
     public GameObject RagdollPrefab;
     private HashSet<string> permanentItems = new HashSet<string>();
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         
         if (PlayerHandler == null)
         {
-            PlayerHandler = FindObjectOfType<FinalMyPlayer>();
+            PlayerHandler = FindObjectOfType<MyPlayer>();
         }
 
         respawnLocation = PlayerHandler.Character.transform.position;
