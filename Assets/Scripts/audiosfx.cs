@@ -9,12 +9,6 @@ public class audiosfx : MonoBehaviour
     public AudioSource PA_Jingle;
     public AudioSource Ship_Alarm;
 
-    //public void Play_()
-    //{
-
-
-    //}    
-    
     public void Play_Small_explosion()
     {
 
@@ -38,18 +32,5 @@ public class audiosfx : MonoBehaviour
     {
         Ship_Alarm.Play();
 
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

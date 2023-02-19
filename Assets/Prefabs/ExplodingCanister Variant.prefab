@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2413557162912429025, guid: a9e9dbaabbfda584faa9352174a28635, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 3976170011742070084}
     - target: {fileID: 1706226625809932, guid: a9e9dbaabbfda584faa9352174a28635, type: 3}
       propertyPath: m_Name
       value: ExplodingCanister Variant
@@ -81,9 +85,15 @@ MonoBehaviour:
   explosionStrength: 10
   persist: 1
   ExplosionPrefab: {fileID: 1607639662943796, guid: a1a36200a3c61b34b9abfaed1373f4cc, type: 3}
+  _audioSource: {fileID: 3976170011742070084}
 --- !u!4 &1097859511430028798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4427846039735334, guid: a9e9dbaabbfda584faa9352174a28635, type: 3}
+  m_PrefabInstance: {fileID: 1095459319929082328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &3976170011742070084 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4043647514760574108, guid: a9e9dbaabbfda584faa9352174a28635, type: 3}
   m_PrefabInstance: {fileID: 1095459319929082328}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1095459320195606500

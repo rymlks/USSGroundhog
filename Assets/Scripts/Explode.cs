@@ -10,6 +10,7 @@ public class Explode : MonoBehaviour
     public GameObject ExplosionPrefab;
 
     public bool dontRespawn = false;
+    [SerializeField] private AudioSource _audioSource;
 
     public void Start()
     {
@@ -25,12 +26,15 @@ public class Explode : MonoBehaviour
     {
         if (isCollisionWithPlayer(triggeredCollider))
         {
+            Debug.LogWarning($"{gameObject.name} is in Collision");
             foreach(var part in GetComponentsInChildren<ParticleSystem>())
             {
                 part.Play();
             }
             if (ExplosionPrefab != null)
             {
+                GameObject.FindWithTag("MainCamera").GetComponent<audiosfx>().Play_Small_explosion();
+
                 var explode = Instantiate(ExplosionPrefab);
                 explode.transform.position = transform.position;
 
