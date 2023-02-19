@@ -8,7 +8,6 @@ namespace Assets.Scripts
 {
     public class FinalMyPlayer : MyPlayer
     {
-        public FinalCharacterController Character;
         public FinalCharacterCamera CharacterCamera;
 
         private const string MouseXInput = "Mouse X";
@@ -22,11 +21,11 @@ namespace Assets.Scripts
             Cursor.lockState = CursorLockMode.Locked;
 
             // Tell camera to follow transform
-            CharacterCamera.SetFollowTransform(Character.CameraFollowPoint);
+            CharacterCamera.SetFollowTransform(((FinalCharacterController)Character).CameraFollowPoint);
 
             // Ignore the character's collider(s) for camera obstruction checks
             CharacterCamera.IgnoredColliders.Clear();
-            CharacterCamera.IgnoredColliders.AddRange(Character.GetComponentsInChildren<Collider>());
+            CharacterCamera.IgnoredColliders.AddRange(((FinalCharacterController)Character).GetComponentsInChildren<Collider>());
         }
 
         private void Update()
@@ -42,10 +41,10 @@ namespace Assets.Scripts
         private void LateUpdate()
         {
             // Handle rotating the camera along with physics movers
-            if (CharacterCamera.RotateWithPhysicsMover && Character.Motor.AttachedRigidbody != null)
+            if (CharacterCamera.RotateWithPhysicsMover && ((FinalCharacterController)Character).Motor.AttachedRigidbody != null)
             {
-                CharacterCamera.PlanarDirection = Character.Motor.AttachedRigidbody.GetComponent<PhysicsMover>().RotationDeltaFromInterpolation * CharacterCamera.PlanarDirection;
-                CharacterCamera.PlanarDirection = Vector3.ProjectOnPlane(CharacterCamera.PlanarDirection, Character.Motor.CharacterUp).normalized;
+                CharacterCamera.PlanarDirection = ((FinalCharacterController)Character).Motor.AttachedRigidbody.GetComponent<PhysicsMover>().RotationDeltaFromInterpolation * CharacterCamera.PlanarDirection;
+                CharacterCamera.PlanarDirection = Vector3.ProjectOnPlane(CharacterCamera.PlanarDirection, ((FinalCharacterController)Character).Motor.CharacterUp).normalized;
             }
 
             HandleCameraInput();
@@ -93,7 +92,7 @@ namespace Assets.Scripts
             characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
 
             // Apply inputs to character
-            Character.SetInputs(ref characterInputs);
+            ((FinalCharacterController)Character).SetInputs(ref characterInputs);
         }
 
     }
