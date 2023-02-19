@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private HashSet<string> transientItems = new HashSet<string>();
 
     private const Dictionary<string, object> defaultArgs = null;
-    private Vector3 respawnLocation;
+    public Vector3 respawnLocation;
 
     private void OnEnable()
     {
