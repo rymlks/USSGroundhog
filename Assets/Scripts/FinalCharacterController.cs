@@ -106,6 +106,8 @@ using Assets.Scripts;
         private Vector3 lastInnerNormal = Vector3.zero;
         private Vector3 lastOuterNormal = Vector3.zero;
 
+    private Vector3 origCapDims;
+
         private void Awake()
         {
             // Handle initial state
@@ -113,7 +115,8 @@ using Assets.Scripts;
 
             // Assign the characterController to the motor
             Motor.CharacterController = this;
-        }
+            origCapDims = new Vector3(Motor.CapsuleRadius, Motor.CapsuleHeight, Motor.CapsuleYOffset);
+    }
 
         /// <summary>
         /// Handles movement state transitions and enter/exit callbacks
@@ -206,7 +209,7 @@ using Assets.Scripts;
                             if (!_isCrouching)
                             {
                                 _isCrouching = true;
-                                Motor.SetCapsuleDimensions(0.5f, CrouchedCapsuleHeight, CrouchedCapsuleHeight * 0.5f);
+                                Motor.SetCapsuleDimensions(origCapDims.x, CrouchedCapsuleHeight, CrouchedCapsuleHeight * 0.5f);
                                 //PlayerHandler.Character.gameObject.GetComponent<>().SetBool("IsFallDead", true)
 
                                 CharacterAnimator.SetBool("IsCrouching", true);
@@ -498,7 +501,7 @@ using Assets.Scripts;
                         if (_isCrouching && !_shouldBeCrouching)
                         {
                             // Do an overlap test with the character's standing height to see if there are any obstructions
-                            Motor.SetCapsuleDimensions(0.5f, 2f, 1f);
+                            Motor.SetCapsuleDimensions(origCapDims.x, origCapDims.y, origCapDims.z);
                             if (Motor.CharacterOverlap(
                                 Motor.TransientPosition,
                                 Motor.TransientRotation,
@@ -507,7 +510,7 @@ using Assets.Scripts;
                                 QueryTriggerInteraction.Ignore) > 0)
                             {
                                 // If obstructions, just stick to crouching dimensions
-                                Motor.SetCapsuleDimensions(0.5f, CrouchedCapsuleHeight, CrouchedCapsuleHeight * 0.5f);
+                                Motor.SetCapsuleDimensions(origCapDims.x, CrouchedCapsuleHeight, CrouchedCapsuleHeight * 0.5f);
                             }
                             else
                             {
