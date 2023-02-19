@@ -11,7 +11,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
     {
         public ExampleCharacterCamera OrbitCamera;
         public Transform CameraFollowPoint;
-        public MyCharacterController Character;
+        public MonoBehaviour Character;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -81,7 +81,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
 
             // Build the CharacterInputs struct
             characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
-            if (!Character.useMouse)
+            if (!((MyCharacterController)Character).useMouse)
             {
                 characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
             }
@@ -90,7 +90,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
 
             // Apply inputs to character
-            Character.SetInputs(ref characterInputs);
+            ((MyCharacterController)Character).SetInputs(ref characterInputs);
 
 
         }
