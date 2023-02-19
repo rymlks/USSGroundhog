@@ -38,7 +38,7 @@ public class SlideToDestination: MonoBehaviour
             Vector3 dest = forward ? destination.position : startPos;
             if ((dest - getTransform().position).magnitude > speed)
             {
-                getTransform().position += (dest - getTransform().position).normalized * speed;
+                getTransform().position += (dest - getTransform().position).normalized * speed * Time.deltaTime * 50;
             }
             else
             {
