@@ -8,37 +8,65 @@ public class Explode : MonoBehaviour
     public float explosionStrength = 10;
     public bool persist = true;
     public GameObject ExplosionPrefab;
+    public GameObject ExampleCamera;
 
     public bool dontRespawn = false;
-    [SerializeField] private AudioSource _audioSource;
+    //[SerializeField] private AudioSource _audioSource;
 
     public void Start()
     {
         this.GetComponent<Collider>().isTrigger = true;
     }
 
-    bool isCollisionWithPlayer(Collider triggeredCollider)
+    bool IsCollisionWithPlayer(Collider triggeredCollider)
     {
         return triggeredCollider.gameObject.CompareTag("Player");
     }
 
     void OnTriggerEnter(Collider triggeredCollider)
     {
-        if (isCollisionWithPlayer(triggeredCollider))
+        if (IsCollisionWithPlayer(triggeredCollider))
         {
             Debug.LogWarning($"{gameObject.name} is in Collision");
+            Debug.LogWarning($"{gameObject.tag} Collision tag detected");
             foreach(var part in GetComponentsInChildren<ParticleSystem>())
             {
                 part.Play();
             }
-            if (ExplosionPrefab != null)
+            if (gameObject.CompareTag("exploding_canister"))
             {
-                GameObject.FindWithTag("MainCamera").GetComponent<audiosfx>().Play_Small_explosion();
+                gameObject.GetComponent<SoundFXManager>().Play_Small_explosion();
 
                 var explode = Instantiate(ExplosionPrefab);
                 explode.transform.position = transform.position;
 
-            }
+            } else if (gameObject.CompareTag("exploding_tank"))
+            {
+                gameObject.GetComponent<SoundFXManager>().Play_Tank_explosion();
+
+                var explode = Instantiate(ExplosionPrefab);
+                explode.transform.position = transform.position;
+
+            }  else if (gameObject.CompareTag("exploding_crate"))
+            {
+                gameObject.GetComponent<SoundFXManager>().Play_Crate_explosion();
+
+                var explode = Instantiate(ExplosionPrefab);
+                explode.transform.position = transform.position;
+
+            }  
+            //else
+            //{
+            //    ExampleCamera.GetComponent<SoundFXManager>().Play_Small_explosion();
+
+            //    var explode = Instantiate(ExplosionPrefab);
+            //    explode.transform.position = transform.position;
+
+            //}
+
+
+
+
             GameManager.instance.Respawn(new Dictionary<string, object>() {
                 {"explosion", (triggeredCollider.transform.position - transform.position).normalized * explosionStrength},
                 {"ragdoll", true},

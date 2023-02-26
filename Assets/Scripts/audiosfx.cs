@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audiosfx : MonoBehaviour
+public class AudioSFX : MonoBehaviour
 {
     public AudioSource Small_explosion;
+    public AudioSource Tank_explosion;
     public AudioSource Door_Slide;
     public AudioSource PA_Jingle;
     public AudioSource Ship_Alarm;
@@ -14,8 +15,15 @@ public class audiosfx : MonoBehaviour
 
         Small_explosion.Play();
 
-    }    
-    
+    }
+
+    public void Play_Tank_explosion()
+    {
+
+        Tank_explosion.Play();
+
+    }
+
     public void Play_Door_Slide()
     {
         Door_Slide.Play();
