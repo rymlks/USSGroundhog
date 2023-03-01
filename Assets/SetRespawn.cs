@@ -8,7 +8,7 @@ public class SetRespawn : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.respawnLocation = transform.position;
+            GameManager.instance.getRespawner().SetRespawnLocation(transform.position);
         }
     }
 }

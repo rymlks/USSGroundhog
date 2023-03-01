@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     private HashSet<string> transientItems = new HashSet<string>();
 
     private const Dictionary<string, object> defaultArgs = null;
-    public Vector3 respawnLocation;
+    
+    protected PlayerRespawner playerRespawner;
 
     private void OnEnable()
     {
@@ -39,7 +40,12 @@ public class GameManager : MonoBehaviour
             PlayerHandler = FindObjectOfType<MyPlayer>();
         }
 
-        respawnLocation = PlayerHandler.Character.transform.position;
+        if (playerRespawner == null)
+        {
+            this.playerRespawner = this.gameObject.AddComponent<PlayerRespawner>();
+        }
+
+        this.playerRespawner.SetRespawnLocation(PlayerHandler.Character.transform.position);
     }
 
     public void CommitDie(string reason)
@@ -204,12 +210,17 @@ public class GameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(DeathSeconds);
-        PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(respawnLocation);
+        PlayerHandler.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(this.playerRespawner.getRespawnLocation());
         PlayerHandler.Character.gameObject.SetActive(true);
         Debug.Log("permanent item count gathered at death: " + this.permanentItems.Count);
         DisplaySet(this.permanentItems);
         resetPlayerHealthState();
 
+    }
+
+    public PlayerRespawner getRespawner()
+    {
+        return this.playerRespawner;
     }
 
     private void resetPlayerHealthState()
