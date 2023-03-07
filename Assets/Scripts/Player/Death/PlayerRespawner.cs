@@ -16,6 +16,7 @@ public class PlayerRespawner : MonoBehaviour
     protected GameObject playerPrefab;
     protected KinematicCharacterController.Walkthrough.RootMotionExample.MyPlayer player;
     protected CorpseCreator corpseCreator;
+    protected CorpseAnimator corpseAnimator;
 
     public void Initialize(KinematicCharacterController.Walkthrough.RootMotionExample.MyPlayer player,
         GameObject playerPrefab, GameObject corpseRagdollPrefab, Vector3 startingRespawnLocation)
@@ -25,6 +26,7 @@ public class PlayerRespawner : MonoBehaviour
         this.SetPlayerRagdollCorpsePrefab(corpseRagdollPrefab);
         this.SetRespawnLocation(startingRespawnLocation);
         if (!this.corpseCreator) this.corpseCreator = gameObject.AddComponent<CorpseCreator>();
+        this.corpseAnimator = new CorpseAnimator();
     }
 
     public Vector3 getRespawnLocation()
@@ -76,7 +78,11 @@ public class PlayerRespawner : MonoBehaviour
 
     private void spawnAndAnimateCorpse(Dictionary<string, object> deathCharacteristics)
     {
-        this.corpseCreator.CreateAndAnimateCorpse(deathCharacteristics, ragdollPrefab, playerPrefab, player.Character.transform);
+        GameObject corpse = this.corpseCreator.CreateCorpse(deathCharacteristics, ragdollPrefab, playerPrefab, player.Character.transform);
+        if (corpse != null)
+        {
+            this.corpseAnimator.AnimateCorpse(corpse, deathCharacteristics);
+        }
     }
 
     private void resetPlayerHealthState()

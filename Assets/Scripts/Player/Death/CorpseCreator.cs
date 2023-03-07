@@ -10,8 +10,7 @@ namespace Player.Death
         private GameObject _ragdollPrefab;
         private GameObject _dyingBeingPrefab;
         private Transform _transformAtDeath;
-        private static readonly int IsFallDead = Animator.StringToHash("IsFallDead");
-        private static readonly int IsElectrocuted = Animator.StringToHash("IsElectrocuted");
+        private DeathCharacteristicsProcessor _death;
 
         protected void Initialize(Dictionary<string, object> deathCharacteristics, GameObject ragdollPrefab,
             GameObject dyingBeingPrefab, Transform transformAtDeath)
@@ -20,55 +19,25 @@ namespace Player.Death
             this._ragdollPrefab = ragdollPrefab;
             this._dyingBeingPrefab = dyingBeingPrefab;
             this._transformAtDeath = transformAtDeath;
+            this._death = new DeathCharacteristicsProcessor(_deathCharacteristics);
         }
 
-        protected bool shouldProduceRagdollCorpse()
-        {
-            return _deathCharacteristics.Keys.Contains("ragdoll");
-        }
-
-        protected bool shouldProduceNormalCorpse()
-        {
-            return !(shouldBurnCorpse() || shouldProduceRagdollCorpse() ||
-                     shouldProduceRigidCorpse());
-        }
-
-        protected bool shouldProduceRigidCorpse()
-        {
-            return _deathCharacteristics.Keys.Contains("freezing");
-        }
-
-        protected bool shouldBurnCorpse()
-        {
-            return _deathCharacteristics.Keys.Contains("burning");
-        }
-
-        protected bool shouldPropelCorpse()
-        {
-            return _deathCharacteristics.Keys.Contains("explosion");
-        }
-
-        protected bool shouldProduceCorpse()
-        {
-            return shouldProduceRagdollCorpse() || shouldProduceRigidCorpse() || shouldProduceNormalCorpse();
-        }
-
-        public void CreateAndAnimateCorpse(Dictionary<string, object> deathCharacteristics, GameObject ragdollPrefab,
+        public GameObject CreateCorpse(Dictionary<string, object> deathCharacteristics, GameObject ragdollPrefab,
             GameObject dyingBeingPrefab, Transform transformAtDeath)
         {
             this.Initialize(deathCharacteristics, ragdollPrefab, dyingBeingPrefab, transformAtDeath);
             
-            if (shouldProduceCorpse() && !shouldBurnCorpse())
+            if (_death.shouldProduceCorpse() && !_death.shouldBurnCorpse())
             {
-                GameObject corpse = shouldProduceRagdollCorpse()
+                GameObject corpse = _death.shouldProduceRagdollCorpse()
                     ? Instantiate(_ragdollPrefab)
                     : Instantiate(_dyingBeingPrefab);
-                if (shouldProduceRagdollCorpse())
+                if (_death.shouldProduceRagdollCorpse())
                 {
                     minimizeMass(corpse);
                 }
 
-                if (shouldPropelCorpse())
+                if (_death.shouldPropelCorpse())
                 {
                     corpse.GetComponentInChildren<Rigidbody>().AddForce((Vector3) _deathCharacteristics["explosion"]);
                 }
@@ -76,21 +45,10 @@ namespace Player.Death
                 corpse.transform.position = _transformAtDeath.position;
                 corpse.transform.rotation = _transformAtDeath.rotation;
                 corpse.tag = "Corpse";
+                return corpse;
+            }
 
-                AnimateCorpse(corpse);
-            }
-        }
-
-        private void AnimateCorpse(GameObject corpse)
-        {
-            if (shouldProduceNormalCorpse())
-            {
-                corpse.GetComponentInChildren<Animator>().SetBool(IsFallDead, true);
-            }
-            else if (_deathCharacteristics.Keys.Contains("electrocution"))
-            {
-                corpse.GetComponentInChildren<Animator>().SetBool(IsElectrocuted, true);
-            }
+            return null;
         }
 
         protected void minimizeMass(GameObject toEnlighten)
