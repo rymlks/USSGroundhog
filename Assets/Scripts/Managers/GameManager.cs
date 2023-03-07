@@ -54,13 +54,13 @@ public class GameManager : MonoBehaviour
 
     public void CommitDie(string reason)
     {
-        this.playerRespawner.Respawn(new Dictionary<string, object>(){{reason, null}});
+        this.playerRespawner.OnPlayerDeath(new Dictionary<string, object>(){{reason, null}});
 
     }
     
     public void CommitDie(Dictionary<string, object> reason)
     {
-        this.playerRespawner.Respawn(reason);
+        this.playerRespawner.OnPlayerDeath(reason);
 
     }
 
