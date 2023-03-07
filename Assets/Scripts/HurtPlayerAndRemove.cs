@@ -20,8 +20,7 @@ public class HurtPlayerAndRemove : MonoBehaviour
     {
         if (isCollisionWithPlayer(triggeredCollider))
         {
-            Debug.Log("Killing player via collider!");
-            GameManager.instance.Respawn();
+            GameManager.instance.CommitDie("");
             Destroy(this.gameObject);
         }
     }

@@ -54,20 +54,9 @@ public class Explode : MonoBehaviour
                 var explode = Instantiate(ExplosionPrefab);
                 explode.transform.position = transform.position;
 
-            }  
-            //else
-            //{
-            //    ExampleCamera.GetComponent<SoundFXManager>().Play_Small_explosion();
+            }
 
-            //    var explode = Instantiate(ExplosionPrefab);
-            //    explode.transform.position = transform.position;
-
-            //}
-
-
-
-
-            GameManager.instance.Respawn(new Dictionary<string, object>() {
+            GameManager.instance.CommitDie(new Dictionary<string, object>() {
                 {"explosion", (triggeredCollider.transform.position - transform.position).normalized * explosionStrength},
                 {"ragdoll", true},
                 {"dontRespawn", dontRespawn}

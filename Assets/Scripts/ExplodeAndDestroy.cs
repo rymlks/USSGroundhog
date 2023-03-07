@@ -29,7 +29,7 @@ public class ExplodeAndDestroy : MonoBehaviour
                 explode.transform.parent = null;
             }
             Debug.Log("Killing player via collider!");
-            GameManager.instance.Respawn(
+            GameManager.instance.CommitDie(
                 new Dictionary<string, object> {
                     {"explosion", (triggeredCollider.transform.position - transform.position).normalized * explosionStrength},
                     {"ragdoll", true},

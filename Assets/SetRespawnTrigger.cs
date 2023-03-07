@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetRespawn : MonoBehaviour
+public class SetRespawnTrigger : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
