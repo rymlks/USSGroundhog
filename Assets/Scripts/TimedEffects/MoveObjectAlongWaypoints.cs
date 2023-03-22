@@ -15,7 +15,7 @@ public class MoveObjectAlongWaypoints : MonoBehaviour
 
     void Start()
     {
-        this._timePerWaypoint = timeToTake / waypoints.Length;
+        this._timePerWaypoint = timeToTake / (float)waypoints.Length;
         if (toMove == null)
         {
             toMove = this.gameObject;
@@ -42,8 +42,8 @@ public class MoveObjectAlongWaypoints : MonoBehaviour
 
     private void move()
     {
-        toMove.transform.position = Vector3.Lerp(toMove.transform.position, waypoints[_currentWaypointIndex],
-            Mathf.Max(timeElapsedCurrentWaypoint() / _timePerWaypoint, 1f));
+        toMove.transform.position = Vector3.Slerp(toMove.transform.position, waypoints[_currentWaypointIndex],
+            Mathf.Min(timeElapsedCurrentWaypoint() / _timePerWaypoint, 1f));
     }
 
     private void setDestinationToNextWaypoint()
