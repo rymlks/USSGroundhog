@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="SplitIcon" src="project://database/Assets/EasyState/Editor/UXML/DetailTemplates/Node/SplitIcon.uxml?fileID=9197481963319205126&amp;guid=7714ef67366932742b162ac965bebac1&amp;type=3#SplitIcon" />    
+    <ui:VisualElement name="node" focusable="true" class="node" style="flex-grow: 1;">
+        <ui:VisualElement name="node-content" picking-mode="Ignore" class="node-content" style="height: 100%; flex-direction: row; justify-content: center; align-items: center;">
+            <ui:VisualElement name="expand-wrapper" style="margin-left: 5px; margin-right: 10px;" picking="Ignore">
+                <ui:VisualElement name="expand-icon" tooltip="show summary" class="hover-icon" style="background-image: resource(&apos;Images/Double-Arrow-Down&apos;); width: 15px; height: 15px;display: none;" />
+                <ui:VisualElement name="collapse-icon" tooltip="hide summary"  class="hover-icon" style="background-image: resource(&apos;Images/Double-Arrow-Up&apos;); width: 15px; height: 15px;" />
+            </ui:VisualElement>
+            <ui:Label text="State Node" display-tooltip-when-elided="false" name="node-name" style="height: auto; -unity-text-align: middle-center; position: relative; width: auto; flex-grow: 1; -unity-font: resource(&apos;Fonts/Hind-Bold&apos;); font-size: 14px;" />
+            <ui:Instance template="SplitIcon" name="SplitIcon" />
+        </ui:VisualElement>
+        <ui:VisualElement name="summary-wrapper" style="padding-left: 10px; padding-right: 10px; flex-shrink: 0; flex-grow: 1;">
+            <ui:VisualElement style="border-top-color: rgb(77, 101, 115); border-top-width: 2px;" />
+            <ui:VisualElement name="summary-par" style="margin-top: 3px; padding-left: 5px; padding-right: 5px; flex-shrink: 0; flex-grow: 1; -unity-text-align: upper-center;">
+                <ui:Label text="short test" display-tooltip-when-elided="true" name="summary" style="flex-wrap: nowrap; white-space: normal; flex-grow: 0; padding-bottom: 5px; color: rgba(195, 192, 192, 255);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="data-ele-container" style="padding-left: 10px; padding-right: 3px; padding-top: 3px; padding-bottom: 10px; background-color: rgb(56, 56, 56); position: absolute; width: auto; min-width: 150px; max-width: 300px;">
+        <ui:VisualElement style="flex-direction: row-reverse; margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px;">
+            <ui:VisualElement style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px;">
+                <ui:VisualElement name="close-btn" class="hover-icon" style="background-image: resource(&apos;Images/XIcon&apos;); width: 20px; height: 20px; -unity-background-scale-mode: scale-to-fit;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:ScrollView style="max-height: 350px;">
+            <ui:Label display-tooltip-when-elided="true" name="data-contents" style="white-space: normal;" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,29 @@
+﻿Label{
+    color:var(--unity-dark-text);
+}
+TextInput, FloatInput, IntegerInput {
+    background-color:var(--unity-dark);
+    color:var(--unity-dark-text);
+    border-color:var(--unity-dark-border);
+}
+.unity-base-popup-field__input, .unity-enum-field__input,.unity-object-field__input {
+    background-color: var(--unity-dark-light);
+    
+    color:var(--unity-dark-text);
+    border-color:var(--unity-dark-border);
+}
+
+.unity-base-popup-field__arrow, .unity-enum-field__arrow{
+   -unity-background-image-tint-color:#636363
+}
+.unity-foldout__toggle > VisualElement > VisualElement{
+   background-image: resource('builtin skins/darkskin/images/in foldout.png')
+}
+.unity-foldout__toggle:checked > VisualElement > VisualElement {
+   background-image: resource('builtin skins/darkskin/images/in foldout on.png')
+}
+
+
+.unity-text-element{
+      color:var(--unity-dark-text);
+}

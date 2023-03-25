@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="content" class="detail-template" style="max-width: none; width: auto; min-width: 315px;">
+        <ui:TextField picking-mode="Ignore" label="Name" text="enter name" name="name-input" />
+        <ui:VisualElement name="dest-input" />
+        <ui:Foldout text="Summary" name="summary-foldout" value="false" class="detail-foldout">
+            <ui:Label text="Node Summary" display-tooltip-when-elided="true" />
+            <ui:TextField picking-mode="Ignore" text="enter node summary" name="summary-input" multiline="true" is-delayed="false" style="flex-grow: 1; white-space: normal;" />
+        </ui:Foldout>
+    </ui:VisualElement>
+</ui:UXML>
