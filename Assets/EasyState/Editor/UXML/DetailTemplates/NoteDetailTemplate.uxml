@@ -1,8 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="content" class="detail-template">
-        <ui:TextField picking-mode="Ignore" label="Note Title" text="enter text" readonly="false" name="name-input" />
-        <ui:TextField picking-mode="Ignore" label="Note" text="enter note" name="note-input" multiline="true" is-delayed="false" style="max-width: 400px; white-space: normal;" />
-        <uie:ColorField label="Note Color" name="note-color" />
-        <uie:ColorField label="Text Color" name="text-color" />
-    </ui:VisualElement>
-</ui:UXML>

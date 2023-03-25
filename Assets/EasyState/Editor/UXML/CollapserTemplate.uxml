@@ -1,9 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="collapser">
-        <ui:VisualElement name="header" style="flex-direction: row;">
-            <ui:VisualElement name="icon" style="background-image: resource(&apos;Images/PlusIcon&apos;); width: 14px; height: auto; flex-grow: 0; flex-shrink: 0; margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; -unity-background-scale-mode: scale-to-fit;" />
-            <ui:Label text="Test Header" display-tooltip-when-elided="true" name="title" style="-unity-font-style: bold; font-size: 15px; flex-grow: 1; margin-left: 12px;" />
-        </ui:VisualElement>
-        <ui:VisualElement name="content" />
-    </ui:VisualElement>
-</ui:UXML>
