@@ -10,6 +10,8 @@ public class AutomaticFire : MonoBehaviour, IConsequence
     public ParticleSystem bullets;
 
     protected float _lastExecutedTime;
+    private bool _firedLastFrame;
+
     void Start()
     {
         if (casings == null)
@@ -22,9 +24,25 @@ public class AutomaticFire : MonoBehaviour, IConsequence
         }
     }
 
+    void Update()
+    {
+        if (_firedLastFrame && !ShouldFireThisFrame())
+        {
+            //stop sound
+        }
+        else if (!_firedLastFrame && ShouldFireThisFrame())
+        {
+            //start sound
+        }
+
+        _firedLastFrame = ShouldFireThisFrame();
+    }
+
+
     void FixedUpdate()
     {
-        if(ShouldFireThisFrame()){
+        if(ShouldFireThisFrame())
+        {
             
         }
         else{

@@ -24,8 +24,8 @@ public class TriggerWhileObjectVisible : MonoBehaviour
         if (CanSeeTarget())
         {
             this.transform.LookAt(_target.transform);
+            GetComponent<AutomaticFire>().execute();
         }
-
     }
 
     protected bool CanSeeTarget()
