@@ -54,6 +54,11 @@ public class PlayerHealthState : MonoBehaviour
             this.secondsUntilCritical = secondsMaximumCapacity;
             this.shouldCancelNextRecovery = false;
         }
+
+        public bool worsensUntilCured()
+        {
+            return false;
+        }
     }
 
     void Start()
@@ -67,12 +72,20 @@ public class PlayerHealthState : MonoBehaviour
         statusTrackers.Add(new StatusTracker("suffocation", 4.5f));
         statusTrackers.Add(new StatusTracker("freezing", 3f));
         statusTrackers.Add(new StatusTracker("burning", 2f));
+        statusTrackers.Add(new StatusTracker("bleeding", 10f));
     }
 
     void Update()
     {
         foreach(StatusTracker tracker in statusTrackers){
-            tracker.recover(Time.deltaTime);
+            if (tracker.worsensUntilCured())
+            {
+                Hurt(tracker.statusEffectName, Time.deltaTime);
+            }
+            else
+            {
+                tracker.recover(Time.deltaTime);
+            }
         }
     }
     
