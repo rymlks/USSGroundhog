@@ -18,10 +18,12 @@ public class AutomaticFire : MonoBehaviour, IConsequence
         {
             casings = this.transform.Find("CartridgeCasingParticleSystem").GetComponent<ParticleSystem>();
         }
+
         if (bullets == null)
         {
             bullets = this.transform.Find("BulletParticleSystem").GetComponent<ParticleSystem>();
         }
+
     }
 
     void Update()
