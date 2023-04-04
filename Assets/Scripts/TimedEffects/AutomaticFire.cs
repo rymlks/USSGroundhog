@@ -15,31 +15,40 @@ public class AutomaticFire : MonoBehaviour, IConsequence
 
     void Start()
     {
+
         if (casings == null)
         {
+
             casings = this.transform.Find("CartridgeCasingParticleSystem").GetComponent<ParticleSystem>();
+
         }
 
         if (bullets == null)
         {
+
             bullets = this.transform.Find("BulletParticleSystem").GetComponent<ParticleSystem>();
+
         }
 
     }
 
     void Update()
     {
+
         if (_firedLastFrame && !ShouldFireThisFrame())
         {
             //stop sound
+            this.GetComponent<SoundFXManager>().Stop_Turret_Firing();
             StopAllParticleSystems();
         }
         else if (!_firedLastFrame && ShouldFireThisFrame())
         {
             //start sound
+            this.GetComponent<SoundFXManager>().Play_Turret_Firing();
             StartAllParticleSystems();
         }
         _firedLastFrame = ShouldFireThisFrame();
+
     }
 
 
@@ -60,13 +69,16 @@ public class AutomaticFire : MonoBehaviour, IConsequence
         Debug.Log("starting");
         bullets.Play();
         casings.Play();
+
     }
 
     private void StopAllParticleSystems()
     {
+
         Debug.Log("stopping");
         bullets.Stop();
         casings.Stop();
+
     }
 
     private bool ShouldFireThisFrame()

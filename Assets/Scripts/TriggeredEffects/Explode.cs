@@ -15,7 +15,9 @@ public class Explode : MonoBehaviour
 
     public void Start()
     {
+
         this.GetComponent<Collider>().isTrigger = true;
+
     }
 
     bool IsCollisionWithPlayer(Collider triggeredCollider)
@@ -25,14 +27,20 @@ public class Explode : MonoBehaviour
 
     void OnTriggerEnter(Collider triggeredCollider)
     {
+
         if (IsCollisionWithPlayer(triggeredCollider))
         {
+
             Debug.LogWarning($"{gameObject.name} is in Collision");
             Debug.LogWarning($"{gameObject.tag} Collision tag detected");
+
             foreach(var part in GetComponentsInChildren<ParticleSystem>())
             {
+
                 part.Play();
+
             }
+
             if (gameObject.CompareTag("exploding_canister"))
             {
                 gameObject.GetComponent<SoundFXManager>().Play_Small_explosion();
@@ -49,6 +57,7 @@ public class Explode : MonoBehaviour
 
             }  else if (gameObject.CompareTag("exploding_crate"))
             {
+
                 gameObject.GetComponent<SoundFXManager>().Play_Crate_explosion();
 
                 var explode = Instantiate(ExplosionPrefab);
