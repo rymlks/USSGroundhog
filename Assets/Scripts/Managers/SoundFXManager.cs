@@ -14,6 +14,7 @@ public class SoundFXManager : MonoBehaviour
     public AudioSource PA_Jingle;
     public AudioSource Ship_Alarm;
     public AudioSource Turret_Firing;
+    public AudioSource Turret_Firing_Tail;
 
     public AudioListener AudioListener { get => _audioListener; set => _audioListener = value; }
     public AudioSource AudioSource { get => _audioSource; set => _audioSource = value; }
@@ -80,6 +81,7 @@ public class SoundFXManager : MonoBehaviour
     public void Stop_Turret_Firing()
     {
         Turret_Firing.Stop();
+        Turret_Firing_Tail.Play();
     }
 
 }
