@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class AutomaticFire : MonoBehaviour, IConsequence
     public ParticleSystem casings;
     public ParticleSystem bullets;
 
-    protected float _lastExecutedTime;
+    protected float _lastExecutedTime = float.MinValue;
     private bool _firedLastFrame;
 
     void Start()
@@ -31,25 +32,41 @@ public class AutomaticFire : MonoBehaviour, IConsequence
         if (_firedLastFrame && !ShouldFireThisFrame())
         {
             //stop sound
+            StopAllParticleSystems();
         }
         else if (!_firedLastFrame && ShouldFireThisFrame())
         {
             //start sound
+            StartAllParticleSystems();
         }
-
         _firedLastFrame = ShouldFireThisFrame();
     }
 
 
-    void FixedUpdate()
+    // void FixedUpdate()
+    // {
+    //     if (_firedLastFrame && !ShouldFireThisFrame())
+    //     {
+    //         StopAllParticleSystems();
+    //     }
+    //     else if (!_firedLastFrame && ShouldFireThisFrame())
+    //     {
+    //         StartAllParticleSystems();
+    //     }
+    // }
+
+    private void StartAllParticleSystems()
     {
-        if(ShouldFireThisFrame())
-        {
-            
-        }
-        else{
-            
-        }
+        Debug.Log("starting");
+        bullets.Play();
+        casings.Play();
+    }
+
+    private void StopAllParticleSystems()
+    {
+        Debug.Log("stopping");
+        bullets.Stop();
+        casings.Stop();
     }
 
     private bool ShouldFireThisFrame()
@@ -59,6 +76,7 @@ public class AutomaticFire : MonoBehaviour, IConsequence
 
     public void execute()
     {
+        Debug.Log("firing at time " + Time.time);
         this._lastExecutedTime = Time.time;
     }
 }

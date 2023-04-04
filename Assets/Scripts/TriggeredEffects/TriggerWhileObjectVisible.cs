@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerWhileObjectVisible : MonoBehaviour
+public class TriggerWhileObjectVisible : AbstractTrigger
 {
     public string tagToWatchFor = "Player";
     public Transform viewpoint;
     public float maximumDistanceToSee = 100f;
     private GameObject _target;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         if (viewpoint == null)
         {
             viewpoint = this.transform;
@@ -24,7 +25,7 @@ public class TriggerWhileObjectVisible : MonoBehaviour
         if (CanSeeTarget())
         {
             this.transform.LookAt(_target.transform);
-            GetComponent<AutomaticFire>().execute();
+            ExecuteAllConsequences();
         }
     }
 
@@ -40,3 +41,4 @@ public class TriggerWhileObjectVisible : MonoBehaviour
                && hitInfo.transform.CompareTag(tagToWatchFor);
     }
 }
+
