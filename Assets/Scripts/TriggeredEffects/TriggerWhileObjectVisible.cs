@@ -24,9 +24,14 @@ public class TriggerWhileObjectVisible : AbstractTrigger
     {
         if (CanSeeTarget())
         {
-            this.transform.LookAt(_target.transform);
-            ExecuteAllConsequences();
+            this.TurnToFace();
+            this.Engage();
         }
+    }
+
+    private void TurnToFace()
+    {
+        this.transform.LookAt(_target.transform);
     }
 
     protected bool CanSeeTarget()
