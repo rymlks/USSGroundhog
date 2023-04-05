@@ -16,12 +16,14 @@ public class PlayerHealthState : MonoBehaviour
         public string statusEffectName;
         public float recoverySpeedFactor = 2;
         public StatusEffectUIController uiController;
+        public bool worsensUntilCured;
 
-        public StatusTracker(string name, float secondsMaximum)
+        public StatusTracker(string name, float secondsMaximum, bool worsens = false)
         {
             this.statusEffectName = name;
             this.secondsMaximumCapacity = secondsMaximum;
             this.uiController = FindObjectsOfType<StatusEffectUIController>().First(controller => controller.statusName == this.statusEffectName);
+            this.worsensUntilCured = worsens;
             reset();
         }
 
@@ -55,9 +57,9 @@ public class PlayerHealthState : MonoBehaviour
             this.shouldCancelNextRecovery = false;
         }
 
-        public bool worsensUntilCured()
+        public bool WorsensUntilCured()
         {
-            return false;
+            return worsensUntilCured;
         }
     }
 
@@ -72,15 +74,14 @@ public class PlayerHealthState : MonoBehaviour
         statusTrackers.Add(new StatusTracker("suffocation", 4.5f));
         statusTrackers.Add(new StatusTracker("freezing", 3f));
         statusTrackers.Add(new StatusTracker("burning", 2f));
-        statusTrackers.Add(new StatusTracker("bleeding", 10f));
     }
 
     void Update()
     {
         foreach(StatusTracker tracker in statusTrackers){
-            if (tracker.worsensUntilCured())
+            if (tracker.WorsensUntilCured())
             {
-                Hurt(tracker.statusEffectName, Time.deltaTime);
+                tracker.suffer(Time.deltaTime);
             }
             else
             {
