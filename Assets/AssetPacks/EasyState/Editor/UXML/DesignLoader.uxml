@@ -1,0 +1,51 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="loader-container" class="full-frame" style="background-color: rgba(75, 75, 75, 0.44); align-items: center; justify-content: center; -unity-font: resource(&apos;Fonts/Hind-Medium&apos;); font-size: 17px; display: flex; opacity: 1;">
+        <ui:VisualElement name="panel" picking-mode="Ignore" style="background-color: rgb(22, 30, 45); opacity: 1; max-width: 80%;">
+            <ui:VisualElement name="header" picking-mode="Ignore" style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; flex-direction: row; justify-content: space-between;">
+                <ui:Label text="Easy State Designer" display-tooltip-when-elided="true" picking-mode="Ignore" />
+                <ui:VisualElement picking-mode="Ignore" style="background-image: none; width: auto; height: auto; -unity-background-scale-mode: scale-and-crop; flex-grow: 1; max-width: 22px; padding-bottom: 11px;">
+                    <ui:VisualElement name="close-btn" class="hover-icon" style="background-image: resource(&apos;Images/XIcon&apos;); flex-grow: 1; -unity-background-scale-mode: scale-to-fit;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="content" picking-mode="Ignore" style="padding-left: 15px; padding-right: 15px; padding-top: 10px; padding-bottom: 10px; flex-grow: 1; flex-shrink: 0; font-size: 12px;">
+                <ui:VisualElement name="row" picking-mode="Ignore" style="margin-top: 6px;">
+                    <ui:Label text="Create New Design" style="font-size: 13px; -unity-font-style: bold;" />
+                    <ui:Label display-tooltip-when-elided="false" name="new-design-error" style="color: rgb(224, 71, 71);" />
+                </ui:VisualElement>
+                <ui:VisualElement class="divider" />
+                <ui:VisualElement name="new-design-section" style="flex-direction: column;">
+                    <ui:VisualElement name="new-design-data-type" />
+                    <ui:VisualElement name="source-design" />
+                    <ui:VisualElement>
+                        <ui:TextField picking-mode="Ignore" label="Design Name" text="Enter Design Name" max-length="25" name="new-design-name" style="min-width: 288px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-direction: row-reverse; margin-top: 6px;">
+                    <ui:Label text="Create Design" display-tooltip-when-elided="true" name="create-design-button" class="btn" />
+                    <ui:Label text="Cancel" display-tooltip-when-elided="true" name="cancel" class="btn" style="margin-left: 5px; background-color: rgb(108, 42, 42); margin-right: 6px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="row" picking-mode="Ignore" style="flex-direction: row; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 0;">
+                    <ui:Label text="Designs" style="font-size: 13px; -unity-font-style: bold;" />
+                </ui:VisualElement>
+                <ui:VisualElement class="divider" />
+                <ui:VisualElement name="row" picking-mode="Ignore" style="flex-direction: row;">
+                    <ui:VisualElement name="data-type-filter" />
+                </ui:VisualElement>
+                <ui:VisualElement name="row" picking-mode="Ignore" style="width: 100%;">
+                    <ui:ScrollView name="designs" focusable="true" style="padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px; margin-top: 4px; margin-bottom: 4px; height: auto; height: 275px;">
+                        <ui:VisualElement name="header" style="flex-direction: row; flex-grow: 0; flex-shrink: 0; padding-bottom: 0; border-bottom-width: 1px; border-bottom-color: rgb(85, 87, 91); margin-bottom: 0; width: 654px; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-left-color: rgb(85, 87, 91); border-right-color: rgb(85, 87, 91); border-top-color: rgb(85, 87, 91);">
+                            <ui:Label text="Design" display-tooltip-when-elided="true" style="-unity-font-style: bold; border-right-color: rgb(113, 110, 110); border-right-width: 1px; width: 150px; margin-bottom: 0; padding-bottom: 3px; margin-left: 5px; padding-top: 3px;" />
+                            <ui:Label text="Data Type" display-tooltip-when-elided="true" style="-unity-font-style: bold; border-right-color: rgb(113, 110, 110); border-right-width: 1px; margin-left: 3px; width: 150px; -unity-text-align: middle-left;" />
+                            <ui:Label display-tooltip-when-elided="true" style="-unity-font-style: bold; border-right-color: rgb(113, 110, 110); border-right-width: 1px; margin-left: 3px; width: 112px; -unity-text-align: middle-left;" />
+                            <ui:Label display-tooltip-when-elided="true" text="Has Behavior" style="-unity-font-style: bold; border-right-color: rgb(113, 110, 110); border-right-width: 1px; margin-left: 3px; width: 88px; -unity-text-align: middle-left;" />
+                            <ui:Label display-tooltip-when-elided="true" text="Nodes" style="-unity-font-style: bold; border-right-color: rgb(113, 110, 110); border-right-width: 1px; margin-left: 3px; width: 50px; -unity-text-align: middle-left;" />
+                            <ui:Label display-tooltip-when-elided="true" text="Connections" style="-unity-font-style: bold; border-right-color: rgb(113, 110, 110); border-right-width: 1px; margin-left: 3px; width: 83px; -unity-text-align: middle-left;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="body" focusable="true" />
+                    </ui:ScrollView>
+                </ui:VisualElement>
+                <ui:VisualElement name="row" picking-mode="Ignore" style="align-items: center; flex-direction: row-reverse; margin-top: 4px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -5,13 +5,18 @@ using UnityEngine;
 public class DoASpinny : MonoBehaviour
 {
     public float speed;
+    public float max;
 
     private float rotato = 0;
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         rotato += speed;
-        transform.rotation = Quaternion.Euler(0, rotato, 0);
+        if (Mathf.Abs(rotato) >= Mathf.Abs(max))
+        {
+            rotato = max;
+        }
+        transform.localRotation = Quaternion.Euler(0, rotato, 0);
     }
 }

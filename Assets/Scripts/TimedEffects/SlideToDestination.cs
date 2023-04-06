@@ -17,6 +17,11 @@ public class SlideToDestination: MonoBehaviour
     {
         destination.parent = null;
         startPos = transform.position;
+
+        if (objectToSlide == null)
+        {
+            objectToSlide = transform;
+        }
     }
 
     protected Transform getTransform()
