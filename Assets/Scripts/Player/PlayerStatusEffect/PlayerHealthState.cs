@@ -55,6 +55,7 @@ public class PlayerHealthState : MonoBehaviour
             if (secondsUntilCritical <= 0f)
             {
                 GameManager.instance.CommitDie(statusEffectName);
+                this.Reset();
             }
             this.uiController.showStatusNextFrame();
             shouldCancelNextRecovery = true;
@@ -64,6 +65,7 @@ public class PlayerHealthState : MonoBehaviour
         {
             this.secondsUntilCritical = secondsMaximumCapacity;
             this.shouldCancelNextRecovery = false;
+            this._isCurrentlyBeingInflicted = false;
         }
 
         public bool WorsensUntilCured()

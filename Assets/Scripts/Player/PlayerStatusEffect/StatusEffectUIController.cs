@@ -25,7 +25,7 @@ namespace PlayerStatusEffect
         bool affectedNow()
         {
             float timeSinceLastAffected = Time.time - this.lastAffectedTime;
-            return timeSinceLastAffected > 0 && timeSinceLastAffected < 1;
+            return timeSinceLastAffected >= 0 && timeSinceLastAffected < 1;
         }
 
         void LateUpdate()
