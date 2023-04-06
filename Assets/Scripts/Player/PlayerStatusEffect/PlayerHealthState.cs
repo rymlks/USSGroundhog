@@ -109,7 +109,6 @@ public class PlayerHealthState : MonoBehaviour
         foreach(StatusTracker tracker in statusTrackers){
             if (tracker.WorsensUntilCured() && tracker.IsActive())
             {
-                Debug.Log("suffering " + tracker.statusEffectName + " at frame " + Time.frameCount + ", remaining: " + tracker.secondsUntilCritical);
                 tracker.suffer(Time.deltaTime);
             }
             else

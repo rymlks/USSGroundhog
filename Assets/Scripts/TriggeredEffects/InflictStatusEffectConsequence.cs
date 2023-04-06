@@ -14,7 +14,6 @@ public class InflictStatusEffectConsequence : MonoBehaviour, IConsequence
 
     public void execute()
     {
-        Debug.Log("Executing particle collision consequence at time " + Time.frameCount);
         _playerHealthStatus.Hurt(statusEffectName, Time.deltaTime);
     }
 }
