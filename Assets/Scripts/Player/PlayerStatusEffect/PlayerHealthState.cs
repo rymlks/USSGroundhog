@@ -6,9 +6,15 @@ using UnityEngine;
 
 public class PlayerHealthState : MonoBehaviour
 {
+    
+    public interface ICurableStatus
+    {
+        void Cure();
+    }
+    
     protected List<StatusTracker> statusTrackers;
 
-    public class StatusTracker
+    public class StatusTracker : ICurableStatus
     {
         public float secondsUntilCritical;
         public float secondsMaximumCapacity;
@@ -17,6 +23,7 @@ public class PlayerHealthState : MonoBehaviour
         public float recoverySpeedFactor = 2;
         public StatusEffectUIController uiController;
         public bool worsensUntilCured;
+        private bool _isCurrentlyBeingInflicted;
 
         public StatusTracker(string name, float secondsMaximum, bool worsens = false)
         {
@@ -24,7 +31,8 @@ public class PlayerHealthState : MonoBehaviour
             this.secondsMaximumCapacity = secondsMaximum;
             this.uiController = FindObjectsOfType<StatusEffectUIController>().First(controller => controller.statusName == this.statusEffectName);
             this.worsensUntilCured = worsens;
-            reset();
+            this._isCurrentlyBeingInflicted = false;
+            Reset();
         }
 
         public void recover(float deltaTime)
@@ -42,6 +50,7 @@ public class PlayerHealthState : MonoBehaviour
 
         public void suffer(float deltaSeconds)
         {
+            this._isCurrentlyBeingInflicted = true;
             this.secondsUntilCritical = Mathf.Max(0f, this.secondsUntilCritical - deltaSeconds);
             if (secondsUntilCritical <= 0f)
             {
@@ -51,7 +60,7 @@ public class PlayerHealthState : MonoBehaviour
             shouldCancelNextRecovery = true;
         }
 
-        public void reset()
+        public void Reset()
         {
             this.secondsUntilCritical = secondsMaximumCapacity;
             this.shouldCancelNextRecovery = false;
@@ -60,6 +69,24 @@ public class PlayerHealthState : MonoBehaviour
         public bool WorsensUntilCured()
         {
             return worsensUntilCured;
+        }
+
+        public bool IsActive()
+        {
+            return worsensUntilCured ? this._isCurrentlyBeingInflicted : true;
+        }
+
+        public void Cure()
+        {
+            if (!worsensUntilCured)
+            {
+                return;
+            }
+            else
+            {
+                this._isCurrentlyBeingInflicted = false;
+                this.Reset();
+            }
         }
     }
 
@@ -74,13 +101,15 @@ public class PlayerHealthState : MonoBehaviour
         statusTrackers.Add(new StatusTracker("suffocation", 4.5f));
         statusTrackers.Add(new StatusTracker("freezing", 3f));
         statusTrackers.Add(new StatusTracker("burning", 2f));
+        statusTrackers.Add(new StatusTracker("bleeding", 10f, true));
     }
 
     void Update()
     {
         foreach(StatusTracker tracker in statusTrackers){
-            if (tracker.WorsensUntilCured())
+            if (tracker.WorsensUntilCured() && tracker.IsActive())
             {
+                Debug.Log("suffering " + tracker.statusEffectName + " at frame " + Time.frameCount + ", remaining: " + tracker.secondsUntilCritical);
                 tracker.suffer(Time.deltaTime);
             }
             else
