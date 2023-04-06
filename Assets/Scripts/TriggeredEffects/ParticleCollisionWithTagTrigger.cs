@@ -18,7 +18,6 @@ public class ParticleCollisionWithTagTrigger : AbstractTrigger
 
     void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Collision hath happent with: " + other.name + " and particle system was " + particleSystem.isEmitting);
         if (other.CompareTag(tagToTriggerOn))
         {
             this.Engage();
