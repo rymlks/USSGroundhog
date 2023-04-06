@@ -31,7 +31,7 @@ public class TriggerWhileObjectVisible : AbstractTrigger
 
     private void TurnToFace()
     {
-        this.transform.LookAt(_target.transform);
+        this.transform.LookAt(_target.transform.position + new Vector3(0,1.5f,0));
     }
 
     protected bool CanSeeTarget()

@@ -9,7 +9,7 @@ public class AbstractTrigger : MonoBehaviour, ITrigger
 
     protected virtual void Start()
     {
-        this._allConsequences = this.GetComponentsInChildren<IConsequence>().ToList();
+        this._allConsequences = this.GetComponents<IConsequence>().ToList();
     }
 
     private void ExecuteAllConsequences()

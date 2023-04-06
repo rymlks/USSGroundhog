@@ -39,7 +39,6 @@ namespace PlayerStatusEffect
                 if(this.textMesh)
                     this.textMesh.color = Color.clear;
             }
-
         }
 
         public void showStatusNextFrame()

@@ -54,7 +54,7 @@ namespace TimedEffects
 
         private void StopAllParticleSystems()
         {
-            bullets.Stop();
+            bullets.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             casings.Stop();
         }
 
