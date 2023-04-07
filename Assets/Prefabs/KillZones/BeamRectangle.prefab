@@ -23741,6 +23741,7 @@ GameObject:
   - component: {fileID: 118963888737477652}
   - component: {fileID: 134507635411549518}
   - component: {fileID: 4916825706312314950}
+  - component: {fileID: -55568715121341892}
   m_Layer: 0
   m_Name: BeamRectangle
   m_TagString: Untagged
@@ -28583,6 +28584,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 118963888737477652}
+  tagToTriggerOn: Player
+--- !u!114 &-55568715121341892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224512599441754744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb210ed58c54d9d4b93e8f6626e5339f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   deathReason: laser
 --- !u!1 &224516299114446138
 GameObject:

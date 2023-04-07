@@ -9,7 +9,7 @@ public class SlideToDestination: MonoBehaviour
     public bool start = false;
     public bool forward = true;
     public Transform objectToSlide = null;
-    public Vector3 startPos;
+    protected Vector3 startPos;
     public bool shouldReturn = true;
 
 
