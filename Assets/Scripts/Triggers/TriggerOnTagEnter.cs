@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerOnEnter : BaseTrigger
+public class TriggerOnTagEnter : AbstractTrigger
 {
     public string CustomTag = "";
     public string RequireItem = "";
@@ -27,7 +27,7 @@ public class TriggerOnEnter : BaseTrigger
                 return;
             }
 
-            Trigger();
+            Engage();
             if (destroy)
             {
                 Destroy(gameObject);
