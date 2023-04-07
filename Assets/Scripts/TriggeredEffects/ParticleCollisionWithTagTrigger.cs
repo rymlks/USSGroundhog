@@ -23,21 +23,18 @@ public class ParticleCollisionWithTagTrigger : AbstractTrigger
 
     }
 
-    void Spatter(Vector3 position, Vector3 velocity)
+    void Spatter(Vector3 position)
     {
-        // ParticleSystem.Particle.position
 
         var emitParams = new ParticleSystem.EmitParams();
         emitParams.position = position;
-        //emitParams.velocity = velocity;
+        
 
         bloodSpatter.transform.position = position;
 
-        Debug.Log("emitParams.position and velocity valures are equal to " + position + " and " + velocity);
-        //bloodSpatter.Emit(emitParams, 1);
+        Debug.Log("bloodSpatter.transform.position is equal to " + position);
+        
         bloodSpatter.Play();
-
-        //bloodSpatter.Emit(emitParams,1);
 
     }
 
@@ -55,16 +52,10 @@ public class ParticleCollisionWithTagTrigger : AbstractTrigger
             {
                 if (rb)
                 {
-                    Debug.Log(collisionEvents[i].intersection);
-                    Debug.Log(collisionEvents[i].intersection);
-                    //Debug.Log(collisionEvents[i].velocity);
 
                     Vector3 position = collisionEvents[i].intersection;
-                    Vector3 velocity = collisionEvents[i].velocity;
 
-                    // make Blood spatter happen at collisionEvents[i].intersection
-
-                    Spatter(position, velocity);
+                    Spatter(position);
 
                 }
                 i++;
