@@ -87,7 +87,7 @@ namespace Assets.Scripts
             characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
             characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
             characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
-            //characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
+            characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
             characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
             characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
 
