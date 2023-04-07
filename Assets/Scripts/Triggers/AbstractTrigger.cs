@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class AbstractTrigger : MonoBehaviour, ITrigger
 {
+    public bool destroy = false;
     private List<IConsequence> _allConsequences = new List<IConsequence>();
-
+    private AudioSource _audioSource;
+    
     protected virtual void Start()
     {
         this._allConsequences = this.GetComponents<IConsequence>().ToList();
+        this._audioSource = GetComponent<AudioSource>();
     }
 
     private void ExecuteAllConsequences()
@@ -18,10 +21,19 @@ public class AbstractTrigger : MonoBehaviour, ITrigger
         {
             consequence.execute();
         }
+        playSoundIfSourcePresent();
     }
 
     public virtual void Engage()
     {
         this.ExecuteAllConsequences();
+    }
+    
+    private void playSoundIfSourcePresent()
+    {
+        if (_audioSource != null && !_audioSource.isPlaying)
+        {
+            _audioSource.Play();
+        }
     }
 }
