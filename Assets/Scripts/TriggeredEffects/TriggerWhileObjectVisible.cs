@@ -8,6 +8,8 @@ public class TriggerWhileObjectVisible : AbstractTrigger
     public Transform viewpoint;
     public float maximumDistanceToSee = 100f;
     private GameObject _target;
+    public GameObject turretLeftRightPivot;
+    public GameObject turretUpDownPivot;
 
     protected override void Start()
     {
@@ -31,7 +33,11 @@ public class TriggerWhileObjectVisible : AbstractTrigger
 
     private void TurnToFace()
     {
-        this.transform.LookAt(_target.transform.position + new Vector3(0,1.5f,0));
+        //turretLeftRightPivot.transform.LookAt(_target.transform.position);
+        // Change RotationX of turretUpDownPivot
+        // Change RotationY of turretLeftRightPivot
+        //this.transform.LookAt(_target.transform.position + new Vector3(0, 1.5f, 0));
+        turretUpDownPivot.transform.LookAt(_target.transform.position + new Vector3(0, 1.5f, 0));
     }
 
     protected bool CanSeeTarget()

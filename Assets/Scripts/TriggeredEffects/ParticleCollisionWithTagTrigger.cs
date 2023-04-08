@@ -8,7 +8,7 @@ public class ParticleCollisionWithTagTrigger : AbstractTrigger
 {
     public ParticleSystem part;
     public string tagToTriggerOn = "Player";
-    //public ParticleSystem bloodSpatter;
+    public ParticleSystem bloodSpatter;
     public List<ParticleCollisionEvent> collisionEvents;
 
     protected override void Start()
@@ -23,20 +23,20 @@ public class ParticleCollisionWithTagTrigger : AbstractTrigger
 
     }
 
-    //void Spatter(Vector3 position)
-    //{
+    void Spatter(Vector3 position)
+    {
 
-    //    var emitParams = new ParticleSystem.EmitParams();
-    //    emitParams.position = position;
-        
+        var emitParams = new ParticleSystem.EmitParams();
+        emitParams.position = position;
 
-    //    bloodSpatter.transform.position = position;
 
-    //    Debug.Log("bloodSpatter.transform.position is equal to " + position);
-        
-    //    bloodSpatter.Play();
+        bloodSpatter.transform.position = position;
 
-    //}
+        Debug.Log("bloodSpatter.transform.position is equal to " + position);
+
+        bloodSpatter.Play();
+
+    }
 
     void OnParticleCollision(GameObject other)
     {
@@ -56,7 +56,7 @@ public class ParticleCollisionWithTagTrigger : AbstractTrigger
                     Vector3 position = collisionEvents[i].intersection;
                     Debug.Log(collisionEvents[i].intersection);
 
-                    //Spatter(position);
+                    Spatter(position);
 
                 }
                 i++;
