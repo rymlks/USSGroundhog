@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2540b7543653147945bd8f4cafc562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy: 0
   tagToWatchFor: Player
   viewpoint: {fileID: 5776128200829657276}
   maximumDistanceToSee: 100
@@ -662,11 +663,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
---- !u!198 &9042903779084137284 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198840909020946268, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
-  m_PrefabInstance: {fileID: 9204431659357350936}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9200159016014586000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4840268657495176, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
@@ -689,7 +685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42cde395659793d46be0c7b629337f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSystem: {fileID: 9042903779084137284}
+  destroy: 0
+  part: {fileID: 0}
   tagToTriggerOn: Player
 --- !u!114 &4801727196445422810
 MonoBehaviour:
