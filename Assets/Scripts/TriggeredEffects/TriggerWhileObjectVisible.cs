@@ -33,11 +33,10 @@ public class TriggerWhileObjectVisible : AbstractTrigger
 
     private void TurnToFace()
     {
-        //turretLeftRightPivot.transform.LookAt(_target.transform.position);
-        // Change RotationX of turretUpDownPivot
-        // Change RotationY of turretLeftRightPivot
-        //this.transform.LookAt(_target.transform.position + new Vector3(0, 1.5f, 0));
+   
         turretUpDownPivot.transform.LookAt(_target.transform.position + new Vector3(0, 1.5f, 0));
+        turretLeftRightPivot.transform.Rotate(0, turretUpDownPivot.transform.localRotation.eulerAngles.y, 0);
+
     }
 
     protected bool CanSeeTarget()
@@ -51,5 +50,6 @@ public class TriggerWhileObjectVisible : AbstractTrigger
             out RaycastHit hitInfo, maximumDistanceToSee) 
                && hitInfo.transform.CompareTag(tagToWatchFor);
     }
+
 }
 
