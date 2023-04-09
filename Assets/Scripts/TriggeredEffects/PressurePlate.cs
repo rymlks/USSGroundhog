@@ -9,7 +9,9 @@ public class PressurePlate : MonoBehaviour
     public float activationTimeSeconds = 0.01f;
     public String[] tagsToRecognize;
     private Dictionary<Collider, float> objectsWithinCollider = new Dictionary<Collider, float>();
-    public GameObject affectedGameObject;
+    private bool repeatable = false;
+
+    private bool _consequenceDone = false;
 
     bool tagMatches(Collider collider)
     {
@@ -32,7 +34,8 @@ public class PressurePlate : MonoBehaviour
 
             if (objectsWithinCollider[other] > activationTimeSeconds)
             {
-                DoConsequence();
+                if(!_consequenceDone)
+                    DoConsequence();
             }
         }
     }
@@ -42,6 +45,10 @@ public class PressurePlate : MonoBehaviour
         if (tagMatches(other))
         {
             objectsWithinCollider.Remove(other);
+            if (repeatable)
+            {
+                this._consequenceDone = false;
+            }
         }
     }
 
@@ -49,5 +56,6 @@ public class PressurePlate : MonoBehaviour
     {
         IConsequence consequence = this.GetComponent<IConsequence>();
         consequence?.execute();
+        _consequenceDone = true;
     }
 }
