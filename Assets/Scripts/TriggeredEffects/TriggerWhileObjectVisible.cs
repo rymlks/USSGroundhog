@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TriggerWhileObjectVisible : AbstractTrigger
 {
@@ -10,6 +12,7 @@ public class TriggerWhileObjectVisible : AbstractTrigger
     private GameObject _target;
     public GameObject turretLeftRightPivot;
     public GameObject turretUpDownPivot;
+    public float speed;
 
     protected override void Start()
     {
@@ -33,22 +36,35 @@ public class TriggerWhileObjectVisible : AbstractTrigger
 
     private void TurnToFace()
     {
-   
+        // Explore Quaternion.Slerp as a way to control the speed at which the turret locks onto player
+        //turretUpDownPivot.transform.Rotate(turretLock().transform.position, 0, 0);
         turretUpDownPivot.transform.LookAt(_target.transform.position + new Vector3(0, 1.5f, 0));
         turretLeftRightPivot.transform.Rotate(0, turretUpDownPivot.transform.localRotation.eulerAngles.y, 0);
-
+      
     }
 
     protected bool CanSeeTarget()
     {
-        return IsLineOfSightClear();
+        var hitInfo = turretLock();
+
+        if (hitInfo.transform.CompareTag(tagToWatchFor))
+        {
+            Debug.Log(hitInfo.transform.position);
+            return true;
+
+        } else
+        {
+            return false;
+
+        };
     }
 
-    protected bool IsLineOfSightClear()
+    private RaycastHit turretLock()
     {
-        return Physics.Raycast(new Ray(this.viewpoint.position, _target.transform.position - this.viewpoint.position),
-            out RaycastHit hitInfo, maximumDistanceToSee) 
-               && hitInfo.transform.CompareTag(tagToWatchFor);
+        Physics.Raycast(new Ray(this.viewpoint.position, _target.transform.position - this.viewpoint.position),
+            out RaycastHit hitInfo, maximumDistanceToSee);
+
+        return hitInfo;
     }
 
 }
