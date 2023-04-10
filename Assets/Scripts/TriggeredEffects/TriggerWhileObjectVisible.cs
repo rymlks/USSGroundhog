@@ -12,8 +12,7 @@ public class TriggerWhileObjectVisible : AbstractTrigger
     private GameObject _target;
     public GameObject turretLeftRightPivot;
     public GameObject turretUpDownPivot;
-    public Transform Followpos = null;
-    public float speed = 20f;
+    public float speed = 20;
 
     protected override void Start()
     {
@@ -44,7 +43,9 @@ public class TriggerWhileObjectVisible : AbstractTrigger
 
         // Make turret bracket match rotation of turret head
 
-        //turretLeftRightPivot.transform.Rotate(0, turretUpDownPivot.transform.localRotation.eulerAngles.y, 0);
+        float leftRightTurretPivot = this.transform.rotation.eulerAngles.y - turretLeftRightPivot.transform.eulerAngles.y;
+
+        turretLeftRightPivot.transform.Rotate(0, leftRightTurretPivot, 0);
 
     }
 
@@ -54,7 +55,7 @@ public class TriggerWhileObjectVisible : AbstractTrigger
 
         if (hitInfo.transform.CompareTag(tagToWatchFor))
         {
-            Debug.Log(hitInfo.transform.position);
+            //Debug.Log(hitInfo.transform.position);
             return true;
 
         } else
