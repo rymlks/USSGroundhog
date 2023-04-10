@@ -12,7 +12,8 @@ public class TriggerWhileObjectVisible : AbstractTrigger
     private GameObject _target;
     public GameObject turretLeftRightPivot;
     public GameObject turretUpDownPivot;
-    public float speed;
+    public Transform Followpos = null;
+    public float speed = 20f;
 
     protected override void Start()
     {
@@ -36,11 +37,15 @@ public class TriggerWhileObjectVisible : AbstractTrigger
 
     private void TurnToFace()
     {
-        // Explore Quaternion.Slerp as a way to control the speed at which the turret locks onto player
-        //turretUpDownPivot.transform.Rotate(turretLock().transform.position, 0, 0);
-        turretUpDownPivot.transform.LookAt(_target.transform.position + new Vector3(0, 1.5f, 0));
-        turretLeftRightPivot.transform.Rotate(0, turretUpDownPivot.transform.localRotation.eulerAngles.y, 0);
-      
+                
+        Quaternion rotTarget = Quaternion.LookRotation(_target.transform.position - this.transform.position);
+
+        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotTarget, speed * Time.deltaTime);
+
+        // Make turret bracket match rotation of turret head
+
+        //turretLeftRightPivot.transform.Rotate(0, turretUpDownPivot.transform.localRotation.eulerAngles.y, 0);
+
     }
 
     protected bool CanSeeTarget()
