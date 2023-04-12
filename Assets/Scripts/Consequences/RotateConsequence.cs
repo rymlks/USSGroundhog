@@ -1,22 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using Consequences;
+#nullable enable
 using Triggers;
-using UnityEngine;
 
-public class RotateConsequence : DoASpinny, IConsequence
+namespace Consequences
 {
-
-    private float _speed;
-
-    void Start()
+    public class RotateConsequence : DoASpinny, IConsequence
     {
-        _speed = speed;
-        speed = 0;
-    }
 
-    public void execute(TriggerData? data)
-    {
-        speed = _speed;
+        private float _speed;
+
+        void Start()
+        {
+            _speed = speed;
+            speed = 0;
+        }
+
+        public void execute(TriggerData? data)
+        {
+            speed = _speed;
+        }
     }
 }

@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using Consequences;
+#nullable enable
 using Triggers;
-using UnityEngine;
 
-public class SlideToDestinationConsequence : SlideToDestination, IConsequence
+namespace Consequences
 {
-    public void execute(TriggerData? data)
+    public class SlideToDestinationConsequence : SlideToDestination, IConsequence
     {
-        this.start = true;
+        public void execute(TriggerData? data)
+        {
+            this.start = true;
+        }
     }
 }

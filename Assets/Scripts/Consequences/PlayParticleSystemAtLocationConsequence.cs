@@ -1,35 +1,35 @@
 #nullable enable
-using System.Collections;
-using System.Collections.Generic;
-using Consequences;
 using Triggers;
 using UnityEngine;
 
-public class PlayParticleSystemAtLocationConsequence : MonoBehaviour, IConsequence
+namespace Consequences
 {
-    public ParticleSystem toPlay;
-
-    void Start()
+    public class PlayParticleSystemAtLocationConsequence : MonoBehaviour, IConsequence
     {
-        if (toPlay == null)
-        {
-            Debug.Log("Particle system consequence failed, associated inspector value unset.");
-            Destroy(this);
-        }
-    }
+        public ParticleSystem toPlay;
 
-    public void execute(TriggerData? data)
-    {
-
-        Vector3 positionToSplatAt = this.gameObject.transform.position; 
-        if (data?.triggerLocation != null)
+        void Start()
         {
-            positionToSplatAt = data.triggerLocation.Value;
+            if (toPlay == null)
+            {
+                Debug.Log("Particle system consequence failed, associated inspector value unset.");
+                Destroy(this);
+            }
         }
 
-        toPlay.transform.position = positionToSplatAt;
+        public void execute(TriggerData? data)
+        {
 
-        toPlay.Play();
+            Vector3 positionToSplatAt = this.gameObject.transform.position; 
+            if (data?.triggerLocation != null)
+            {
+                positionToSplatAt = data.triggerLocation.Value;
+            }
 
+            toPlay.transform.position = positionToSplatAt;
+
+            toPlay.Play();
+
+        }
     }
 }
