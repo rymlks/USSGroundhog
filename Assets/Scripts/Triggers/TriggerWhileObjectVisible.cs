@@ -1,76 +1,74 @@
-using System.Collections;
-using System.Collections.Generic;
-using Triggers;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class TriggerWhileObjectVisible : AbstractTrigger
+namespace Triggers
 {
-    public string tagToWatchFor = "Player";
-    public Transform viewpoint;
-    public float maximumDistanceToSee = 100f;
-    private GameObject _target;
-    public GameObject turretLeftRightPivot;
-    public GameObject turretUpDownPivot;
-    public float speed = 20;
-
-    protected override void Start()
+    public class TriggerWhileObjectVisible : AbstractTrigger
     {
-        base.Start();
-        if (viewpoint == null)
+        public string tagToWatchFor = "Player";
+        public Transform viewpoint;
+        public float maximumDistanceToSee = 100f;
+        private GameObject _target;
+        public GameObject turretLeftRightPivot;
+        public GameObject turretUpDownPivot;
+        public float speed = 20;
+
+        protected override void Start()
         {
-            viewpoint = this.transform;
+            base.Start();
+            if (viewpoint == null)
+            {
+                viewpoint = this.transform;
+            }
+
+            this._target = GameObject.FindWithTag(tagToWatchFor);
         }
 
-        this._target = GameObject.FindWithTag(tagToWatchFor);
-    }
-
-    void Update()
-    {
-        if (CanSeeTarget())
+        void Update()
         {
-            this.TurnToFace();
-            this.Engage();
+            if (CanSeeTarget())
+            {
+                this.TurnToFace();
+                this.Engage();
+            }
         }
-    }
 
-    private void TurnToFace()
-    {
+        private void TurnToFace()
+        {
                 
-        Quaternion rotTarget = Quaternion.LookRotation(_target.transform.position - this.transform.position);
+            Quaternion rotTarget = Quaternion.LookRotation(_target.transform.position - this.transform.position);
 
-        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotTarget, speed * Time.deltaTime);
+            this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotTarget, speed * Time.deltaTime);
 
-        float leftRightTurretPivot = this.transform.rotation.eulerAngles.y - turretLeftRightPivot.transform.eulerAngles.y;
+            float leftRightTurretPivot = this.transform.rotation.eulerAngles.y - turretLeftRightPivot.transform.eulerAngles.y;
 
-        turretLeftRightPivot.transform.Rotate(0, leftRightTurretPivot, 0);
+            turretLeftRightPivot.transform.Rotate(0, leftRightTurretPivot, 0);
 
-    }
+        }
 
-    protected bool CanSeeTarget()
-    {
-        var hitInfo = turretLock();
-
-        if (hitInfo.transform.CompareTag(tagToWatchFor))
+        protected bool CanSeeTarget()
         {
+            var hitInfo = turretLock();
 
-            return true;
+            if (hitInfo.transform.CompareTag(tagToWatchFor))
+            {
 
-        } else
+                return true;
+
+            } else
+            {
+                return false;
+
+            };
+        }
+
+        private RaycastHit turretLock()
         {
-            return false;
+            Physics.Raycast(new Ray(this.viewpoint.position, _target.transform.position - this.viewpoint.position),
+                out RaycastHit hitInfo, maximumDistanceToSee);
 
-        };
+            return hitInfo;
+        }
+
     }
-
-    private RaycastHit turretLock()
-    {
-        Physics.Raycast(new Ray(this.viewpoint.position, _target.transform.position - this.viewpoint.position),
-            out RaycastHit hitInfo, maximumDistanceToSee);
-
-        return hitInfo;
-    }
-
 }
 
