@@ -55,7 +55,7 @@ public class PressurePlate : MonoBehaviour
     void DoConsequence()
     {
         IConsequence consequence = this.GetComponent<IConsequence>();
-        consequence?.execute();
+        consequence?.execute(null);
         _consequenceDone = true;
     }
 }
