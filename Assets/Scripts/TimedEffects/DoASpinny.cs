@@ -9,6 +9,17 @@ public class DoASpinny : MonoBehaviour
 
     private float rotato = 0;
 
+    void Start()
+    {
+        if (max <= 0)
+        {
+            max = float.PositiveInfinity;
+        }
+        if(speed == 0){
+            speed = 1;
+        }
+    }
+
 
     void FixedUpdate()
     {
