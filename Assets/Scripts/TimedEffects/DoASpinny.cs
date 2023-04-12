@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoASpinny : MonoBehaviour
 {
     public float speed;
-    public float max;
+    public float max = float.PositiveInfinity;
 
     private float rotato = 0;
 
