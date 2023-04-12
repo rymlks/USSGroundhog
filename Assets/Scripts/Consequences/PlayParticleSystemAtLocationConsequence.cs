@@ -5,13 +5,13 @@ using Consequences;
 using Triggers;
 using UnityEngine;
 
-public class BloodSpatterConsequence : MonoBehaviour, IConsequence
+public class PlayParticleSystemAtLocationConsequence : MonoBehaviour, IConsequence
 {
-    public ParticleSystem spatterParticleSystem;
+    public ParticleSystem toPlay;
 
     void Start()
     {
-        if (spatterParticleSystem == null)
+        if (toPlay == null)
         {
             Debug.Log("Particle system consequence failed, associated inspector value unset.");
             Destroy(this);
@@ -27,9 +27,9 @@ public class BloodSpatterConsequence : MonoBehaviour, IConsequence
             positionToSplatAt = data.triggerLocation.Value;
         }
 
-        spatterParticleSystem.transform.position = positionToSplatAt;
+        toPlay.transform.position = positionToSplatAt;
 
-        spatterParticleSystem.Play();
+        toPlay.Play();
 
     }
 }
