@@ -41,8 +41,6 @@ public class TriggerWhileObjectVisible : AbstractTrigger
 
         this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotTarget, speed * Time.deltaTime);
 
-        // Make turret bracket match rotation of turret head
-
         float leftRightTurretPivot = this.transform.rotation.eulerAngles.y - turretLeftRightPivot.transform.eulerAngles.y;
 
         turretLeftRightPivot.transform.Rotate(0, leftRightTurretPivot, 0);
@@ -55,7 +53,7 @@ public class TriggerWhileObjectVisible : AbstractTrigger
 
         if (hitInfo.transform.CompareTag(tagToWatchFor))
         {
-            //Debug.Log(hitInfo.transform.position);
+
             return true;
 
         } else
