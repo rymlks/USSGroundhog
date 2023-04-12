@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ParticleCollisionWithTagTrigger : AbstractTrigger
 {
-    public ParticleSystem part;
+    public ParticleSystem particleSystem;
     public string tagToTriggerOn = "Player";
     public ParticleSystem bloodSpatter;
     public List<ParticleCollisionEvent> collisionEvents;
@@ -16,9 +16,9 @@ public class ParticleCollisionWithTagTrigger : AbstractTrigger
         base.Start();
         collisionEvents = new List<ParticleCollisionEvent>();
 
-        if (part == null)
+        if (particleSystem == null)
         {
-            part = GetComponentInParent<ParticleSystem>();
+            particleSystem = GetComponentInParent<ParticleSystem>();
         }
 
     }
@@ -40,7 +40,7 @@ public class ParticleCollisionWithTagTrigger : AbstractTrigger
 
     void OnParticleCollision(GameObject other)
     {
-        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
+        int numCollisionEvents = particleSystem.GetCollisionEvents(other, collisionEvents);
 
         Rigidbody rb = other.GetComponent<Rigidbody>();
         int i = 0;
