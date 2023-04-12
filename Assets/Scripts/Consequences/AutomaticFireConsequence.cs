@@ -1,10 +1,10 @@
-using Consequences;
+#nullable enable
 using Triggers;
 using UnityEngine;
 
-namespace TimedEffects
+namespace Consequences
 {
-    public class AutomaticFire : MonoBehaviour, IConsequence
+    public class AutomaticFireConsequence : MonoBehaviour, IConsequence
     {
         public float secondsToFire = 1f;
     
