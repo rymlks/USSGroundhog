@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Consequences;
+using Triggers;
 using UnityEngine;
 
 public class MoveObjectInSquareConsequence : MonoBehaviour, IConsequence
@@ -20,7 +22,7 @@ public class MoveObjectInSquareConsequence : MonoBehaviour, IConsequence
         return waypointsInRectangle;
     }
 
-    public void execute()
+    public void execute(TriggerData? data)
     {
         MoveObjectAlongWaypoints moveAlongWaypoints = toMove.AddComponent<MoveObjectAlongWaypoints>();
         moveAlongWaypoints.loop = loop;

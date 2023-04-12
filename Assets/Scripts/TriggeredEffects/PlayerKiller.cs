@@ -26,6 +26,7 @@ public class PlayerKiller : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider triggeredCollider)
     {
+
         if (isCollisionWithPlayer(triggeredCollider))
         {
             if (!immunityIsGranted())

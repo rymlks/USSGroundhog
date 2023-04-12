@@ -1,3 +1,5 @@
+using Consequences;
+using Triggers;
 using UnityEngine;
 
 namespace TimedEffects
@@ -63,7 +65,7 @@ namespace TimedEffects
             return this._lastExecutedTime + this.secondsToFire > Time.time;
         }
 
-        public void execute()
+        public void execute(TriggerData? data)
         {
             this._lastExecutedTime = Time.time;
         }

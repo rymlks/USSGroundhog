@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Consequences;
+using Triggers;
 using UnityEngine;
 
 public class RotateConsequence : DoASpinny, IConsequence
@@ -13,7 +15,7 @@ public class RotateConsequence : DoASpinny, IConsequence
         speed = 0;
     }
 
-    public void execute()
+    public void execute(TriggerData? data)
     {
         speed = _speed;
     }
