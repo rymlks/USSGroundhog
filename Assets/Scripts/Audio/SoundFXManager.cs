@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SoundFXManager : MonoBehaviour
 {
-    [SerializeField] private AudioListener _audioListener;
-    [SerializeField] private AudioSource _audioSource;
 
     public AudioSource Small_explosion;
     public AudioSource Tank_explosion;
@@ -16,22 +14,20 @@ public class SoundFXManager : MonoBehaviour
     public AudioSource Turret_Firing;
     public AudioSource Turret_Firing_Tail;
 
-    public AudioListener AudioListener { get => _audioListener; set => _audioListener = value; }
-    public AudioSource AudioSource { get => _audioSource; set => _audioSource = value; }
-
-    public void LoadClip(string clipName)
+    private static void PlayMeMaybe(AudioSource source)
     {
-        //AudioClip audioClip = Load
+        if (source != null)
+        {
+            source.Play();
+        }
     }
-
-    public void PlayAudio()
+    
+    private static void StopMeMaybe(AudioSource source)
     {
-        AudioSource.Play();
-    }
-
-    public void StopAudio()
-    {
-        AudioSource.Stop();
+        if (source != null)
+        {
+            source.Stop();
+        }
     }
 
 
@@ -39,49 +35,49 @@ public class SoundFXManager : MonoBehaviour
     public void Play_Small_explosion()
     {
 
-        Small_explosion.Play();
+        PlayMeMaybe(Small_explosion);
 
     }
     public void Play_Tank_explosion()
     {
 
-        Tank_explosion.Play();
+        PlayMeMaybe(Tank_explosion);
 
     }
     public void Play_Crate_explosion()
     {
 
-        Crate_explosion.Play();
+        PlayMeMaybe(Crate_explosion);
 
     }
 
     public void Play_Door_Slide()
     {
-        Door_Slide.Play();
+        PlayMeMaybe(Door_Slide);
 
     }
 
     public void Play_PA_Jingle()
     {
-        PA_Jingle.Play();
+        PlayMeMaybe(PA_Jingle);
 
     }
 
     public void Play_Ship_Alarm()
     {
-        Ship_Alarm.Play();
+        PlayMeMaybe(Ship_Alarm);
 
     }
 
     public void Play_Turret_Firing()
     {
-        Turret_Firing.Play();
+        PlayMeMaybe(Turret_Firing);
     }
 
     public void Stop_Turret_Firing()
     {
-        Turret_Firing.Stop();
-        Turret_Firing_Tail.Play();
+        StopMeMaybe(Turret_Firing);
+        PlayMeMaybe(Turret_Firing_Tail);
     }
 
 }
