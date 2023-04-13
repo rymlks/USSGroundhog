@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class DeathCharacteristicsProcessor
+public class DeathCharacteristics
 {
     private Dictionary<string, object> _deathCharacteristics;
 
-    public DeathCharacteristicsProcessor(Dictionary<string, object> characteristics)
+    public DeathCharacteristics(Dictionary<string, object> characteristics)
     {
         this._deathCharacteristics = characteristics;
     }
@@ -41,6 +41,11 @@ public class DeathCharacteristicsProcessor
     public bool shouldPropelCorpse()
     {
         return _deathCharacteristics.Keys.Contains("explosion");
+    }
+
+    public Vector3 getExplosionStrength()
+    {
+        return _deathCharacteristics["explosion"] != null ? (Vector3) _deathCharacteristics["explosion"] : Vector3.zero;
     }
 
     public bool shouldProduceCorpse()

@@ -9,13 +9,12 @@ namespace Player.Death
         private static readonly int IsFallDead = Animator.StringToHash("IsFallDead");
         private static readonly int IsElectrocuted = Animator.StringToHash("IsElectrocuted");
 
-        public void AnimateCorpse(GameObject corpse, Dictionary<string, object> deathCharacteristics)
+        public void AnimateCorpse(GameObject corpse, DeathCharacteristics deathCharacteristics)
         {
-            DeathCharacteristicsProcessor death = new DeathCharacteristicsProcessor(deathCharacteristics);
-            if (death.shouldProduceElectrocutedCorpse())
+            if (deathCharacteristics.shouldProduceElectrocutedCorpse())
             {
                 corpse.GetComponentInChildren<Animator>().SetBool(IsElectrocuted, true);
-            }else if (death.shouldProduceNormalCorpse())
+            }else if (deathCharacteristics.shouldProduceNormalCorpse())
             {
                 corpse.GetComponentInChildren<Animator>().SetBool(IsFallDead, true);
             }
