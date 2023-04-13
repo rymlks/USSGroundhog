@@ -63,7 +63,7 @@ public class PlayerRespawner : MonoBehaviour
 
     public IEnumerator Respawn_Coroutine(Dictionary<string, object> args)
     {
-        spawnAndAnimateCorpse(args);
+        spawnAndAnimateCorpse(new DeathCharacteristics(args));
 
         if (!args.ContainsKey("dontRespawn") || !(bool) args["dontRespawn"])
         {
@@ -76,12 +76,12 @@ public class PlayerRespawner : MonoBehaviour
 
     }
 
-    private void spawnAndAnimateCorpse(Dictionary<string, object> deathCharacteristics)
+    private void spawnAndAnimateCorpse(DeathCharacteristics characteristics)
     {
-        GameObject corpse = this.corpseCreator.CreateCorpse(deathCharacteristics, ragdollPrefab, playerPrefab, player.Character.transform);
+        GameObject corpse = this.corpseCreator.CreateCorpse(characteristics, ragdollPrefab, playerPrefab, player.Character.transform);
         if (corpse != null)
         {
-            this.corpseAnimator.AnimateCorpse(corpse, deathCharacteristics);
+            this.corpseAnimator.AnimateCorpse(corpse, characteristics);
         }
     }
 
