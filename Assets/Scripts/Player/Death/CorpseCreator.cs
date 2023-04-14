@@ -6,40 +6,45 @@ namespace Player.Death
 {
     public class CorpseCreator : MonoBehaviour
     {
-        private Dictionary<string, object> _deathCharacteristics;
         private GameObject _ragdollPrefab;
         private GameObject _dyingBeingPrefab;
+        private GameObject _frozenCorpsePrefab;
         private Transform _transformAtDeath;
-        private DeathCharacteristicsProcessor _death;
 
-        protected void Initialize(Dictionary<string, object> deathCharacteristics, GameObject ragdollPrefab,
+        protected void Initialize(GameObject ragdollPrefab,
             GameObject dyingBeingPrefab, Transform transformAtDeath)
         {
-            this._deathCharacteristics = deathCharacteristics;
             this._ragdollPrefab = ragdollPrefab;
             this._dyingBeingPrefab = dyingBeingPrefab;
             this._transformAtDeath = transformAtDeath;
-            this._death = new DeathCharacteristicsProcessor(_deathCharacteristics);
+            this._frozenCorpsePrefab = Resources.Load<GameObject>("FrozenCorpse");
         }
 
-        public GameObject CreateCorpse(Dictionary<string, object> deathCharacteristics, GameObject ragdollPrefab,
+        public GameObject CreateCorpse(DeathCharacteristics deathCharacteristics, GameObject ragdollPrefab,
             GameObject dyingBeingPrefab, Transform transformAtDeath)
         {
-            this.Initialize(deathCharacteristics, ragdollPrefab, dyingBeingPrefab, transformAtDeath);
+            this.Initialize(ragdollPrefab, dyingBeingPrefab, transformAtDeath);
             
-            if (_death.shouldProduceCorpse() && !_death.shouldBurnCorpse())
+            if (deathCharacteristics.shouldProduceCorpse() && !deathCharacteristics.shouldBurnCorpse())
             {
-                GameObject corpse = _death.shouldProduceRagdollCorpse()
-                    ? Instantiate(_ragdollPrefab)
-                    : Instantiate(_dyingBeingPrefab);
-                if (_death.shouldProduceRagdollCorpse())
+                GameObject corpse;
+                if (deathCharacteristics.shouldProduceRagdollCorpse())
                 {
+                    corpse = Instantiate(_ragdollPrefab);
                     minimizeMass(corpse);
                 }
-
-                if (_death.shouldPropelCorpse())
+                else if (deathCharacteristics.shouldProduceRigidCorpse())
                 {
-                    corpse.GetComponentInChildren<Rigidbody>().AddForce((Vector3) _deathCharacteristics["explosion"]);
+                    corpse = Instantiate(_frozenCorpsePrefab);
+                }
+                else
+                {
+                    corpse = Instantiate(_dyingBeingPrefab);
+                }
+
+                if (deathCharacteristics.shouldPropelCorpse())
+                {
+                    corpse.GetComponentInChildren<Rigidbody>().AddForce(deathCharacteristics.getExplosionStrength());
                 }
 
                 corpse.transform.position = _transformAtDeath.position;

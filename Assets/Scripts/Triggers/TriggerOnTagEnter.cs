@@ -1,42 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerOnTagEnter : AbstractTrigger
+namespace Triggers
 {
-    public string CustomTag = "";
-    public string RequireItem = "";
-    private KeyStatusUIController keyUI;
-
-    new void Start()
+    public class TriggerOnTagEnter : AbstractTrigger
     {
-        base.Start();
-        if (keyUI == null)
-        {
-            keyUI = FindObjectOfType<KeyStatusUIController>();
-        }
-    }
+        public string CustomTag = "";
+        public string RequireItem = "";
+        private KeyStatusUIController keyUI;
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (CustomTag == "" || other.CompareTag(CustomTag))
+        new void Start()
         {
-            if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
+            base.Start();
+            if (keyUI == null)
             {
-                this.keyUI.showStatusNextFrame();
-                return;
-            }
-
-            Engage();
-            if (destroy)
-            {
-                Destroy(gameObject);
+                keyUI = FindObjectOfType<KeyStatusUIController>();
             }
         }
-    }
 
-    public void OnTriggerStay(Collider other)
-    {
-        OnTriggerEnter(other);
+        public void OnTriggerEnter(Collider other)
+        {
+            if (CustomTag == "" || other.CompareTag(CustomTag))
+            {
+                if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
+                {
+                    this.keyUI.showStatusNextFrame();
+                    return;
+                }
+
+                Engage();
+                if (destroy)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+
+        public void OnTriggerStay(Collider other)
+        {
+            OnTriggerEnter(other);
+        }
     }
 }

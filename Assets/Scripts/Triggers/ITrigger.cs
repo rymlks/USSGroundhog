@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface ITrigger
+namespace Triggers
 {
-    void Engage();
+    public interface ITrigger
+    {
+        void Engage();
+
+        void Engage(TriggerData data);
+    }
 }

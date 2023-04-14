@@ -124,4 +124,9 @@ public class PlayerHealthState : MonoBehaviour
     {
         statusTrackers.Find(tracker => tracker.statusEffectName == damageSourceName).suffer(deltaSeconds);
     }
+
+    public void Cure(string damageSourceName)
+    {
+        statusTrackers.Find(tracker => tracker.statusEffectName == damageSourceName).Cure();
+    }
 }

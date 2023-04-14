@@ -1,8 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+#nullable enable
+using Triggers;
 
-public interface IConsequence
+namespace Consequences
 {
-    void execute();
+    public interface IConsequence
+    {
+        void execute(TriggerData? data);
+    }
 }
