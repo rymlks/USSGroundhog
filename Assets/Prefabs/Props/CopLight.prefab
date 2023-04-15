@@ -201,6 +201,8 @@ GameObject:
   - component: {fileID: 7495970305545826329}
   - component: {fileID: 7545297514449200459}
   - component: {fileID: 7476251048990575859}
+  - component: {fileID: 8396818557549416193}
+  - component: {fileID: 2867280785765602996}
   m_Layer: 0
   m_Name: CopLight
   m_TagString: Untagged
@@ -304,3 +306,31 @@ MonoBehaviour:
   speed: 2
   max: Infinity
   axis: {x: 0, y: 1, z: 0}
+--- !u!114 &8396818557549416193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7518482672601265053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9c150b585b75a46a0da9805d1fdee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  includeChildren: 1
+  minimumSecondsToOff: 2
+  maximumSecondsToOff: 4
+--- !u!114 &2867280785765602996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7518482672601265053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b56fc371fbf8c4d80e0245173696d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
