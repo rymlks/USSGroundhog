@@ -6,7 +6,10 @@ public class DoASpinny : MonoBehaviour
 {
     public float speed;
     public float max = float.PositiveInfinity;
+    public Vector3 axis = Vector3.up;
 
+    protected Quaternion initialRotation;
+    
     private float rotato = 0;
 
     void Start()
@@ -18,6 +21,8 @@ public class DoASpinny : MonoBehaviour
         if(speed == 0){
             speed = 1;
         }
+
+        this.initialRotation = this.transform.localRotation;
     }
 
 
@@ -28,6 +33,6 @@ public class DoASpinny : MonoBehaviour
         {
             rotato = max;
         }
-        transform.localRotation = Quaternion.Euler(0, rotato, 0);
+        transform.localRotation = initialRotation * Quaternion.Euler(rotato * axis.x, rotato * axis.y, rotato * axis.z);
     }
 }
