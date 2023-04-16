@@ -1,8 +1,9 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Triggers
 {
-    public class TriggerData
+    [CanBeNull] public class TriggerData
     {
         public string triggerDescription;
         public Vector3? triggerLocation;
