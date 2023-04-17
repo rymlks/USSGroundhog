@@ -45,7 +45,7 @@ using Assets.Scripts;
     {
         public KinematicCharacterMotor Motor;
         public GameObject Camera;
-        public bool useMouse = false;
+        // public bool useMouse = false;
         private float mousex = 0;
         
 
@@ -116,7 +116,7 @@ using Assets.Scripts;
             // Assign the characterController to the motor
             Motor.CharacterController = this;
             origCapDims = new Vector3(Motor.CapsuleRadius, Motor.CapsuleHeight, Motor.CapsuleYOffset);
-    }
+        }
 
         /// <summary>
         /// Handles movement state transitions and enter/exit callbacks
@@ -209,6 +209,7 @@ using Assets.Scripts;
                             if (!_isCrouching)
                             {
                                 _isCrouching = true;
+                                
                                 Motor.SetCapsuleDimensions(origCapDims.x, CrouchedCapsuleHeight, CrouchedCapsuleHeight * 0.5f);
                                 //PlayerHandler.Character.gameObject.GetComponent<>().SetBool("IsFallDead", true)
 
@@ -262,7 +263,7 @@ using Assets.Scripts;
             _forwardAxis = Mathf.Lerp(_forwardAxis, _targetForwardAxis, 1f - Mathf.Exp(-ForwardAxisSharpness * Time.deltaTime));
             _rightAxis = Mathf.Lerp(_rightAxis, _targetRightAxis, 1f - Mathf.Exp(-TurnAxisSharpness * Time.deltaTime));
             CharacterAnimator.SetFloat("Forward", _forwardAxis);
-            CharacterAnimator.SetFloat("Turn", _rightAxis);
+            CharacterAnimator.SetFloat("Strafe", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
             //CharacterAnimator.SetBool("IsDeadFall", false);
 
