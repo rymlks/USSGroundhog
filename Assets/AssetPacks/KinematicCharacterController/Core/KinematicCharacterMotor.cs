@@ -463,7 +463,7 @@ namespace KinematicCharacterController
         private Rigidbody _lastAttachedRigidbody;
         private bool _solveMovementCollisions = true;
         private bool _solveGrounding = true;
-        private bool _movePositionDirty = false;
+        public bool _movePositionDirty = false;
         private Vector3 _movePositionTarget = Vector3.zero;
         private bool _moveRotationDirty = false;
         private Quaternion _moveRotationTarget = Quaternion.identity;

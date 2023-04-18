@@ -45,9 +45,10 @@ using Assets.Scripts;
     {
         public KinematicCharacterMotor Motor;
         public GameObject Camera;
+
+        private Rigidbody Rigidbody;
         // public bool useMouse = false;
-        private float mousex = 0;
-        
+        private float mousex = 0;        
 
         [Header("Stable Movement")]
         public float MaxStableMoveSpeed = 10f;
@@ -97,6 +98,7 @@ using Assets.Scripts;
         private float _rightAxis;
         private float _targetForwardAxis;
         private float _targetRightAxis;
+        private double _lastPositionZ;
         private Vector3 _rootMotionPositionDelta;
         private Quaternion _rootMotionRotationDelta;
 
@@ -255,6 +257,7 @@ using Assets.Scripts;
 
             // Assign to motor
             Motor.CharacterController = this;
+            
         }
 
         private void Update()
@@ -265,6 +268,26 @@ using Assets.Scripts;
             CharacterAnimator.SetFloat("Forward", _forwardAxis);
             CharacterAnimator.SetFloat("Strafe", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
+            
+            if (Input.GetAxis("Horizontal") * 500 * Time.deltaTime == 0 && Input.GetAxis("Vertical") * 500 * Time.deltaTime ==0) {
+
+                CharacterAnimator.SetBool("IsStationary", true);
+
+            } else {
+
+                CharacterAnimator.SetBool("IsStationary", false);
+
+            }
+
+            // CharacterAnimator.SetBool("IsStationary", );
+
+            // Debug.Log(Rigidbody.velocity.magnitude);
+            // Debug.Log(this.transform.position.z);
+            // Debug.Log($"<color=purple>{Math.Round(this.transform.position.z,3)}</color>");
+            // Debug.Log($"<color=yellow>{GetComponent<Rigidbody>().velocity.magnitude}</color>");
+            Debug.Log($"<color=red>{Input.GetAxis("Horizontal") * 500 * Time.deltaTime}</color>");
+            Debug.Log($"<color=green>{Input.GetAxis("Vertical") * 500 * Time.deltaTime}</color>");
+
             //CharacterAnimator.SetBool("IsDeadFall", false);
 
             //if (useMouse)
@@ -288,6 +311,7 @@ using Assets.Scripts;
         /// </summary>
         public void BeforeCharacterUpdate(float deltaTime)
         {
+            // _lastPositionZ = Math.Round(this.transform.position.z,3);
         }
 
         /// <summary>
