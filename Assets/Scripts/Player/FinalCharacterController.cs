@@ -95,10 +95,12 @@ using Assets.Scripts;
         private float _timeSinceLastAbleToJump = 0f;
         private Vector3 _internalVelocityAdd = Vector3.zero;
         private float _forwardAxis;
+        private float _mouseXAxis;
         private float _rightAxis;
         private float _targetForwardAxis;
         private float _targetRightAxis;
-        private double _lastPositionZ;
+        private float _targetMouseXAxis;
+        private Vector3 cameraPlanarDirection;
         private Vector3 _rootMotionPositionDelta;
         private Quaternion _rootMotionRotationDelta;
 
@@ -168,7 +170,7 @@ using Assets.Scripts;
             Vector3 moveInputVector = Vector3.ClampMagnitude(new Vector3(inputs.MoveAxisRight, 0f, inputs.MoveAxisForward), 1f);
 
             // Calculate camera direction and rotation on the character plane
-            Vector3 cameraPlanarDirection = Vector3.ProjectOnPlane(inputs.CameraRotation * Vector3.forward, Motor.CharacterUp).normalized;
+            cameraPlanarDirection = Vector3.ProjectOnPlane(inputs.CameraRotation * Vector3.forward, Motor.CharacterUp).normalized;
             if (cameraPlanarDirection.sqrMagnitude == 0f)
             {
                 cameraPlanarDirection = Vector3.ProjectOnPlane(inputs.CameraRotation * Vector3.up, Motor.CharacterUp).normalized;
@@ -178,6 +180,7 @@ using Assets.Scripts;
             // Axis inputs
             _targetForwardAxis = inputs.MoveAxisForward;
             _targetRightAxis = inputs.MoveAxisRight;
+            _targetMouseXAxis = Input.GetAxisRaw("Mouse X");
 
             switch (CurrentCharacterState)
             {
@@ -201,6 +204,16 @@ using Assets.Scripts;
                         {
                             _timeSinceJumpRequested = 0f;
                             _jumpRequested = true;
+                        }
+
+                        if (Input.GetAxis("Horizontal") * 500 * Time.deltaTime == 0 && Input.GetAxis("Vertical") * 500 * Time.deltaTime ==0) {
+
+                            CharacterAnimator.SetBool("IsStationary", true);
+
+                        } else {
+
+                            CharacterAnimator.SetBool("IsStationary", false);
+
                         }
 
                         // Crouching input
@@ -265,44 +278,12 @@ using Assets.Scripts;
             // Handle animation
             _forwardAxis = Mathf.Lerp(_forwardAxis, _targetForwardAxis, 1f - Mathf.Exp(-ForwardAxisSharpness * Time.deltaTime));
             _rightAxis = Mathf.Lerp(_rightAxis, _targetRightAxis, 1f - Mathf.Exp(-TurnAxisSharpness * Time.deltaTime));
+            _mouseXAxis = Mathf.Lerp(_mouseXAxis, _targetMouseXAxis, 1f - Mathf.Exp(-TurnAxisSharpness * Time.deltaTime));
             CharacterAnimator.SetFloat("Forward", _forwardAxis);
             CharacterAnimator.SetFloat("Strafe", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
+            CharacterAnimator.SetFloat("xLook", _mouseXAxis);
             
-            if (Input.GetAxis("Horizontal") * 500 * Time.deltaTime == 0 && Input.GetAxis("Vertical") * 500 * Time.deltaTime ==0) {
-
-                CharacterAnimator.SetBool("IsStationary", true);
-
-            } else {
-
-                CharacterAnimator.SetBool("IsStationary", false);
-
-            }
-
-            // CharacterAnimator.SetBool("IsStationary", );
-
-            // Debug.Log(Rigidbody.velocity.magnitude);
-            // Debug.Log(this.transform.position.z);
-            // Debug.Log($"<color=purple>{Math.Round(this.transform.position.z,3)}</color>");
-            // Debug.Log($"<color=yellow>{GetComponent<Rigidbody>().velocity.magnitude}</color>");
-            Debug.Log($"<color=red>{Input.GetAxis("Horizontal") * 500 * Time.deltaTime}</color>");
-            Debug.Log($"<color=green>{Input.GetAxis("Vertical") * 500 * Time.deltaTime}</color>");
-
-            //CharacterAnimator.SetBool("IsDeadFall", false);
-
-            //if (useMouse)
-            //{
-            //    mousex = Mathf.Lerp(mousex, Input.GetAxis("Mouse X"), 0.2f);
-            //    _rightAxis = mousex;
-            //    Motor.SetRotation(Quaternion.Euler(new Vector3(0, Camera.transform.rotation.eulerAngles.y, 0)));
-            //    CharacterAnimator.SetFloat("Turn", _rightAxis);
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.M))
-            //{
-            //    useMouse = !useMouse;
-            //}
-
         }
 
         /// <summary>
@@ -311,7 +292,7 @@ using Assets.Scripts;
         /// </summary>
         public void BeforeCharacterUpdate(float deltaTime)
         {
-            // _lastPositionZ = Math.Round(this.transform.position.z,3);
+
         }
 
         /// <summary>
