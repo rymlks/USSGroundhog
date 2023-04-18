@@ -1,21 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using Consequences;
+#nullable enable
 using Triggers;
 using UnityEngine;
 
-public class InflictStatusEffectConsequence : MonoBehaviour, IConsequence
+namespace Consequences
 {
-    public string statusEffectName = "burning";
-    private PlayerHealthState _playerHealthStatus;
-
-    void Start()
+    public class InflictStatusEffectConsequence : MonoBehaviour, IConsequence
     {
-        this._playerHealthStatus = FindObjectOfType<PlayerHealthState>();
-    }
+        public string statusEffectName = "burning";
+        private PlayerHealthState _playerHealthStatus;
 
-    public void execute(TriggerData? data)
-    {
-        _playerHealthStatus.Hurt(statusEffectName, Time.deltaTime);
+        void Start()
+        {
+            this._playerHealthStatus = FindObjectOfType<PlayerHealthState>();
+        }
+
+        public void execute(TriggerData? data)
+        {
+            _playerHealthStatus.Hurt(statusEffectName, Time.deltaTime);
+        }
     }
 }
