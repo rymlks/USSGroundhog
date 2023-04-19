@@ -65,9 +65,9 @@ namespace Assets.Scripts
 
             // Input for zooming the camera (disabled in WebGL because it can cause problems)
             float scrollInput = -Input.GetAxis(MouseScrollInput);
-#if UNITY_WEBGL
-    scrollInput = 0f;
-#endif
+            #if UNITY_WEBGL
+                scrollInput = 0f;
+            #endif
 
             // Apply inputs to the camera
             CharacterCamera.UpdateWithInput(Time.deltaTime, scrollInput, lookInputVector);
