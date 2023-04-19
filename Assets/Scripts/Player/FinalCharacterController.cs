@@ -63,8 +63,8 @@ using Assets.Scripts;
 
         [Header("Animation Parameters")]
         public Animator CharacterAnimator;
-        public float ForwardAxisSharpness = 10;
-        public float TurnAxisSharpness = 5;
+        public float ForwardAxisSharpness = 15;
+        public float StrafeAxisSharpness = 15;
 
         [Header("Jumping")]
         public bool AllowJumpingWhenSliding = false;
@@ -277,8 +277,8 @@ using Assets.Scripts;
         {
             // Handle animation
             _forwardAxis = Mathf.Lerp(_forwardAxis, _targetForwardAxis, 1f - Mathf.Exp(-ForwardAxisSharpness * Time.deltaTime));
-            _rightAxis = Mathf.Lerp(_rightAxis, _targetRightAxis, 1f - Mathf.Exp(-TurnAxisSharpness * Time.deltaTime));
-            _mouseXAxis = Mathf.Lerp(_mouseXAxis, _targetMouseXAxis, 1f - Mathf.Exp(-TurnAxisSharpness * Time.deltaTime));
+            _rightAxis = Mathf.Lerp(_rightAxis, _targetRightAxis, 1f - Mathf.Exp(-StrafeAxisSharpness * Time.deltaTime));
+            _mouseXAxis = Mathf.Lerp(_mouseXAxis, _targetMouseXAxis, 1f - Mathf.Exp(-StrafeAxisSharpness * Time.deltaTime));
             CharacterAnimator.SetFloat("Forward", _forwardAxis);
             CharacterAnimator.SetFloat("Strafe", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
