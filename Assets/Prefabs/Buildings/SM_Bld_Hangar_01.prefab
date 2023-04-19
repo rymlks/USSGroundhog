@@ -319,6 +319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6120345820675395543}
+  - component: {fileID: 1614003056095204792}
   m_Layer: 0
   m_Name: DoorWarningLights
   m_TagString: Untagged
@@ -348,6 +349,21 @@ Transform:
   m_Father: {fileID: 7896908934067152019}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1614003056095204792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5031295235670980934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1bef793cc172047b315ae94f9071c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentRoot: {fileID: 0}
+  componentType: light
+  inChildren: 1
 --- !u!1 &5224838616049113162
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +660,7 @@ GameObject:
   - component: {fileID: 644310690278643471}
   - component: {fileID: 2196672927860553012}
   m_Layer: 0
-  m_Name: SM_Bld_HangerDoor_01
+  m_Name: SM_Bld_HangarDoor_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -743,9 +759,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toMove: {fileID: 0}
   loop: 0
+  timeToTake: 10
+  coordinatesAreRelative: 0
   waypoints:
   - {x: 13.35, y: 5.43664, z: 15.11653}
-  timeToTake: 10
 --- !u!1 &7898568497626624271
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +777,7 @@ GameObject:
   - component: {fileID: 644310690210314622}
   - component: {fileID: 5061280918240751064}
   m_Layer: 0
-  m_Name: SM_Bld_HangerDoor_02
+  m_Name: SM_Bld_HangarDoor_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -859,9 +876,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toMove: {fileID: 0}
   loop: 0
+  timeToTake: 10
+  coordinatesAreRelative: 0
   waypoints:
   - {x: -13.35, y: 5.43664, z: 15.11653}
-  timeToTake: 10
 --- !u!1 &7898953947580220733
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +892,7 @@ GameObject:
   - component: {fileID: 7921617501575518349}
   - component: {fileID: 7911606617664895927}
   - component: {fileID: 6746498276206360334}
+  - component: {fileID: 5726278895934177552}
   m_Layer: 0
   m_Name: SM_Bld_Hangar_01
   m_TagString: Untagged
@@ -974,6 +993,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3892077169226160742, guid: 528b6a3776a25f1449d9e1c7c94aa4df, type: 3}
+--- !u!114 &5726278895934177552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7898953947580220733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d485eb686c493654e9fd76c786c3e3de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsWithConsequences:
+  - {fileID: 5031295235670980934}
+  - {fileID: 7898314932419722095}
+  - {fileID: 7898568497626624271}
+  executeInChildren: 1
 --- !u!1001 &325582829410714526
 PrefabInstance:
   m_ObjectHideFlags: 0
