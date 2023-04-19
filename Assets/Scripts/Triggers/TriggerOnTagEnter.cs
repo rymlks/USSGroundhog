@@ -7,6 +7,7 @@ namespace Triggers
         public string CustomTag = "";
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
+        public Behaviour[] requireComponentsEnabled;
 
         new void Start()
         {
@@ -25,6 +26,14 @@ namespace Triggers
                 {
                     this.keyUI.showStatusNextFrame();
                     return;
+                }
+
+                foreach (Behaviour compo in requireComponentsEnabled)
+                {
+                    if (!compo.isActiveAndEnabled)
+                    {
+                        return;
+                    }
                 }
 
                 Engage();
