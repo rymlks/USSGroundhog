@@ -8,8 +8,9 @@ namespace Consequences
     {
         public GameObject toMove;
         public bool loop = false;
-        public Vector3[] waypoints;
         public float timeToTake = 10f;
+        public bool coordinatesAreRelative = false;
+        public Vector3[] waypoints;
         
         private bool _active = false;
         private float _timePerWaypoint;
@@ -23,6 +24,14 @@ namespace Consequences
             if (toMove == null)
             {
                 toMove = this.gameObject;
+            }
+
+            if (coordinatesAreRelative)
+            {
+                for (int i = 0; i < waypoints.Length; i++)
+                {
+                    waypoints[i] = waypoints[i] + toMove.transform.localPosition;
+                }
             }
         }
     
@@ -57,7 +66,7 @@ namespace Consequences
         {
             this._currentWaypointIndex++;
             this._timeStartedCurrentWaypoint = Time.time;
-            _positionWhenStartedCurrentWaypoint = this.transform.localPosition;
+            _positionWhenStartedCurrentWaypoint = toMove.transform.localPosition;
             if (journeyHasFinished())
             {
                 this._currentWaypointIndex = 0;
@@ -72,7 +81,7 @@ namespace Consequences
         {
             this._active = false;
             this._currentWaypointIndex = -1;
-            this._positionWhenStartedCurrentWaypoint = this.transform.position;
+            this._positionWhenStartedCurrentWaypoint = toMove.transform.position;
         }
 
 
