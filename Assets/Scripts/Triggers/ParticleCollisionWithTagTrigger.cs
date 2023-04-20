@@ -10,6 +10,9 @@ namespace Triggers
         protected List<ParticleCollisionEvent> collisionEvents;
         public int CollisionEvents { get => collisionEvents.Count; }
 
+        private bool collidedWithTag;
+        public bool CollidedWithTag { get => collidedWithTag; }
+
 
         protected override void Start()
         {
@@ -27,13 +30,15 @@ namespace Triggers
         {
             particleSystem.GetCollisionEvents(other, collisionEvents);
 
+            collidedWithTag = false;
             if (other.CompareTag(tagToTriggerOn))
             {
+                collidedWithTag = true;
                 if(tagToTriggerOn.Equals("Player")) Debug.LogError($"<color=yellow>Collided with Player</color>");
 
                 this.Engage(new TriggerData(this.tagToTriggerOn+ " object collided with " + this.particleSystem.name + " particle", collisionEvents[^1].intersection));
             }
-
+            //collisionEvents.Clear();
         }
 
     }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Consequences;
 using JetBrains.Annotations;
 using Triggers;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class VacuumPullZone : MonoBehaviour
@@ -62,7 +61,7 @@ public class VacuumPullZone : MonoBehaviour
         if (_pullZoneModel.canReachPlayer)
         {
             //Pull player into point
-            Debug.LogError($"<color=red>I can reach player object {_pullZoneModel.canReachPlayer}</color>");
+            Debug.Log($"<color=red>I can reach player object {_pullZoneModel.canReachPlayer}</color>");
             //_moveObjectInSquareConsequence.execute(_particleCollisionWithTagTrigger.);
         }
         DetermineIfCanReachPlayer();
@@ -70,7 +69,7 @@ public class VacuumPullZone : MonoBehaviour
 
     private void DetermineIfCanReachPlayer()
     {
-        _pullZoneModel.canReachPlayer = _pullZoneModel.trigger.CollisionEvents > 0 || _particleCollisionWithTagTrigger.CollisionEvents > 0;
+        _pullZoneModel.canReachPlayer = _particleCollisionWithTagTrigger.CollidedWithTag;
     }
 }
 
