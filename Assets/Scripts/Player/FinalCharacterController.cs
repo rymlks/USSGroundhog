@@ -45,9 +45,10 @@ using Assets.Scripts;
     {
         public KinematicCharacterMotor Motor;
         public GameObject Camera;
-        public bool useMouse = false;
-        private float mousex = 0;
-        
+
+        private Rigidbody Rigidbody;
+        // public bool useMouse = false;
+        private float mousex = 0;        
 
         [Header("Stable Movement")]
         public float MaxStableMoveSpeed = 10f;
@@ -62,8 +63,8 @@ using Assets.Scripts;
 
         [Header("Animation Parameters")]
         public Animator CharacterAnimator;
-        public float ForwardAxisSharpness = 10;
-        public float TurnAxisSharpness = 5;
+        public float ForwardAxisSharpness = 15;
+        public float StrafeAxisSharpness = 15;
 
         [Header("Jumping")]
         public bool AllowJumpingWhenSliding = false;
@@ -94,9 +95,12 @@ using Assets.Scripts;
         private float _timeSinceLastAbleToJump = 0f;
         private Vector3 _internalVelocityAdd = Vector3.zero;
         private float _forwardAxis;
+        private float _mouseXAxis;
         private float _rightAxis;
         private float _targetForwardAxis;
         private float _targetRightAxis;
+        private float _targetMouseXAxis;
+        private Vector3 cameraPlanarDirection;
         private Vector3 _rootMotionPositionDelta;
         private Quaternion _rootMotionRotationDelta;
 
@@ -116,7 +120,7 @@ using Assets.Scripts;
             // Assign the characterController to the motor
             Motor.CharacterController = this;
             origCapDims = new Vector3(Motor.CapsuleRadius, Motor.CapsuleHeight, Motor.CapsuleYOffset);
-    }
+        }
 
         /// <summary>
         /// Handles movement state transitions and enter/exit callbacks
@@ -166,7 +170,7 @@ using Assets.Scripts;
             Vector3 moveInputVector = Vector3.ClampMagnitude(new Vector3(inputs.MoveAxisRight, 0f, inputs.MoveAxisForward), 1f);
 
             // Calculate camera direction and rotation on the character plane
-            Vector3 cameraPlanarDirection = Vector3.ProjectOnPlane(inputs.CameraRotation * Vector3.forward, Motor.CharacterUp).normalized;
+            cameraPlanarDirection = Vector3.ProjectOnPlane(inputs.CameraRotation * Vector3.forward, Motor.CharacterUp).normalized;
             if (cameraPlanarDirection.sqrMagnitude == 0f)
             {
                 cameraPlanarDirection = Vector3.ProjectOnPlane(inputs.CameraRotation * Vector3.up, Motor.CharacterUp).normalized;
@@ -176,6 +180,7 @@ using Assets.Scripts;
             // Axis inputs
             _targetForwardAxis = inputs.MoveAxisForward;
             _targetRightAxis = inputs.MoveAxisRight;
+            _targetMouseXAxis = Input.GetAxisRaw("Mouse X");
 
             switch (CurrentCharacterState)
             {
@@ -201,6 +206,16 @@ using Assets.Scripts;
                             _jumpRequested = true;
                         }
 
+                        if (Input.GetAxis("Horizontal") * 500 * Time.deltaTime == 0 && Input.GetAxis("Vertical") * 500 * Time.deltaTime ==0) {
+
+                            CharacterAnimator.SetBool("IsStationary", true);
+
+                        } else {
+
+                            CharacterAnimator.SetBool("IsStationary", false);
+
+                        }
+
                         // Crouching input
                         if (inputs.CrouchDown)
                         {
@@ -209,6 +224,7 @@ using Assets.Scripts;
                             if (!_isCrouching)
                             {
                                 _isCrouching = true;
+                                
                                 Motor.SetCapsuleDimensions(origCapDims.x, CrouchedCapsuleHeight, CrouchedCapsuleHeight * 0.5f);
                                 //PlayerHandler.Character.gameObject.GetComponent<>().SetBool("IsFallDead", true)
 
@@ -254,31 +270,20 @@ using Assets.Scripts;
 
             // Assign to motor
             Motor.CharacterController = this;
+            
         }
 
         private void Update()
         {
             // Handle animation
             _forwardAxis = Mathf.Lerp(_forwardAxis, _targetForwardAxis, 1f - Mathf.Exp(-ForwardAxisSharpness * Time.deltaTime));
-            _rightAxis = Mathf.Lerp(_rightAxis, _targetRightAxis, 1f - Mathf.Exp(-TurnAxisSharpness * Time.deltaTime));
+            _rightAxis = Mathf.Lerp(_rightAxis, _targetRightAxis, 1f - Mathf.Exp(-StrafeAxisSharpness * Time.deltaTime));
+            _mouseXAxis = Mathf.Lerp(_mouseXAxis, _targetMouseXAxis, 1f - Mathf.Exp(-StrafeAxisSharpness * Time.deltaTime));
             CharacterAnimator.SetFloat("Forward", _forwardAxis);
-            CharacterAnimator.SetFloat("Turn", _rightAxis);
+            CharacterAnimator.SetFloat("Strafe", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
-            //CharacterAnimator.SetBool("IsDeadFall", false);
-
-            //if (useMouse)
-            //{
-            //    mousex = Mathf.Lerp(mousex, Input.GetAxis("Mouse X"), 0.2f);
-            //    _rightAxis = mousex;
-            //    Motor.SetRotation(Quaternion.Euler(new Vector3(0, Camera.transform.rotation.eulerAngles.y, 0)));
-            //    CharacterAnimator.SetFloat("Turn", _rightAxis);
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.M))
-            //{
-            //    useMouse = !useMouse;
-            //}
-
+            CharacterAnimator.SetFloat("xLook", _mouseXAxis);
+            
         }
 
         /// <summary>
@@ -287,6 +292,7 @@ using Assets.Scripts;
         /// </summary>
         public void BeforeCharacterUpdate(float deltaTime)
         {
+
         }
 
         /// <summary>
