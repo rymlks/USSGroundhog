@@ -5,6 +5,7 @@ namespace Triggers
     public class TriggerOnTagEnter : AbstractTrigger
     {
         public string CustomTag = "";
+        public bool acceptTagInParent = false;
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
         public bool OnStay = true;
@@ -19,6 +20,8 @@ namespace Triggers
             }
         }
 
+        
+        
         public void OnTriggerEnter(Collider other)
         {
             if (CustomTag == "" || other.CompareTag(CustomTag))
