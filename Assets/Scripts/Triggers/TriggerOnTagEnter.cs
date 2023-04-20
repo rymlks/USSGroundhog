@@ -7,6 +7,7 @@ namespace Triggers
         public string CustomTag = "";
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
+        public bool OnStay = true;
         public Behaviour[] requireComponentsEnabled;
 
         new void Start()
@@ -46,7 +47,10 @@ namespace Triggers
 
         public void OnTriggerStay(Collider other)
         {
-            OnTriggerEnter(other);
+            if (OnStay)
+            {
+                OnTriggerEnter(other);
+            }
         }
     }
 }
