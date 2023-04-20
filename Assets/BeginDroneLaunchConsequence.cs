@@ -10,6 +10,7 @@ public class BeginDroneLaunchConsequence : MonoBehaviour, IConsequence
 
     public GameObject drone;
     public GameObject dronePrefab;
+    public GameObject explosionPrefab;
 
     protected bool started = true;
     protected float explosionTime = -1f;
@@ -23,8 +24,15 @@ public class BeginDroneLaunchConsequence : MonoBehaviour, IConsequence
     {
         if (this.explosionTime > 0 && this.explosionTime <= Time.time)
         {
-            
+            CauseExplosion();
+            this.explosionTime = -1f;
+            Destroy(drone);
         }
+    }
+
+    private void CauseExplosion()
+    {
+        //GameObject.Instantiate(, drone.transform)
     }
 
     public void execute(TriggerData? data)
@@ -45,5 +53,6 @@ public class BeginDroneLaunchConsequence : MonoBehaviour, IConsequence
     {
         this.started = true;
         MoveObjectAlongWaypointsConsequence movement = toLaunch.GetComponent<MoveObjectAlongWaypointsConsequence>();
+        movement.execute(null);
     }
 }
