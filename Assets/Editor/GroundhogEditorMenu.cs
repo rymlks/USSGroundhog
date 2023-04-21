@@ -59,7 +59,6 @@ public class GroundhogEditorMenu : MonoBehaviour
             }
             AnimationUtility.SetAnimationEvents(clip, events);
         }
-        Debug.Log("Animation reversed!");
     }
  
     [MenuItem("Assets/Create Reversed Clip", true)]
