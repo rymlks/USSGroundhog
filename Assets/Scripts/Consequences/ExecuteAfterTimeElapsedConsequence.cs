@@ -1,46 +1,47 @@
 #nullable enable
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Consequences;
 using Triggers;
 using UnityEngine;
 
-public class ExecuteAfterTimeElapsedConsequence : MonoBehaviour, IConsequence
+namespace Consequences
 {
-    public float waitTimeSeconds = 2f;
-    public bool includeChildren = false;
-    protected float startTime = float.PositiveInfinity;
-    protected TriggerData triggerDataFromActivator;
-
-    void Update()
+    public class ExecuteAfterTimeElapsedConsequence : MonoBehaviour, IConsequence
     {
-        if (Time.time > this.startTime + this.waitTimeSeconds)
+        public float waitTimeSeconds = 2f;
+        public bool includeChildren = false;
+        protected float startTime = float.PositiveInfinity;
+        protected TriggerData triggerDataFromActivator;
+
+        void Update()
         {
-            this.executeLinkedConsequences();
+            if (Time.time > this.startTime + this.waitTimeSeconds)
+            {
+                this.executeLinkedConsequences();
+            }
         }
-    }
 
-    private void executeLinkedConsequences()
-    {
-        getLinkedConsequences().ForEach(consequence => consequence.execute(triggerDataFromActivator));
-    }
-
-    protected List<IConsequence> getLinkedConsequences()
-    {
-        if (this.includeChildren)
+        private void executeLinkedConsequences()
         {
-            return GetComponentsInChildren<IConsequence>().ToList();
+            getLinkedConsequences().ForEach(consequence => consequence.execute(triggerDataFromActivator));
         }
-        else
-        {
-            return GetComponents<IConsequence>().ToList();
-        }
-    }
 
-    public void execute(TriggerData? data)
-    {
-        this.startTime = Time.time;
-        this.triggerDataFromActivator = data;
+        protected List<IConsequence> getLinkedConsequences()
+        {
+            if (this.includeChildren)
+            {
+                return GetComponentsInChildren<IConsequence>().ToList();
+            }
+            else
+            {
+                return GetComponents<IConsequence>().ToList();
+            }
+        }
+
+        public void execute(TriggerData? data)
+        {
+            this.startTime = Time.time;
+            this.triggerDataFromActivator = data;
+        }
     }
 }
