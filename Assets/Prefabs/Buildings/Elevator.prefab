@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772376692552340305}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 3.5, z: -0.50000036}
+  m_LocalRotation: {x: 0, y: 0.953717, z: -0.30070576, w: 0}
+  m_LocalPosition: {x: -2.5, y: 3.314, z: -0.775}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5362806023153631280}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 180, z: 0}
 --- !u!108 &3050026036160469381
 Light:
   m_ObjectHideFlags: 0
@@ -42,16 +42,16 @@ Light:
   m_GameObject: {fileID: 1772376692552340305}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.33224675, g: 0.7075472, b: 0.130162, a: 1}
-  m_Intensity: 1
-  m_Range: 5
-  m_SpotAngle: 30
+  m_Intensity: 7
+  m_Range: 6
+  m_SpotAngle: 135
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -90,7 +90,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -0.000000086574516}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -284,6 +284,7 @@ MonoBehaviour:
   destroy: 0
   CustomTag: Player
   RequireItem: 
+  onStay: 0
 --- !u!114 &8149005022311567554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +300,7 @@ MonoBehaviour:
   objectsWithConsequences:
   - {fileID: 8750293463759439910}
   - {fileID: 1772376692552340305}
-  - {fileID: 0}
+  - {fileID: 6003070696805116130}
   executeInChildren: 0
 --- !u!65 &5192292182451118882
 BoxCollider:
@@ -314,6 +315,75 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.903295, y: 3.993835, z: 2.930033}
   m_Center: {x: -2.5181298, y: 1.496918, z: -3.961814}
+--- !u!1 &4993292090928366168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2930251493976488616}
+  - component: {fileID: 1641263164913574404}
+  - component: {fileID: 8326004547461911827}
+  m_Layer: 0
+  m_Name: TeleportElevator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2930251493976488616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993292090928366168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7876161874467869764}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1641263164913574404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993292090928366168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68219d916bdb17b408293f2e8057785c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toMove: {fileID: 2114741941722466264}
+  loop: 0
+  timeToTake: 0
+  coordinatesAreRelative: 1
+  waypoints:
+  - {x: 0, y: 6, z: 0}
+--- !u!114 &8326004547461911827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993292090928366168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68219d916bdb17b408293f2e8057785c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toMove: {fileID: 0}
+  loop: 0
+  timeToTake: 0
+  coordinatesAreRelative: 1
+  waypoints:
+  - {x: 0, y: 6, z: 0}
 --- !u!1 &6003070696805116130
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,9 +393,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7876161874467869764}
-  - component: {fileID: 1892358929550818652}
+  - component: {fileID: 4824424368495194464}
   m_Layer: 0
-  m_Name: TeleportElevator
+  m_Name: TeleportElevatorTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,11 +412,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2930251493976488616}
   m_Father: {fileID: 5362806023153631280}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1892358929550818652
+--- !u!114 &4824424368495194464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -355,14 +426,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6003070696805116130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68219d916bdb17b408293f2e8057785c, type: 3}
+  m_Script: {fileID: 11500000, guid: d91e2f3e39c178641bc597244c9f93b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toMove: {fileID: 0}
-  loop: 0
-  timeToTake: 10
-  coordinatesAreRelative: 0
-  waypoints: []
+  waitTimeSeconds: 2
+  includeChildren: 1
 --- !u!1 &7962367887705452511
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +571,7 @@ GameObject:
   - component: {fileID: 4793843475587419059}
   - component: {fileID: 4489899786710654302}
   - component: {fileID: 4375498087177538468}
-  - component: {fileID: 3318157503614687281}
+  - component: {fileID: 8551231482841687302}
   m_Layer: 0
   m_Name: ElevatorDoor
   m_TagString: Untagged
@@ -590,7 +658,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: d15e6ce658984be4dba714b6201bc4d3, type: 3}
---- !u!114 &3318157503614687281
+--- !u!114 &8551231482841687302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -599,15 +667,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8750293463759439910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54ceee06443996749bbd0a59255864b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 68219d916bdb17b408293f2e8057785c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   toMove: {fileID: 0}
   loop: 0
+  timeToTake: 1
+  coordinatesAreRelative: 1
   waypoints:
   - {x: 0, y: -3, z: 0}
-  timeToTake: 1
-  active: 0
 --- !u!1001 &1607951440001464881
 PrefabInstance:
   m_ObjectHideFlags: 0
