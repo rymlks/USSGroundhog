@@ -9,15 +9,17 @@ using UnityEngine;
 public class VacuumPullZone : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particleSystem;
-    [SerializeField] private MoveObjectInSquareConsequence _moveObjectInSquareConsequence;
+    [SerializeField] private SlideToDestinationConsequence _Consequence;
     [SerializeField] private ParticleCollisionWithTagTrigger _particleCollisionWithTagTrigger;
-    [SerializeField] private VacuumPullZoneModel _pullZoneModel = new VacuumPullZoneModel();
-    [SerializeField] private float areaRadius;
+    [SerializeField] private VacuumPullZoneModel _pullZoneModel;
+
+
     private void OnEnable()
     {
         //this.initialize
         Debug.Log($"<color=blue>{this.name} enabled</color>");
-        _pullZoneModel.name = this.name +"<color=yellow>Model</color>";
+        _pullZoneModel = new VacuumPullZoneModel();
+        _pullZoneModel.name = this.name +"<color=yellow>_Model</color>";
         
     }
 
@@ -33,16 +35,16 @@ public class VacuumPullZone : MonoBehaviour
         _pullZoneModel.trigger = null != _particleCollisionWithTagTrigger
             ? _particleCollisionWithTagTrigger
             : gameObject.GetComponent<ParticleCollisionWithTagTrigger>();
-        _pullZoneModel.trigger.particleSystem = null != _particleSystem
+        _pullZoneModel.trigger.particleSystem = _pullZoneModel.trigger != null && null != _particleSystem
             ? _particleSystem
             : null != _pullZoneModel.particleSystem
                 ? _pullZoneModel.particleSystem
                 : null;
-        _pullZoneModel.consequence = _moveObjectInSquareConsequence
-            ? _moveObjectInSquareConsequence
-            : gameObject.GetComponent<MoveObjectInSquareConsequence>();
+        _pullZoneModel.consequence = _Consequence != null
+            ? _Consequence
+            : null;
         GameObject playerObj = GameObject.FindWithTag("Player");
-        if (playerObj) _pullZoneModel.consequence.toMove = playerObj;
+        if (playerObj) _pullZoneModel.consequence.objectToSlide = playerObj.transform;
 
         ApplyModelPropertiesToFields(_pullZoneModel);
     }
@@ -50,7 +52,7 @@ public class VacuumPullZone : MonoBehaviour
     private void ApplyModelPropertiesToFields(VacuumPullZoneModel pullZoneModel)
     {
         _particleSystem = pullZoneModel.particleSystem;
-        _moveObjectInSquareConsequence = pullZoneModel.consequence;
+        _Consequence = pullZoneModel.consequence;
         _particleCollisionWithTagTrigger = pullZoneModel.trigger;
         _pullZoneModel = pullZoneModel;
     }
@@ -61,8 +63,8 @@ public class VacuumPullZone : MonoBehaviour
         if (_pullZoneModel.canReachPlayer)
         {
             //Pull player into point
-            Debug.Log($"<color=red>I can reach player object {_pullZoneModel.canReachPlayer}</color>");
-            //_moveObjectInSquareConsequence.execute(_particleCollisionWithTagTrigger.);
+            //Debug.LogWarning("<color=blue>KILL PLAYER</color>");
+            _Consequence.execute(null);
         }
         DetermineIfCanReachPlayer();
     }
@@ -81,6 +83,6 @@ public class VacuumPullZoneModel
     [CanBeNull] public float decay;
     [CanBeNull] public float strength;
     public bool canReachPlayer;
-    [CanBeNull] public MoveObjectInSquareConsequence consequence;
+    [CanBeNull] public SlideToDestinationConsequence consequence;
     [CanBeNull] public GameManager target;
 }

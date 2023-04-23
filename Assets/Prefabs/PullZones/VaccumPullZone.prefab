@@ -255,8 +255,6 @@ GameObject:
   m_Component:
   - component: {fileID: 382273892117168636}
   - component: {fileID: 3314997238713676263}
-  - component: {fileID: 2175640039469926403}
-  - component: {fileID: 512359354476246226}
   m_Layer: 0
   m_Name: VaccumPullZone
   m_TagString: Untagged
@@ -292,42 +290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f87ca4b9a20eb246bb4de94ebc940e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 0}
+  _particleSystem: {fileID: 3092551706210133160}
   _moveObjectInSquareConsequence: {fileID: 0}
-  _particleCollisionWithTagTrigger: {fileID: 0}
-  areaRadius: 0
---- !u!114 &2175640039469926403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3038460863915410498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42cde395659793d46be0c7b629337f2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroy: 0
-  particleSystem: {fileID: 3092551706210133160}
-  tagToTriggerOn: Player
---- !u!114 &512359354476246226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3038460863915410498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c35eec64beffb9245969c95ea4249c64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toMove: {fileID: 0}
-  loop: 0
-  width: 0
-  height: 0
-  timeToTake: 10
+  _particleCollisionWithTagTrigger: {fileID: 7718226974485134489}
 --- !u!1 &5257938923280502311
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +304,8 @@ GameObject:
   - component: {fileID: 1824779729152428054}
   - component: {fileID: 3092551706210133160}
   - component: {fileID: 4947766628175882611}
+  - component: {fileID: 7718226974485134489}
+  - component: {fileID: 955022959289505835}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -354,7 +321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5257938923280502311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.86, z: 0}
+  m_LocalPosition: {x: 0, y: -1.84, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5142,3 +5109,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7718226974485134489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5257938923280502311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42cde395659793d46be0c7b629337f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  particleSystem: {fileID: 0}
+  tagToTriggerOn: Player
+  collidedWithTag: 0
+--- !u!114 &955022959289505835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5257938923280502311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b0ac8688b99be4eb42152e526bacde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 382273892117168636}
+  speed: 0.1
+  start: 0
+  forward: 1
+  objectToSlide: {fileID: 0}
+  shouldReturn: 1

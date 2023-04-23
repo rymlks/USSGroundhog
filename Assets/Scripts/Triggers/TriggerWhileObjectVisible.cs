@@ -48,17 +48,7 @@ namespace Triggers
         protected bool CanSeeTarget()
         {
             var hitInfo = turretLock();
-
-            if (hitInfo.transform.CompareTag(tagToWatchFor))
-            {
-
-                return true;
-
-            } else
-            {
-                return false;
-
-            };
+            return hitInfo.transform.CompareTag(tagToWatchFor);
         }
 
         private RaycastHit turretLock()
