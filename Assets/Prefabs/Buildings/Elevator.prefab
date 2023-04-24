@@ -620,6 +620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2930251493976488616}
   - component: {fileID: 1641263164913574404}
+  - component: {fileID: 9022007333415242640}
   m_Layer: 0
   m_Name: TeleportElevator
   m_TagString: Untagged
@@ -660,6 +661,19 @@ MonoBehaviour:
   coordinatesAreRelative: 1
   waypoints:
   - {x: 0, y: 6, z: 0}
+--- !u!114 &9022007333415242640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993292090928366168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e36359f7ea41af45b3342ac8f2b0eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relativeDestination: {x: 0, y: 6, z: 0}
 --- !u!1 &6003070696805116130
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +732,7 @@ GameObject:
   - component: {fileID: 8964466365515826601}
   - component: {fileID: 6033037912980137727}
   m_Layer: 0
-  m_Name: ElevatorDeactivation
+  m_Name: ElevatorDeactivationTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

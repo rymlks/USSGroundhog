@@ -12,13 +12,13 @@ namespace Consequences
         public bool coordinatesAreRelative = false;
         public Vector3[] waypoints;
         
-        private bool _active = false;
-        private float _timePerWaypoint;
-        private int _currentWaypointIndex = -1;
-        private float _timeStartedCurrentWaypoint;
-        private Vector3 _positionWhenStartedCurrentWaypoint;
+        protected bool _active = false;
+        protected float _timePerWaypoint;
+        protected int _currentWaypointIndex = -1;
+        protected float _timeStartedCurrentWaypoint;
+        protected Vector3 _positionWhenStartedCurrentWaypoint;
 
-        void Start()
+        protected virtual void Start()
         {
             this._timePerWaypoint = timeToTake / (float)waypoints.Length;
             if (toMove == null)
@@ -51,12 +51,12 @@ namespace Consequences
             }
         }
 
-        private float timeElapsedCurrentWaypoint()
+        protected float timeElapsedCurrentWaypoint()
         {
             return (Time.time - _timeStartedCurrentWaypoint);
         }
 
-        private void move()
+        protected virtual void move()
         {
             toMove.transform.localPosition = Vector3.Lerp(_positionWhenStartedCurrentWaypoint, waypoints[_currentWaypointIndex],
                 Mathf.Min(timeElapsedCurrentWaypoint() / _timePerWaypoint, 1f));
@@ -90,7 +90,7 @@ namespace Consequences
             return this._currentWaypointIndex >= this.waypoints.Length;
         }
 
-        public void execute(TriggerData? data)
+        public virtual void execute(TriggerData? data)
         {
             this._active = true;
         }

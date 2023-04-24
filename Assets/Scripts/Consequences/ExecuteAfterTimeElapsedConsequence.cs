@@ -12,10 +12,11 @@ namespace Consequences
         public bool includeChildren = false;
         protected float startTime = float.PositiveInfinity;
         protected TriggerData triggerDataFromActivator;
+        protected bool isActive = true;
 
         void Update()
         {
-            if (Time.time > this.startTime + this.waitTimeSeconds)
+            if (this.isActive && Time.time > this.startTime + this.waitTimeSeconds)
             {
                 this.executeLinkedConsequences();
             }
@@ -24,6 +25,7 @@ namespace Consequences
         private void executeLinkedConsequences()
         {
             getLinkedConsequences().ForEach(consequence => consequence.execute(triggerDataFromActivator));
+            this.isActive = false;
         }
 
         protected List<IConsequence> getLinkedConsequences()
