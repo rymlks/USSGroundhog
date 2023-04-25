@@ -98,6 +98,7 @@ MonoBehaviour:
   - {fileID: 1793186015267303364}
   - {fileID: 1772376692552340305}
   - {fileID: 2690798532941770283}
+  - {fileID: 3055739764506593556}
   executeInChildren: 0
 --- !u!1 &1772376692552340305
 GameObject:
@@ -527,6 +528,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceOfAudio: {fileID: 0}
+--- !u!1 &3055739764506593556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1676823227591630434}
+  - component: {fileID: 5340633991631129932}
+  m_Layer: 0
+  m_Name: ActivationAreaToggle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1676823227591630434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3055739764506593556}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 264477366963049225}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5340633991631129932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3055739764506593556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adfbdd8e9ed3daf40b0f0a77cf5a9931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toToggle: {fileID: 2209080156056248350}
 --- !u!1 &4920168614170716943
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +605,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8964466365515826601}
+  - {fileID: 1676823227591630434}
   m_Father: {fileID: 5362806023153631280}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -596,6 +643,7 @@ MonoBehaviour:
   - {fileID: 6003070696805116130}
   - {fileID: 2690798532941770283}
   - {fileID: 6959785541560534784}
+  - {fileID: 3055739764506593556}
   executeInChildren: 0
 --- !u!65 &5192292182451118882
 BoxCollider:

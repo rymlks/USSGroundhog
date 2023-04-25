@@ -20,7 +20,9 @@ namespace Triggers
 
         public void OnTriggerEnter(Collider other)
         {
-            if (CustomTag == "" || other.CompareTag(CustomTag))
+            if ( enabled && 
+                (CustomTag == "" || 
+                 other.CompareTag(CustomTag)))
             {
                 if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
                 {
