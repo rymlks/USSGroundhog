@@ -1,22 +1,46 @@
 #nullable enable
 using Triggers;
+using UnityEngine;
 
 namespace Consequences
 {
-    public class RotateConsequence : DoASpinny, IConsequence
+    public class RotateConsequence : MonoBehaviour, IConsequence
     {
 
-        private float _speed;
+        public float speed;
+        public float max = float.PositiveInfinity;
+
+        protected float rotato = 0;
+        protected bool active = false;
 
         void Start()
         {
-            _speed = speed;
-            speed = 0;
+            if (max <= 0)
+            {
+                max = float.PositiveInfinity;
+            }
+            if(speed == 0){
+                speed = 1;
+            }
+        }
+        
+        void FixedUpdate()
+        {
+            if (active)
+            {
+                rotato += speed;
+                if (Mathf.Abs(rotato) >= Mathf.Abs(max))
+                {
+                    rotato = max;
+                }
+
+                transform.localRotation = Quaternion.Euler(0, rotato, 0);
+            }
         }
 
         public void execute(TriggerData? data)
         {
-            speed = _speed;
+            this.active = true;
         }
     }
 }
