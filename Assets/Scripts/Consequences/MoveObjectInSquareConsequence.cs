@@ -1,5 +1,6 @@
 #nullable enable
 using System.Collections.Generic;
+using TimedEffects;
 using Triggers;
 using UnityEngine;
 

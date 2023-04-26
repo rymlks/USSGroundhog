@@ -6,6 +6,7 @@ namespace Triggers
     {
         public string CustomTag = "";
         public string RequireItem = "";
+        public bool onStay = true;
         private KeyStatusUIController keyUI;
 
         new void Start()
@@ -19,7 +20,9 @@ namespace Triggers
 
         public void OnTriggerEnter(Collider other)
         {
-            if (CustomTag == "" || other.CompareTag(CustomTag))
+            if ( enabled && 
+                (CustomTag == "" || 
+                 other.CompareTag(CustomTag)))
             {
                 if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
                 {
@@ -37,7 +40,10 @@ namespace Triggers
 
         public void OnTriggerStay(Collider other)
         {
-            OnTriggerEnter(other);
+            if (onStay)
+            {
+                OnTriggerEnter(other);
+            }
         }
     }
 }
