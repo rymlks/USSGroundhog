@@ -226,7 +226,6 @@ MonoBehaviour:
   - {fileID: 1793186015267303364}
   - {fileID: 1772376692552340305}
   - {fileID: 3055739764506593556}
-  - {fileID: 2690798532941770283}
   executeInChildren: 0
 --- !u!1 &1772376692552340305
 GameObject:
@@ -525,7 +524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1581713353771801373}
   - component: {fileID: 8437124969563296756}
-  - component: {fileID: 2251157510622752437}
+  - component: {fileID: 698787952055011402}
   m_Layer: 0
   m_Name: ElevatorMusic
   m_TagString: Untagged
@@ -644,7 +643,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2251157510622752437
+--- !u!114 &698787952055011402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -653,10 +652,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2690798532941770283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40c67c1bc65c81f43a9edd5c5e04598f, type: 3}
+  m_Script: {fileID: 11500000, guid: c26062656fdb276499b07259adfcf21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceOfAudio: {fileID: 0}
+  music: {fileID: 8300000, guid: 5f30988d121aec74cba4766121a7ceed, type: 3}
+  secondsToPlay: 6
 --- !u!1 &3055739764506593556
 GameObject:
   m_ObjectHideFlags: 0
