@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class ToggleLightColorConsequence : MonoBehaviour, IConsequence
+    public class ToggleLightColorConsequence : AbstractConsequence
     {
         public Color goingTo;
         public Light lightToToggle;
@@ -20,7 +20,7 @@ namespace Consequences
             
         }
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             if (!lightToToggle) return;
 

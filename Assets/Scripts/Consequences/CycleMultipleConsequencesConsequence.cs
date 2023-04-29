@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class CycleMultipleConsequencesConsequence : MonoBehaviour, IConsequence
+    public class CycleMultipleConsequencesConsequence : AbstractConsequence
     {
         public GameObject[] toCycleBetween;
         protected int currentIndex = -1;
@@ -17,7 +17,7 @@ namespace Consequences
             }
         }
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             this.currentIndex = (this.currentIndex + 1) % toCycleBetween.Length;
             foreach (IConsequence consequence in toCycleBetween[currentIndex].GetComponents<IConsequence>())

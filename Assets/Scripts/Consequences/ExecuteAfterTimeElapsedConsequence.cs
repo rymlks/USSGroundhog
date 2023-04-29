@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class ExecuteAfterTimeElapsedConsequence : MonoBehaviour, IConsequence
+    public class ExecuteAfterTimeElapsedConsequence : AbstractConsequence
     {
         public float waitTimeSeconds = 2f;
         public bool includeChildren = false;
@@ -52,7 +52,7 @@ namespace Consequences
             }
         }
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             this.startTime = Time.time;
             this.triggerDataFromActivator = data;

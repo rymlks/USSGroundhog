@@ -5,7 +5,7 @@ using Consequences;
 using Triggers;
 using UnityEngine;
 
-public class ToggleAudioConsequence : MonoBehaviour, IConsequence
+public class ToggleAudioConsequence : AbstractConsequence
 {
     public AudioSource sourceOfAudio;
 
@@ -18,7 +18,7 @@ public class ToggleAudioConsequence : MonoBehaviour, IConsequence
     }
 
 
-    public void execute(TriggerData? data)
+    public override void execute(TriggerData? data)
     {
         if (this.sourceOfAudio.isPlaying)
         {
