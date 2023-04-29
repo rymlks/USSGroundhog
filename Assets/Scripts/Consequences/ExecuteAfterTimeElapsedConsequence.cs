@@ -10,9 +10,21 @@ namespace Consequences
     {
         public float waitTimeSeconds = 2f;
         public bool includeChildren = false;
+
+        public GameObject consequenceObject;
+        
         protected float startTime = float.PositiveInfinity;
         protected TriggerData triggerDataFromActivator;
         protected bool isActive = true;
+        private bool _isconsequenceObjectNull;
+
+        private void Start()
+        {
+            if (this.consequenceObject == null)
+            {
+                this.consequenceObject = this.gameObject;
+            }
+        }
 
         void Update()
         {
@@ -32,11 +44,11 @@ namespace Consequences
         {
             if (this.includeChildren)
             {
-                return GetComponentsInChildren<IConsequence>().ToList();
+                return consequenceObject.GetComponentsInChildren<IConsequence>().ToList();
             }
             else
             {
-                return GetComponents<IConsequence>().ToList();
+                return consequenceObject.GetComponents<IConsequence>().ToList();
             }
         }
 
@@ -44,6 +56,7 @@ namespace Consequences
         {
             this.startTime = Time.time;
             this.triggerDataFromActivator = data;
+            this.isActive = true;
         }
     }
 }
