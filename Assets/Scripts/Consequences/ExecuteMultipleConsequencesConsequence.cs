@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class ExecuteMultipleConsequencesConsequence : MonoBehaviour, IConsequence
+    public class ExecuteMultipleConsequencesConsequence : AbstractConsequence
     {
         [SerializeField]
         protected GameObject[] objectsWithConsequences;
@@ -14,7 +14,7 @@ namespace Consequences
         [SerializeField] 
         protected bool executeInChildren = false;
         
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             foreach (var consequenceObject in objectsWithConsequences)
             {

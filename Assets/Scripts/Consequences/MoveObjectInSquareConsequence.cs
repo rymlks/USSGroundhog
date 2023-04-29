@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class MoveObjectInSquareConsequence : MonoBehaviour, IConsequence
+    public class MoveObjectInSquareConsequence : AbstractConsequence
     {
         public GameObject toMove;
         public bool loop = false;
@@ -24,7 +24,7 @@ namespace Consequences
             return waypointsInRectangle;
         }
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             MoveObjectAlongWaypoints moveAlongWaypoints = toMove.AddComponent<MoveObjectAlongWaypoints>();
             moveAlongWaypoints.loop = loop;

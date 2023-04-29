@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class AutomaticFireConsequence : MonoBehaviour, IConsequence
+    public class AutomaticFireConsequence : AbstractConsequence
     {
         public float secondsToFire = 1f;
     
@@ -65,7 +65,7 @@ namespace Consequences
             return this._lastExecutedTime + this.secondsToFire > Time.time;
         }
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             this._lastExecutedTime = Time.time;
         }

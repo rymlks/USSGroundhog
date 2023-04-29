@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class RotateConsequence : MonoBehaviour, IConsequence
+    public class RotateConsequence : AbstractConsequence
     {
 
         public float speed;
@@ -38,7 +38,7 @@ namespace Consequences
             }
         }
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             this.active = true;
         }

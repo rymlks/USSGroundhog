@@ -5,7 +5,7 @@ using Consequences;
 using Triggers;
 using UnityEngine;
 
-public class ToggleTriggerConsequence : MonoBehaviour, IConsequence
+public class ToggleTriggerConsequence : AbstractConsequence
 {
 
     public AbstractTrigger toToggle;
@@ -19,7 +19,7 @@ public class ToggleTriggerConsequence : MonoBehaviour, IConsequence
 
     }
 
-    public void execute(TriggerData? data)
+    public override void execute(TriggerData? data)
     {
         this.toToggle.enabled = !this.toToggle.enabled;
     }

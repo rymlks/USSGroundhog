@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class MoveObjectAlongWaypointsConsequence : MonoBehaviour, IConsequence
+    public class MoveObjectAlongWaypointsConsequence : AbstractConsequence
     {
         public GameObject toMove;
         public bool loop = false;
@@ -90,7 +90,7 @@ namespace Consequences
             return this._currentWaypointIndex >= this.waypoints.Length;
         }
 
-        public virtual void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             this._active = true;
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class SlideToDestinationConsequence : MonoBehaviour, IConsequence
+    public class SlideToDestinationConsequence : AbstractConsequence
     {
         public Transform destination;
         public float speed = 0.1f;
@@ -58,7 +58,7 @@ namespace Consequences
             }
         }
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             this.start = true;
         }
