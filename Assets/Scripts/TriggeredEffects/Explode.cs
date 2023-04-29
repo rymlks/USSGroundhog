@@ -43,10 +43,7 @@ public class Explode : MonoBehaviour
 
             if (gameObject.CompareTag("exploding_canister"))
             {
-                gameObject.GetComponent<SoundFXManager>().Play_Small_explosion();
-
-                var explode = Instantiate(ExplosionPrefab);
-                explode.transform.position = transform.position;
+                createDefaultExplosion();
 
             } else if (gameObject.CompareTag("exploding_tank"))
             {
@@ -63,6 +60,9 @@ public class Explode : MonoBehaviour
                 var explode = Instantiate(ExplosionPrefab);
                 explode.transform.position = transform.position;
 
+            } else
+            {
+                createDefaultExplosion();
             }
 
             GameManager.instance.CommitDie(new Dictionary<string, object>() {
@@ -75,5 +75,12 @@ public class Explode : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    private void createDefaultExplosion()
+    {
+        gameObject.GetComponent<SoundFXManager>().Play_Small_explosion();
+        var explode = Instantiate(ExplosionPrefab);
+        explode.transform.position = transform.position;
     }
 }
