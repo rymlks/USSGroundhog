@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 33558792581634452}
   - component: {fileID: 23829881824936714}
   - component: {fileID: 64631289300033492}
-  - component: {fileID: 6310253804362411035}
-  - component: {fileID: 6142346398173159030}
   m_Layer: 0
   m_Name: SM_Prop_Crate_health_02
   m_TagString: Untagged
@@ -102,34 +100,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43900954272836588, guid: 422d391cc4bef1f4685de1a23cb78a6f, type: 2}
---- !u!114 &6310253804362411035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643578686882480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27766b92662dd1844b3677d56635c535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionStrength: 30
-  persist: 1
-  ExplosionPrefab: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
---- !u!114 &6142346398173159030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643578686882480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 420857d4b1a36dc45869c2b7fb5a35a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
 --- !u!1 &1111250898605527641
 GameObject:
   m_ObjectHideFlags: 0
