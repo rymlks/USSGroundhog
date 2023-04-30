@@ -15,7 +15,6 @@ public class Explode : MonoBehaviour
 
     public void Start()
     {
-
         this.GetComponent<Collider>().isTrigger = true;
 
     }
