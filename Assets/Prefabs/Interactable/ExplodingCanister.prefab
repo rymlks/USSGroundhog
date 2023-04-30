@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 1109916361414003166}
   - component: {fileID: 1139447109916868348}
   - component: {fileID: 392605162}
+  - component: {fileID: 3052597007744542198}
   m_Layer: 0
-  m_Name: ExplodingCanister Variant
+  m_Name: ExplodingCanister
   m_TagString: exploding_canister
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,6 +118,26 @@ MonoBehaviour:
   ExplosionPrefab: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
   ExampleCamera: {fileID: 0}
   dontRespawn: 0
+--- !u!114 &3052597007744542198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096017102154997716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db552021a6e65746973ce26b9fdfba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Small_explosion: {fileID: 0}
+  Tank_explosion: {fileID: 0}
+  Crate_explosion: {fileID: 0}
+  Door_Slide: {fileID: 0}
+  PA_Jingle: {fileID: 0}
+  Ship_Alarm: {fileID: 0}
+  Turret_Firing: {fileID: 0}
+  Turret_Firing_Tail: {fileID: 0}
 --- !u!1001 &1095459320195606500
 PrefabInstance:
   m_ObjectHideFlags: 0
