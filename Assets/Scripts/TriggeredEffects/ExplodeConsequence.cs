@@ -11,12 +11,14 @@ public class ExplodeConsequence : AbstractConsequence
     public bool persist = true;
     public GameObject ExplosionPrefab;
     public GameObject ExampleCamera;
+    protected SoundEffectPlayer soundEffectPlayer;
 
     public bool dontRespawn = false;
+
     public void Start()
     {
         this.GetComponent<Collider>().isTrigger = true;
-
+        this.soundEffectPlayer = FindObjectOfType<SoundEffectPlayer>();
     }
 
     private void createDefaultExplosion()
@@ -28,38 +30,17 @@ public class ExplodeConsequence : AbstractConsequence
 
     public override void execute(TriggerData? data)
     {
-        foreach(var part in GetComponentsInChildren<ParticleSystem>())
+        foreach (var part in GetComponentsInChildren<ParticleSystem>())
         {
-
             part.Play();
-
         }
 
-        if (gameObject.CompareTag("exploding_canister"))
+        createDefaultExplosion();
+
+        playSoundEffect();
+
+        GameManager.instance.CommitDie(new Dictionary<string, object>()
         {
-            createDefaultExplosion();
-
-        } else if (gameObject.CompareTag("exploding_tank"))
-        {
-            gameObject.GetComponent<SoundFXManager>().Play_Tank_explosion();
-
-            var explode = Instantiate(ExplosionPrefab);
-            explode.transform.position = transform.position;
-
-        }  else if (gameObject.CompareTag("exploding_crate"))
-        {
-
-            gameObject.GetComponent<SoundFXManager>().Play_Crate_explosion();
-
-            var explode = Instantiate(ExplosionPrefab);
-            explode.transform.position = transform.position;
-
-        } else
-        {
-            createDefaultExplosion();
-        }
-
-        GameManager.instance.CommitDie(new Dictionary<string, object>() {
             {"explosion", explosionVector3(data).normalized * explosionStrength},
             {"ragdoll", true},
             {"dontRespawn", dontRespawn}
@@ -68,6 +49,11 @@ public class ExplodeConsequence : AbstractConsequence
         {
             Destroy(gameObject);
         }
+    }
+
+    private void playSoundEffect()
+    {
+        this.soundEffectPlayer.PlayExplosionSound(this.tag);
     }
 
     private Vector3 explosionVector3(TriggerData data)
