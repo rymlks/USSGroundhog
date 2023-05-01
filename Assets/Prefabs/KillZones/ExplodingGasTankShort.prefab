@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 95462108678489328}
   - component: {fileID: 64171271938846500}
   - component: {fileID: -2413557162912429025}
+  - component: {fileID: 6882071723544098232}
   m_Layer: 0
   m_Name: ExplodingGasTankShort
   m_TagString: exploding_canister
@@ -137,3 +138,19 @@ MonoBehaviour:
   ExplosionPrefab: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
   ExampleCamera: {fileID: 0}
   dontRespawn: 0
+--- !u!114 &6882071723544098232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706226625809932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  CustomTag: Player
+  RequireItem: 
+  onStay: 0

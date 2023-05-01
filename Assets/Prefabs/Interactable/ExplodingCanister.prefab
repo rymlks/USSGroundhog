@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1139447109916868348}
   - component: {fileID: 392605162}
   - component: {fileID: 3052597007744542198}
+  - component: {fileID: 4242629406180471079}
   m_Layer: 0
   m_Name: ExplodingCanister
   m_TagString: exploding_canister
@@ -138,6 +139,22 @@ MonoBehaviour:
   Ship_Alarm: {fileID: 0}
   Turret_Firing: {fileID: 0}
   Turret_Firing_Tail: {fileID: 0}
+--- !u!114 &4242629406180471079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096017102154997716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  CustomTag: Player
+  RequireItem: 
+  onStay: 0
 --- !u!1001 &1095459320195606500
 PrefabInstance:
   m_ObjectHideFlags: 0

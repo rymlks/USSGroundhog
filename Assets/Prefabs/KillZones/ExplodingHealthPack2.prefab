@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 3814481175828398403}
   - component: {fileID: 3909330690062971694}
   - component: {fileID: 7168961007205023512}
+  - component: {fileID: 838385736966900192}
   m_Layer: 0
   m_Name: ExplodingHealthPack2
   m_TagString: exploding_crate
@@ -251,6 +252,22 @@ MonoBehaviour:
   Ship_Alarm: {fileID: 0}
   Turret_Firing: {fileID: 0}
   Turret_Firing_Tail: {fileID: 0}
+--- !u!114 &838385736966900192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7167640292495224808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  CustomTag: Player
+  RequireItem: 
+  onStay: 0
 --- !u!1 &7788606945464286977
 GameObject:
   m_ObjectHideFlags: 0
