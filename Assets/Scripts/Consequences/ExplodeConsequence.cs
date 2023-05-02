@@ -23,7 +23,6 @@ public class ExplodeConsequence : AbstractConsequence
 
     private void createDefaultExplosion()
     {
-        gameObject.GetComponent<SoundFXManager>().Play_Small_explosion();
         var explode = Instantiate(ExplosionPrefab);
         explode.transform.position = transform.position;
     }

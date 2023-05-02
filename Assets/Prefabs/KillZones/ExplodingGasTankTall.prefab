@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 95435024080827778}
   - component: {fileID: 64767440466019546}
   - component: {fileID: 4683986006286791251}
-  - component: {fileID: 1286524508967444037}
   - component: {fileID: 2356844285896902660}
   m_Layer: 0
   m_Name: ExplodingGasTankTall
@@ -139,26 +138,6 @@ MonoBehaviour:
   ExplosionPrefab: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
   ExampleCamera: {fileID: 0}
   dontRespawn: 0
---- !u!114 &1286524508967444037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662120072097882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1db552021a6e65746973ce26b9fdfba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Small_explosion: {fileID: 0}
-  Tank_explosion: {fileID: 0}
-  Crate_explosion: {fileID: 0}
-  Door_Slide: {fileID: 0}
-  PA_Jingle: {fileID: 0}
-  Ship_Alarm: {fileID: 0}
-  Turret_Firing: {fileID: 0}
-  Turret_Firing_Tail: {fileID: 0}
 --- !u!114 &2356844285896902660
 MonoBehaviour:
   m_ObjectHideFlags: 0
