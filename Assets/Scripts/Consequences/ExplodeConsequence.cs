@@ -35,9 +35,7 @@ public class ExplodeConsequence : AbstractConsequence
         }
 
         createDefaultExplosion();
-
-        playSoundEffect();
-
+        
         GameManager.instance.CommitDie(new Dictionary<string, object>()
         {
             {"explosion", explosionVector3(data).normalized * explosionStrength},
@@ -48,11 +46,6 @@ public class ExplodeConsequence : AbstractConsequence
         {
             Destroy(gameObject);
         }
-    }
-
-    private void playSoundEffect()
-    {
-        this.soundEffectPlayer.PlayExplosionSound(this.tag);
     }
 
     private Vector3 explosionVector3(TriggerData data)

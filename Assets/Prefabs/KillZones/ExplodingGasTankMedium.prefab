@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 64078436170890602}
   - component: {fileID: 7081591432571808861}
   - component: {fileID: 8986445452016976163}
+  - component: {fileID: 2461083464554009768}
+  - component: {fileID: 7190860589232426121}
   m_Layer: 0
   m_Name: ExplodingGasTankMedium
-  m_TagString: exploding_tank
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,3 +135,29 @@ MonoBehaviour:
   CustomTag: Player
   RequireItem: 
   onStay: 0
+--- !u!114 &2461083464554009768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058322186698390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661cc7bf50956c04a811d719d90e311f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 0}
+--- !u!114 &7190860589232426121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058322186698390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661cc7bf50956c04a811d719d90e311f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: b96e61c0594c43041a56f5e535e16135, type: 3}

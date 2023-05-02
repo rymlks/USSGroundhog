@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 3814481175828398403}
   - component: {fileID: 3909330690062971694}
   - component: {fileID: 838385736966900192}
+  - component: {fileID: 4108349191606718625}
   m_Layer: 0
   m_Name: ExplodingHealthPack2
   m_TagString: exploding_crate
@@ -247,6 +248,19 @@ MonoBehaviour:
   CustomTag: Player
   RequireItem: 
   onStay: 0
+--- !u!114 &4108349191606718625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7167640292495224808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661cc7bf50956c04a811d719d90e311f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: f93994c5a9968924c88daf03204a804e, type: 3}
 --- !u!1 &7788606945464286977
 GameObject:
   m_ObjectHideFlags: 0

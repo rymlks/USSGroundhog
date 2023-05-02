@@ -38,6 +38,12 @@ public class SoundEffectPlayer : MonoBehaviour
         source.Play();
     }
 
+    public void PlaySound(AudioClip toPlay)
+    {
+        source.clip = toPlay;
+        source.Play();
+    }
+
     public void PlayTurretStart()
     {
         source.clip = Turret_Firing;
