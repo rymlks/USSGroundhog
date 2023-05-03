@@ -1,3 +1,4 @@
+#nullable enable
 using System.Collections;
 using System.Collections.Generic;
 using Consequences;
@@ -42,18 +43,22 @@ public class ExplodeConsequence : AbstractConsequence
             {"ragdoll", true},
             {"dontRespawn", dontRespawn}
         });
+        Debug.Log(explosionVector3(data).normalized * explosionStrength);
         if (!persist)
         {
             Destroy(gameObject);
         }
     }
 
-    private Vector3 explosionVector3(TriggerData data)
+    private Vector3 explosionVector3(TriggerData? data)
     {
         if (data != null)
         {
             return (Vector3) (data.triggerLocation - transform.position);
         }
-        else return transform.position;
+        else
+        {
+            return transform.position;
+        }
     }
 }
