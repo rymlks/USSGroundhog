@@ -43,7 +43,6 @@ public class ExplodeConsequence : AbstractConsequence
             {"ragdoll", true},
             {"dontRespawn", dontRespawn}
         });
-        Debug.Log(explosionVector3(data).normalized * explosionStrength);
         if (!persist)
         {
             Destroy(gameObject);
