@@ -11,7 +11,7 @@ namespace Consequences
     
         public override void execute(TriggerData? data)
         {
-            FindObjectOfType<MusicStack>().AddMusicToStack(music, secondsToPlay);
+            FindObjectOfType<MusicStack>().PushMusicToStack(music, secondsToPlay);
         }
     }
 }

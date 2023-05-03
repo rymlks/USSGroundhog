@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player.PlayerStatusEffect;
 using PlayerStatusEffect;
 using UnityEngine;
 
