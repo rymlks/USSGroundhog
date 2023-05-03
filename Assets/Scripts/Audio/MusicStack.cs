@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,14 +9,15 @@ namespace Audio
     {
         public AudioSource musicSource;
         public AudioClip musicStart;
-        private AudioClip _pausedTrack;
+        
         private float _pausedAtTime;
         private float _secondsToPause;
+        protected Stack<Tuple<AudioClip, float>> stackedMusic;
 
         void Start()
         {
-            musicSource.clip = musicStart;
-            musicSource.Play();
+            stackedMusic = new Stack<Tuple<AudioClip, float>>();
+            stackedMusic.Push(new Tuple<AudioClip, float>(musicStart, -1f));
             this._pausedAtTime = float.PositiveInfinity;
         }
 
@@ -28,14 +30,13 @@ namespace Audio
         {
             if (this._pausedAtTime + this._secondsToPause <= Time.time)
             {
-                restoreMainMusic();
+                PopMusicFromStack();
             }
         }
 
-        public void AddMusicToStack(AudioClip toAdd, float secondsToPlay)
+        public void PushMusicToStack(AudioClip toAdd, float secondsToPlay)
         {
             this.musicSource.Pause();
-            this._pausedTrack = this.musicSource.clip;
             this.musicSource.clip = toAdd;
             this.musicSource.Play();
             this._pausedAtTime = Time.time;
@@ -43,11 +44,19 @@ namespace Audio
 
         }
 
-        protected void restoreMainMusic()
+        protected void PlayTopOfStack()
+        {
+            Tuple<AudioClip, float> clipAndTimeToPlay = this.stackedMusic.Peek();
+            this.musicSource.clip = clipAndTimeToPlay.Item1;
+            this.musicSource.time = clipAndTimeToPlay.Item2;
+            this.musicSource.Play();
+        }
+
+        protected void PopMusicFromStack()
         {
             this.musicSource.Pause();
-            this.musicSource.clip = this._pausedTrack;
-            this.musicSource.Play();
+            this.stackedMusic.Pop();
+            this.PlayTopOfStack();
         }
 
     }
