@@ -31,7 +31,7 @@ namespace Triggers
                     return;
                 }
 
-                Engage();
+                Engage(new TriggerData(CustomTag + " contacted", other.transform.position));
                 if (destroy)
                 {
                     Destroy(gameObject);

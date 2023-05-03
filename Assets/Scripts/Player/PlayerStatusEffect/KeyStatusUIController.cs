@@ -27,7 +27,6 @@ namespace Player.PlayerStatusEffect
         {
             if (this.affectedNow())
             {
-                Debug.Log("Setting alertColor to " + alertColor);
                 this.textMesh.color = alertColor;
             }
             else

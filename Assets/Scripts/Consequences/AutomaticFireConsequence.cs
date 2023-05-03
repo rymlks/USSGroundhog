@@ -13,7 +13,7 @@ namespace Consequences
 
         protected float _lastExecutedTime = float.MinValue;
         private bool _firedLastFrame;
-        private SoundFXManager _soundFXManager;
+        private SoundEffectPlayer _soundFXManager;
 
         void Start()
         {
@@ -29,7 +29,7 @@ namespace Consequences
 
             if (_soundFXManager == null)
             {
-                this._soundFXManager = GetComponent<SoundFXManager>();
+                this._soundFXManager = GetComponent<SoundEffectPlayer>();
             }
         }
 
@@ -37,12 +37,12 @@ namespace Consequences
         {
             if (_firedLastFrame && !ShouldFireThisFrame())
             {
-                _soundFXManager.Stop_Turret_Firing();
+                _soundFXManager.PlayTurretStop();
                 StopAllParticleSystems();
             }
             else if (!_firedLastFrame && ShouldFireThisFrame())
             {
-                _soundFXManager.Play_Turret_Firing();
+                _soundFXManager.PlayTurretStart();
                 StartAllParticleSystems();
             }
             _firedLastFrame = ShouldFireThisFrame();
