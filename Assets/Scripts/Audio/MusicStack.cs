@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,15 +9,15 @@ namespace Audio
     {
         public AudioSource musicSource;
         public AudioClip musicStart;
-        private AudioClip _pausedTrack;
-        private float _pausedAtTime;
-        private float _secondsToPause;
+        
+        protected Stack<MusicTrackPlayData> stackedMusic;
+        private float _lastPlayedTime;
 
         void Start()
         {
-            musicSource.clip = musicStart;
-            musicSource.Play();
-            this._pausedAtTime = float.PositiveInfinity;
+            stackedMusic = new Stack<MusicTrackPlayData>();
+            stackedMusic.Push(new MusicTrackPlayData(musicStart, 0f, -1f));
+            PlayTopOfStack();
         }
 
         void Update()
@@ -26,29 +27,35 @@ namespace Audio
 
         void checkForMusicExpiry()
         {
-            if (this._pausedAtTime + this._secondsToPause <= Time.time)
+             MusicTrackPlayData top = stackedMusic.Peek();
+            if (!top.shouldPlayForever() && this._lastPlayedTime + top.timeIndexToPlayTo <= Time.time)
             {
-                restoreMainMusic();
+                PopMusicFromStack();
             }
         }
 
-        public void AddMusicToStack(AudioClip toAdd, float secondsToPlay)
+        public void PushMusicToStack(AudioClip toAdd, float secondsToPlay)
         {
             this.musicSource.Pause();
-            this._pausedTrack = this.musicSource.clip;
-            this.musicSource.clip = toAdd;
-            this.musicSource.Play();
-            this._pausedAtTime = Time.time;
-            this._secondsToPause = secondsToPlay;
-
+            this.stackedMusic.Peek().currentTimeIndex = this.musicSource.time;
+            this.stackedMusic.Push(new MusicTrackPlayData(toAdd, 0f, secondsToPlay));
+            this.PlayTopOfStack();
         }
 
-        protected void restoreMainMusic()
+        protected void PlayTopOfStack()
+        {
+            MusicTrackPlayData clipAndTimeToPlay = this.stackedMusic.Peek();
+            this.musicSource.clip = clipAndTimeToPlay.clip;
+            this.musicSource.time = clipAndTimeToPlay.currentTimeIndex;
+            this.musicSource.Play();
+            this._lastPlayedTime = Time.time;
+        }
+
+        protected void PopMusicFromStack()
         {
             this.musicSource.Pause();
-            this.musicSource.clip = this._pausedTrack;
-            this.musicSource.Play();
+            this.stackedMusic.Pop();
+            this.PlayTopOfStack();
         }
-
     }
 }
