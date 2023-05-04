@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class InflictStatusEffectConsequence : MonoBehaviour, IConsequence
+    public class InflictStatusEffectConsequence : AbstractConsequence
     {
         public string statusEffectName = "burning";
         private PlayerHealthState _playerHealthStatus;
@@ -14,7 +14,7 @@ namespace Consequences
             this._playerHealthStatus = FindObjectOfType<PlayerHealthState>();
         }
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             _playerHealthStatus.Hurt(statusEffectName, Time.deltaTime);
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class AutomaticFireConsequence : MonoBehaviour, IConsequence
+    public class AutomaticFireConsequence : AbstractConsequence
     {
         public float secondsToFire = 1f;
     
@@ -13,7 +13,7 @@ namespace Consequences
 
         protected float _lastExecutedTime = float.MinValue;
         private bool _firedLastFrame;
-        private SoundFXManager _soundFXManager;
+        private SoundEffectPlayer _soundFXManager;
 
         void Start()
         {
@@ -29,7 +29,7 @@ namespace Consequences
 
             if (_soundFXManager == null)
             {
-                this._soundFXManager = GetComponent<SoundFXManager>();
+                this._soundFXManager = GetComponent<SoundEffectPlayer>();
             }
         }
 
@@ -37,12 +37,12 @@ namespace Consequences
         {
             if (_firedLastFrame && !ShouldFireThisFrame())
             {
-                _soundFXManager.Stop_Turret_Firing();
+                _soundFXManager.PlayTurretStop();
                 StopAllParticleSystems();
             }
             else if (!_firedLastFrame && ShouldFireThisFrame())
             {
-                _soundFXManager.Play_Turret_Firing();
+                _soundFXManager.PlayTurretStart();
                 StartAllParticleSystems();
             }
             _firedLastFrame = ShouldFireThisFrame();
@@ -65,7 +65,7 @@ namespace Consequences
             return this._lastExecutedTime + this.secondsToFire > Time.time;
         }
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             this._lastExecutedTime = Time.time;
         }

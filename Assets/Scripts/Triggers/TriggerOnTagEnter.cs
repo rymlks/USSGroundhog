@@ -1,3 +1,4 @@
+using Player.PlayerStatusEffect;
 using UnityEngine;
 
 namespace Triggers
@@ -24,7 +25,9 @@ namespace Triggers
         
         public void OnTriggerEnter(Collider other)
         {
-            if (CustomTag == "" || other.CompareTag(CustomTag))
+            if ( enabled && 
+                (CustomTag == "" || 
+                 other.CompareTag(CustomTag)))
             {
                 if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
                 {
@@ -40,7 +43,7 @@ namespace Triggers
                     }
                 }
 
-                Engage();
+                Engage(new TriggerData(CustomTag + " contacted", other.transform.position));
                 if (destroy)
                 {
                     Destroy(gameObject);

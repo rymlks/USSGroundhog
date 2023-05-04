@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class PlayParticleSystemAtLocationConsequence : MonoBehaviour, IConsequence
+    public class PlayParticleSystemAtLocationConsequence : AbstractConsequence
     {
         public ParticleSystem toPlay;
 
@@ -17,7 +17,7 @@ namespace Consequences
             }
         }
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
 
             Vector3 positionToSplatAt = this.gameObject.transform.position; 

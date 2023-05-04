@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class DeathConsequence : MonoBehaviour, IConsequence
+    public class DeathConsequence : AbstractConsequence
     {
         public string deathReason;
 
-        public void execute(TriggerData? data)
+        public override void execute(TriggerData? data)
         {
             GameManager.instance.CommitDie(deathReason);
         }

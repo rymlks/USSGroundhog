@@ -64,16 +64,21 @@ public class PlayerRespawner : MonoBehaviour
     public IEnumerator Respawn_Coroutine(Dictionary<string, object> args)
     {
         spawnAndAnimateCorpse(new DeathCharacteristics(args));
+        player.Character.gameObject.SetActive(false);
 
-        if (!args.ContainsKey("dontRespawn") || !(bool) args["dontRespawn"])
+        if (shouldRespawn(args))
         {
-            player.Character.gameObject.SetActive(false);
             yield return new WaitForSeconds(deathSeconds);
             player.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(this.getRespawnLocation());
             resetPlayerHealthState();
             player.Character.gameObject.SetActive(true);
         }
 
+    }
+
+    private static bool shouldRespawn(Dictionary<string, object> args)
+    {
+        return !args.ContainsKey("dontRespawn") || !(bool) args["dontRespawn"];
     }
 
     private void spawnAndAnimateCorpse(DeathCharacteristics characteristics)
