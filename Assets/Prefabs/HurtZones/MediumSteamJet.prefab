@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6328991210292423661}
   - component: {fileID: 939669374565372469}
-  - component: {fileID: 7457380983465772398}
+  - component: {fileID: 9170805554716826865}
+  - component: {fileID: 6479387274388438003}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -47,7 +48,26 @@ CapsuleCollider:
   m_Height: 3.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7457380983465772398
+--- !u!114 &9170805554716826865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159132732359687662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  CustomTag: Player
+  acceptTagInParent: 0
+  RequireItem: 
+  OnStay: 1
+  requireComponentsEnabled: []
+--- !u!114 &6479387274388438003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,9 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef87299456870d0499ffac4bdcbbf101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  immunityGrantingItems: []
-  deathReason: freezing
   multiplier: 1
+  damageType: 
 --- !u!1 &3967358688842517278
 GameObject:
   m_ObjectHideFlags: 0

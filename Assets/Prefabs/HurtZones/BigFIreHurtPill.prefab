@@ -4577,6 +4577,7 @@ GameObject:
   - component: {fileID: 9165784320725240762}
   - component: {fileID: 7171163498627888462}
   - component: {fileID: 2221745449212453629}
+  - component: {fileID: 5480895772805945998}
   m_Layer: 0
   m_Name: BigFIreHurtPill
   m_TagString: Untagged
@@ -9156,9 +9157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef87299456870d0499ffac4bdcbbf101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  immunityGrantingItems: []
-  deathReason: burning
   multiplier: 3
+  damageType: burning
 --- !u!82 &2221745449212453629
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9255,3 +9255,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5480895772805945998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6951260207055103783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  CustomTag: Player
+  acceptTagInParent: 1
+  RequireItem: 
+  OnStay: 1
+  requireComponentsEnabled: []
