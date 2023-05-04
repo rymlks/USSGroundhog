@@ -6,9 +6,11 @@ namespace Triggers
     public class TriggerOnTagEnter : AbstractTrigger
     {
         public string CustomTag = "";
+        public bool acceptTagInParent = false;
         public string RequireItem = "";
-        public bool onStay = true;
         private KeyStatusUIController keyUI;
+        public bool OnStay = true;
+        public Behaviour[] requireComponentsEnabled;
 
         new void Start()
         {
@@ -19,6 +21,8 @@ namespace Triggers
             }
         }
 
+        
+        
         public void OnTriggerEnter(Collider other)
         {
             if ( enabled && 
@@ -31,6 +35,14 @@ namespace Triggers
                     return;
                 }
 
+                foreach (Behaviour compo in requireComponentsEnabled)
+                {
+                    if (!compo.isActiveAndEnabled)
+                    {
+                        return;
+                    }
+                }
+
                 Engage(new TriggerData(CustomTag + " contacted", other.transform.position));
                 if (destroy)
                 {
@@ -41,7 +53,7 @@ namespace Triggers
 
         public void OnTriggerStay(Collider other)
         {
-            if (onStay)
+            if (OnStay)
             {
                 OnTriggerEnter(other);
             }

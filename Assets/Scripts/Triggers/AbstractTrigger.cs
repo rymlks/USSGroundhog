@@ -9,12 +9,17 @@ namespace Triggers
     public abstract class AbstractTrigger : MonoBehaviour, ITrigger
     {
         public bool destroy = false;
+        public GameObject consequenceObject;
         private List<IConsequence> _allConsequences = new List<IConsequence>();
         private AudioSource _audioSource;
     
         protected virtual void Start()
         {
-            this._allConsequences = this.GetComponents<IConsequence>().ToList();
+            if (this.consequenceObject == null)
+            {
+                this.consequenceObject = this.gameObject;
+            }
+            this._allConsequences = consequenceObject.GetComponents<IConsequence>().ToList();
             this._audioSource = GetComponent<AudioSource>();
         }
 
