@@ -29,7 +29,7 @@ public class PlayerHealthState : MonoBehaviour
         {
             this.statusEffectName = name;
             this.secondsMaximumCapacity = secondsMaximum;
-            this.uiController = FindObjectsOfType<StatusEffectUIController>().First(controller => controller.statusName == this.statusEffectName);
+            this.uiController = StatusEffectUIController.GetByStatusName(name);
             this.worsensUntilCured = worsens;
             this._isCurrentlyBeingInflicted = false;
             Reset();
