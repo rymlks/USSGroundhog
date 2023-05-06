@@ -30,7 +30,7 @@ public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
         {
             if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
             {
-                this.keyUI.showStatusNextFrame();
+                this.keyUI.ShowNextFrame();
                 return;
             }
 

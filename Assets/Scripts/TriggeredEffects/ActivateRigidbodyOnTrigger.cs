@@ -25,7 +25,7 @@ public class ActivateRigidbodyOnTrigger : MonoBehaviour
         {
             if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
             {
-                keyUI.showStatusNextFrame();
+                keyUI.ShowNextFrame();
                 return;
             }
             rb.isKinematic = false;

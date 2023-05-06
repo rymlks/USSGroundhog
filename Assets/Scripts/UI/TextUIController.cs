@@ -3,12 +3,10 @@ using UnityEngine;
 
 namespace UI
 {
-    public class TextUIController : MonoBehaviour, IUIController
+    public class TextUIController : AbstractUIController
     {
         public TextMeshProUGUI textMesh;
-        protected float lastAffectedTime;
         public Color alertColor = Color.yellow;
-        public float secondsMessagePersists = 1f;
 
         protected virtual void Start()
         {
@@ -17,29 +15,16 @@ namespace UI
                 this.textMesh = this.GetComponent<TextMeshProUGUI>();
             }
         }
-        
-        public virtual void ShowNextFrame()
-        {   
-            this.lastAffectedTime = Time.time;
-        }
-        
-        protected virtual void LateUpdate()
+
+        protected override void DisableUI()
         {
-            if (this.shouldShowNow())
-            {
-                this.textMesh.color = alertColor;
-            }
-            else
-            {
-                if(this.textMesh)
-                    this.textMesh.color = Color.clear;
-            }
+            if (this.textMesh)
+                this.textMesh.color = Color.clear;
         }
-        
-        protected virtual bool shouldShowNow()
+
+        protected override void EnableUI()
         {
-            float timeSinceLastAffected = Time.time - this.lastAffectedTime;
-            return timeSinceLastAffected >= 0 && timeSinceLastAffected < secondsMessagePersists;
+            this.textMesh.color = alertColor;
         }
     }
 }
