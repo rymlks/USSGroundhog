@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Player.PlayerStatusEffect
+namespace UI
 {
     public class KeyStatusUIController : MonoBehaviour
     {

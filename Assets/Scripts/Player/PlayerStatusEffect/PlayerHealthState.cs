@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using PlayerStatusEffect;
+using UI;
 using UnityEngine;
 
 public class PlayerHealthState : MonoBehaviour
@@ -57,7 +57,7 @@ public class PlayerHealthState : MonoBehaviour
                 GameManager.instance.CommitDie(statusEffectName);
                 this.Reset();
             }
-            this.uiController.showStatusNextFrame();
+            this.uiController.ShowNextFrame();
             shouldCancelNextRecovery = true;
         }
 

@@ -1,4 +1,4 @@
-using Player.PlayerStatusEffect;
+using UI;
 using UnityEngine;
 
 namespace Triggers
