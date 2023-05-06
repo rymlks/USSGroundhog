@@ -6,16 +6,13 @@ namespace UI
     {
         protected float lastAffectedTime = float.NegativeInfinity;
         public float secondsMessagePersists = 1f;
+        private bool _uiEnabled = false;
         
         protected virtual void LateUpdate()
         {
-            if (this.shouldShowNow())
+            if (this.shouldShowNow() ^ _uiEnabled)
             {
-                EnableUI();
-            }
-            else
-            {
-                DisableUI();
+                toggleUI();
             }
         }
         
@@ -33,5 +30,17 @@ namespace UI
         protected abstract void EnableUI();
         
         protected abstract void DisableUI();
+
+        private void toggleUI()
+        {
+            if(_uiEnabled){
+                DisableUI();
+            }
+            else
+            {
+                EnableUI();
+            }
+            _uiEnabled = !_uiEnabled;
+        }
     }
 }
