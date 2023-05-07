@@ -1,17 +1,30 @@
+using Analytics;
+using Managers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
-    public class ScoreScreenUIController : AbstractUIController
+    public class ScoreScreenUIController : TextUIController
     {
         protected override void EnableUI()
         {
-            throw new System.NotImplementedException();
+            base.EnableUI();
+            this.setUIValues(ScoreManager.instance.getLevelScore());
         }
 
-        protected override void DisableUI()
+        private void setUIValues(LevelScore levelScore)
         {
-            throw new System.NotImplementedException();
+            this.textMesh.text = SceneManager.GetActiveScene().name +
+                                 " satisfactorily completed!  Congratulations!\r\n" +
+                                 "Minimum Viable Sacrifices (MVS) for the Good of the Company: " +
+                                 levelScore.parDeaths + "\r\n" +
+                                 "Your Sacrifices for the Good of the Company: " + levelScore.deathsByTime.Count +
+                                 "\r\n" +
+                                 "Company Time Spent: " + levelScore.elapsedTime + "\r\n\r\n" +
+                                 "Overall Performance Rating: " + levelScore.performancePercentage + "%\r\n" +
+                                 "Performance Comments: " + levelScore.performanceComments;
+
         }
     }
 }

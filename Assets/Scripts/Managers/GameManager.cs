@@ -6,6 +6,8 @@ using KinematicCharacterController.Examples;
 using KinematicCharacterController;
 using Assets.Scripts;
 using KinematicCharacterController.Walkthrough.RootMotionExample;
+using Managers;
+using Player.Death;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
             PlayerHandler = FindObjectOfType<MyPlayer>();
         }
 
+
         if (playerRespawner == null)
         {
             initializeRespawner();
@@ -54,14 +57,21 @@ public class GameManager : MonoBehaviour
 
     public void CommitDie(string reason)
     {
-        this.playerRespawner.OnPlayerDeath(new Dictionary<string, object>(){{reason, null}});
-
+        this.CommitDie(new Dictionary<string, object>(){{reason, null}});
     }
     
     public void CommitDie(Dictionary<string, object> reason)
     {
-        this.playerRespawner.OnPlayerDeath(reason);
+        this.CommitDie(new DeathCharacteristics(reason));
+    }
 
+    public void CommitDie(DeathCharacteristics deathCharacteristics)
+    {
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.RecordScoreEvent(deathCharacteristics);
+        }
+        this.playerRespawner.OnPlayerDeath(deathCharacteristics);
     }
 
     private bool devToolsEnabled()
