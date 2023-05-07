@@ -4,6 +4,8 @@ using UnityEngine;
 using KinematicCharacterController;
 using KinematicCharacterController.Examples;
 using System.Linq;
+using UnityEngine.InputSystem;
+using Triggers;
 
 namespace KinematicCharacterController.Walkthrough.RootMotionExample
 {
@@ -12,12 +14,17 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
         public ExampleCharacterCamera OrbitCamera;
         public Transform CameraFollowPoint;
         public MonoBehaviour Character;
+        public PlayerInput playerInput;
+
+        public List<TriggerOnInputKeyPressed> inputKeyTriggers = new List<TriggerOnInputKeyPressed>();
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
         private const string MouseScrollInput = "Mouse ScrollWheel";
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
+
+        protected bool isClimbing = false;
 
         private void Start()
         {
@@ -92,7 +99,20 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             // Apply inputs to character
             ((MyCharacterController)Character).SetInputs(ref characterInputs);
 
+        }
 
+
+        public void StartClimbing(GameObject toClimb)
+        {
+            Debug.Log($"I am trying to climb {toClimb.name} but I never learned how");
+            isClimbing = true;
+            playerInput.SwitchCurrentActionMap("KeyboardClimbingControls");
+        }
+
+        public void StopClimbing()
+        {
+            isClimbing = false;
+            playerInput.SwitchCurrentActionMap("KeyboardDefaultControls");
         }
     }
 }

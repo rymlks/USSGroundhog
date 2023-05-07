@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController;
 using KinematicCharacterController.Walkthrough.RootMotionExample;
+using Triggers;
+using UnityEngine.InputSystem;
 
 namespace Assets.Scripts
 {
@@ -16,6 +18,7 @@ namespace Assets.Scripts
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
 
+
         private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -26,6 +29,11 @@ namespace Assets.Scripts
             // Ignore the character's collider(s) for camera obstruction checks
             CharacterCamera.IgnoredColliders.Clear();
             CharacterCamera.IgnoredColliders.AddRange(((FinalCharacterController)Character).GetComponentsInChildren<Collider>());
+            
+            if (playerInput == null)
+            {
+                playerInput = GetComponent<PlayerInput>();
+            }
         }
 
         private void Update()
@@ -65,9 +73,9 @@ namespace Assets.Scripts
 
             // Input for zooming the camera (disabled in WebGL because it can cause problems)
             float scrollInput = -Input.GetAxis(MouseScrollInput);
-            #if UNITY_WEBGL
-                scrollInput = 0f;
-            #endif
+#if UNITY_WEBGL
+            scrollInput = 0f;
+#endif
 
             // Apply inputs to the camera
             CharacterCamera.UpdateWithInput(Time.deltaTime, scrollInput, lookInputVector);
@@ -77,22 +85,54 @@ namespace Assets.Scripts
             {
                 CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 0f) ? CharacterCamera.DefaultDistance : 0f;
             }
+            
         }
 
         private void HandleCharacterInput()
         {
-            PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
+            if (!isClimbing)
+            {
+                PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
 
-            // Build the CharacterInputs struct
-            characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
-            characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
-            characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
-            //characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
-            characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
-            characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
+                // Build the CharacterInputs struct
+                characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
+                characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
+                characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
+                //characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
+                characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
+                characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
 
-            // Apply inputs to character
-            ((FinalCharacterController)Character).SetInputs(ref characterInputs);
+                // Apply inputs to character
+                ((FinalCharacterController)Character).SetInputs(ref characterInputs);
+            } else
+            {
+                PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
+
+                // Build the CharacterInputs struct
+                characterInputs.MoveAxisForward = 0;
+                characterInputs.MoveAxisRight = 0;
+                characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
+                //characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
+                characterInputs.CrouchDown = false;
+                characterInputs.CrouchUp = false;
+
+                // Apply inputs to character
+                ((FinalCharacterController)Character).SetInputs(ref characterInputs);
+            }
+        }
+
+
+        public void OnInteract()
+        {
+            foreach (TriggerOnInputKeyPressed trigger in inputKeyTriggers)
+            {
+                trigger.Engage();
+            }
+        }
+
+        public void OnStopClimbing()
+        {
+            StopClimbing();
         }
 
     }
