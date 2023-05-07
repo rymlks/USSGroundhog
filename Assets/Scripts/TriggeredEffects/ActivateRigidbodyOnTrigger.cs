@@ -23,7 +23,7 @@ public class ActivateRigidbodyOnTrigger : MonoBehaviour
     {
         if (CustomTag == "" || other.CompareTag(CustomTag))
         {
-            if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
+            if (RequireItem != "" && !GameManager.instance.getInventory().IsItemPossessed(RequireItem))
             {
                 keyUI.ShowNextFrame();
                 return;

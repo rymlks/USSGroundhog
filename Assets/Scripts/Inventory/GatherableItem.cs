@@ -1,34 +1,33 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using KinematicCharacterController.Examples;
 using UnityEngine;
 
-public class GatherableItem : MonoBehaviour
+namespace Inventory
 {
-    public String itemName;
-    public bool persistsThroughDeath = false;
-    public bool destroyOnCollect = false;
-
-    public void Start()
+    public class GatherableItem : MonoBehaviour
     {
-        this.GetComponent<Collider>().isTrigger = true;
-    }
+        public String itemName;
+        public bool persistsThroughDeath = false;
+        public bool destroyOnCollect = false;
 
-    bool isCollisionWithPlayer(Collider triggeredCollider)
-    {
-        return triggeredCollider.gameObject.CompareTag("Player");
-    }
-
-    void OnTriggerEnter(Collider triggeredCollider)
-    {
-        if (isCollisionWithPlayer(triggeredCollider))
+        public void Start()
         {
-            Debug.Log("Player gathered permanent item "+itemName+"!");
-            GameManager.instance.Gather(itemName, persistsThroughDeath);
-            if (destroyOnCollect)
+            this.GetComponent<Collider>().isTrigger = true;
+        }
+
+        bool isCollisionWithPlayer(Collider triggeredCollider)
+        {
+            return triggeredCollider.gameObject.CompareTag("Player");
+        }
+
+        void OnTriggerEnter(Collider triggeredCollider)
+        {
+            if (isCollisionWithPlayer(triggeredCollider))
             {
-                Destroy(gameObject);
+                GameManager.instance.getInventory().Gather(itemName, persistsThroughDeath);
+                if (destroyOnCollect)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

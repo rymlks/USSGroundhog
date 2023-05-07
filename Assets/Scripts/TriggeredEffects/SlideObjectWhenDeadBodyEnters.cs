@@ -28,7 +28,7 @@ public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
     {
         if (CustomTag == "" || other.CompareTag(CustomTag))
         {
-            if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
+            if (RequireItem != "" && !GameManager.instance.getInventory().IsItemPossessed(RequireItem))
             {
                 this.keyUI.ShowNextFrame();
                 return;
