@@ -5,9 +5,12 @@ using UnityEngine;
 using KinematicCharacterController.Examples;
 using KinematicCharacterController;
 using Assets.Scripts;
+using Inventory;
 using KinematicCharacterController.Walkthrough.RootMotionExample;
 using Managers;
+using Player;
 using Player.Death;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,11 +22,9 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject RagdollPrefab;
     public bool enableCheatyDevShortcuts = false;
-    
-    private HashSet<string> permanentItems = new HashSet<string>();
-    private HashSet<string> transientItems = new HashSet<string>();
-    
+
     protected PlayerRespawner playerRespawner;
+    protected PlayerInventory playerInventory;
 
     private void OnEnable()
     {
@@ -44,6 +45,10 @@ public class GameManager : MonoBehaviour
         if (playerRespawner == null)
         {
             initializeRespawner();
+        }
+        if (playerInventory == null)
+        {
+            this.playerInventory = this.AddComponent<PlayerInventory>();
         }
 
     }
@@ -105,25 +110,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Gather(string gatheredItemName, bool persistsThroughDeath = false)
-    {
-        if (persistsThroughDeath)
-        {
-            this.permanentItems.Add(gatheredItemName);
-        }
-        else
-        {
-            this.transientItems.Add(gatheredItemName);
-        }
-    }
-
-    public bool itemIsPossessed(string itemName)
-    {
-        return this.permanentItems.Contains(itemName) || this.transientItems.Contains(itemName);
-    }
-
     public PlayerRespawner getRespawner()
     {
         return this.playerRespawner;
+    }
+
+    public PlayerInventory getInventory()
+    {
+        return this.playerInventory;
     }
 }

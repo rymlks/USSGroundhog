@@ -21,7 +21,7 @@ public class PlayerKiller : MonoBehaviour
 
     protected bool immunityIsGranted()
     {
-        return immunityGrantingItems.Any(item => GameManager.instance.itemIsPossessed(item));
+        return immunityGrantingItems.Any(item => GameManager.instance.getInventory().IsItemPossessed(item));
     }
 
     protected virtual void OnTriggerEnter(Collider triggeredCollider)
