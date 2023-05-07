@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Player.PlayerStatusEffect;
-using PlayerStatusEffect;
+using UI;
 using UnityEngine;
 
 public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
@@ -31,7 +30,7 @@ public class SlideObjectWhenDeadBodyEnters: MonoBehaviour
         {
             if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
             {
-                this.keyUI.showStatusNextFrame();
+                this.keyUI.ShowNextFrame();
                 return;
             }
 

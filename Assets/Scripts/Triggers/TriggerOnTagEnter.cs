@@ -1,4 +1,4 @@
-using Player.PlayerStatusEffect;
+using UI;
 using UnityEngine;
 
 namespace Triggers
@@ -31,7 +31,7 @@ namespace Triggers
             {
                 if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
                 {
-                    this.keyUI.showStatusNextFrame();
+                    this.keyUI.ShowNextFrame();
                     return;
                 }
 

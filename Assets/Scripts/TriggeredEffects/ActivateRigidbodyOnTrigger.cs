@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Player.PlayerStatusEffect;
-using PlayerStatusEffect;
+using UI;
 using UnityEngine;
 
 public class ActivateRigidbodyOnTrigger : MonoBehaviour
@@ -26,7 +25,7 @@ public class ActivateRigidbodyOnTrigger : MonoBehaviour
         {
             if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
             {
-                keyUI.showStatusNextFrame();
+                keyUI.ShowNextFrame();
                 return;
             }
             rb.isKinematic = false;

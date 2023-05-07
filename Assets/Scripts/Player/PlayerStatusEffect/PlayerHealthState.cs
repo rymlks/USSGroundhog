@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using PlayerStatusEffect;
+using UI;
 using UnityEngine;
 
 public class PlayerHealthState : MonoBehaviour
@@ -29,7 +29,7 @@ public class PlayerHealthState : MonoBehaviour
         {
             this.statusEffectName = name;
             this.secondsMaximumCapacity = secondsMaximum;
-            this.uiController = FindObjectsOfType<StatusEffectUIController>().First(controller => controller.statusName == this.statusEffectName);
+            this.uiController = StatusEffectUIController.GetByStatusName(name);
             this.worsensUntilCured = worsens;
             this._isCurrentlyBeingInflicted = false;
             Reset();
@@ -57,7 +57,7 @@ public class PlayerHealthState : MonoBehaviour
                 GameManager.instance.CommitDie(statusEffectName);
                 this.Reset();
             }
-            this.uiController.showStatusNextFrame();
+            this.uiController.ShowNextFrame();
             shouldCancelNextRecovery = true;
         }
 
