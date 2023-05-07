@@ -1,56 +1,63 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class DeathCharacteristics
+namespace Player.Death
 {
-    private Dictionary<string, object> _deathCharacteristics;
-
-    public DeathCharacteristics(Dictionary<string, object> characteristics)
+    public class DeathCharacteristics
     {
-        this._deathCharacteristics = characteristics;
-    }
+        private Dictionary<string, object> _deathCharacteristics;
 
-    public bool shouldProduceRagdollCorpse()
-    {
-        return _deathCharacteristics.Keys.Contains("ragdoll");
-    }
+        public DeathCharacteristics(Dictionary<string, object> characteristics)
+        {
+            this._deathCharacteristics = characteristics;
+        }
 
-    public bool shouldProduceElectrocutedCorpse()
-    {
-        return _deathCharacteristics.Keys.Contains("electrocution");
-    }
+        public bool shouldProduceRagdollCorpse()
+        {
+            return _deathCharacteristics.Keys.Contains("ragdoll");
+        }
 
-    public bool shouldProduceNormalCorpse()
-    {
-        return !(shouldBurnCorpse() || shouldProduceRagdollCorpse() ||
-                 shouldProduceRigidCorpse());
-    }
+        public bool shouldProduceElectrocutedCorpse()
+        {
+            return _deathCharacteristics.Keys.Contains("electrocution");
+        }
 
-    public bool shouldProduceRigidCorpse()
-    {
-        return _deathCharacteristics.Keys.Contains("freezing");
-    }
+        public bool shouldProduceNormalCorpse()
+        {
+            return !(shouldBurnCorpse() || shouldProduceRagdollCorpse() ||
+                     shouldProduceRigidCorpse());
+        }
 
-    public bool shouldBurnCorpse()
-    {
-        return _deathCharacteristics.Keys.Contains("burning");
-    }
+        public bool shouldProduceRigidCorpse()
+        {
+            return _deathCharacteristics.Keys.Contains("freezing");
+        }
 
-    public bool shouldPropelCorpse()
-    {
-        return _deathCharacteristics.Keys.Contains("explosion");
-    }
+        public bool shouldBurnCorpse()
+        {
+            return _deathCharacteristics.Keys.Contains("burning");
+        }
 
-    public Vector3 getExplosionStrength()
-    {
-        return _deathCharacteristics["explosion"] != null ? (Vector3) _deathCharacteristics["explosion"] : Vector3.zero;
-    }
+        public bool shouldPropelCorpse()
+        {
+            return _deathCharacteristics.Keys.Contains("explosion");
+        }
 
-    public bool shouldProduceCorpse()
-    {
-        return shouldProduceRagdollCorpse() || shouldProduceRigidCorpse() || shouldProduceNormalCorpse();
-    }
+        public Vector3 getExplosionStrength()
+        {
+            return _deathCharacteristics["explosion"] != null ? (Vector3) _deathCharacteristics["explosion"] : Vector3.zero;
+        }
 
+        public bool shouldProduceCorpse()
+        {
+            return shouldProduceRagdollCorpse() || shouldProduceRigidCorpse() || shouldProduceNormalCorpse();
+        }
+        
+        public bool shouldRespawn()
+        {
+            return !_deathCharacteristics.ContainsKey("dontRespawn") || !(bool) _deathCharacteristics["dontRespawn"];
+        }
+
+    }
 }

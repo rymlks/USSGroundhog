@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
-using Consequences;
-using Player.PlayerStatusEffect;
+using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -37,9 +35,9 @@ namespace Triggers
                 (CustomTag == "" || 
                  other.CompareTag(CustomTag)))
             {
-                if (RequireItem != "" && !GameManager.instance.itemIsPossessed(RequireItem))
+                if (RequireItem != "" && !GameManager.instance.getInventory().IsItemPossessed(RequireItem))
                 {
-                    this.keyUI.showStatusNextFrame();
+                    this.keyUI.ShowNextFrame();
                     return;
                 }
 
