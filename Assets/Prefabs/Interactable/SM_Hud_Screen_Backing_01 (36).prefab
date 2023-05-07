@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 8195208073050476558}
   - component: {fileID: 8187070277942687338}
   - component: {fileID: 8200463316819658994}
-  - component: {fileID: 8200463316819658995}
-  - component: {fileID: 8200463316819658991}
+  - component: {fileID: 6328328189102181789}
+  - component: {fileID: 4788879800535297906}
+  - component: {fileID: 3195511052575890979}
   m_Layer: 0
   m_Name: SM_Hud_Screen_Backing_01 (36)
   m_TagString: Untagged
@@ -108,7 +109,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1998047, y: 0.6672745, z: 0.011128607}
   m_Center: {x: 0, y: -0.000000074505806, z: -0.0000013587996}
---- !u!114 &8200463316819658995
+--- !u!114 &6328328189102181789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,15 +118,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8199800779061340778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6898a7b087da9f148affc1683d9d00a8, type: 3}
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroy: 0
-  reverseOnExit: 1
-  slideMe: {fileID: 0}
+  consequenceObject: {fileID: 0}
   CustomTag: Player
+  acceptTagInParent: 0
   RequireItem: 
---- !u!114 &8200463316819658991
+  reEngageOnStay: 0
+  reverseOnExit: 1
+  requireComponentsEnabled: []
+--- !u!114 &4788879800535297906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,14 +138,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 8199800779061340778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6898a7b087da9f148affc1683d9d00a8, type: 3}
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroy: 0
-  reverseOnExit: 1
-  slideMe: {fileID: 0}
+  consequenceObject: {fileID: 0}
   CustomTag: Corpse
+  acceptTagInParent: 0
   RequireItem: 
+  reEngageOnStay: 0
+  reverseOnExit: 1
+  requireComponentsEnabled: []
+--- !u!114 &3195511052575890979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199800779061340778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b0ac8688b99be4eb42152e526bacde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 0}
+  speed: 0.1
+  forward: 1
+  objectToSlide: {fileID: 0}
+  shouldReturn: 0
 --- !u!1001 &8200463315569820724
 PrefabInstance:
   m_ObjectHideFlags: 0

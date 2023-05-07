@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class SlideToDestinationConsequence : AbstractConsequence
+    public class SlideToDestinationConsequence : AbstractCancelableConsequence
     {
         public Transform destination;
         public float speed = 0.1f;
-        public bool start = false;
         public bool forward = true;
         public Transform objectToSlide = null;
-        protected Vector3 startPos;
         public bool shouldReturn = true;
+        protected Vector3 startPos;
+        protected bool started = false;
 
         private void Start()
         {
@@ -39,7 +39,7 @@ namespace Consequences
 
         void Update()
         {
-            if (start)
+            if (started)
             {
                 Vector3 dest = forward ? destination.position : startPos;
                 if ((dest - getTransform().position).magnitude > speed)
@@ -50,9 +50,14 @@ namespace Consequences
                 else
                 {
                     getTransform().position = dest;
+                    
                     if (shouldReturn)
                     {
                         forward = !forward;
+                    }
+                    else
+                    {
+                        started = false;
                     }
                 }
             }
@@ -60,7 +65,14 @@ namespace Consequences
 
         public override void execute(TriggerData? data)
         {
-            this.start = true;
+            this.started = true;
+            this.forward = true;
+        }
+
+        public override void Cancel(TriggerData? data)
+        {
+            this.forward = false;
+            this.started = true;
         }
     }
 }

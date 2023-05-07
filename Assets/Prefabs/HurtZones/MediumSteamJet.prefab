@@ -65,7 +65,8 @@ MonoBehaviour:
   CustomTag: Player
   acceptTagInParent: 0
   RequireItem: 
-  OnStay: 1
+  reEngageOnStay: 1
+  reverseOnExit: 0
   requireComponentsEnabled: []
 --- !u!114 &6479387274388438003
 MonoBehaviour:
@@ -80,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 1
-  damageType: 
+  damageType: freezing
 --- !u!1 &3967358688842517278
 GameObject:
   m_ObjectHideFlags: 0
