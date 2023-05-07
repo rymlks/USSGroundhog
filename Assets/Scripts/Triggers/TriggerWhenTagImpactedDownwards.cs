@@ -1,3 +1,4 @@
+using Consequences;
 using UnityEngine;
 
 namespace Triggers
@@ -14,7 +15,7 @@ namespace Triggers
 
         protected bool isMovingDown()
         {
-            return !this.GetComponent<SlideToDestination>().forward;
+            return !this.GetComponentInChildren<SlideToDestinationConsequence>().forward;
         }
 
         void OnCollisionEnter(Collision other)

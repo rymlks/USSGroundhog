@@ -40,13 +40,31 @@ namespace Triggers
             }
             playSoundIfSourcePresent();
         }
+        
+        private void CancelAllCancelableConsequences(TriggerData data)
+        {
+            foreach (IConsequence consequence in this._allConsequences)
+            {
+                ICancelableConsequence cancelable = (ICancelableConsequence) consequence;
+                if (cancelable != null)
+                {
+                    cancelable.Cancel(data);
+                }
+            }
+            playSoundIfSourcePresent();
+        }
 
         public virtual void Engage()
         {
             this.ExecuteAllConsequences();
         }
+        
+        public virtual void Disengage(TriggerData data)
+        {
+            this.CancelAllCancelableConsequences(data);
+        }
 
-        public void Engage(TriggerData data)
+        public virtual void Engage(TriggerData data)
         {
             this.ExecuteAllConsequences(data);
         }

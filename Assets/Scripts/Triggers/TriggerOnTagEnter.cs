@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Triggers
 {
@@ -9,8 +11,10 @@ namespace Triggers
         public bool acceptTagInParent = false;
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
-        public bool OnStay = true;
+        [FormerlySerializedAs("OnStay")] public bool reEngageOnStay = true;
+        public bool reverseOnExit = false;
         public Behaviour[] requireComponentsEnabled;
+        protected HashSet<Collider> entered;
 
         new void Start()
         {
@@ -19,6 +23,8 @@ namespace Triggers
             {
                 keyUI = FindObjectOfType<KeyStatusUIController>();
             }
+
+            entered = new HashSet<Collider>();
         }
 
         
@@ -44,6 +50,7 @@ namespace Triggers
                 }
 
                 Engage(new TriggerData(CustomTag + " contacted", other.transform.position));
+                entered.Add(other);
                 if (destroy)
                 {
                     Destroy(gameObject);
@@ -53,9 +60,21 @@ namespace Triggers
 
         public void OnTriggerStay(Collider other)
         {
-            if (OnStay)
+            if (reEngageOnStay)
             {
                 OnTriggerEnter(other);
+            }
+        }
+
+        public void OnTriggerExit(Collider other)
+        {
+            if (entered.Contains(other))
+            {
+                if (reverseOnExit)
+                {
+                    this.Disengage(new TriggerData(CustomTag + " left contact", other.transform.position));
+                }
+                entered.Remove(other);
             }
         }
     }
