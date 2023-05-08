@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 6238349789596968013}
   - component: {fileID: 5305743518719952673}
   - component: {fileID: 4212521767010279090}
+  - component: {fileID: 3449406090809763116}
   m_Layer: 0
   m_Name: GatherableKey
   m_TagString: Untagged
@@ -225,3 +226,18 @@ MonoBehaviour:
   itemName: KeyName
   persistsThroughDeath: 1
   destroyOnCollect: 1
+--- !u!114 &3449406090809763116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6238349789596968011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b56fc371fbf8c4d80e0245173696d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
