@@ -17,9 +17,5 @@ namespace Consequences
             this.started = true;
         }
     }
-
-    public interface IInterruptibleConsequence : IConsequence
-    {
-        public void Interrupt(TriggerData? data);
-    }
+    
 }
