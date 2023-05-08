@@ -36,7 +36,7 @@ namespace Consequences
         private Dictionary<Light, LightBlinkData> _lights;
     
 
-        public void execute(TriggerData? data)
+        public void Execute(TriggerData? data)
         {
             this._lights = new Dictionary<Light, LightBlinkData>();
             (includeChildren ? GetComponentsInChildren<Light>().ToList() : GetComponents<Light>().ToList()).ForEach(childLight =>

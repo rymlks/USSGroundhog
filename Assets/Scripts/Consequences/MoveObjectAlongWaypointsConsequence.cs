@@ -90,7 +90,7 @@ namespace Consequences
             return this._currentWaypointIndex >= this.waypoints.Length;
         }
 
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             this._active = true;
         }

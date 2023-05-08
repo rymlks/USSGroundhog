@@ -28,7 +28,7 @@ namespace Triggers
         {
             foreach (IConsequence consequence in this._allConsequences)
             {
-                consequence.execute(null);
+                consequence.Execute(null);
             }
             playSoundIfSourcePresent();
         }
@@ -37,7 +37,7 @@ namespace Triggers
         {
             foreach (IConsequence consequence in this._allConsequences)
             {
-                consequence.execute(data);
+                consequence.Execute(data);
             }
             playSoundIfSourcePresent();
         }

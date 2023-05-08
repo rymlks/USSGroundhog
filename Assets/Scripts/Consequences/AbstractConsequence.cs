@@ -6,6 +6,6 @@ namespace Consequences
 {
     public abstract class AbstractConsequence : MonoBehaviour, IConsequence
     {
-        public abstract void execute(TriggerData? data);
+        public abstract void Execute(TriggerData? data);
     }
 }

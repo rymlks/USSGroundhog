@@ -65,7 +65,7 @@ namespace Consequences
             return this._lastExecutedTime + this.secondsToFire > Time.time;
         }
 
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             this._lastExecutedTime = Time.time;
         }

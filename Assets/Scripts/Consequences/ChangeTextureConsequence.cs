@@ -8,7 +8,7 @@ namespace Consequences
     {
         public Material newMat;
     
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             if (newMat != null)
             {

@@ -14,7 +14,7 @@ public class PlaySoundConsequence : AbstractConsequence
         this._soundEffectPlayer = FindObjectOfType<SoundEffectPlayer>();
     }
 
-    public override void execute(TriggerData? data)
+    public override void Execute(TriggerData? data)
     {
         if (soundToPlay != null)
         {

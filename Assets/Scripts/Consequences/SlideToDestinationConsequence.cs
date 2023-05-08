@@ -63,7 +63,7 @@ namespace Consequences
             }
         }
 
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             this.started = true;
             this.forward = true;

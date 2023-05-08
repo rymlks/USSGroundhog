@@ -35,7 +35,7 @@ public class BeginDroneLaunchConsequence : MonoBehaviour, IConsequence
         //GameObject.Instantiate(, drone.transform)
     }
 
-    public void execute(TriggerData? data)
+    public void Execute(TriggerData? data)
     {
         this.BeginLaunch(drone);
         if (!this.arePrerequisitesMet())
@@ -53,6 +53,6 @@ public class BeginDroneLaunchConsequence : MonoBehaviour, IConsequence
     {
         this.started = true;
         MoveObjectAlongWaypointsConsequence movement = toLaunch.GetComponent<MoveObjectAlongWaypointsConsequence>();
-        movement.execute(null);
+        movement.Execute(null);
     }
 }

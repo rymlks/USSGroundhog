@@ -27,7 +27,7 @@ namespace Consequences
             }
         }
 
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             instantiateExplosion();
         
