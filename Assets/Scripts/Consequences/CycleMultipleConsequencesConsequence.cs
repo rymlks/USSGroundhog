@@ -17,12 +17,12 @@ namespace Consequences
             }
         }
 
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             this.currentIndex = (this.currentIndex + 1) % toCycleBetween.Length;
             foreach (IConsequence consequence in toCycleBetween[currentIndex].GetComponents<IConsequence>())
             {
-                consequence.execute(data);
+                consequence.Execute(data);
             }
         }
     }

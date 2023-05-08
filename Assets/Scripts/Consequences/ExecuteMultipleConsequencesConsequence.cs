@@ -14,7 +14,7 @@ namespace Consequences
         [SerializeField] 
         protected bool executeInChildren = false;
         
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             foreach (var consequenceObject in objectsWithConsequences)
             {
@@ -22,7 +22,7 @@ namespace Consequences
                 {
                     foreach (var consequence in consequenceObject.GetComponentsInChildren<IConsequence>())
                     {
-                        consequence.execute(data);
+                        consequence.Execute(data);
                     }
                 }
                 else
@@ -30,7 +30,7 @@ namespace Consequences
 
                     foreach (var consequence in consequenceObject.GetComponents<IConsequence>())
                     {
-                        consequence.execute(data);
+                        consequence.Execute(data);
                     }
                 }
             }

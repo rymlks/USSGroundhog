@@ -14,7 +14,7 @@ namespace Consequences
             this._playerHealthStatus = FindObjectOfType<PlayerHealthState>();
         }
 
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             _playerHealthStatus.Cure(statusEffectName);
         }

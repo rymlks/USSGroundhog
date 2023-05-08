@@ -23740,7 +23740,6 @@ GameObject:
   - component: {fileID: 222775462075583150}
   - component: {fileID: 118963888737477652}
   - component: {fileID: 134507635411549518}
-  - component: {fileID: 2582480617674554718}
   - component: {fileID: 7595179968550594194}
   - component: {fileID: 2164431113132813689}
   m_Layer: 0
@@ -23768,6 +23767,7 @@ Transform:
   - {fileID: 222593537969583968}
   - {fileID: 218595162506582616}
   - {fileID: 3318288115335129432}
+  - {fileID: 600067928369846642}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
@@ -28572,24 +28572,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2582480617674554718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 224512599441754744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cd3466d215efc4f8f1af7027471926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 3318288115335129432}
-  speed: 0.1
-  start: 1
-  forward: 1
-  objectToSlide: {fileID: 222775462075583150}
-  shouldReturn: 1
 --- !u!114 &7595179968550594194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28602,6 +28584,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42cde395659793d46be0c7b629337f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
   particleSystem: {fileID: 118963888737477652}
   tagToTriggerOn: Player
 --- !u!114 &2164431113132813689
@@ -38196,3 +38181,68 @@ Transform:
   m_Father: {fileID: 222775462075583150}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5986403250699590461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 600067928369846642}
+  - component: {fileID: 5040198893695072892}
+  - component: {fileID: 4002612566748950282}
+  m_Layer: 0
+  m_Name: Scooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &600067928369846642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986403250699590461}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 222775462075583150}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5040198893695072892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986403250699590461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b0ac8688b99be4eb42152e526bacde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 3318288115335129432}
+  speed: 0.1
+  forward: 1
+  objectToSlide: {fileID: 222775462075583150}
+  shouldReturn: 1
+--- !u!114 &4002612566748950282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986403250699590461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b56fc371fbf8c4d80e0245173696d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0

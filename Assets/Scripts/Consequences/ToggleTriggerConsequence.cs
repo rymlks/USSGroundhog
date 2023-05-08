@@ -19,7 +19,7 @@ public class ToggleTriggerConsequence : AbstractConsequence
 
     }
 
-    public override void execute(TriggerData? data)
+    public override void Execute(TriggerData? data)
     {
         this.toToggle.enabled = !this.toToggle.enabled;
     }

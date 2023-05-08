@@ -36,7 +36,7 @@ namespace Consequences
 
         private void executeLinkedConsequences()
         {
-            getLinkedConsequences().ForEach(consequence => consequence.execute(triggerDataFromActivator));
+            getLinkedConsequences().ForEach(consequence => consequence.Execute(triggerDataFromActivator));
             this.isActive = false;
         }
 
@@ -52,7 +52,7 @@ namespace Consequences
             }
         }
 
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             this.startTime = Time.time;
             this.triggerDataFromActivator = data;
