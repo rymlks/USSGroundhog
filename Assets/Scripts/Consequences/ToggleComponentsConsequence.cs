@@ -18,7 +18,7 @@ namespace Consequences
             }
         }
 
-        public void execute(TriggerData? data)
+        public void Execute(TriggerData? data)
         {
             if (componentType == "light" && inChildren)
             {

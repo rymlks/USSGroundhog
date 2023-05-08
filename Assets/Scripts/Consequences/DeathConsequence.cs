@@ -8,7 +8,7 @@ namespace Consequences
     {
         public string deathReason;
 
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             GameManager.instance.CommitDie(deathReason);
         }

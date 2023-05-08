@@ -15,7 +15,7 @@ namespace Consequences
             this.playerHealthStatus = FindObjectOfType<PlayerHealthState>();
         }
 
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             this.playerHealthStatus.Hurt(damageType, Time.deltaTime * multiplier);
         }

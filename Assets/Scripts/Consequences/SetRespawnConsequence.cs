@@ -8,7 +8,7 @@ public class SetRespawnConsequence : AbstractConsequence
 {
     public bool LocationTracksThisObject = false;
 
-    public override void execute(TriggerData? data)
+    public override void Execute(TriggerData? data)
     {
         if (!LocationTracksThisObject)
         {

@@ -758,6 +758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroy: 0
   consequenceObject: {fileID: 7898953947580220733}
+  findConsequencesInChildren: 0
   CustomTag: Player
   acceptTagInParent: 0
   RequireItem: 
@@ -778,7 +779,6 @@ GameObject:
   - component: {fileID: 3575729345990357676}
   - component: {fileID: 3583479964270698036}
   - component: {fileID: 3534341268100522360}
-  - component: {fileID: 3596856136680775183}
   m_Layer: 0
   m_Name: Hangar1
   m_TagString: Untagged
@@ -866,24 +866,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3a7e41d0ca0993244a09e38b3754b1ba, type: 3}
---- !u!114 &3596856136680775183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596856136680775182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cd3466d215efc4f8f1af7027471926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 748757145}
-  speed: 0.1
-  start: 0
-  forward: 1
-  objectToSlide: {fileID: 0}
-  shouldReturn: 0
 --- !u!1 &3883948802164986494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,6 +1105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroy: 0
   consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
   CustomTag: Player
   acceptTagInParent: 0
   RequireItem: 
@@ -1688,7 +1671,6 @@ GameObject:
   - component: {fileID: 7311839033820187016}
   - component: {fileID: 7286695412776902486}
   - component: {fileID: 7294317667625605654}
-  - component: {fileID: 7311839033820187017}
   m_Layer: 0
   m_Name: HangarDoor
   m_TagString: Untagged
@@ -1762,24 +1744,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7311839033820187017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7308333199876389004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cd3466d215efc4f8f1af7027471926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 1293328974}
-  speed: 0.1
-  start: 0
-  forward: 1
-  objectToSlide: {fileID: 0}
-  shouldReturn: 0
 --- !u!1 &7898314932419722095
 GameObject:
   m_ObjectHideFlags: 0
@@ -7726,6 +7690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroy: 0
   consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
   CustomTag: Player
   acceptTagInParent: 0
   RequireItem: 

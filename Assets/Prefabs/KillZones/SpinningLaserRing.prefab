@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 379548000255145021}
   - component: {fileID: 7244920646636302665}
+  - component: {fileID: 915727233785516144}
   m_Layer: 0
   m_Name: Laser1
   m_TagString: Untagged
@@ -47,6 +48,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toRotate: {fileID: 0}
   angle: 45
+--- !u!114 &915727233785516144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3612519286316662986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b56fc371fbf8c4d80e0245173696d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
 --- !u!1 &4845709725450825547
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7056475970826059877}
   - component: {fileID: 6172495057587243789}
+  - component: {fileID: 8508943464079604891}
   m_Layer: 0
   m_Name: SpinningLaserRing
   m_TagString: Untagged
@@ -93,7 +110,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420857d4b1a36dc45869c2b7fb5a35a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toSpin: {fileID: 0}
   speed: 1
+  max: Infinity
+  axis: {x: 0, y: 1, z: 0}
+--- !u!114 &8508943464079604891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845709725450825547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b56fc371fbf8c4d80e0245173696d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
 --- !u!1 &7242617500640461992
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6935317141305242057}
   - component: {fileID: 8366876786158859676}
+  - component: {fileID: 5291449259210059550}
   m_Layer: 0
   m_Name: Laser2
   m_TagString: Untagged
@@ -141,6 +177,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toRotate: {fileID: 0}
   angle: 45
+--- !u!114 &5291449259210059550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7242617500640461992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b56fc371fbf8c4d80e0245173696d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
 --- !u!1001 &4115926753176970768
 PrefabInstance:
   m_ObjectHideFlags: 0

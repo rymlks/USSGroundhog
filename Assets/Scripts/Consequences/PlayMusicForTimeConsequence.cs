@@ -10,7 +10,7 @@ namespace Consequences
         public AudioClip music;
         public float secondsToPlay;
     
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             FindObjectOfType<MusicStack>().PushMusicToStack(music, secondsToPlay);
         }

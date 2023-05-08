@@ -5,6 +5,6 @@ namespace Consequences
 {
     public interface IConsequence
     {
-        void execute(TriggerData? data);
+        void Execute(TriggerData? data);
     }
 }

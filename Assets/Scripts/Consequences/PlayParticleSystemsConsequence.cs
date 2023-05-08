@@ -17,7 +17,7 @@ namespace Consequences
             }
         }
 
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             foreach (ParticleSystem system in toPlay)
             {
