@@ -10,6 +10,7 @@ namespace Triggers
     {
         public bool destroy = false;
         public GameObject consequenceObject;
+        public bool findConsequencesInChildren = false;
         private List<IConsequence> _allConsequences = new List<IConsequence>();
         private AudioSource _audioSource;
     
@@ -19,7 +20,7 @@ namespace Triggers
             {
                 this.consequenceObject = this.gameObject;
             }
-            this._allConsequences = consequenceObject.GetComponents<IConsequence>().ToList();
+            this._allConsequences = (this.findConsequencesInChildren ? consequenceObject.GetComponentsInChildren<IConsequence>() : consequenceObject.GetComponents<IConsequence>()).ToList();
             this._audioSource = GetComponent<AudioSource>();
         }
 

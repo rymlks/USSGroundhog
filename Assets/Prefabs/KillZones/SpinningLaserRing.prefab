@@ -57,6 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7056475970826059877}
   - component: {fileID: 6172495057587243789}
+  - component: {fileID: 8508943464079604891}
   m_Layer: 0
   m_Name: SpinningLaserRing
   m_TagString: Untagged
@@ -94,6 +95,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  max: Infinity
+  axis: {x: 0, y: 1, z: 0}
+--- !u!114 &8508943464079604891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845709725450825547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b56fc371fbf8c4d80e0245173696d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 1
 --- !u!1 &7242617500640461992
 GameObject:
   m_ObjectHideFlags: 0
