@@ -1,10 +1,8 @@
 #nullable enable
 using System;
-using Consequences;
 using Triggers;
-using UnityEngine;
 
-namespace Inventory
+namespace Consequences
 {
     public class GatherItemConsequence : AbstractConsequence
     {
