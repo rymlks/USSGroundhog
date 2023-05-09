@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 7663786895345785133}
   - component: {fileID: 7704079655658357605}
   - component: {fileID: 7642524016464102656}
+  - component: {fileID: 7022752186533732473}
   m_Layer: 0
   m_Name: GatherableDatapad
   m_TagString: Untagged
@@ -181,7 +182,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: GatherableDataPad
   persistsThroughDeath: 1
-  destroyOnCollect: 1
+  destroyOnCollect: 0
+--- !u!114 &7022752186533732473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7641578978235148881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 1
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
+  CustomTag: Player
+  acceptTagInParent: 1
+  RequireItem: 
+  reEngageOnStay: 0
+  reverseOnExit: 0
+  requireComponentsEnabled: []
 --- !u!1 &7642524015837837956
 GameObject:
   m_ObjectHideFlags: 0
