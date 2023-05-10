@@ -107,12 +107,16 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             Debug.Log($"I am trying to climb {toClimb.name} but I never learned how");
             isClimbing = true;
             playerInput.SwitchCurrentActionMap("KeyboardClimbingControls");
+
+            Character.GetComponent<KinematicCharacterMotor>().HasPlanarConstraint = true;
         }
 
         public void StopClimbing()
         {
             isClimbing = false;
             playerInput.SwitchCurrentActionMap("KeyboardDefaultControls");
+            Character.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            Character.GetComponent<KinematicCharacterMotor>().HasPlanarConstraint = false;
         }
     }
 }

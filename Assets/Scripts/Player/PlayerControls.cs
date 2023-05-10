@@ -63,6 +63,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClimbUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""0fa525c9-be8a-4296-9bd6-2fc258255dc9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClimbDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""73f5490a-2889-4d3d-91a0-5bdd8f52c86b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -74,6 +92,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""StopClimbing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8870a004-de92-4dcf-8894-cf1d103c84e9"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardAndMouse;Keyboard"",
+                    ""action"": ""ClimbUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4219e303-1771-4792-b99a-1378ede57e68"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardAndMouse;Keyboard"",
+                    ""action"": ""ClimbDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -116,6 +156,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // KeyboardClimbingControls
         m_KeyboardClimbingControls = asset.FindActionMap("KeyboardClimbingControls", throwIfNotFound: true);
         m_KeyboardClimbingControls_StopClimbing = m_KeyboardClimbingControls.FindAction("StopClimbing", throwIfNotFound: true);
+        m_KeyboardClimbingControls_ClimbUp = m_KeyboardClimbingControls.FindAction("ClimbUp", throwIfNotFound: true);
+        m_KeyboardClimbingControls_ClimbDown = m_KeyboardClimbingControls.FindAction("ClimbDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -209,11 +251,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_KeyboardClimbingControls;
     private IKeyboardClimbingControlsActions m_KeyboardClimbingControlsActionsCallbackInterface;
     private readonly InputAction m_KeyboardClimbingControls_StopClimbing;
+    private readonly InputAction m_KeyboardClimbingControls_ClimbUp;
+    private readonly InputAction m_KeyboardClimbingControls_ClimbDown;
     public struct KeyboardClimbingControlsActions
     {
         private @PlayerControls m_Wrapper;
         public KeyboardClimbingControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @StopClimbing => m_Wrapper.m_KeyboardClimbingControls_StopClimbing;
+        public InputAction @ClimbUp => m_Wrapper.m_KeyboardClimbingControls_ClimbUp;
+        public InputAction @ClimbDown => m_Wrapper.m_KeyboardClimbingControls_ClimbDown;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardClimbingControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -226,6 +272,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StopClimbing.started -= m_Wrapper.m_KeyboardClimbingControlsActionsCallbackInterface.OnStopClimbing;
                 @StopClimbing.performed -= m_Wrapper.m_KeyboardClimbingControlsActionsCallbackInterface.OnStopClimbing;
                 @StopClimbing.canceled -= m_Wrapper.m_KeyboardClimbingControlsActionsCallbackInterface.OnStopClimbing;
+                @ClimbUp.started -= m_Wrapper.m_KeyboardClimbingControlsActionsCallbackInterface.OnClimbUp;
+                @ClimbUp.performed -= m_Wrapper.m_KeyboardClimbingControlsActionsCallbackInterface.OnClimbUp;
+                @ClimbUp.canceled -= m_Wrapper.m_KeyboardClimbingControlsActionsCallbackInterface.OnClimbUp;
+                @ClimbDown.started -= m_Wrapper.m_KeyboardClimbingControlsActionsCallbackInterface.OnClimbDown;
+                @ClimbDown.performed -= m_Wrapper.m_KeyboardClimbingControlsActionsCallbackInterface.OnClimbDown;
+                @ClimbDown.canceled -= m_Wrapper.m_KeyboardClimbingControlsActionsCallbackInterface.OnClimbDown;
             }
             m_Wrapper.m_KeyboardClimbingControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -233,6 +285,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StopClimbing.started += instance.OnStopClimbing;
                 @StopClimbing.performed += instance.OnStopClimbing;
                 @StopClimbing.canceled += instance.OnStopClimbing;
+                @ClimbUp.started += instance.OnClimbUp;
+                @ClimbUp.performed += instance.OnClimbUp;
+                @ClimbUp.canceled += instance.OnClimbUp;
+                @ClimbDown.started += instance.OnClimbDown;
+                @ClimbDown.performed += instance.OnClimbDown;
+                @ClimbDown.canceled += instance.OnClimbDown;
             }
         }
     }
@@ -262,5 +320,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IKeyboardClimbingControlsActions
     {
         void OnStopClimbing(InputAction.CallbackContext context);
+        void OnClimbUp(InputAction.CallbackContext context);
+        void OnClimbDown(InputAction.CallbackContext context);
     }
 }

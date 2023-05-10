@@ -118,6 +118,8 @@ namespace Assets.Scripts
 
                 // Apply inputs to character
                 ((FinalCharacterController)Character).SetInputs(ref characterInputs);
+
+
             }
         }
 
@@ -128,6 +130,18 @@ namespace Assets.Scripts
             {
                 trigger.Engage();
             }
+        }
+
+        public void OnClimbUp()
+        {
+            Debug.Log("goup");
+            Character.GetComponent<KinematicCharacterMotor>().SetPosition(Character.transform.position + new Vector3(0, 0.1f, 0));
+        }
+
+        public void OnClimbDown()
+        {
+            Debug.Log("down");
+            Character.GetComponent<KinematicCharacterMotor>().SetPosition(Character.transform.position + new Vector3(0, -0.1f, 0));
         }
 
         public void OnStopClimbing()
