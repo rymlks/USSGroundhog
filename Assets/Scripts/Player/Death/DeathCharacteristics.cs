@@ -59,5 +59,10 @@ namespace Player.Death
             return !_deathCharacteristics.ContainsKey("dontRespawn") || !(bool) _deathCharacteristics["dontRespawn"];
         }
 
+        public string getReason()
+        {
+            return _deathCharacteristics.Keys.First();
+        }
+
     }
 }

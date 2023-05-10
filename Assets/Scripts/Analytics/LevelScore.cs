@@ -5,13 +5,14 @@ namespace Analytics
 {
     public class LevelScore
     {
-        public LevelScore(int par, float time, Dictionary<float, DeathCharacteristics> deaths)
+        public LevelScore(int par, float time, Dictionary<float, DeathCharacteristics> deaths, HashSet<string> gatheredItems)
         {
             parDeaths = par;
             elapsedTime = time;
             deathsByTime = new Dictionary<float, DeathCharacteristics>(deaths);
             performancePercentage = (par * 100f) / deaths.Count;
             performanceComments = generatePerformanceComments(performancePercentage);
+            gatheredPermanentItems = gatheredItems;
         }
 
         public Dictionary<float, DeathCharacteristics> deathsByTime { get; }
@@ -20,6 +21,8 @@ namespace Analytics
         public float performancePercentage { get; }
         
         public string performanceComments { get; }
+        
+        public HashSet<string> gatheredPermanentItems { get; }
 
         protected static string generatePerformanceComments(float percentage)
         {

@@ -17,12 +17,11 @@ namespace Consequences
         private void Start()
         {
             destination.parent = null;
-            startPos = objectToSlide.transform.position;
-
             if (objectToSlide == null)
             {
                 objectToSlide = transform;
             }
+            startPos = objectToSlide.transform.position;
         }
 
         protected Transform getTransform()
