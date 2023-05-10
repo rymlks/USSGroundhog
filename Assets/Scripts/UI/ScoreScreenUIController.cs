@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Analytics;
 using Managers;
+using Player.Death;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,8 +28,28 @@ namespace UI
                                  "Company Time Spent: " + levelScore.elapsedTime + "\r\n\r\n" +
                                  "Overall Performance Rating: " + levelScore.performancePercentage + "%\r\n" +
                                  "Performance Comments: " + levelScore.performanceComments + "\r\n" +
-                                 "Items Gathered: " + getItemsGatheredString(levelScore);
+                                 "Items Gathered: " + getItemsGatheredString(levelScore) +
+                                 "Deaths in Detail: \r\n" + getDeathDetails(levelScore);
 
+        }
+
+        protected static string getDeathDetails(LevelScore levelScore)
+        {
+            Dictionary<string, int> deathCountsByCause = new Dictionary<string, int>();
+            foreach (DeathCharacteristics deathCharacteristics in levelScore.deathsByTime.Values)
+            {
+                if (deathCountsByCause.ContainsKey(deathCharacteristics.getReason()))
+                {
+                    deathCountsByCause[deathCharacteristics.getReason()] =
+                        deathCountsByCause[deathCharacteristics.getReason()] + 1;
+                }
+                else
+                {
+                    deathCountsByCause.Add(deathCharacteristics.getReason(), 1);
+                }
+            }
+
+            return String.Concat(deathCountsByCause.Select(deathCount => deathCount.Value + "    " + deathCount.Key + "\r\n"));
         }
 
         protected static string getItemsGatheredString(LevelScore levelScore)
