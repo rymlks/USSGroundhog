@@ -17,7 +17,7 @@ namespace Consequences
         private void Start()
         {
             destination.parent = null;
-            startPos = transform.position;
+            startPos = objectToSlide.transform.position;
 
             if (objectToSlide == null)
             {
