@@ -22947,6 +22947,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2823769428382668486, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823769428382668486, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823769428382668486, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823769428382668486, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2842167278985861042, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
       propertyPath: m_Name
       value: PlayerCamera
@@ -52437,6 +52453,44 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1139717287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139717275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 99
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_Lens:
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 0}
 --- !u!1001 &1141607534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70183,16 +70237,18 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: dfc9195a57f687f489082139b6dd9350, type: 2}
   m_InitialState: 1
-  m_WrapMode: 1
+  m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -7316165346849519642, guid: dfc9195a57f687f489082139b6dd9350, type: 2}
-    value: {fileID: 2124743311}
-  - key: {fileID: 7378986417423223203, guid: dfc9195a57f687f489082139b6dd9350, type: 2}
-    value: {fileID: 203096112}
+  - key: {fileID: -5430409994743192402, guid: dfc9195a57f687f489082139b6dd9350, type: 2}
+    value: {fileID: 1139717286}
+  - key: {fileID: 4447059476559450559, guid: dfc9195a57f687f489082139b6dd9350, type: 2}
+    value: {fileID: 1139717286}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - bc870eca8a8f09949ba715b8061e1dc1: {fileID: 2124743313}
+    - 6fe30302c3eb04e4ab4663b911f0c2e6: {fileID: 203096114}
 --- !u!1 &1522689356
 GameObject:
   m_ObjectHideFlags: 0
