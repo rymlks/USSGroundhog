@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Analytics;
+using Inventory;
 using Player.Death;
 using UI;
 using UnityEngine;
@@ -37,7 +38,7 @@ namespace Managers
 
         public LevelScore getLevelScore()
         {
-            return new LevelScore(levelParDeaths, Time.time, allDeaths);
+            return new LevelScore(levelParDeaths, Time.time, allDeaths, FindObjectOfType<PlayerInventory>().permanentItemsPosessed());
         }
 
         public void RecordScoreEvent(DeathCharacteristics death)
