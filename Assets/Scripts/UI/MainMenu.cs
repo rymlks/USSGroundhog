@@ -1,17 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+namespace UI
 {
-    public void LoadFirstLevel()
+    public class MainMenu : MonoBehaviour
     {
-        SceneManager.LoadScene("Level 1");
-    }
+        public void LoadFirstLevel()
+        {
+            SceneManager.LoadScene("Level 1");
+        }
 
-    public void ExitProgram()
-    {
-        Application.Quit(0);
+        public void ExitProgram()
+        {
+            Application.Quit(0);
+#if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+#endif
+        }
     }
 }
