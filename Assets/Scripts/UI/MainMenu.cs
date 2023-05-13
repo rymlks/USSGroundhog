@@ -29,28 +29,19 @@ namespace UI
 #endif
         }
 
-        public void FocusMenu(string menuName)
+        public void FocusCamera(CinemachineVirtualCamera toFocus)
         {
-            CinemachineVirtualCamera found = GameObject.Find(menuName + "MenuVirtualCamera")
-                .GetComponentInChildren<CinemachineVirtualCamera>();
-            if (found == null)
+            this.allMenuCameras.ForEach(virtualCamera =>
             {
-                Debug.Log("Cannot focus on menu " + menuName + "; menu camera not found");
-            }
-            else
-            {
-                this.allMenuCameras.ForEach(virtualCamera =>
+                if (virtualCamera == toFocus)
                 {
-                    if (virtualCamera == found)
-                    {
-                        setGreaterCameraPriority(virtualCamera);
-                    }
-                    else
-                    {
-                        setLesserCameraPriority(virtualCamera);
-                    }
-                });
-            }
+                    setGreaterCameraPriority(virtualCamera);
+                }
+                else
+                {
+                    setLesserCameraPriority(virtualCamera);
+                }
+            });
         }
 
         private static void setGreaterCameraPriority(CinemachineVirtualCamera virtualCamera)
