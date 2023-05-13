@@ -5104,6 +5104,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1751856412}
     m_Modifications:
+    - target: {fileID: 489181082661459386, guid: 9f2dad010d310cd439de6190310d2da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 489181082661459386, guid: 9f2dad010d310cd439de6190310d2da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 489181082661459386, guid: 9f2dad010d310cd439de6190310d2da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1236479028}
+    - target: {fileID: 489181082661459386, guid: 9f2dad010d310cd439de6190310d2da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 489181082661459386, guid: 9f2dad010d310cd439de6190310d2da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FocusMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 489181082661459386, guid: 9f2dad010d310cd439de6190310d2da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 489181082661459386, guid: 9f2dad010d310cd439de6190310d2da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 489181082661459386, guid: 9f2dad010d310cd439de6190310d2da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 489181082897209193, guid: 9f2dad010d310cd439de6190310d2da4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
