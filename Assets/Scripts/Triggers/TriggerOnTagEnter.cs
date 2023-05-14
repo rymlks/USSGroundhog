@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using StaticUtils;
 using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static StaticUtils.UnityUtil;
 
 namespace Triggers
 {
@@ -11,7 +13,7 @@ namespace Triggers
         public bool acceptTagInParent = false;
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
-        [FormerlySerializedAs("OnStay")] public bool reEngageOnStay = true;
+        public bool reEngageOnStay = true;
         public bool reverseOnExit = false;
         public Behaviour[] requireComponentsEnabled;
         protected HashSet<Collider> entered;
@@ -33,7 +35,8 @@ namespace Triggers
         {
             if ( enabled && 
                 (CustomTag == "" || 
-                 other.CompareTag(CustomTag)))
+                 other.CompareTag(CustomTag)) ||
+                (this.acceptTagInParent || this.CustomTag == "Corpse" || this.CustomTag == "Player") && TagAppearsInParent(other.gameObject, CustomTag))
             {
                 if (RequireItem != "" && !GameManager.instance.getInventory().IsItemPossessed(RequireItem))
                 {

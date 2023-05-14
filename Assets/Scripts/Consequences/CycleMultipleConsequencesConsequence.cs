@@ -1,4 +1,5 @@
 #nullable enable
+using StaticUtils;
 using Triggers;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace Consequences
         {
             if (this.toCycleBetween == null || this.toCycleBetween.Length < 1)
             {
-                this.toCycleBetween = UnityUtil.GetChildGameObjects(this.gameObject).ToArray();
+                this.toCycleBetween = UnityUtil.GetImmediateChildGameObjects(this.gameObject).ToArray();
             }
         }
 

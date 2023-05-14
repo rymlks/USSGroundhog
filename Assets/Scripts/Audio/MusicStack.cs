@@ -23,7 +23,7 @@ namespace Audio
 
         private void SetMusicVolume()
         {
-            this.musicSource.volume = FindObjectOfType<GameSettings>().MasterVolumePercentage / 100f;
+            this.musicSource.volume = GameSettings.instance.MasterVolumePercentage / 100f;
         }
 
         void Update()

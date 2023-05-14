@@ -10,12 +10,10 @@ namespace UI
     public class MainMenu : MonoBehaviour
     {
         protected List<CinemachineVirtualCamera> allMenuCameras;
-        private GameSettings gameSettings;
 
         void Start()
         {
             this.allMenuCameras = FindObjectsOfType<CinemachineVirtualCamera>().ToList();
-            this.initializeGameSettings();
         }
 
         public void LoadFirstLevel()
@@ -48,20 +46,7 @@ namespace UI
 
         public void setMasterVolume(float volume)
         {
-            initializeGameSettings();
-            this.gameSettings.MasterVolumePercentage = volume;
-        }
-
-        private void initializeGameSettings()
-        {
-            if (this.gameSettings == null)
-            {
-                this.gameSettings = FindObjectOfType<GameSettings>();
-                if (this.gameSettings == null)
-                {
-                    this.gameSettings = new GameObject("GameSettings").AddComponent<GameSettings>();
-                }
-            }
+            GameSettings.instance.MasterVolumePercentage = volume;
         }
 
         private static void setGreaterCameraPriority(CinemachineVirtualCamera virtualCamera)
