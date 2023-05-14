@@ -17,7 +17,13 @@ namespace Audio
         {
             stackedMusic = new Stack<MusicTrackPlayData>();
             stackedMusic.Push(new MusicTrackPlayData(musicStart, 0f, -1f));
+            SetMusicVolume();
             PlayTopOfStack();
+        }
+
+        private void SetMusicVolume()
+        {
+            this.musicSource.volume = FindObjectOfType<GameSettings>().MasterVolumePercentage / 100f;
         }
 
         void Update()
