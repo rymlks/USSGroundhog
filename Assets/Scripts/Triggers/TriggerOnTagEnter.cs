@@ -36,7 +36,7 @@ namespace Triggers
             if ( enabled && 
                 (CustomTag == "" || 
                  other.CompareTag(CustomTag)) ||
-                this.acceptTagInParent && TagAppearsInParent(other.gameObject, CustomTag))
+                (this.acceptTagInParent || this.CustomTag == "Corpse") && TagAppearsInParent(other.gameObject, CustomTag))
             {
                 if (RequireItem != "" && !GameManager.instance.getInventory().IsItemPossessed(RequireItem))
                 {
