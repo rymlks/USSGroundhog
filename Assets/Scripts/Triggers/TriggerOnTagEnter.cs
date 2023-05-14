@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using StaticUtils;
 using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static StaticUtils.UnityUtil;
 
 namespace Triggers
 {
@@ -33,7 +35,8 @@ namespace Triggers
         {
             if ( enabled && 
                 (CustomTag == "" || 
-                 other.CompareTag(CustomTag)))
+                 other.CompareTag(CustomTag)) ||
+                this.acceptTagInParent && TagAppearsInParent(other.gameObject, CustomTag))
             {
                 if (RequireItem != "" && !GameManager.instance.getInventory().IsItemPossessed(RequireItem))
                 {
