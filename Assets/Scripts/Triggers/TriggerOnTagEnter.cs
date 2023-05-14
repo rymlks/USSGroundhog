@@ -13,7 +13,7 @@ namespace Triggers
         public bool acceptTagInParent = false;
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
-        [FormerlySerializedAs("OnStay")] public bool reEngageOnStay = true;
+        public bool reEngageOnStay = true;
         public bool reverseOnExit = false;
         public Behaviour[] requireComponentsEnabled;
         protected HashSet<Collider> entered;
