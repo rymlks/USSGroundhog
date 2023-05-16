@@ -14,19 +14,17 @@ namespace Unity3dEditor
                 SceneView.lastActiveSceneView.camera.transform.position;
         }
         
-        [MenuItem("USSGroundhog/Copy Selected Transform _HOME")]
+        [MenuItem("USSGroundhog/Copy Selected Transform ^HOME")]
         static void CopySelectedTransform()
         {
             Transform selected = GetSelectedTransform();
-            Debug.Log("Copying?");
             if (selected != null)
             {
-                Debug.Log("Copying: " + EditorJsonUtility.ToJson(selected));
                 GUIUtility.systemCopyBuffer = EditorJsonUtility.ToJson(selected);
             }
         }
         
-        [MenuItem("USSGroundhog/Paste Transform from Clipboard _END")]
+        [MenuItem("USSGroundhog/Paste Transform from Clipboard ^END")]
         static void PasteTransformFromClipboard()
         {
             EditorJsonUtility.FromJsonOverwrite(GUIUtility.systemCopyBuffer, GetSelectedTransform());
