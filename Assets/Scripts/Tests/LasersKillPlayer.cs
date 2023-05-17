@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using Managers;
+using Player.Death;
 using UnityEngine;
 
 namespace Tests
@@ -11,32 +14,41 @@ namespace Tests
         void Start()
         {
             _particleSystem = scootyBeam.GetComponent<ParticleSystem>();
-            if (!_particleSystem.emission.enabled)
-            {
-                Debug.Log("Test failed: laser not emitting");
-                Die("");
-            }
+            _particleSystem.Play(true);
         }
 
         void Update()
         {
             if (Time.time > 5f)
             {
-                Debug.Log(playerHasDiedLessThanOnce()
-                    ? "<color=red>Test failed: player has not died from laser</color>"
-                    : "<color=green>Test passed: player has died from laser</color>");
-                Die("");
+                if (playerWasKilledByLaserRespawnably())
+                {
+                    Pass("player has died from laser");
+                }
+                else
+                {
+                    Fail("player has not died from laser");
+                }
             }
         }
 
-        void Die(string message)
+        void Fail(string message)
         {
+            Debug.Log("<color=red>Test failed: " + message + "</color>");
             Destroy(this.gameObject);
         }
 
-        private static bool playerHasDiedLessThanOnce()
+        void Pass(string message)
         {
-            return ScoreManager.instance.getLevelScore().deathsByTime.Values.Count < 1;
+            Debug.Log("<color=green>Test passed: " + message + "</color>");
+            Destroy(this.gameObject);
+        }
+
+        private static bool playerWasKilledByLaserRespawnably()
+        {
+            Dictionary<float,DeathCharacteristics>.ValueCollection valueCollection = ScoreManager.instance.getLevelScore().deathsByTime.Values;
+            return valueCollection.Count > 0 && valueCollection.First().getReason() == "laser" &&
+                   valueCollection.First().shouldRespawn();
         }
     }
 }
