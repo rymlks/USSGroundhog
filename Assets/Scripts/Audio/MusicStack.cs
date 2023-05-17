@@ -22,7 +22,7 @@ namespace Audio
             PlayTopOfStack();
         }
 
-        private void SetMusicVolume()
+        public void SetMusicVolume()
         {
             this.musicSource.volume = GameSettings.instance.MasterVolumePercentage / 100f;
         }

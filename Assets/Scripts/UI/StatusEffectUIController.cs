@@ -10,7 +10,7 @@ namespace UI
 
         public static StatusEffectUIController GetByStatusName(string status)
         {
-            return GameObject.FindObjectsOfType<StatusEffectUIController>().First(controller => controller.statusName == status);
+            return GameObject.FindObjectsOfType<StatusEffectUIController>().FirstOrDefault(controller => controller.statusName == status);
         }
     }
 }

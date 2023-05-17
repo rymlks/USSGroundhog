@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Analytics;
+using Audio;
 using Inventory;
 using Player.Death;
 using UI;
@@ -11,6 +12,8 @@ namespace Managers
     {
         public static ScoreManager instance;
         public ScoreScreenUIController uiController;
+        public AudioClip scoreScreenAudio;
+        public float secondsScorePersists = 40f;
 
         [Tooltip("The number of deaths considered ideal for this level assuming zero explicit mistakes.")]
         public int levelParDeaths = 5;
@@ -46,6 +49,8 @@ namespace Managers
             this.allDeaths.Add(Time.time, death);
             if (!death.shouldRespawn())
             {
+                uiController.secondsMessagePersists = secondsScorePersists;
+                FindObjectOfType<MusicStack>().PushMusicToStack(scoreScreenAudio, secondsScorePersists);
                 uiController.ShowNextFrame();
             }
         }
