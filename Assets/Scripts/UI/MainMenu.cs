@@ -47,7 +47,7 @@ namespace UI
 
         public void setMasterVolume(float volume)
         {
-            GameSettings.instance.MasterVolumePercentage = volume;
+            GameSettings.instance.SetMasterVolume(volume);
         }
 
         private static void setGreaterCameraPriority(CinemachineVirtualCamera virtualCamera)

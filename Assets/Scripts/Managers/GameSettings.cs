@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 
 namespace Managers
@@ -14,7 +15,9 @@ namespace Managers
         }
         private static GameSettings _instance;
     
-        public float MasterVolumePercentage { get; set; } = 100f;
+        public float MasterVolumePercentage { get;
+            protected set;
+        } = 100f;
 
         void Awake()
         {
@@ -32,6 +35,12 @@ namespace Managers
                     _instance = new GameObject("GameSettings").AddComponent<GameSettings>();
                 }
             }
+        }
+
+        public void SetMasterVolume(float volume)
+        {
+            this.MasterVolumePercentage = volume;
+            FindObjectOfType<MusicStack>().SetMusicVolume();
         }
     }
 }
