@@ -65,9 +65,9 @@ public class GameManager : MonoBehaviour
         this.CommitDie(new Dictionary<string, object>(){{reason, null}});
     }
     
-    public void CommitDie(Dictionary<string, object> reason)
+    public void CommitDie(Dictionary<string, object> rawCharacteristics)
     {
-        this.CommitDie(new DeathCharacteristics(reason));
+        this.CommitDie(new DeathCharacteristics(rawCharacteristics));
     }
 
     public void CommitDie(DeathCharacteristics deathCharacteristics)
