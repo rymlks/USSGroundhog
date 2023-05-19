@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using StaticUtils;
 using UI;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Triggers
     public class TriggerOnTagEnter : AbstractTrigger
     {
         public string CustomTag = "";
+        public string[] AdditionalTagsToDetect;
         public bool acceptTagInParent = false;
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
@@ -29,14 +31,11 @@ namespace Triggers
             entered = new HashSet<Collider>();
         }
 
-        
-        
+
         public void OnTriggerEnter(Collider other)
         {
-            if ( enabled && 
-                (CustomTag == "" || 
-                 other.CompareTag(CustomTag)) ||
-                (this.acceptTagInParent || this.CustomTag == "Corpse" || this.CustomTag == "Player") && TagAppearsInParent(other.gameObject, CustomTag))
+            if (enabled &&
+                this.intersectingRelevantObject(other))
             {
                 if (RequireItem != "" && !GameManager.instance.getInventory().IsItemPossessed(RequireItem))
                 {
@@ -61,6 +60,28 @@ namespace Triggers
             }
         }
 
+        protected bool tagIsRelevant(Collider other, string tagInQuestion)
+        {
+            return (tagInQuestion == "" ||
+                    other.CompareTag(tagInQuestion)) ||
+                   (this.acceptTagInParent || tagInQuestion == "Corpse" || tagInQuestion == "Player") &&
+                   TagAppearsInParent(other.gameObject, tagInQuestion);
+        }
+
+        protected bool intersectingRelevantObject(Collider other)
+        {
+            List<string> allTags = this.AdditionalTagsToDetect.ToList();
+            allTags.Add(CustomTag);
+            foreach (var relevantTag in allTags)
+            {
+                if (tagIsRelevant(other, relevantTag))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void OnTriggerStay(Collider other)
         {
             if (reEngageOnStay)
@@ -77,6 +98,7 @@ namespace Triggers
                 {
                     this.Disengage(new TriggerData(CustomTag + " left contact", other.transform.position));
                 }
+
                 entered.Remove(other);
             }
         }
