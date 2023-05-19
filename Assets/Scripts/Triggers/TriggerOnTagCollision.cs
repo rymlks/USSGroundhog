@@ -8,7 +8,7 @@ using static StaticUtils.UnityUtil;
 
 namespace Triggers
 {
-    public class TriggerOnTagEnter : TagBasedTrigger
+    public class TriggerOnTagCollision : TagBasedTrigger
     {
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
