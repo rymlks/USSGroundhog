@@ -13,12 +13,13 @@ namespace Triggers
         public string CustomTag = "";
         public string[] AdditionalTagsToDetect;
         public bool acceptTagInParent = false;
+        public string[] alwaysAcceptInParent = {"Player", "Corpse"};
 
         protected bool tagIsRelevant(Collider other, string tagInQuestion)
         {
             return (tagInQuestion == "" ||
                     other.CompareTag(tagInQuestion)) ||
-                   (this.acceptTagInParent || tagInQuestion == "Corpse" || tagInQuestion == "Player") &&
+                   (this.acceptTagInParent || alwaysAcceptInParent.Contains(tagInQuestion)) &&
                    TagAppearsInParent(other.gameObject, tagInQuestion);
         }
 
