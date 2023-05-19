@@ -8,11 +8,8 @@ using static StaticUtils.UnityUtil;
 
 namespace Triggers
 {
-    public class TriggerOnTagEnter : AbstractTrigger
+    public class TriggerOnTagEnter : TagBasedTrigger
     {
-        public string CustomTag = "";
-        public string[] AdditionalTagsToDetect;
-        public bool acceptTagInParent = false;
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
         public bool reEngageOnStay = true;
@@ -58,28 +55,6 @@ namespace Triggers
                     Destroy(gameObject);
                 }
             }
-        }
-
-        protected bool tagIsRelevant(Collider other, string tagInQuestion)
-        {
-            return (tagInQuestion == "" ||
-                    other.CompareTag(tagInQuestion)) ||
-                   (this.acceptTagInParent || tagInQuestion == "Corpse" || tagInQuestion == "Player") &&
-                   TagAppearsInParent(other.gameObject, tagInQuestion);
-        }
-
-        protected bool intersectingRelevantObject(Collider other)
-        {
-            List<string> allTags = this.AdditionalTagsToDetect.ToList();
-            allTags.Add(CustomTag);
-            foreach (var relevantTag in allTags)
-            {
-                if (tagIsRelevant(other, relevantTag))
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
         public void OnTriggerStay(Collider other)
