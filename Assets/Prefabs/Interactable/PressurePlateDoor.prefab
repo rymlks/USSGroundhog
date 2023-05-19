@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 5971193119538099842}
   - component: {fileID: 5938813409624838090}
   - component: {fileID: 3247548711997876081}
-  - component: {fileID: 6169829401140149738}
   - component: {fileID: 6169829401140149739}
   - component: {fileID: 6169829401140149728}
   m_Layer: 0
@@ -201,27 +200,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.666, y: 0.33, z: 2.66}
   m_Center: {x: -1.2500004, y: -0.08462654, z: 1.2499985}
---- !u!114 &6169829401140149738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5947746349823291194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroy: 0
-  consequenceObject: {fileID: 0}
-  findConsequencesInChildren: 0
-  CustomTag: Corpse
-  acceptTagInParent: 0
-  RequireItem: 
-  reEngageOnStay: 1
-  reverseOnExit: 1
-  requireComponentsEnabled: []
 --- !u!114 &6169829401140149739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +216,12 @@ MonoBehaviour:
   consequenceObject: {fileID: 0}
   findConsequencesInChildren: 0
   CustomTag: Player
+  AdditionalTagsToDetect:
+  - Corpse
   acceptTagInParent: 0
+  alwaysAcceptInParent:
+  - Corpse
+  - Player
   RequireItem: 
   reEngageOnStay: 1
   reverseOnExit: 1

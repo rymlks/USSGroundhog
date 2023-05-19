@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8187070277942687338}
   - component: {fileID: 8200463316819658994}
   - component: {fileID: 6328328189102181789}
-  - component: {fileID: 4788879800535297906}
   m_Layer: 0
   m_Name: UnlockedPlayerOrCorpseControlPanel
   m_TagString: Untagged
@@ -122,28 +121,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroy: 0
   consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
   CustomTag: Player
+  AdditionalTagsToDetect:
+  - Corpse
   acceptTagInParent: 0
-  RequireItem: 
-  reEngageOnStay: 0
-  reverseOnExit: 1
-  requireComponentsEnabled: []
---- !u!114 &4788879800535297906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8199800779061340778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroy: 0
-  consequenceObject: {fileID: 0}
-  CustomTag: Corpse
-  acceptTagInParent: 0
+  alwaysAcceptInParent:
+  - Player
+  - Corpse
   RequireItem: 
   reEngageOnStay: 0
   reverseOnExit: 1

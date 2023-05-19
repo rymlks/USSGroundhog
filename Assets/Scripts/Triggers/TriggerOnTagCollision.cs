@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using StaticUtils;
 using UI;
 using UnityEngine;
@@ -7,10 +8,8 @@ using static StaticUtils.UnityUtil;
 
 namespace Triggers
 {
-    public class TriggerOnTagEnter : AbstractTrigger
+    public class TriggerOnTagCollision : TagBasedTrigger
     {
-        public string CustomTag = "";
-        public bool acceptTagInParent = false;
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
         public bool reEngageOnStay = true;
@@ -29,14 +28,11 @@ namespace Triggers
             entered = new HashSet<Collider>();
         }
 
-        
-        
+
         public void OnTriggerEnter(Collider other)
         {
-            if ( enabled && 
-                (CustomTag == "" || 
-                 other.CompareTag(CustomTag)) ||
-                (this.acceptTagInParent || this.CustomTag == "Corpse" || this.CustomTag == "Player") && TagAppearsInParent(other.gameObject, CustomTag))
+            if (enabled &&
+                this.intersectingRelevantObject(other))
             {
                 if (RequireItem != "" && !GameManager.instance.getInventory().IsItemPossessed(RequireItem))
                 {
@@ -77,6 +73,7 @@ namespace Triggers
                 {
                     this.Disengage(new TriggerData(CustomTag + " left contact", other.transform.position));
                 }
+
                 entered.Remove(other);
             }
         }
