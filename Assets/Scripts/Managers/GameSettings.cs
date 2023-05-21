@@ -14,8 +14,11 @@ namespace Managers
             private set => _instance = value;
         }
         private static GameSettings _instance;
-    
-        public float MasterVolumePercentage { get;
+        public float SFXVolumePercentage{ get;
+            protected set;
+        } = 100f;
+
+        public float MusicVolumePercentage { get;
             protected set;
         } = 100f;
 
@@ -37,10 +40,19 @@ namespace Managers
             }
         }
 
-        public void SetMasterVolume(float volume)
+        public void SetMusicVolume(float volume)
         {
-            this.MasterVolumePercentage = volume;
+            this.MusicVolumePercentage = volume;
             FindObjectOfType<MusicStack>().SetMusicVolume();
+        }
+        
+        public void SetSoundEffectsVolume(float volume)
+        {
+            this.SFXVolumePercentage = volume;
+            foreach (SoundEffectPlayer soundEffectPlayer in FindObjectsOfType<SoundEffectPlayer>())
+            {
+                soundEffectPlayer.SetSFXVolume();
+            }
         }
     }
 }

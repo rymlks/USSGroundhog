@@ -45,9 +45,14 @@ namespace UI
             });
         }
 
-        public void setMasterVolume(float volume)
+        public void setMusicVolume(float volume)
         {
-            GameSettings.instance.SetMasterVolume(volume);
+            GameSettings.instance.SetMusicVolume(volume);
+        }
+        
+        public void setSFXVolume(float volume)
+        {
+            GameSettings.instance.SetSoundEffectsVolume(volume);
         }
 
         private static void setGreaterCameraPriority(CinemachineVirtualCamera virtualCamera)
