@@ -6,6 +6,14 @@ namespace StaticUtils
 {
     public class UnityUtil
     {
+        protected static Color NullColor = new (0f, 0f, (1f/256f), 0f);
+
+        public static Color GetNullColor()
+        {
+            return NullColor;
+            
+        }
+
         public static List<GameObject> GetImmediateChildGameObjects(GameObject parent)
         {
             List<GameObject> toReturn = new List<GameObject>();
