@@ -94,9 +94,9 @@ public class GameManager : MonoBehaviour
 
     protected void CommitDie(DeathCharacteristics deathCharacteristics)
     {
-        if (ScoreManager.instance != null)
+        if (LevelScoreManager.instance != null)
         {
-            ScoreManager.instance.RecordScoreEvent(deathCharacteristics);
+            LevelScoreManager.instance.RecordScoreEvent(deathCharacteristics);
         }
         this.playerRespawner.OnPlayerDeath(deathCharacteristics);
     }

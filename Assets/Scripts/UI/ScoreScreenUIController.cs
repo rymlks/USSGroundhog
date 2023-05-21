@@ -14,7 +14,7 @@ namespace UI
         protected override void EnableUI()
         {
             base.EnableUI();
-            this.setUIValues(ScoreManager.instance.getLevelScore());
+            this.setUIValues(LevelScoreManager.instance.getLevelScore());
         }
 
         private void setUIValues(LevelScore levelScore)
