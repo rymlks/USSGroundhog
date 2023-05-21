@@ -8,16 +8,21 @@ namespace Consequences
 {
     public class ChangeTextConsequence : AbstractConsequence
     {
-        public TMP_Text textObject;
+        public TMP_Text[] textObjects;
         public string toChangeTo;
         public Color newColor = UnityUtil.GetNullColor();
 
         public override void Execute(TriggerData? data)
         {
-            textObject.text = toChangeTo;
-            if (newColor != UnityUtil.GetNullColor())
+            foreach (var text in textObjects)
             {
-                textObject.color = newColor;
+
+
+                text.text = toChangeTo;
+                if (newColor != UnityUtil.GetNullColor())
+                {
+                    text.color = newColor;
+                }
             }
         }
     }
