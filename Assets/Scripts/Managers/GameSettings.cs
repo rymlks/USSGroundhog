@@ -1,3 +1,4 @@
+using System.Linq;
 using Audio;
 using UnityEngine;
 
@@ -5,6 +6,11 @@ namespace Managers
 {
     public class GameSettings : MonoBehaviour
     {
+
+        public static string[] DIFFICULTIES =
+        {
+            "Intern", "Middle Manager", "Chief Diversity Officer"
+        };
         public static GameSettings instance {
             get
             {
@@ -21,6 +27,10 @@ namespace Managers
         public float MusicVolumePercentage { get;
             protected set;
         } = 100f;
+        
+        public string Difficulty { get;
+            protected set;
+        } = "Middle Manager";
 
         void Awake()
         {
@@ -52,6 +62,18 @@ namespace Managers
             foreach (SoundEffectPlayer soundEffectPlayer in FindObjectsOfType<SoundEffectPlayer>())
             {
                 soundEffectPlayer.SetSFXVolume();
+            }
+        }
+        
+        public void SetDifficulty(string toSet)
+        {
+            if (DIFFICULTIES.Contains(toSet))
+            {
+                this.Difficulty = toSet;
+            }
+            else
+            {
+                Debug.Log("Cannot set difficulty; unknown difficulty " + toSet);
             }
         }
     }

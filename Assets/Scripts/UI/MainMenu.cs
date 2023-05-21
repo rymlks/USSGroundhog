@@ -17,8 +17,9 @@ namespace UI
             this.allMenuCameras = FindObjectsOfType<CinemachineVirtualCamera>().ToList();
         }
 
-        public void LoadFirstLevel()
+        public void LoadFirstLevel(string difficulty)
         {
+            GameSettings.instance.SetDifficulty(difficulty);
             SceneManager.LoadScene("Level 1");
         }
 

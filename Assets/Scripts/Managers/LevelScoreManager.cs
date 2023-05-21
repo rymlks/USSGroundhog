@@ -8,9 +8,9 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class ScoreManager : MonoBehaviour
+    public class LevelScoreManager : MonoBehaviour
     {
-        public static ScoreManager instance;
+        public static LevelScoreManager instance;
         public ScoreScreenUIController uiController;
         public AudioClip scoreScreenAudio;
         public float secondsScorePersists = 40f;
@@ -18,6 +18,12 @@ namespace Managers
         [Tooltip("The number of deaths considered ideal for this level assuming zero explicit mistakes.")]
         public int levelParDeaths = 5;
 
+        [Tooltip("How to adjust par deaths for easier difficulty")]
+        public int breakForEasy = 2;
+
+        [Tooltip("How to adjust par deaths for harder difficulty")]
+        public int penaltyForHard = -1;
+        
         protected Dictionary<float, DeathCharacteristics> allDeaths;
 
         private void OnEnable()
@@ -39,9 +45,27 @@ namespace Managers
             this.allDeaths = new Dictionary<float, DeathCharacteristics>();
         }
 
+        public int getLevelParDeathsAtCurrentDifficulty()
+        {
+            return levelParDeaths + getParPenaltiesAndBonuses();
+        }
+
+        protected int getParPenaltiesAndBonuses()
+        {
+            if (GameSettings.instance.Difficulty == GameSettings.DIFFICULTIES[0])
+            {
+                return this.breakForEasy;
+            }
+            else if (GameSettings.instance.Difficulty == GameSettings.DIFFICULTIES[2])
+            {
+                return this.penaltyForHard;
+            }
+            return 0;
+        }
+
         public LevelScore getLevelScore()
         {
-            return new LevelScore(levelParDeaths, Time.time, allDeaths, FindObjectOfType<PlayerInventory>().permanentItemsPosessed());
+            return new LevelScore(this.getLevelParDeathsAtCurrentDifficulty(), Time.time, allDeaths, FindObjectOfType<PlayerInventory>().permanentItemsPosessed());
         }
 
         public void RecordScoreEvent(DeathCharacteristics death)
