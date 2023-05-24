@@ -32,7 +32,8 @@ public class BeginDroneLaunchConsequence : MonoBehaviour, IConsequence
 
     private void CauseExplosion()
     {
-        //GameObject.Instantiate(, drone.transform)
+        GameObject.Instantiate(explosionPrefab, drone.transform.position, Quaternion.identity);
+        Destroy(this.drone);
     }
 
     public void Execute(TriggerData? data)
@@ -46,7 +47,7 @@ public class BeginDroneLaunchConsequence : MonoBehaviour, IConsequence
 
     private void ScheduleExplosion()
     {
-        this.explosionTime = Time.time + 10f;
+        this.explosionTime = Time.time + 7.5f;
     }
 
     private void BeginLaunch(GameObject toLaunch)

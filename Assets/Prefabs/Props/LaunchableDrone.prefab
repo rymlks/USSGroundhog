@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 1309773620412185178}
   - component: {fileID: 5208230178238920684}
   - component: {fileID: 5382458597151079477}
+  - component: {fileID: 8671496061836548362}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -229,3 +230,23 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43206638618504516, guid: 9eaad94394a8eb842b68d1db405ce72c, type: 2}
+--- !u!114 &8671496061836548362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6453402405280686959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68219d916bdb17b408293f2e8057785c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toMove: {fileID: 6453402405280686959}
+  loop: 0
+  timeToTake: 12
+  coordinatesAreRelative: 1
+  waypoints:
+  - {x: 0, y: -5, z: 0}
+  - {x: 0, y: -5, z: -14}
+  - {x: 0, y: 5, z: -42}
