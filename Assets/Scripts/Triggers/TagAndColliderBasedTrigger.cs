@@ -8,7 +8,7 @@ using static StaticUtils.UnityUtil;
 
 namespace Triggers
 {
-    public class TriggerOnTagCollision : TagBasedTrigger
+    public abstract class TagAndColliderBasedTrigger : TagBasedTrigger, IColliderBasedTrigger
     {
         public string RequireItem = "";
         private KeyStatusUIController keyUI;
@@ -16,6 +16,8 @@ namespace Triggers
         public bool reverseOnExit = false;
         public Behaviour[] requireComponentsEnabled;
         protected HashSet<Collider> entered;
+        public bool onTrigger = true;
+        public bool onCollision = false;
 
         new void Start()
         {
@@ -29,7 +31,55 @@ namespace Triggers
         }
 
 
-        public void OnTriggerEnter(Collider other)
+        public virtual void OnTriggerEnter(Collider other)
+        {
+            if (this.RespondsToTriggers())
+            {
+                OnEnter(other);
+            }
+        }
+
+        public virtual void OnTriggerExit(Collider other)
+        {
+            if (this.RespondsToTriggers())
+            {
+                OnExit(other);
+            }
+        }
+
+        public virtual void OnTriggerStay(Collider other)
+        {
+            if (this.RespondsToTriggers())
+            {
+                OnStay(other);
+            }
+        }
+
+        public virtual void OnCollisionEnter(Collision other)
+        {
+            if (this.RespondsToColliders())
+            {
+                OnEnter(other.collider);
+            }
+        }
+
+        public virtual void OnCollisionExit(Collision other)
+        {
+            if (this.RespondsToColliders())
+            {
+                OnExit(other.collider);
+            }
+        }
+
+        public virtual void OnCollisionStay(Collision other)
+        {
+            if (this.RespondsToColliders())
+            {
+                OnStay(other.collider);
+            }
+        }
+
+        protected void OnEnter(Collider other)
         {
             if (enabled &&
                 this.intersectingRelevantObject(other))
@@ -57,15 +107,17 @@ namespace Triggers
             }
         }
 
-        public void OnTriggerStay(Collider other)
+
+        protected void OnStay(Collider other)
         {
             if (reEngageOnStay)
             {
-                OnTriggerEnter(other);
+                OnEnter(other);
             }
         }
 
-        public void OnTriggerExit(Collider other)
+
+        protected void OnExit(Collider other)
         {
             if (entered.Contains(other))
             {
@@ -76,6 +128,16 @@ namespace Triggers
 
                 entered.Remove(other);
             }
+        }
+
+        public virtual bool RespondsToTriggers()
+        {
+            return this.onTrigger;
+        }
+
+        public virtual bool RespondsToColliders()
+        {
+            return this.onCollision;
         }
     }
 }

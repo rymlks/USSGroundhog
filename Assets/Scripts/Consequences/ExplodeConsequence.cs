@@ -13,11 +13,6 @@ namespace Consequences
 
         public bool dontRespawn = false;
 
-        public void Start()
-        {
-            this.GetComponent<Collider>().isTrigger = true;
-        }
-
         protected void instantiateExplosion()
         {
             if (this.ExplosionPrefab != null)

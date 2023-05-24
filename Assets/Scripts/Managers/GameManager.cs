@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
 
     public void CommitDie(Dictionary<string, object> rawCharacteristics)
     {
+        Debug.Log("Committing die");
         this.CommitDie(new DeathCharacteristics(AddStanceDetails(rawCharacteristics)));
     }
 

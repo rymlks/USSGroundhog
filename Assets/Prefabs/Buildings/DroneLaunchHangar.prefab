@@ -771,6 +771,8 @@ MonoBehaviour:
   requireComponentsEnabled:
   - {fileID: 6582007429405664128}
   - {fileID: 6582007429405664128}
+  onTrigger: 1
+  onCollision: 0
 --- !u!1 &3596856136680775182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,7 +1082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6954495397038755397
 Transform:
   m_ObjectHideFlags: 0
@@ -1774,7 +1776,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7400751075458688477, guid: 528b6a3776a25f1449d9e1c7c94aa4df, type: 3}
 --- !u!1 &7898568497626624271
@@ -3711,6 +3713,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaunchableDrone
       objectReference: {fileID: 0}
+    - target: {fileID: 4428347517018293579, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
+      propertyPath: m_Name
+      value: DroneMovement
+      objectReference: {fileID: 0}
     - target: {fileID: 8012943032416312126, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
       propertyPath: m_RootOrder
       value: 136
@@ -3757,9 +3763,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
---- !u!1 &6453402405512590792 stripped
+--- !u!1 &4428347516778009580 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6453402405280686959, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4428347517018293579, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
   m_PrefabInstance: {fileID: 307402407}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8012943032721542553 stripped
@@ -12293,6 +12299,10 @@ PrefabInstance:
       propertyPath: destroy
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3240802240624043956, guid: c3be44fa30f4edf4a873039939619be6, type: 3}
+      propertyPath: consequenceObject
+      value: 
+      objectReference: {fileID: 4428347516778009580}
     - target: {fileID: 6144147025271283679, guid: c3be44fa30f4edf4a873039939619be6, type: 3}
       propertyPath: m_RootOrder
       value: 180
@@ -12351,26 +12361,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3be44fa30f4edf4a873039939619be6, type: 3}
---- !u!1 &7270686068142093695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6146554541538474091, guid: c3be44fa30f4edf4a873039939619be6, type: 3}
-  m_PrefabInstance: {fileID: 3578770431865998612}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &855788951946956674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7270686068142093695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625c611244b37ef47a45f4ff647eba71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drone: {fileID: 6453402405512590792}
-  dronePrefab: {fileID: 249830970921546329, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
-  explosionPrefab: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
 --- !u!4 &7272818161581953739 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6144147025271283679, guid: c3be44fa30f4edf4a873039939619be6, type: 3}
