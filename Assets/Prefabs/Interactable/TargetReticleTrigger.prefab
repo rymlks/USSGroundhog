@@ -129,7 +129,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a37e90a722ff13b4281acd1103c69154, type: 2}
+  - {fileID: 2100000, guid: 7fe93db32f821c546aeaf60d966a6876, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180,7 +180,11 @@ MonoBehaviour:
   consequenceObject: {fileID: 0}
   findConsequencesInChildren: 0
   CustomTag: Corpse
+  AdditionalTagsToDetect: []
   acceptTagInParent: 0
+  alwaysAcceptInParent:
+  - Player
+  - Corpse
   RequireItem: 
   reEngageOnStay: 0
   reverseOnExit: 0
@@ -255,7 +259,7 @@ PrefabInstance:
     - target: {fileID: 23096095509576854, guid: 6729f930068ace640991100782e83888, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a37e90a722ff13b4281acd1103c69154, type: 2}
+      objectReference: {fileID: 2100000, guid: 7fe93db32f821c546aeaf60d966a6876, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6729f930068ace640991100782e83888, type: 3}
 --- !u!4 &4402272847849041769 stripped
