@@ -98,8 +98,8 @@ namespace Triggers
                     }
                 }
 
-                Engage(new TriggerData(CustomTag + " contacted", other.transform.position));
                 entered.Add(other);
+                Engage(new TriggerData(CustomTag + " contacted", other.transform.position));
                 if (destroy)
                 {
                     Destroy(gameObject);
