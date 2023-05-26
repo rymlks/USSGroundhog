@@ -10,11 +10,18 @@ namespace Consequences
 
         public float minSecondsBetweenSwitching = 2;
         public float maxSecondsBetweenSwitching = 4;
+        public GameObject toBlink;
+        
         private List<Transform> controlledObjects;
 
         void Start()
         {
-            this.controlledObjects = this.gameObject.GetComponentsInChildren<Transform>().ToList();
+            if (this.toBlink == null)
+            {
+                toBlink = this.gameObject;
+            }
+
+            this.controlledObjects = toBlink.GetComponentsInChildren<Transform>().ToList();
             this.controlledObjects.Remove(this.transform);
             generateNextSwitchTime();
         }
@@ -30,6 +37,7 @@ namespace Consequences
 
         private void doSwitch()
         {
+            Debug.Log("blinking");
             foreach (Transform switchableTransform in this.controlledObjects)
             {
                 switchableTransform.gameObject.SetActive(!switchableTransform.gameObject.activeSelf);
