@@ -19,7 +19,7 @@ namespace Triggers
         public bool onTrigger = true;
         public bool onCollision = false;
 
-        new void Start()
+        protected virtual void Start()
         {
             base.Start();
             if (keyUI == null)

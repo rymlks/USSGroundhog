@@ -37,7 +37,6 @@ namespace Consequences
 
         private void doSwitch()
         {
-            Debug.Log("blinking");
             foreach (Transform switchableTransform in this.controlledObjects)
             {
                 switchableTransform.gameObject.SetActive(!switchableTransform.gameObject.activeSelf);

@@ -10,7 +10,7 @@ namespace Triggers
 {
     public class TriggerOnAnyCollision : TriggerOnTagIntersection
     {
-        new void Start()
+        protected virtual void Start()
         {
             base.Start();
             this.onTrigger = false;
