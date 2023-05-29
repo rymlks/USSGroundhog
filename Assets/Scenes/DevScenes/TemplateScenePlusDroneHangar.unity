@@ -241,7 +241,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DroneLaunchHangar
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8211902474937203428, guid: cb88edda141040149bf6b7bfd97c2f40, type: 3}
+      propertyPath: multiplier
+      value: 0.75
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6731503648108138292, guid: cb88edda141040149bf6b7bfd97c2f40, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cb88edda141040149bf6b7bfd97c2f40, type: 3}
 --- !u!1 &59918077
 GameObject:
@@ -583,7 +588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117601847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.39922142, y: 0.5353324, z: -52.281067}
+  m_LocalPosition: {x: -0.03569211, y: 0.9619771, z: -52.68217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

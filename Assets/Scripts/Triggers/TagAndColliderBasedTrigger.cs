@@ -98,12 +98,31 @@ namespace Triggers
                     }
                 }
 
-                entered.Add(other);
+                initializeTrackedColliders();
+
+                beginTrackingCollider(other);
+                
                 Engage(new TriggerData(CustomTag + " contacted", other.transform.position));
                 if (destroy)
                 {
                     Destroy(gameObject);
                 }
+            }
+        }
+
+        private void beginTrackingCollider(Collider other)
+        {
+            if (!entered.Contains(other))
+            {
+                entered.Add(other);
+            }
+        }
+
+        private void initializeTrackedColliders()
+        {
+            if (entered == null)
+            {
+                entered = new HashSet<Collider>();
             }
         }
 
