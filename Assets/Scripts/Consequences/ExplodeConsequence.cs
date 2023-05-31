@@ -1,4 +1,5 @@
 #nullable enable
+using System;
 using System.Collections.Generic;
 using Triggers;
 using UnityEngine;
@@ -9,14 +10,11 @@ namespace Consequences
     {
         public float explosionStrength = 10;
         public bool persist = true;
+        public bool corpseShouldRagdoll = true;
         public GameObject ExplosionPrefab;
 
         public bool dontRespawn = false;
-
-        public void Start()
-        {
-            this.GetComponent<Collider>().isTrigger = true;
-        }
+        protected bool die = false;
 
         protected void instantiateExplosion()
         {
@@ -34,10 +32,18 @@ namespace Consequences
             GameManager.instance.CommitDie(new Dictionary<string, object>()
             {
                 {"explosion", explosionVector3(data).normalized * explosionStrength},
-                {"ragdoll", true},
+                {"ragdoll", corpseShouldRagdoll},
                 {"dontRespawn", dontRespawn}
             });
             if (!persist)
+            {
+                die = true;
+            }
+        }
+
+        public void LateUpdate()
+        {
+            if (die)
             {
                 Destroy(gameObject);
             }
