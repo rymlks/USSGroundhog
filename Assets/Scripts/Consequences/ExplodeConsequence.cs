@@ -1,4 +1,5 @@
 #nullable enable
+using System;
 using System.Collections.Generic;
 using Triggers;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Consequences
         public GameObject ExplosionPrefab;
 
         public bool dontRespawn = false;
+        protected bool die = false;
 
         protected void instantiateExplosion()
         {
@@ -34,6 +36,14 @@ namespace Consequences
                 {"dontRespawn", dontRespawn}
             });
             if (!persist)
+            {
+                die = true;
+            }
+        }
+
+        public void LateUpdate()
+        {
+            if (die)
             {
                 Destroy(gameObject);
             }

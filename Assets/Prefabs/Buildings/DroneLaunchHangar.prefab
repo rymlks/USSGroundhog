@@ -712,93 +712,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1279112405430914299
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7056107922642731888}
-  - component: {fileID: 5253880049697234965}
-  - component: {fileID: 8902627228374571125}
-  - component: {fileID: 535182986}
-  m_Layer: 0
-  m_Name: DroneLaunchGoal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7056107922642731888
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279112405430914299}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.694, y: 17.311, z: 0.51}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8012943032721542553}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5253880049697234965
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279112405430914299}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 40, y: 20, z: 30}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8902627228374571125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279112405430914299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1548c342cc5438d429c0cbd78ed26cf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Location Menu
---- !u!114 &535182986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279112405430914299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 481f267523e147869f26435852b5f7be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroy: 0
-  consequenceObject: {fileID: 0}
-  findConsequencesInChildren: 0
-  CustomTag: 
-  AdditionalTagsToDetect: []
-  acceptTagInParent: 0
-  alwaysAcceptInParent:
-  - Player
-  - Corpse
-  RequireItem: 
-  reEngageOnStay: 1
-  reverseOnExit: 0
-  requireComponentsEnabled: []
-  onTrigger: 1
-  onCollision: 0
 --- !u!1 &2584772084758754234
 GameObject:
   m_ObjectHideFlags: 0
@@ -3989,34 +3902,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaunchableDrone
       objectReference: {fileID: 0}
-    - target: {fileID: 3858238146971109950, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
-      propertyPath: timeToTake
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3858238146971109950, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
-      propertyPath: waypoints.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3858238146971109950, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
-      propertyPath: waypoints.Array.data[5].y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3858238146971109950, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
-      propertyPath: waypoints.Array.data[5].z
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3858238146971109950, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
-      propertyPath: waypoints.Array.data[6].y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3858238146971109950, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
-      propertyPath: waypoints.Array.data[6].z
-      value: -25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3858238146971109950, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
-      propertyPath: waypoints.Array.data[7].y
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 8012943032416312126, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
       propertyPath: m_RootOrder
       value: 133
@@ -4063,9 +3948,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
---- !u!1 &4428347516778009580 stripped
+--- !u!1 &249830971161568510 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4428347517018293579, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
+  m_CorrespondingSourceObject: {fileID: 249830970921546329, guid: 013bc2b02a1b942419722806f823f3cb, type: 3}
   m_PrefabInstance: {fileID: 307402407}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8012943032721542553 stripped
@@ -12980,7 +12865,7 @@ PrefabInstance:
     - target: {fileID: 3240802240624043956, guid: c3be44fa30f4edf4a873039939619be6, type: 3}
       propertyPath: consequenceObject
       value: 
-      objectReference: {fileID: 4428347516778009580}
+      objectReference: {fileID: 249830971161568510}
     - target: {fileID: 6144147025271283679, guid: c3be44fa30f4edf4a873039939619be6, type: 3}
       propertyPath: m_RootOrder
       value: 177

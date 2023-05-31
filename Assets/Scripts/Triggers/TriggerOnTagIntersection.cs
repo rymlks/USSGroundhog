@@ -10,5 +10,9 @@ namespace Triggers
 {
     public class TriggerOnTagIntersection : TagAndColliderBasedTrigger
     {
+        protected override void Start()
+        {
+            base.Start();
+        }
     }
 }
