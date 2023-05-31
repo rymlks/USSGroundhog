@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Triggers;
 using UnityEngine;
 
 namespace Consequences
@@ -23,6 +24,11 @@ namespace Consequences
 
             this.controlledObjects = toBlink.GetComponentsInChildren<Transform>().ToList();
             this.controlledObjects.Remove(this.transform);
+        }
+
+        public override void Execute(TriggerData? data)
+        {
+            base.Execute(data);
             generateNextSwitchTime();
         }
 
