@@ -18,7 +18,7 @@ namespace Consequences
     
         private float rotato = 0;
 
-        void Start()
+        protected virtual void Start()
         {
             if (toSpin == null)
             {
