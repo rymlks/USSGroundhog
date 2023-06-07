@@ -2,26 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using Managers;
 using UnityEngine;
+using static UnityEditor.AssetDatabase;
 
-public class SoundEffectPlayer : MonoBehaviour
+public class SoundEffectPlayer : MonoBehaviourSingleton
 {
-    public AudioClip Small_explosion;
-    public AudioClip Tank_explosion;
-    public AudioClip Crate_explosion;
-    public AudioClip Door_Slide;
-    public AudioClip PA_Jingle;
-    public AudioClip Turret_Firing;
-    public AudioClip Turret_Firing_Tail;
+    public AudioClip Small_explosion, Tank_explosion, 
+        Crate_explosion, Door_Slide, 
+        PA_Jingle, Turret_Firing, 
+        Turret_Firing_Tail;
+
+    public static SoundEffectPlayer instance;
 
     protected AudioSource source;
 
+    private const string smallExplosion = "...Assets/Sounds/SoundFX/Small Explosion 11.wav";
+
+    void Awake()
+    {
+        base.Initialize(typeof(SoundEffectPlayer));
+    }
+
     void Start()
     {
+        if (Small_explosion == null)
+            Small_explosion = LoadAssetAtPath<AudioClip>(smallExplosion);
         if (this.source == null)
         {
             this.source = GetComponentInChildren<AudioSource>();
         }
         this.SetSFXVolume();
+        
     }
 
     public void PlaySound(AudioClip toPlay)
