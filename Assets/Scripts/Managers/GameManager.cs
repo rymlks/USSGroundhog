@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using Audio;
+using Consequences;
 using Inventory;
 using KinematicCharacterController.Walkthrough.RootMotionExample;
 using Player;
 using Player.Death;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEditor;
 
 namespace Managers
 {
@@ -22,6 +25,8 @@ namespace Managers
         protected PlayerRespawner playerRespawner;
         protected PlayerInventory playerInventory;
         private static readonly int _isCrouching = Animator.StringToHash("IsCrouching");
+        
+        public AudioClip[] audioClipArray;
 
         private void OnEnable()
         {
@@ -90,11 +95,36 @@ namespace Managers
 
         protected void CommitDie(DeathCharacteristics deathCharacteristics)
         {
+            SendSound(deathCharacteristics);
             if (LevelScoreManager.instance != null)
             {
                 LevelScoreManager.instance.RecordScoreEvent(deathCharacteristics);
             }
             this.playerRespawner.OnPlayerDeath(deathCharacteristics);
+        }
+        
+        private void SendSound(DeathCharacteristics deathCharacteristics)
+        {
+            AudioClip soundToPlay = GetSoundToPlay(deathCharacteristics);
+            if (soundToPlay == null) return;
+            var soundEffectPlayer = FindObjectOfType<SoundEffectPlayer>();
+            soundEffectPlayer.PlaySound(soundToPlay);
+        }
+
+        private AudioClip GetSoundToPlay(DeathCharacteristics deathCharacteristics)
+        {
+            string reason = deathCharacteristics.getReason();
+            switch (reason)
+            {
+                case "explosion":
+                    return audioClipArray[0];
+                case "freezing":
+                    return audioClipArray[1];
+                case "burning":
+                    return audioClipArray[2];
+                default: Debug.LogWarning($"{reason} is not defined for sound on death;");
+                    return null;
+            }
         }
 
         private bool devToolsEnabled()
@@ -138,4 +168,15 @@ namespace Managers
             return this.playerInventory;
         }
     }
+
+    /*
+    [CustomEditor(typeof(GameManager))]
+    public class SFXRoster : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            
+        }
+    }
+    */
 }
