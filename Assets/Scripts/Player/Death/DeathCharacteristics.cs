@@ -18,6 +18,11 @@ namespace Player.Death
             return _deathCharacteristics.Keys.Contains("ragdoll");
         }
 
+        public bool shouldProduceCrouchedCorpse()
+        {
+            return _deathCharacteristics.Keys.Contains("stance") && (string) _deathCharacteristics["stance"] == "crouched";
+        }
+
         public bool shouldProduceElectrocutedCorpse()
         {
             return _deathCharacteristics.Keys.Contains("electrocution");
@@ -57,6 +62,11 @@ namespace Player.Death
         public bool shouldRespawn()
         {
             return !_deathCharacteristics.ContainsKey("dontRespawn") || !(bool) _deathCharacteristics["dontRespawn"];
+        }
+
+        public string getReason()
+        {
+            return _deathCharacteristics.Keys.First();
         }
 
     }

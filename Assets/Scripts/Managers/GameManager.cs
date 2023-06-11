@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController.Examples;
 using KinematicCharacterController;
-using Assets.Scripts;
 using Inventory;
 using KinematicCharacterController.Walkthrough.RootMotionExample;
 using Managers;
 using Player;
 using Player.Death;
 using Unity.VisualScripting;
+using UnityEngine.TextCore.Text;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     protected PlayerRespawner playerRespawner;
     protected PlayerInventory playerInventory;
+    private static readonly int _isCrouching = Animator.StringToHash("IsCrouching");
 
     private void OnEnable()
     {
@@ -51,6 +52,11 @@ public class GameManager : MonoBehaviour
             this.playerInventory = this.AddComponent<PlayerInventory>();
         }
 
+        if (CharacterAnimator == null)
+        {
+            CharacterAnimator = FindObjectOfType<FinalCharacterController>().CharacterAnimator;
+        }
+
     }
 
     private void initializeRespawner()
@@ -64,17 +70,33 @@ public class GameManager : MonoBehaviour
     {
         this.CommitDie(new Dictionary<string, object>(){{reason, null}});
     }
-    
-    public void CommitDie(Dictionary<string, object> reason)
+
+    private Dictionary<string, object> AddStanceDetails(Dictionary<string, object> rawCharacteristics)
     {
-        this.CommitDie(new DeathCharacteristics(reason));
+        if (CharacterAnimator != null)
+        {
+            if (CharacterAnimator.GetBool(_isCrouching))
+            {
+                rawCharacteristics.Add("stance", "crouched");
+            }
+            else
+            {
+                rawCharacteristics.Add("stance", "standing");
+            }
+        }
+        return rawCharacteristics;
     }
 
-    public void CommitDie(DeathCharacteristics deathCharacteristics)
+    public void CommitDie(Dictionary<string, object> rawCharacteristics)
     {
-        if (ScoreManager.instance != null)
+        this.CommitDie(new DeathCharacteristics(AddStanceDetails(rawCharacteristics)));
+    }
+
+    protected void CommitDie(DeathCharacteristics deathCharacteristics)
+    {
+        if (LevelScoreManager.instance != null)
         {
-            ScoreManager.instance.RecordScoreEvent(deathCharacteristics);
+            LevelScoreManager.instance.RecordScoreEvent(deathCharacteristics);
         }
         this.playerRespawner.OnPlayerDeath(deathCharacteristics);
     }

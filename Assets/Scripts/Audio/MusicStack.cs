@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Managers;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,7 +18,13 @@ namespace Audio
         {
             stackedMusic = new Stack<MusicTrackPlayData>();
             stackedMusic.Push(new MusicTrackPlayData(musicStart, 0f, -1f));
+            SetMusicVolume();
             PlayTopOfStack();
+        }
+
+        public void SetMusicVolume()
+        {
+            this.musicSource.volume = GameSettings.instance.MusicVolumePercentage / 100f;
         }
 
         void Update()

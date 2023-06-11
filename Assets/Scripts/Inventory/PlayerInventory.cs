@@ -24,5 +24,10 @@ namespace Inventory
         {
             return this.permanentItems.Contains(itemName) || this.transientItems.Contains(itemName);
         }
+
+        public HashSet<string> permanentItemsPosessed()
+        {
+            return permanentItems;
+        }
     }
 }
