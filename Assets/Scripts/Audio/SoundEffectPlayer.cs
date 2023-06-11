@@ -4,7 +4,7 @@ using Managers;
 using UnityEngine;
 using static UnityEditor.AssetDatabase;
 
-public class SoundEffectPlayer : MonoBehaviourSingleton
+public class SoundEffectPlayer : MonoBehaviour
 {
     public AudioClip Small_explosion, Tank_explosion, 
         Crate_explosion, Door_Slide, 
@@ -17,9 +17,16 @@ public class SoundEffectPlayer : MonoBehaviourSingleton
 
     private const string smallExplosion = "...Assets/Sounds/SoundFX/Small Explosion 11.wav";
 
-    void Awake()
+    private void OnEnable()
     {
-        base.Initialize(typeof(SoundEffectPlayer));
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void Start()
