@@ -16,11 +16,6 @@ namespace Audio
 
         private const string smallExplosion = "...Assets/Sounds/SoundFX/Small Explosion 11.wav";
 
-        void Awake()
-        {
-            this.SetSFXVolume();
-        }
-
         void Start()
         {
             if (Small_explosion == null)
