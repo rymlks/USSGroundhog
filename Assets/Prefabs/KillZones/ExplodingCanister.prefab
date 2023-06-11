@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 392605162}
   - component: {fileID: 4242629406180471079}
   - component: {fileID: 2494700044741984126}
+  - component: {fileID: 4863156044600901129}
   m_Layer: 0
   m_Name: ExplodingCanister
   m_TagString: exploding_canister
@@ -132,9 +133,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroy: 0
+  consequenceObject: {fileID: 0}
   CustomTag: Player
+  acceptTagInParent: 0
   RequireItem: 
-  onStay: 0
+  reEngageOnStay: 1
+  reverseOnExit: 0
+  requireComponentsEnabled: []
 --- !u!114 &2494700044741984126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +153,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 8300000, guid: f93994c5a9968924c88daf03204a804e, type: 3}
+--- !u!114 &4863156044600901129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096017102154997716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ab50a57b2145789606d5a09b7a2b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toPlay: []
+  particleSystemRoot: {fileID: 1095817228699269548}
 --- !u!1001 &1095459320195606500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -233,6 +252,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f72b1f87653069d458bfd1263ffa4bb9, type: 3}
+--- !u!1 &1095817228699269548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1906021416640072, guid: f72b1f87653069d458bfd1263ffa4bb9, type: 3}
+  m_PrefabInstance: {fileID: 1095459320195606500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1097800968644954166 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4492985623375826, guid: f72b1f87653069d458bfd1263ffa4bb9, type: 3}

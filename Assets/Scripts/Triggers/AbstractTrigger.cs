@@ -10,6 +10,7 @@ namespace Triggers
     {
         public bool destroy = false;
         public GameObject consequenceObject;
+        public bool findConsequencesInChildren = false;
         private AudioSource _audioSource;
 
         protected List<IConsequence> _allConsequences = new List<IConsequence>();
@@ -20,7 +21,7 @@ namespace Triggers
             {
                 this.consequenceObject = this.gameObject;
             }
-            this._allConsequences = consequenceObject.GetComponents<IConsequence>().ToList();
+            this._allConsequences = (this.findConsequencesInChildren ? consequenceObject.GetComponentsInChildren<IConsequence>() : consequenceObject.GetComponents<IConsequence>()).ToList();
             this._audioSource = GetComponent<AudioSource>();
         }
 
@@ -28,7 +29,7 @@ namespace Triggers
         {
             foreach (IConsequence consequence in this._allConsequences)
             {
-                consequence.execute(null);
+                consequence.Execute(null);
             }
             playSoundIfSourcePresent();
         }
@@ -37,7 +38,20 @@ namespace Triggers
         {
             foreach (IConsequence consequence in this._allConsequences)
             {
-                consequence.execute(data);
+                consequence.Execute(data);
+            }
+            playSoundIfSourcePresent();
+        }
+        
+        private void CancelAllCancelableConsequences(TriggerData data)
+        {
+            foreach (IConsequence consequence in this._allConsequences)
+            {
+                ICancelableConsequence cancelable = (ICancelableConsequence) consequence;
+                if (cancelable != null)
+                {
+                    cancelable.Cancel(data);
+                }
             }
             playSoundIfSourcePresent();
         }
@@ -46,8 +60,13 @@ namespace Triggers
         {
             this.ExecuteAllConsequences();
         }
+        
+        public virtual void Disengage(TriggerData data)
+        {
+            this.CancelAllCancelableConsequences(data);
+        }
 
-        public void Engage(TriggerData data)
+        public virtual void Engage(TriggerData data)
         {
             this.ExecuteAllConsequences(data);
         }

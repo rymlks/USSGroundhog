@@ -1,63 +1,58 @@
 #nullable enable
-using System.Collections;
 using System.Collections.Generic;
-using Consequences;
-using KinematicCharacterController.Examples;
 using Triggers;
 using UnityEngine;
 
-public class ExplodeConsequence : AbstractConsequence
+namespace Consequences
 {
-    public float explosionStrength = 10;
-    public bool persist = true;
-    public GameObject ExplosionPrefab;
-    public GameObject ExampleCamera;
-    protected SoundEffectPlayer soundEffectPlayer;
-
-    public bool dontRespawn = false;
-
-    public void Start()
+    public class ExplodeConsequence : AbstractConsequence
     {
-        this.GetComponent<Collider>().isTrigger = true;
-        this.soundEffectPlayer = FindObjectOfType<SoundEffectPlayer>();
-    }
+        public float explosionStrength = 10;
+        public bool persist = true;
+        public GameObject ExplosionPrefab;
 
-    private void createDefaultExplosion()
-    {
-        var explode = Instantiate(ExplosionPrefab);
-        explode.transform.position = transform.position;
-    }
+        public bool dontRespawn = false;
 
-    public override void execute(TriggerData? data)
-    {
-        foreach (var part in GetComponentsInChildren<ParticleSystem>())
+        public void Start()
         {
-            part.Play();
+            this.GetComponent<Collider>().isTrigger = true;
         }
 
-        createDefaultExplosion();
+        protected void instantiateExplosion()
+        {
+            if (this.ExplosionPrefab != null)
+            {
+                var explode = Instantiate(ExplosionPrefab);
+                explode.transform.position = transform.position;
+            }
+        }
+
+        public override void Execute(TriggerData? data)
+        {
+            instantiateExplosion();
         
-        GameManager.instance.CommitDie(new Dictionary<string, object>()
-        {
-            {"explosion", explosionVector3(data).normalized * explosionStrength},
-            {"ragdoll", true},
-            {"dontRespawn", dontRespawn}
-        });
-        if (!persist)
-        {
-            Destroy(gameObject);
+            GameManager.instance.CommitDie(new Dictionary<string, object>()
+            {
+                {"explosion", explosionVector3(data).normalized * explosionStrength},
+                {"ragdoll", true},
+                {"dontRespawn", dontRespawn}
+            });
+            if (!persist)
+            {
+                Destroy(gameObject);
+            }
         }
-    }
 
-    private Vector3 explosionVector3(TriggerData? data)
-    {
-        if (data != null)
+        private Vector3 explosionVector3(TriggerData? data)
         {
-            return (Vector3) (data.triggerLocation - transform.position);
-        }
-        else
-        {
-            return transform.position;
+            if (data != null)
+            {
+                return (Vector3) (data.triggerLocation - transform.position);
+            }
+            else
+            {
+                return transform.position;
+            }
         }
     }
 }

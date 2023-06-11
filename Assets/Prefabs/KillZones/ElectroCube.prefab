@@ -4740,8 +4740,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4269988692085171842}
-  - component: {fileID: 341759873745358289}
   - component: {fileID: 2270361394786061574}
+  - component: {fileID: 8269394036618934357}
+  - component: {fileID: 2041243926728750084}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -4764,20 +4765,6 @@ Transform:
   m_Father: {fileID: 4893315088339226685}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &341759873745358289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8418774093979933035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb207e82a36369648a300fc491533054, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  immunityGrantingItems: []
-  deathReason: electrocution
 --- !u!65 &2270361394786061574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4791,3 +4778,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8269394036618934357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8418774093979933035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb210ed58c54d9d4b93e8f6626e5339f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathReason: electrocution
+--- !u!114 &2041243926728750084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8418774093979933035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  CustomTag: Player
+  acceptTagInParent: 1
+  RequireItem: 
+  OnStay: 1
+  requireComponentsEnabled: []

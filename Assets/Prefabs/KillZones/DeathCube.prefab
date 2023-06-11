@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4893315088339226685}
   - component: {fileID: 4893315088339226680}
-  - component: {fileID: 4893315088339226681}
+  - component: {fileID: 1828968995848658822}
+  - component: {fileID: 5939239586472473874}
   m_Layer: 0
   m_Name: DeathCube
   m_TagString: Untagged
@@ -46,7 +47,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4893315088339226681
+--- !u!114 &1828968995848658822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,6 +56,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 4893315088339226662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb207e82a36369648a300fc491533054, type: 3}
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  CustomTag: Player
+  acceptTagInParent: 1
+  RequireItem: 
+  OnStay: 1
+  requireComponentsEnabled: []
+--- !u!114 &5939239586472473874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893315088339226662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb210ed58c54d9d4b93e8f6626e5339f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathReason: jeanbrockees
