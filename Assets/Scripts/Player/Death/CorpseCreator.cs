@@ -9,6 +9,7 @@ namespace Player.Death
         private GameObject _ragdollPrefab;
         private GameObject _dyingBeingPrefab;
         private GameObject _frozenCorpsePrefab;
+        private GameObject _frozenCorpseCrouchedPrefab;
         private Transform _transformAtDeath;
 
         protected void Initialize(GameObject ragdollPrefab,
@@ -18,6 +19,7 @@ namespace Player.Death
             this._dyingBeingPrefab = dyingBeingPrefab;
             this._transformAtDeath = transformAtDeath;
             this._frozenCorpsePrefab = Resources.Load<GameObject>("FrozenCorpse");
+            this._frozenCorpseCrouchedPrefab = Resources.Load<GameObject>("FrozenCorpseCrouched");
         }
 
         public GameObject CreateCorpse(DeathCharacteristics deathCharacteristics, GameObject ragdollPrefab,
@@ -35,7 +37,7 @@ namespace Player.Death
                 }
                 else if (deathCharacteristics.shouldProduceRigidCorpse())
                 {
-                    corpse = Instantiate(_frozenCorpsePrefab);
+                    corpse = Instantiate(deathCharacteristics.shouldProduceCrouchedCorpse() ? _frozenCorpseCrouchedPrefab : _frozenCorpsePrefab);
                 }
                 else
                 {

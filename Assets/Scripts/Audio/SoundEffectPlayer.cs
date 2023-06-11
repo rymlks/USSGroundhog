@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 
 public class SoundEffectPlayer : MonoBehaviour
@@ -20,22 +21,7 @@ public class SoundEffectPlayer : MonoBehaviour
         {
             this.source = GetComponentInChildren<AudioSource>();
         }
-    }
-
-    public void PlayExplosionSound(string explosionDescription)
-    {
-        if (explosionDescription.Equals("exploding_tank"))
-        {
-            source.clip = this.Tank_explosion;
-        }  else if (explosionDescription.Equals("exploding_crate"))
-        {
-            source.clip = this.Crate_explosion;
-        }
-        else
-        {
-            source.clip = Small_explosion;
-        }
-        source.Play();
+        this.SetSFXVolume();
     }
 
     public void PlaySound(AudioClip toPlay)
@@ -54,5 +40,10 @@ public class SoundEffectPlayer : MonoBehaviour
     {
         source.clip = Turret_Firing_Tail;
         source.Play();
+    }
+
+    public void SetSFXVolume()
+    {
+        this.source.volume = GameSettings.instance.SFXVolumePercentage / 100f;
     }
 }

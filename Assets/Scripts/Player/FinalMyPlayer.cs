@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using KinematicCharacterController;
 using KinematicCharacterController.Walkthrough.RootMotionExample;
 using Triggers;
 using UnityEngine.InputSystem;
+using UnityEngine;
 
-namespace Assets.Scripts
+namespace Player
 {
     public class FinalMyPlayer : MyPlayer
     {

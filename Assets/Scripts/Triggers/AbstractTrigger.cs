@@ -73,7 +73,7 @@ namespace Triggers
 
         private void playSoundIfSourcePresent()
         {
-            if (_audioSource != null && !_audioSource.isPlaying)
+            if (_audioSource != null && _audioSource.enabled && !_audioSource.isPlaying)
             {
                 _audioSource.Play();
             }

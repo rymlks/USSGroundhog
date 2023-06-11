@@ -1,16 +1,33 @@
 using UnityEditor;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 namespace Unity3dEditor
 {
     public class GroundhogEditorMenu : MonoBehaviour
     {
-        [MenuItem("USSGroundhog/Move Player Here _INS")]
+        [MenuItem("USSGroundhog/Move Player To Scene Camera _INS")]
         static void MovePlayerHere()
         {
             GameObject.FindWithTag("Player").transform.position =
                 SceneView.lastActiveSceneView.camera.transform.position;
+        }
+        
+        [MenuItem("USSGroundhog/Copy Selected Transform ^HOME")]
+        static void CopySelectedTransform()
+        {
+            Transform selected = GetSelectedTransform();
+            if (selected != null)
+            {
+                GUIUtility.systemCopyBuffer = EditorJsonUtility.ToJson(selected);
+            }
+        }
+        
+        [MenuItem("USSGroundhog/Paste Transform from Clipboard ^END")]
+        static void PasteTransformFromClipboard()
+        {
+            EditorJsonUtility.FromJsonOverwrite(GUIUtility.systemCopyBuffer, GetSelectedTransform());
         }
 
         [MenuItem("Assets/Create Reversed Clip", false, 14)]
@@ -81,6 +98,11 @@ namespace Unity3dEditor
             }
 
             return null;
+        }
+        
+        public static Transform GetSelectedTransform()
+        {
+            return Selection.activeTransform;
         }
     }
 }

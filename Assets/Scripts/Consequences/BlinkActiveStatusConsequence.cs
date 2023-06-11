@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Triggers;
 using UnityEngine;
 
 namespace Consequences
@@ -10,12 +11,24 @@ namespace Consequences
 
         public float minSecondsBetweenSwitching = 2;
         public float maxSecondsBetweenSwitching = 4;
+        public GameObject toBlink;
+        
         private List<Transform> controlledObjects;
 
         void Start()
         {
-            this.controlledObjects = this.gameObject.GetComponentsInChildren<Transform>().ToList();
+            if (this.toBlink == null)
+            {
+                toBlink = this.gameObject;
+            }
+
+            this.controlledObjects = toBlink.GetComponentsInChildren<Transform>().ToList();
             this.controlledObjects.Remove(this.transform);
+        }
+
+        public override void Execute(TriggerData? data)
+        {
+            base.Execute(data);
             generateNextSwitchTime();
         }
 
