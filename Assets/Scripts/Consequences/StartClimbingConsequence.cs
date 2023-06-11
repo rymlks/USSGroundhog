@@ -7,7 +7,7 @@ namespace Consequences
 {
     public class StartClimbingConsequence : AbstractConsequence
     {
-        public override void execute(TriggerData? data)
+        public override void Execute(TriggerData? data)
         {
             Debug.Log($"Gonna climb {name}");
             GameManager.instance.PlayerHandler.StartClimbing(gameObject);

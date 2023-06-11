@@ -88,37 +88,18 @@ namespace Player
 
         private void HandleCharacterInput()
         {
-            if (!isClimbing)
-            {
-                PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
+            PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
 
-                // Build the CharacterInputs struct
-                characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
-                characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
-                characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
-                //characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
-                characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
-                characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
+            // Build the CharacterInputs struct
+            characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
+            characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
+            characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
+            //characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
+            characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
+            characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
 
-                // Apply inputs to character
-                ((FinalCharacterController)Character).SetInputs(ref characterInputs);
-            } else
-            {
-                PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
-
-                // Build the CharacterInputs struct
-                characterInputs.MoveAxisForward = 0;
-                characterInputs.MoveAxisRight = 0;
-                characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
-                //characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
-                characterInputs.CrouchDown = false;
-                characterInputs.CrouchUp = false;
-
-                // Apply inputs to character
-                ((FinalCharacterController)Character).SetInputs(ref characterInputs);
-
-
-            }
+            // Apply inputs to character
+            ((FinalCharacterController)Character).SetInputs(ref characterInputs);
         }
 
 
@@ -132,13 +113,11 @@ namespace Player
 
         public void OnClimbUp()
         {
-            Debug.Log("goup");
             Character.GetComponent<KinematicCharacterMotor>().SetPosition(Character.transform.position + new Vector3(0, 0.1f, 0));
         }
 
         public void OnClimbDown()
         {
-            Debug.Log("down");
             Character.GetComponent<KinematicCharacterMotor>().SetPosition(Character.transform.position + new Vector3(0, -0.1f, 0));
         }
 

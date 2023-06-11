@@ -86,6 +86,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
         {
             PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
 
+            
             // Build the CharacterInputs struct
             characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
             if (!((MyCharacterController)Character).useMouse)
@@ -106,17 +107,27 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
         {
             Debug.Log($"I am trying to climb {toClimb.name} but I never learned how");
             isClimbing = true;
-            playerInput.SwitchCurrentActionMap("KeyboardClimbingControls");
+            ((Player.FinalCharacterController)Character).TransitionToState(Player.CharacterState.Climbing);
+
+            Vector3 climbPosition = new Vector3();
+            climbPosition.Set(toClimb.transform.position.x, transform.position.y, toClimb.transform.position.z);
+            climbPosition = climbPosition - toClimb.transform.forward * (toClimb.GetComponent<BoxCollider>().size.z * 0.5f);
+            Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPositionAndRotation(climbPosition, toClimb.transform.rotation);
+
+            //playerInput.SwitchCurrentActionMap("KeyboardClimbingControls");
 
             Character.GetComponent<KinematicCharacterMotor>().HasPlanarConstraint = true;
+            Character.GetComponent<Rigidbody>().useGravity = false;
         }
 
         public void StopClimbing()
         {
             isClimbing = false;
-            playerInput.SwitchCurrentActionMap("KeyboardDefaultControls");
+            ((Player.FinalCharacterController)Character).TransitionToState(Player.CharacterState.Default);
+            //playerInput.SwitchCurrentActionMap("KeyboardDefaultControls");
             Character.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             Character.GetComponent<KinematicCharacterMotor>().HasPlanarConstraint = false;
+            Character.GetComponent<Rigidbody>().useGravity = true;
         }
     }
 }

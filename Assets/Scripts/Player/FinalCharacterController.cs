@@ -9,6 +9,7 @@ namespace Player
     public enum CharacterState
     {
         Default,
+        Climbing,
     }
 
     public enum OrientationMethod
@@ -143,6 +144,15 @@ namespace Player
                 {
                     break;
                 }
+                case CharacterState.Climbing:
+                    {
+                        _targetForwardAxis = 0;
+                        _targetRightAxis = 0;
+                        _moveInputVector.Set(0, 0, 0);
+                        Motor.BaseVelocity.Set(0, 0, 0);
+                        //CharacterAnimator.SetBool("IsClimbing", true);
+                        break;
+                    }
             }
         }
 
@@ -155,6 +165,11 @@ namespace Player
             {
                 case CharacterState.Default:
                 {
+                    break;
+                }
+                case CharacterState.Climbing:
+                {
+                    //CharacterAnimator.SetBool("IsClimbing", false);
                     break;
                 }
             }
@@ -176,73 +191,82 @@ namespace Player
             }
             Quaternion cameraPlanarRotation = Quaternion.LookRotation(cameraPlanarDirection, Motor.CharacterUp);
 
-            // Axis inputs
-            _targetForwardAxis = inputs.MoveAxisForward;
-            _targetRightAxis = inputs.MoveAxisRight;
             _targetMouseXAxis = Input.GetAxisRaw("Mouse X");
 
             switch (CurrentCharacterState)
             {
                 case CharacterState.Default:
-                {
-                    // Move and look inputs
-                    _moveInputVector = cameraPlanarRotation * moveInputVector;
-
-                    switch (OrientationMethod)
                     {
-                        case OrientationMethod.TowardsCamera:
-                            _lookInputVector = cameraPlanarDirection;
-                            break;
-                        case OrientationMethod.TowardsMovement:
-                            _lookInputVector = _moveInputVector.normalized;
-                            break;
-                    }
+                        // Axis inputs
+                        _targetForwardAxis = inputs.MoveAxisForward;
+                        _targetRightAxis = inputs.MoveAxisRight;
+                        // Move and look inputs
+                        _moveInputVector = cameraPlanarRotation * moveInputVector;
 
-                    // Jumping input
-                    if (inputs.JumpDown)
-                    {
-                        _timeSinceJumpRequested = 0f;
-                        _jumpRequested = true;
-                    }
-
-                    if (Input.GetAxis("Horizontal") * 500 * Time.deltaTime == 0 && Input.GetAxis("Vertical") * 500 * Time.deltaTime ==0) {
-
-                        CharacterAnimator.SetBool("IsStationary", true);
-
-                    } else {
-
-                        CharacterAnimator.SetBool("IsStationary", false);
-
-                    }
-
-                    // Crouching input
-                    if (inputs.CrouchDown)
-                    {
-                        _shouldBeCrouching = true;
-
-                        if (!_isCrouching)
+                        switch (OrientationMethod)
                         {
-                            _isCrouching = true;
-                                
-                            Motor.SetCapsuleDimensions(origCapDims.x, CrouchedCapsuleHeight, CrouchedCapsuleHeight * 0.5f);
-                            //PlayerHandler.Character.gameObject.GetComponent<>().SetBool("IsFallDead", true)
+                            case OrientationMethod.TowardsCamera:
+                                _lookInputVector = cameraPlanarDirection;
+                                break;
+                            case OrientationMethod.TowardsMovement:
+                                _lookInputVector = _moveInputVector.normalized;
+                                break;
+                        }
 
-                            CharacterAnimator.SetBool("IsCrouching", true);
-                                
-                            //MeshRoot.localScale = new Vector3(1f, 0.5f, 1f);
+                        // Jumping input
+                        if (inputs.JumpDown)
+                        {
+                            _timeSinceJumpRequested = 0f;
+                            _jumpRequested = true;
+                        }
+
+                        if (Input.GetAxis("Horizontal") * 500 * Time.deltaTime == 0 && Input.GetAxis("Vertical") * 500 * Time.deltaTime == 0)
+                        {
+
+                            CharacterAnimator.SetBool("IsStationary", true);
 
                         }
+                        else
+                        {
+
+                            CharacterAnimator.SetBool("IsStationary", false);
+
+                        }
+
+                        // Crouching input
+                        if (inputs.CrouchDown)
+                        {
+                            _shouldBeCrouching = true;
+
+                            if (!_isCrouching)
+                            {
+                                _isCrouching = true;
+
+                                Motor.SetCapsuleDimensions(origCapDims.x, CrouchedCapsuleHeight, CrouchedCapsuleHeight * 0.5f);
+                                //PlayerHandler.Character.gameObject.GetComponent<>().SetBool("IsFallDead", true)
+
+                                CharacterAnimator.SetBool("IsCrouching", true);
+
+                                //MeshRoot.localScale = new Vector3(1f, 0.5f, 1f);
+
+                            }
+                        }
+                        else if (inputs.CrouchUp)
+                        {
+                            _shouldBeCrouching = false;
+
+                            CharacterAnimator.SetBool("IsCrouching", false);
+
+                        }
+
+                        break;
                     }
-                    else if (inputs.CrouchUp)
+                case CharacterState.Climbing:
                     {
-                        _shouldBeCrouching = false;
 
-                        CharacterAnimator.SetBool("IsCrouching", false);
-
+                        float climbingAxis = inputs.MoveAxisForward;
+                        break;
                     }
-
-                    break;
-                }
             }
         }
 
