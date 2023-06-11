@@ -8636,6 +8636,8 @@ MonoBehaviour:
   reEngageOnStay: 0
   reverseOnExit: 0
   requireComponentsEnabled: []
+  onTrigger: 1
+  onCollision: 0
 --- !u!1001 &163348941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16204,25 +16206,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6945344639012547101, guid: 44a71d4d3b67e5a44a198c9994ba0935, type: 3}
   m_PrefabInstance: {fileID: 310130792}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &310130794 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6951260207055103783, guid: 44a71d4d3b67e5a44a198c9994ba0935, type: 3}
-  m_PrefabInstance: {fileID: 310130792}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &310130795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310130794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef87299456870d0499ffac4bdcbbf101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 5
-  damageType: 
 --- !u!1001 &310201996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29977,25 +29960,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6945344639012547101, guid: 44a71d4d3b67e5a44a198c9994ba0935, type: 3}
   m_PrefabInstance: {fileID: 653516117}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &653516119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6951260207055103783, guid: 44a71d4d3b67e5a44a198c9994ba0935, type: 3}
-  m_PrefabInstance: {fileID: 653516117}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &653516120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653516119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef87299456870d0499ffac4bdcbbf101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 5
-  damageType: 
 --- !u!1001 &657241826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39068,6 +39032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionStrength: 100.03
   persist: 0
+  corpseShouldRagdoll: 1
   ExplosionPrefab: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
   dontRespawn: 1
 --- !u!114 &838778279
@@ -39095,6 +39060,8 @@ MonoBehaviour:
   reEngageOnStay: 1
   reverseOnExit: 0
   requireComponentsEnabled: []
+  onTrigger: 1
+  onCollision: 0
 --- !u!114 &838778280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78082,25 +78049,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6945344639012547101, guid: 44a71d4d3b67e5a44a198c9994ba0935, type: 3}
   m_PrefabInstance: {fileID: 1698331879}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1698331881 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6951260207055103783, guid: 44a71d4d3b67e5a44a198c9994ba0935, type: 3}
-  m_PrefabInstance: {fileID: 1698331879}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1698331882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698331881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef87299456870d0499ffac4bdcbbf101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 5
-  damageType: 
 --- !u!1001 &1699584715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83632,6 +83580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSecondsBetweenSwitching: 2
   maxSecondsBetweenSwitching: 4
+  toBlink: {fileID: 0}
 --- !u!114 &1831325034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92465,6 +92414,8 @@ MonoBehaviour:
   reEngageOnStay: 0
   reverseOnExit: 0
   requireComponentsEnabled: []
+  onTrigger: 1
+  onCollision: 0
 --- !u!1001 &2006710448
 PrefabInstance:
   m_ObjectHideFlags: 0
