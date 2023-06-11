@@ -1,24 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using Consequences;
+using Audio;
 using Triggers;
 using UnityEngine;
 
-public class PlaySoundConsequence : AbstractConsequence
+namespace Consequences
 {
-    public AudioClip soundToPlay;
-    private SoundEffectPlayer _soundEffectPlayer;
-
-    void Start()
+    public class PlaySoundConsequence : AbstractConsequence
     {
-        this._soundEffectPlayer = FindObjectOfType<SoundEffectPlayer>();
-    }
+        public AudioClip soundToPlay;
+        private SoundEffectPlayer _soundEffectPlayer;
 
-    public override void Execute(TriggerData? data)
-    {
-        if (soundToPlay != null)
+        void Start()
         {
-            this._soundEffectPlayer.PlaySound(soundToPlay);
+            this._soundEffectPlayer = FindObjectOfType<SoundEffectPlayer>();
+        }
+
+        public override void Execute(TriggerData? data)
+        {
+            if (soundToPlay != null)
+            {
+                this._soundEffectPlayer.PlaySound(soundToPlay);
+            }
         }
     }
 }
