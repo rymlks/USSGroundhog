@@ -1,4 +1,7 @@
+using System;
+using StaticUtils;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Consequences
 {
@@ -6,14 +9,16 @@ namespace Consequences
     {
         public GameObject toSpin;
         public float speed;
+        public float maxSpeed = float.NegativeInfinity;
         public float max = float.PositiveInfinity;
         public Vector3 axis = Vector3.up;
 
         protected Quaternion initialRotation;
+        protected float rotationScalar;
     
         private float rotato = 0;
 
-        void Start()
+        protected virtual void Start()
         {
             if (toSpin == null)
             {
@@ -28,6 +33,14 @@ namespace Consequences
                 speed = 1;
             }
 
+            if (maxSpeed < speed)
+            {
+                maxSpeed = speed;
+            }
+
+            this.rotationScalar =
+                Math.Abs(maxSpeed - speed) < 0.001 ? speed : speed + (Random.value * (maxSpeed - speed)); 
+
             this.initialRotation = this.toSpin.transform.localRotation;
         }
 
@@ -36,7 +49,7 @@ namespace Consequences
         {
             if (started)
             {
-                rotato += speed;
+                rotato += rotationScalar;
                 if (Mathf.Abs(rotato) >= Mathf.Abs(max))
                 {
                     rotato = max;
