@@ -18,6 +18,11 @@ namespace Player.Death
             return _deathCharacteristics.Keys.Contains("ragdoll");
         }
 
+        public bool shouldProduceCrouchedCorpse()
+        {
+            return _deathCharacteristics.Keys.Contains("stance") && (string) _deathCharacteristics["stance"] == "crouched";
+        }
+
         public bool shouldProduceElectrocutedCorpse()
         {
             return _deathCharacteristics.Keys.Contains("electrocution");

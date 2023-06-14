@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6328991210292423661}
   - component: {fileID: 939669374565372469}
   - component: {fileID: 7457380983465772398}
+  - component: {fileID: 4018171717782583701}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -59,9 +60,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef87299456870d0499ffac4bdcbbf101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  immunityGrantingItems: []
-  deathReason: freezing
   multiplier: 1
+  damageType: freezing
+--- !u!114 &4018171717782583701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159132732359687662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
+  CustomTag: Player
+  AdditionalTagsToDetect: []
+  acceptTagInParent: 1
+  alwaysAcceptInParent:
+  - Player
+  - Corpse
+  RequireItem: 
+  reEngageOnStay: 1
+  reverseOnExit: 0
+  requireComponentsEnabled: []
+  onTrigger: 1
+  onCollision: 0
 --- !u!1 &3967358688842517278
 GameObject:
   m_ObjectHideFlags: 0

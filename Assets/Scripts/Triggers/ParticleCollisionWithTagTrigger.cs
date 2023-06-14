@@ -18,7 +18,7 @@ namespace Triggers
             {
                 particleSystem = GetComponentInParent<ParticleSystem>();
             }
-
+ 
         }
 
         void OnParticleCollision(GameObject other)

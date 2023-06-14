@@ -1,122 +1,182 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using KinematicCharacterController.Examples;
-using KinematicCharacterController;
-using Assets.Scripts;
+using Audio;
+using Consequences;
 using Inventory;
 using KinematicCharacterController.Walkthrough.RootMotionExample;
-using Managers;
 using Player;
 using Player.Death;
 using Unity.VisualScripting;
+using UnityEngine;
+using UnityEditor;
 
-public class GameManager : MonoBehaviour
+namespace Managers
 {
-    public static GameManager instance;
-
-    public Animator CharacterAnimator;
-
-    public MyPlayer PlayerHandler;
-    public GameObject playerPrefab;
-    public GameObject RagdollPrefab;
-    public bool enableCheatyDevShortcuts = false;
-
-    protected PlayerRespawner playerRespawner;
-    protected PlayerInventory playerInventory;
-
-    private void OnEnable()
+    public class GameManager : MonoBehaviour
     {
-        if (instance == null)
+        public static GameManager instance;
+
+        public Animator CharacterAnimator;
+
+        public MyPlayer PlayerHandler;
+        public GameObject playerPrefab;
+        public GameObject RagdollPrefab;
+        public bool enableCheatyDevShortcuts = false;
+
+        protected PlayerRespawner playerRespawner;
+        protected PlayerInventory playerInventory;
+        private static readonly int _isCrouching = Animator.StringToHash("IsCrouching");
+        
+        public AudioClip[] audioClipArray;
+
+        private void OnEnable()
         {
-            instance = this;
-        } else
+            if (instance == null)
+            {
+                instance = this;
+            } else
+            {
+                Destroy(this.gameObject);
+            }
+        
+            if (PlayerHandler == null)
+            {
+                PlayerHandler = FindObjectOfType<MyPlayer>();
+            }
+
+
+            if (playerRespawner == null)
+            {
+                initializeRespawner();
+            }
+            if (playerInventory == null)
+            {
+                this.playerInventory = this.AddComponent<PlayerInventory>();
+            }
+
+            if (CharacterAnimator == null)
+            {
+                CharacterAnimator = FindObjectOfType<FinalCharacterController>().CharacterAnimator;
+            }
+
+        }
+
+        private void initializeRespawner()
         {
-            Destroy(this.gameObject);
+            this.playerRespawner = this.gameObject.AddComponent<PlayerRespawner>();
+            playerRespawner.Initialize(PlayerHandler, playerPrefab, RagdollPrefab, PlayerHandler.Character.transform.position);
+
+        }
+
+        public void CommitDie(string reason)
+        {
+            this.CommitDie(new Dictionary<string, object>(){{reason, null}});
+        }
+
+        private Dictionary<string, object> AddStanceDetails(Dictionary<string, object> rawCharacteristics)
+        {
+            if (CharacterAnimator != null)
+            {
+                if (CharacterAnimator.GetBool(_isCrouching))
+                {
+                    rawCharacteristics.Add("stance", "crouched");
+                }
+                else
+                {
+                    rawCharacteristics.Add("stance", "standing");
+                }
+            }
+            return rawCharacteristics;
+        }
+
+        public void CommitDie(Dictionary<string, object> rawCharacteristics)
+        {
+            this.CommitDie(new DeathCharacteristics(AddStanceDetails(rawCharacteristics)));
+        }
+
+        protected void CommitDie(DeathCharacteristics deathCharacteristics)
+        {
+            SendSound(deathCharacteristics);
+            if (LevelScoreManager.instance != null)
+            {
+                LevelScoreManager.instance.RecordScoreEvent(deathCharacteristics);
+            }
+            this.playerRespawner.OnPlayerDeath(deathCharacteristics);
         }
         
-        if (PlayerHandler == null)
+        private void SendSound(DeathCharacteristics deathCharacteristics)
         {
-            PlayerHandler = FindObjectOfType<MyPlayer>();
+            AudioClip soundToPlay = GetSoundToPlay(deathCharacteristics);
+            if (soundToPlay == null) return;
+            var soundEffectPlayer = FindObjectOfType<SoundEffectPlayer>();
+            soundEffectPlayer.PlaySound(soundToPlay);
         }
 
-
-        if (playerRespawner == null)
+        private AudioClip GetSoundToPlay(DeathCharacteristics deathCharacteristics)
         {
-            initializeRespawner();
-        }
-        if (playerInventory == null)
-        {
-            this.playerInventory = this.AddComponent<PlayerInventory>();
-        }
-
-    }
-
-    private void initializeRespawner()
-    {
-        this.playerRespawner = this.gameObject.AddComponent<PlayerRespawner>();
-        playerRespawner.Initialize(PlayerHandler, playerPrefab, RagdollPrefab, PlayerHandler.Character.transform.position);
-
-    }
-
-    public void CommitDie(string reason)
-    {
-        this.CommitDie(new Dictionary<string, object>(){{reason, null}});
-    }
-    
-    public void CommitDie(Dictionary<string, object> reason)
-    {
-        this.CommitDie(new DeathCharacteristics(reason));
-    }
-
-    public void CommitDie(DeathCharacteristics deathCharacteristics)
-    {
-        if (ScoreManager.instance != null)
-        {
-            ScoreManager.instance.RecordScoreEvent(deathCharacteristics);
-        }
-        this.playerRespawner.OnPlayerDeath(deathCharacteristics);
-    }
-
-    private bool devToolsEnabled()
-    {
-        return this.enableCheatyDevShortcuts;
-    }
-
-    public void Update()
-    {
-        if (devToolsEnabled())
-        {
-            if (Input.GetKeyDown(KeyCode.K))
+            string reason = deathCharacteristics.getReason();
+            switch (reason)
             {
-                CommitDie("Keyboard shortcut");
-            }
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                CommitDie("electrocution");
-
+                case "explosion":
+                    return audioClipArray[0];
+                case "freezing":
+                    return audioClipArray[1];
+                case "burning":
+                    return audioClipArray[2];
+                default: Debug.LogWarning($"{reason} is not defined for sound on death;");
+                    return null;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        private bool devToolsEnabled()
         {
+            return this.enableCheatyDevShortcuts;
+        }
+
+        public void Update()
+        {
+            if (devToolsEnabled())
+            {
+                if (Input.GetKeyDown(KeyCode.K))
+                {
+                    CommitDie("Keyboard shortcut");
+                }
+
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    CommitDie("electrocution");
+
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+                UnityEditor.EditorApplication.isPlaying = false;
 #endif
-            Application.Quit();
+                Application.Quit();
+            }
+
         }
 
+        public PlayerRespawner getRespawner()
+        {
+            return this.playerRespawner;
+        }
+
+        public PlayerInventory getInventory()
+        {
+            return this.playerInventory;
+        }
     }
 
-    public PlayerRespawner getRespawner()
+    /*
+    [CustomEditor(typeof(GameManager))]
+    public class SFXRoster : Editor
     {
-        return this.playerRespawner;
+        public override void OnInspectorGUI()
+        {
+            
+        }
     }
-
-    public PlayerInventory getInventory()
-    {
-        return this.playerInventory;
-    }
+    */
 }

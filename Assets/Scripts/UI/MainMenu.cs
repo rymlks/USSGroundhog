@@ -17,8 +17,9 @@ namespace UI
             this.allMenuCameras = FindObjectsOfType<CinemachineVirtualCamera>().ToList();
         }
 
-        public void LoadFirstLevel()
+        public void LoadFirstLevel(string difficulty)
         {
+            GameSettings.instance.SetDifficulty(difficulty);
             SceneManager.LoadScene("Level 1");
         }
 
@@ -45,9 +46,14 @@ namespace UI
             });
         }
 
-        public void setMasterVolume(float volume)
+        public void setMusicVolume(float volume)
         {
-            GameSettings.instance.SetMasterVolume(volume);
+            GameSettings.instance.SetMusicVolume(volume);
+        }
+        
+        public void setSFXVolume(float volume)
+        {
+            GameSettings.instance.SetSoundEffectsVolume(volume);
         }
 
         private static void setGreaterCameraPriority(CinemachineVirtualCamera virtualCamera)

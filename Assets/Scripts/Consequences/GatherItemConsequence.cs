@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using Managers;
 using Triggers;
 
 namespace Consequences

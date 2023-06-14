@@ -46,7 +46,7 @@ namespace Tests
 
         private static bool playerWasKilledByLaserRespawnably()
         {
-            Dictionary<float,DeathCharacteristics>.ValueCollection valueCollection = ScoreManager.instance.getLevelScore().deathsByTime.Values;
+            Dictionary<float,DeathCharacteristics>.ValueCollection valueCollection = LevelScoreManager.instance.getLevelScore().deathsByTime.Values;
             return valueCollection.Count > 0 && valueCollection.First().getReason() == "laser" &&
                    valueCollection.First().shouldRespawn();
         }
