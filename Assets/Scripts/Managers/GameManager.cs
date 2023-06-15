@@ -122,6 +122,8 @@ namespace Managers
                     return audioClipArray[1];
                 case "burning":
                     return audioClipArray[2];
+                case "electrocution":
+                    return audioClipArray[3];
                 default: Debug.LogWarning($"{reason} is not defined for sound on death;");
                     return null;
             }
