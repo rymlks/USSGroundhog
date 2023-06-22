@@ -1,4 +1,5 @@
 using Managers;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.AssetDatabase;
 
@@ -24,6 +25,12 @@ namespace Audio
             {
                 this.source = GetComponentInChildren<AudioSource>();
             }
+
+            if (this.source == null)
+            {
+                this.source = this.AddComponent<AudioSource>();
+            }
+
             this.SetSFXVolume();
         
         }
