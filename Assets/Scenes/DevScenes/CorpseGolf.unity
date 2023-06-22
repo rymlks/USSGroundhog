@@ -11087,9 +11087,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5893066977470130337}
     m_Modifications:
+    - target: {fileID: 306660900852402041, guid: 37e15283c958cd246841677fb9c911f4, type: 3}
+      propertyPath: multiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1452085415483492724, guid: 37e15283c958cd246841677fb9c911f4, type: 3}
       propertyPath: m_Radius
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452085415483492724, guid: 37e15283c958cd246841677fb9c911f4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6114674650706652358, guid: 37e15283c958cd246841677fb9c911f4, type: 3}
       propertyPath: m_RootOrder
@@ -14271,8 +14279,8 @@ Transform:
   - {fileID: 795566722}
   - {fileID: 1931963722}
   - {fileID: 128264399}
-  - {fileID: 1711547815}
   - {fileID: 1403804515}
+  - {fileID: 1711547815}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
