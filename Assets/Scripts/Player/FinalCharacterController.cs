@@ -150,7 +150,8 @@ namespace Player
                         _targetRightAxis = 0;
                         _moveInputVector.Set(0, 0, 0);
                         Motor.BaseVelocity.Set(0, 0, 0);
-                        //CharacterAnimator.SetBool("IsClimbing", true);
+                        Motor.SetCapsuleCollisionsActivation(false);
+                        CharacterAnimator.SetBool("IsClimbing", true);
                         break;
                     }
             }
@@ -169,7 +170,7 @@ namespace Player
                 }
                 case CharacterState.Climbing:
                 {
-                    //CharacterAnimator.SetBool("IsClimbing", false);
+                    CharacterAnimator.SetBool("IsClimbing", false);
                     break;
                 }
             }
@@ -263,8 +264,12 @@ namespace Player
                     }
                 case CharacterState.Climbing:
                     {
+                        // Axis inputs
+                        _targetForwardAxis = inputs.MoveAxisForward;
 
-                        float climbingAxis = inputs.MoveAxisForward;
+                        // Move and look inputs
+                        _moveInputVector = new Vector3(0, 1, 0);
+
                         break;
                     }
             }
@@ -306,7 +311,6 @@ namespace Player
             CharacterAnimator.SetFloat("Strafe", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
             CharacterAnimator.SetFloat("xLook", _mouseXAxis);
-            
         }
 
         /// <summary>
@@ -485,7 +489,13 @@ namespace Player
                     }
                     break;
                 }
-            }
+                case CharacterState.Climbing:
+                    {
+                        currentVelocity.Set(0, 100, 0);
+                        // Calculate jump di
+                        break;
+                    }
+            } 
         }
 
         /// <summary>

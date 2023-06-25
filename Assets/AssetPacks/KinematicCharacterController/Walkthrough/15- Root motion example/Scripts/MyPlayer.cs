@@ -103,9 +103,19 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
         }
 
 
-        public void StartClimbing(GameObject toClimb)
+        public void ToggleClimbing(GameObject toClimb)
         {
-            Debug.Log($"I am trying to climb {toClimb.name} but I never learned how");
+            if (((Player.FinalCharacterController)Character).CurrentCharacterState == Player.CharacterState.Climbing)
+            {
+                StopClimbing();
+            } else
+            {
+                StartClimbing(toClimb);
+            }
+        }
+
+        public void StartClimbing(GameObject toClimb)
+        { 
             isClimbing = true;
             ((Player.FinalCharacterController)Character).TransitionToState(Player.CharacterState.Climbing);
 

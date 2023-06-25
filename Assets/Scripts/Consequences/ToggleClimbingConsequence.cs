@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Triggers;
+using Managers;
 
 namespace Consequences
 {
-    public class StartClimbingConsequence : AbstractConsequence
+    public class ToggleClimbingConsequence : AbstractConsequence
     {
         public override void Execute(TriggerData? data)
         {
-            Debug.Log($"Gonna climb {name}");
-            GameManager.instance.PlayerHandler.StartClimbing(gameObject);
+            GameManager.instance.PlayerHandler.ToggleClimbing(gameObject);
         }
     }
 }
