@@ -8,6 +8,7 @@ namespace Consequences
     public class MovePlayerConsequence : AbstractConsequence
     {
         public Vector3 relativeDestination;
+        public Vector3 relativeRotation =  Vector3.zero;
         protected KinematicCharacterMotor motor;
         
         void Start()
@@ -18,6 +19,7 @@ namespace Consequences
         public override void Execute(TriggerData? data)
         {
             this.motor.SetPosition(this.motor.TransientPosition + relativeDestination);
+            this.motor.RotateCharacter(Quaternion.Euler(relativeRotation));
         }
     }
 }
