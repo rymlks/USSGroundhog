@@ -5,19 +5,21 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class MovePlayerConsequence : AbstractConsequence
-    {
-        public Vector3 relativeDestination;
+    public class RotatePlayerConsequence : AbstractConsequence
+    { 
+        public Vector3 relativeRotation =  Vector3.zero;
         protected KinematicCharacterMotor motor;
         
         void Start()
         {
             this.motor = FindObjectOfType<KinematicCharacterMotor>();
         }
-
         public override void Execute(TriggerData? data)
         {
-            this.motor.SetPosition(this.motor.TransientPosition + relativeDestination);
+            if (!this.relativeRotation.Equals(Vector3.zero))
+            {
+                this.motor.SetRotation(this.motor.TransientRotation * Quaternion.Euler(relativeRotation));
+            }
         }
     }
 }
