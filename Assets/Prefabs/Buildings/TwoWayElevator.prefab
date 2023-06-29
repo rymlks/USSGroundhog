@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 56164684}
   - component: {fileID: 56164683}
   - component: {fileID: 6276808462576695792}
+  - component: {fileID: 7934038096082130163}
   m_Layer: 0
   m_Name: TeleportElevatorDown
   m_TagString: Untagged
@@ -65,7 +66,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativeDestination: {x: 0, y: -6, z: 0}
-  relativeRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &6276808462576695792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +83,19 @@ MonoBehaviour:
   maxSpeed: 180
   max: 180
   axis: {x: 0, y: 1, z: 0}
+--- !u!114 &7934038096082130163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56164681}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57768e14e21149efa0329ad3f4c7a68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relativeRotation: {x: 0, y: 180, z: 0}
 --- !u!1 &1436009076
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +108,7 @@ GameObject:
   - component: {fileID: 1436009079}
   - component: {fileID: 1436009078}
   - component: {fileID: 1437813181841987155}
+  - component: {fileID: 7737919209929323180}
   m_Layer: 0
   m_Name: TeleportElevatorUp
   m_TagString: Untagged
@@ -148,7 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativeDestination: {x: 0, y: 6, z: 0}
-  relativeRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1437813181841987155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +179,19 @@ MonoBehaviour:
   maxSpeed: 180
   max: 180
   axis: {x: 0, y: 1, z: 0}
+--- !u!114 &7737919209929323180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436009076}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57768e14e21149efa0329ad3f4c7a68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relativeRotation: {x: 0, y: 180, z: 0}
 --- !u!1 &448772120765939703
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +289,6 @@ MonoBehaviour:
   objectsWithConsequences:
   - {fileID: 1793186015267303364}
   - {fileID: 1772376692552340305}
-  - {fileID: 3055739764506593556}
   executeInChildren: 0
 --- !u!1 &1772376692552340305
 GameObject:
@@ -740,6 +765,93 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toToggle: {fileID: 2209080156056248350}
+--- !u!1 &3152699832963259340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6466738398675664403}
+  - component: {fileID: 4462239886570791078}
+  - component: {fileID: 6259084533428685693}
+  - component: {fileID: 334285874655695500}
+  m_Layer: 0
+  m_Name: OnExitTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6466738398675664403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152699832963259340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 264477366963049225}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4462239886570791078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152699832963259340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 1}
+  m_Center: {x: -2.5, y: 1.5, z: 0.6}
+--- !u!114 &6259084533428685693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152699832963259340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c2c0e7cbc659c409600894c9d6a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
+  CustomTag: Player
+  AdditionalTagsToDetect: []
+  acceptTagInParent: 0
+  alwaysAcceptInParent:
+  - Player
+  - Corpse
+  RequireItem: 
+  reEngageOnStay: 1
+  reverseOnExit: 0
+  requireComponentsEnabled: []
+  onTrigger: 1
+  onCollision: 0
+--- !u!114 &334285874655695500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152699832963259340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e25bbaa96540a5a9ab5477bd134132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toToggle: {fileID: 2209080156056248350}
 --- !u!1 &4920168614170716943
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +885,7 @@ Transform:
   m_Children:
   - {fileID: 8964466365515826601}
   - {fileID: 1676823227591630434}
+  - {fileID: 6466738398675664403}
   m_Father: {fileID: 5362806023153631280}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

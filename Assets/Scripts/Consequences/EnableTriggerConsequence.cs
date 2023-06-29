@@ -3,11 +3,11 @@ using Triggers;
 
 namespace Consequences
 {
-    public class ToggleTriggerConsequence : AbstractTriggerAffectingConsequence
+    public class EnableTriggerConsequence : AbstractTriggerAffectingConsequence
     {
         public override void Execute(TriggerData? data)
         {
-            this.toToggle.enabled = !this.toToggle.enabled;
+            this.toToggle.enabled = true;
         }
     }
 }
