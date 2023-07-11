@@ -1,0 +1,51 @@
+#nullable enable
+using System;
+using KinematicCharacterController;
+using StaticUtils;
+using Triggers;
+using UnityEngine;
+
+namespace Consequences
+{
+    public class MoveLobbiesConsequence : SwapTransformsConsequence
+    {
+        public Vector2Int destinationLobbyGridCoordinates;
+        public bool bringPlayerAlong = true;
+        protected KinematicCharacterMotor playerMotor = null;
+        
+        void Start()
+        {
+            if (bringPlayerAlong)
+            {
+                playerMotor = FindObjectOfType<KinematicCharacterMotor>();
+            }
+        }
+
+        public override void Execute(TriggerData? data)
+        {
+            chooseElevatorToSwapWith();
+            performSwap();
+            if (bringPlayerAlong)
+            {
+                UnityUtil.MoveAndRotatePlayer(toSwap.transform.position - toSwapWith.transform.position, Quaternion.FromToRotation(toSwap.transform.rotation.eulerAngles, toSwapWith.transform.rotation.eulerAngles), playerMotor);
+            }
+        }
+
+        private void chooseElevatorToSwapWith()
+        {
+            this.toSwapWith = UnityUtil.SelectRandomChild(GameObject.Find(coordinatesToName(destinationLobbyGridCoordinates)).transform.Find("ElevatorLobbyElevators"));
+        }
+
+        protected string coordinatesToName(Vector2Int coordinates)
+        {
+            return coordinates.Equals(Vector2Int.zero) ? "PuzzleStart" : 
+                (coordinates.x == 0 ? "" : coordinates.x.ToString() + "X") +
+                (coordinates.y == 0 ? "" : coordinates.y.ToString() + "Z");
+        }
+
+        public override void Cancel(TriggerData? data)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

@@ -1,5 +1,6 @@
 #nullable enable
 using KinematicCharacterController;
+using StaticUtils;
 using Triggers;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Consequences
 
         public override void Execute(TriggerData? data)
         {
-            this.motor.SetPosition(this.motor.TransientPosition + relativeDestination);
+            UnityUtil.MoveAndRotatePlayer(relativeDestination, Quaternion.identity, motor);
         }
     }
 }

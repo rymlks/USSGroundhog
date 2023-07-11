@@ -1,6 +1,8 @@
 #nullable enable
 using KinematicCharacterController;
+using StaticUtils;
 using Triggers;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Consequences
@@ -18,7 +20,7 @@ namespace Consequences
         {
             if (!this.relativeRotation.Equals(Vector3.zero))
             {
-                this.motor.SetRotation(this.motor.TransientRotation * Quaternion.Euler(relativeRotation));
+                UnityUtil.MoveAndRotatePlayer(Vector3.zero, relativeRotation, motor);
             }
         }
     }

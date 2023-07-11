@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using KinematicCharacterController;
 using UnityEngine;
 
 namespace StaticUtils
@@ -37,10 +38,30 @@ namespace StaticUtils
             return toReturn;
         }
 
+        public static void MoveAndRotatePlayer(Vector3 distance, Quaternion rotation, KinematicCharacterMotor motor)
+        {
+            motor.SetPositionAndRotation(motor.TransientPosition + distance, motor.TransientRotation * rotation);
+        }
+
+        public static void MoveAndRotatePlayer(Vector3 distance, Vector3 rotation, KinematicCharacterMotor motor)
+        {
+            motor.SetPositionAndRotation(motor.TransientPosition + distance, motor.TransientRotation * Quaternion.Euler(rotation));
+        }
+        
         public static bool TagAppearsInParent(GameObject baby, string tag)
         {
             List<GameObject> parents = GetParentGameObjects(baby);
             return parents.Any(parent => parent.CompareTag(tag));
+        }
+
+        public static int RandomNumberBetweenZeroAnd(int maxExclusive)
+        {
+            return UnityEngine.Random.Range(0, maxExclusive);
+        }
+
+        public static Transform SelectRandomChild(Transform parent)
+        {
+            return parent.GetChild(RandomNumberBetweenZeroAnd(parent.childCount));
         }
     }
 }
