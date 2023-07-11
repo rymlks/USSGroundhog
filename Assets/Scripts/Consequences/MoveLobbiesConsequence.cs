@@ -27,6 +27,7 @@ namespace Consequences
         {
             chooseElevatorToSwapWith();
             performSwap();
+            swapDestinations();
             if (bringPlayerAlong)
             {
                 Vector3 initialRotation = toSwap.transform.rotation.eulerAngles;
@@ -35,6 +36,11 @@ namespace Consequences
                 Debug.Log("final rotation of elevator: " + finalRotation);
                 UnityUtil.MoveAndRotatePlayer(toSwap.transform.position - toSwapWith.transform.position, Quaternion.Euler(initialRotation - finalRotation), playerMotor, playerCamera);
             }
+        }
+
+        private void swapDestinations()
+        {
+            throw new NotImplementedException("Implement elevator destination swapping");
         }
 
         private void chooseElevatorToSwapWith()
