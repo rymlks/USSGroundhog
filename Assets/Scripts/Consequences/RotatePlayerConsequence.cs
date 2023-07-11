@@ -7,20 +7,15 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class RotatePlayerConsequence : AbstractConsequence
+    public class RotatePlayerConsequence : AbstractPlayerConsequence
     { 
         public Vector3 relativeRotation =  Vector3.zero;
-        protected KinematicCharacterMotor motor;
-        
-        void Start()
-        {
-            this.motor = FindObjectOfType<KinematicCharacterMotor>();
-        }
+
         public override void Execute(TriggerData? data)
         {
             if (!this.relativeRotation.Equals(Vector3.zero))
             {
-                UnityUtil.MoveAndRotatePlayer(Vector3.zero, relativeRotation, motor);
+                UnityUtil.MoveAndRotatePlayer(Vector3.zero, relativeRotation, motor, camera);
             }
         }
     }

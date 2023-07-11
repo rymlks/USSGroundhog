@@ -12,12 +12,14 @@ namespace Consequences
         public Vector2Int destinationLobbyGridCoordinates;
         public bool bringPlayerAlong = true;
         protected KinematicCharacterMotor playerMotor = null;
+        protected Camera playerCamera = null;
         
         void Start()
         {
             if (bringPlayerAlong)
             {
                 playerMotor = FindObjectOfType<KinematicCharacterMotor>();
+                playerCamera = Camera.main != null ? Camera.main : FindObjectOfType<FinalCharacterCamera>().Camera;
             }
         }
 
@@ -27,7 +29,11 @@ namespace Consequences
             performSwap();
             if (bringPlayerAlong)
             {
-                UnityUtil.MoveAndRotatePlayer(toSwap.transform.position - toSwapWith.transform.position, Quaternion.FromToRotation(toSwap.transform.rotation.eulerAngles, toSwapWith.transform.rotation.eulerAngles), playerMotor);
+                Vector3 initialRotation = toSwap.transform.rotation.eulerAngles;
+                Vector3 finalRotation = toSwapWith.transform.rotation.eulerAngles;
+                Debug.Log("initial rotation of elevator: " + initialRotation);
+                Debug.Log("final rotation of elevator: " + finalRotation);
+                UnityUtil.MoveAndRotatePlayer(toSwap.transform.position - toSwapWith.transform.position, Quaternion.Euler(initialRotation - finalRotation), playerMotor, playerCamera);
             }
         }
 
