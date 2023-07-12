@@ -9,6 +9,7 @@ public class SwapTransformsConsequence : AbstractCancelableConsequence
 {
     public Transform toSwap;
     public Transform toSwapWith;
+    public bool swapParentsToo = false;
     protected TransformData original;
 
     public override void Execute(TriggerData? data)
@@ -21,6 +22,17 @@ public class SwapTransformsConsequence : AbstractCancelableConsequence
         original = new TransformData(toSwap);
         new TransformData(toSwapWith).ToTransform(toSwap);
         original.ToTransform(toSwapWith);
+        if (swapParentsToo)
+        {
+            swapParents();
+        }
+    }
+
+    private void swapParents()
+    {
+        Transform temp = toSwap.parent;
+        toSwap.SetParent(toSwapWith.parent);
+        toSwapWith.SetParent(temp);
     }
 
     public override void Cancel(TriggerData? data)

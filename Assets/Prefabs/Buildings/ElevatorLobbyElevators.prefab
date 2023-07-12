@@ -42,6 +42,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5631534634526537320}
     m_Modifications:
+    - target: {fileID: 772613408, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+      propertyPath: toCycleBetween.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2114741941722466264, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
       propertyPath: m_Name
       value: NegativeZElevator
@@ -90,8 +94,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1436009079, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 1436009078, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 1437813181841987155, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 7737919209929323180, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+--- !u!1 &104682206437877939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1436009076, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+  m_PrefabInstance: {fileID: 104682207840266951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3186670263710926702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104682206437877939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e5aa5752b1412796109a71c8c06d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSwap: {fileID: 5413155520309275383}
+  toSwapWith: {fileID: 0}
+  swapParentsToo: 1
+  destinationLobbyGridCoordinates: {x: 0, y: -1}
+  bringPlayerAlong: 1
 --- !u!4 &5413155520309275383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5362806023153631280, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
@@ -104,6 +134,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5631534634526537320}
     m_Modifications:
+    - target: {fileID: 772613408, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+      propertyPath: toCycleBetween.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2114741941722466264, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
       propertyPath: m_Name
       value: PositiveXElevator
@@ -152,8 +186,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1436009079, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 1436009078, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 1437813181841987155, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 7737919209929323180, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+--- !u!1 &181784478784477995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1436009076, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+  m_PrefabInstance: {fileID: 181784479633185119}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3238226261567272946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181784478784477995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e5aa5752b1412796109a71c8c06d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSwap: {fileID: 5253826850766117231}
+  toSwapWith: {fileID: 0}
+  swapParentsToo: 1
+  destinationLobbyGridCoordinates: {x: 1, y: 0}
+  bringPlayerAlong: 1
 --- !u!4 &5253826850766117231 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5362806023153631280, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
@@ -166,6 +226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5631534634526537320}
     m_Modifications:
+    - target: {fileID: 772613408, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+      propertyPath: toCycleBetween.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2114741941722466264, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
       propertyPath: m_Name
       value: NegativeXElevator
@@ -214,8 +278,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1436009079, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 1436009078, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 1437813181841987155, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 7737919209929323180, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+--- !u!1 &1205055304632032349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1436009076, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+  m_PrefabInstance: {fileID: 1205055305363037737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2712621683610810669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205055304632032349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e5aa5752b1412796109a71c8c06d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSwap: {fileID: 6545336371450011161}
+  toSwapWith: {fileID: 0}
+  swapParentsToo: 1
+  destinationLobbyGridCoordinates: {x: -1, y: 0}
+  bringPlayerAlong: 1
 --- !u!4 &6545336371450011161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5362806023153631280, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
@@ -228,6 +318,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5631534634526537320}
     m_Modifications:
+    - target: {fileID: 772613408, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+      propertyPath: toCycleBetween.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2114741941722466264, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
       propertyPath: m_Name
       value: PositiveZElevator
@@ -276,8 +370,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1436009079, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 1436009078, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 1437813181841987155, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+    - {fileID: 7737919209929323180, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+--- !u!1 &4001780789498822389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1436009076, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+  m_PrefabInstance: {fileID: 4001780788216003713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1586942988864936595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001780789498822389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e5aa5752b1412796109a71c8c06d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSwap: {fileID: 9071848092604382385}
+  toSwapWith: {fileID: 0}
+  swapParentsToo: 1
+  destinationLobbyGridCoordinates: {x: 0, y: 1}
+  bringPlayerAlong: 1
 --- !u!4 &9071848092604382385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5362806023153631280, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}

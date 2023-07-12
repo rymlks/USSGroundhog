@@ -32,15 +32,19 @@ namespace Consequences
             {
                 Vector3 initialRotation = toSwap.transform.rotation.eulerAngles;
                 Vector3 finalRotation = toSwapWith.transform.rotation.eulerAngles;
-                Debug.Log("initial rotation of elevator: " + initialRotation);
-                Debug.Log("final rotation of elevator: " + finalRotation);
                 UnityUtil.MoveAndRotatePlayer(toSwap.transform.position - toSwapWith.transform.position, Quaternion.Euler(initialRotation - finalRotation), playerMotor, playerCamera);
             }
         }
 
         private void swapDestinations()
         {
-            throw new NotImplementedException("Implement elevator destination swapping");
+            MoveLobbiesConsequence otherConsequence = toSwapWith.Find("TeleportElevatorSwitch/TeleportElevatorUp")
+                .GetComponent<MoveLobbiesConsequence>();
+            if (otherConsequence == null)
+                throw new ICantEvenRightNowException();
+            Vector2Int temp = otherConsequence.destinationLobbyGridCoordinates;
+            otherConsequence.destinationLobbyGridCoordinates = this.destinationLobbyGridCoordinates;
+            this.destinationLobbyGridCoordinates = temp;
         }
 
         private void chooseElevatorToSwapWith()
@@ -59,5 +63,9 @@ namespace Consequences
         {
             throw new NotImplementedException();
         }
+    }
+
+    internal class ICantEvenRightNowException : Exception
+    {
     }
 }
