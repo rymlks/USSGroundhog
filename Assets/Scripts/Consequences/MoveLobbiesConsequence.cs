@@ -49,7 +49,9 @@ namespace Consequences
 
         private void chooseElevatorToSwapWith()
         {
-            this.toSwapWith = UnityUtil.SelectRandomChild(GameObject.Find(coordinatesToName(destinationLobbyGridCoordinates)).transform.Find("ElevatorLobbyElevators"));
+            string nameOfDestinationLobby = coordinatesToName(destinationLobbyGridCoordinates);
+            Debug.Log("Going to " + nameOfDestinationLobby);
+            this.toSwapWith = UnityUtil.SelectRandomChild(GameObject.Find(nameOfDestinationLobby).transform.Find("ElevatorLobbyElevators"));
         }
 
         protected string coordinatesToName(Vector2Int coordinates)
