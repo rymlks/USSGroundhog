@@ -50,13 +50,13 @@ namespace Consequences
         private void chooseElevatorToSwapWith()
         {
             string nameOfDestinationLobby = coordinatesToName(destinationLobbyGridCoordinates);
-            Debug.Log("Going to " + nameOfDestinationLobby);
             this.toSwapWith = UnityUtil.SelectRandomChild(GameObject.Find(nameOfDestinationLobby).transform.Find("ElevatorLobbyElevators"));
         }
 
         protected string coordinatesToName(Vector2Int coordinates)
         {
             return coordinates.Equals(Vector2Int.zero) ? "PuzzleStart" : 
+                coordinates.Equals(new Vector2Int(999,999)) ? "PuzzleGoal" :
                 (coordinates.x == 0 ? "" : coordinates.x.ToString() + "X") +
                 (coordinates.y == 0 ? "" : coordinates.y.ToString() + "Z");
         }
