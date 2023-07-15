@@ -70,5 +70,28 @@ namespace StaticUtils
         {
             return parent.GetChild(RandomNumberBetweenZeroAnd(parent.childCount));
         }
+
+        public static string cardinalDirectionToString2D(Vector2Int direction)
+        {
+            if (direction == Vector2Int.down)
+            {
+                return "NegativeZ";
+            }
+            else if (direction == Vector2Int.up)
+            {
+                return "PositiveZ";
+            }else if (direction == Vector2Int.left)
+            {
+                return "NegativeX";
+            }else if (direction == Vector2Int.right)
+            {
+                return "PositiveX";
+            }
+            else
+            {
+                return "This is not a cardinal direction in 2D space";
+            }
+            
+        }
     }
 }

@@ -1,22 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Consequences;
+using StaticUtils;
 using UnityEngine;
+using static StaticUtils.MathUtil;
+using Random = System.Random;
 
 public class ElevatorConnectedNodeGrid : MonoBehaviour
 {
+    public GameObject goalPrefab;
     public GameObject nodePrefab;
     public Vector2Int gridDimensions;
+
+    protected Vector2Int[] gridDirections = {Vector2Int.down, Vector2Int.left, Vector2Int.right, Vector2Int.up};
 
     protected const float widthOfNode = 23.5f;
     protected const float heightOfNode = 32.5f;
 
     void Start()
     {
+        if (goalPrefab == null)
+        {
+            goalPrefab = nodePrefab;
+        }
+
         Generate();
     }
 
     private void Generate()
+    {
+        GenerateIntermediateNodes();
+        GenerateGoalNode();
+        DesignateGoalElevator();
+    }
+
+    private void DesignateGoalElevator()
+    {
+        Random random = new Random();
+        //TODO: this should not be actually random and should privilege the center of the grid over the sides
+        Vector2Int goalElevatorCoordinates =
+            new Vector2Int(random.Next(this.gridDimensions.x), random.Next(gridDimensions.y));
+        Vector2Int goalElevatorDirection = (Vector2Int) MathUtil.chooseRandom<Vector2Int>(random, gridDirections.ToList());
+        string cardinalDirectionToString2D = UnityUtil.cardinalDirectionToString2D(goalElevatorDirection) + "Elevator";
+        Transform elevators = GameObject.Find(coordinatesToName(goalElevatorCoordinates)).transform.Find("ElevatorLobbyElevators");
+        SetElevatorDestination(elevators, cardinalDirectionToString2D, 999, 999);
+    }
+
+    private GameObject GenerateGoalNode()
+    {
+        GameObject instantiatedNode = instantiateNode(999, 999);
+        instantiatedNode.transform.position = new Vector3(0, instantiatedNode.transform.position.y - 100, 0);
+        //instantiate goal props
+        return instantiatedNode;
+    }
+
+    private void GenerateIntermediateNodes()
     {
         for (int x = 0; x < gridDimensions.x; x++)
         {
@@ -28,35 +67,16 @@ public class ElevatorConnectedNodeGrid : MonoBehaviour
                 SetElevatorDestination(elevators, "NegativeXElevator", x - 1, z);
                 SetElevatorDestination(elevators, "PositiveZElevator", x, z + 1);
                 SetElevatorDestination(elevators, "NegativeZElevator", x, z - 1);
-                //instantiate unique props
+                //instantiate unique props per generated room
             }
         }
-
-        //generate start (or place player at start, if it's on the grid)
-        //generate goal (if it's not on the grid)
     }
 
     protected void SetElevatorDestination(Transform root, string elevatorName, int destinationGridX,
         int destinationGridZ)
     {
         root.Find(elevatorName).GetComponentInChildren<MoveLobbiesConsequence>().destinationLobbyGridCoordinates =
-            new Vector2Int(clampToGrid(this.gridDimensions.x, destinationGridX), clampToGrid(this.gridDimensions.y, destinationGridZ));
-    }
-
-    private int clampToGrid(int gridWidth, int value)
-    {
-        if (value < 0)
-        {
-            return gridWidth - 1;
-        }
-        else if (value >= gridWidth)
-        {
-            return 0;
-        }
-        else
-        {
-            return value;
-        }
+            new Vector2Int(ClampPositiveInt(this.gridDimensions.x, destinationGridX), ClampPositiveInt(this.gridDimensions.y, destinationGridZ));
     }
 
     protected GameObject instantiateNode(int x, int z)
