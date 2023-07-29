@@ -22,7 +22,6 @@ public class PlayerHealthState : MonoBehaviour
         public bool shouldCancelNextRecovery = false;
         public string statusEffectName;
         public float recoverySpeedFactor = 2;
-        public StatusEffectUIController uiController;
         public bool worsensUntilCured;
         private bool _isCurrentlyBeingInflicted;
 
@@ -30,7 +29,6 @@ public class PlayerHealthState : MonoBehaviour
         {
             this.statusEffectName = name;
             this.secondsMaximumCapacity = secondsMaximum;
-            this.uiController = StatusEffectUIController.GetByStatusName(name);
             this.worsensUntilCured = worsens;
             this._isCurrentlyBeingInflicted = false;
             Reset();
@@ -58,7 +56,6 @@ public class PlayerHealthState : MonoBehaviour
                 GameManager.instance.CommitDie(statusEffectName);
                 this.Reset();
             }
-            this.uiController.ShowNextFrame();
             shouldCancelNextRecovery = true;
         }
 
@@ -77,6 +74,11 @@ public class PlayerHealthState : MonoBehaviour
         public bool IsActive()
         {
             return worsensUntilCured ? this._isCurrentlyBeingInflicted : true;
+        }
+
+        public float Progress()
+        {
+            return 1f - (this.secondsUntilCritical / this.secondsMaximumCapacity);
         }
 
         public void Cure()
@@ -129,5 +131,10 @@ public class PlayerHealthState : MonoBehaviour
     public void Cure(string damageSourceName)
     {
         statusTrackers.Find(tracker => tracker.statusEffectName == damageSourceName).Cure();
+    }
+    
+    public float Diagnose(string damageSourceName)
+    {
+        return statusTrackers.Find(tracker => tracker.statusEffectName == damageSourceName).Progress();
     }
 }
