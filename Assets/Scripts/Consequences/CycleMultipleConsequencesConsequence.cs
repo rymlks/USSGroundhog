@@ -1,4 +1,6 @@
 #nullable enable
+using System.Collections.Generic;
+using System.Linq;
 using StaticUtils;
 using Triggers;
 using UnityEngine;
@@ -21,10 +23,15 @@ namespace Consequences
         public override void Execute(TriggerData? data)
         {
             this.currentIndex = (this.currentIndex + 1) % toCycleBetween.Length;
-            foreach (IConsequence consequence in toCycleBetween[currentIndex].GetComponents<IConsequence>())
+            foreach (IConsequence consequence in getNextAffectedConsequences())
             {
                 consequence.Execute(data);
             }
+        }
+
+        private List<IConsequence> getNextAffectedConsequences()
+        {
+            return toCycleBetween[currentIndex].GetComponents<AbstractConsequence>().Where(cons => cons.enabled).Cast<IConsequence>().ToList();
         }
     }
 }

@@ -1,26 +1,13 @@
 #nullable enable
-using System.Collections;
-using System.Collections.Generic;
-using Consequences;
 using Triggers;
-using UnityEngine;
 
-public class ToggleTriggerConsequence : AbstractConsequence
+namespace Consequences
 {
-
-    public AbstractTrigger toToggle;
-    
-    void Start()
+    public class ToggleTriggerConsequence : AbstractTriggerAffectingConsequence
     {
-        if (this.toToggle == null)
+        public override void Execute(TriggerData? data)
         {
-            this.toToggle = GetComponent<AbstractTrigger>();
+            this.toToggle.enabled = !this.toToggle.enabled;
         }
-
-    }
-
-    public override void Execute(TriggerData? data)
-    {
-        this.toToggle.enabled = !this.toToggle.enabled;
     }
 }
