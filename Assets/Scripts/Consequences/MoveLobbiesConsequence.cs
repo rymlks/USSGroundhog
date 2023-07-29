@@ -1,6 +1,8 @@
 #nullable enable
 using System;
 using KinematicCharacterController;
+using Managers;
+using Player;
 using StaticUtils;
 using Triggers;
 using UnityEngine;
@@ -30,9 +32,23 @@ namespace Consequences
             swapDestinations();
             if (bringPlayerAlong)
             {
+                Vector3 positionRelativeToStartElevator = GameManager.instance.PlayerHandler.transform.position - toSwap.position;
+                float rotateBy = Quaternion.Angle(toSwap.rotation, toSwapWith.rotation);
+                Debug.Log(rotateBy);
+                Vector3 positionRelativeToEndElevator = Quaternion.AngleAxis(rotateBy, Vector3.up) * positionRelativeToStartElevator;
+                Vector3 PositionInEndElevtor = toSwapWith.transform.position + positionRelativeToEndElevator;
+                Vector3 distanceToMove = PositionInEndElevtor - GameManager.instance.PlayerHandler.transform.position;
+
+                Debug.Log("Distances: ");
+                Debug.Log("positionRelativeToStartElevator: ");
+                Debug.Log(positionRelativeToStartElevator);
+                Debug.Log("positionRelativeToEndElevator: ");
+                Debug.Log(positionRelativeToEndElevator);
+
                 Vector3 initialRotation = toSwap.transform.rotation.eulerAngles;
                 Vector3 finalRotation = toSwapWith.transform.rotation.eulerAngles;
                 UnityUtil.MoveAndRotatePlayer(toSwap.transform.position - toSwapWith.transform.position, Quaternion.Euler(initialRotation - finalRotation), playerMotor, playerCamera);
+                //UnityUtil.MoveAndRotatePlayer(distanceToMove, Quaternion.Euler(initialRotation - finalRotation), playerMotor, playerCamera);
             }
         }
 
