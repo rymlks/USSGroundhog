@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using KinematicCharacterController;
+using Player;
 using UnityEngine;
 
 namespace StaticUtils
@@ -45,9 +46,12 @@ namespace StaticUtils
             Debug.Log("Rotation to perform: " + rotation.eulerAngles);
             Debug.Log("Rotation before multiplication: " + motor.TransientRotation.eulerAngles);
             Debug.Log("Predicted result after multiplication: " + (motor.TransientRotation * rotation).eulerAngles);*/
-            
+
+            camera.GetComponent<FinalCharacterCamera>().RotateWithPhysicsMover = true;
             motor.SetPositionAndRotation(motor.TransientPosition + distance, motor.TransientRotation * rotation);
             camera.transform.rotation = motor.TransientRotation * rotation; //does not seem to take hold
+            camera.GetComponent<FinalCharacterCamera>().SetFollowTransform(motor.GetComponent<FinalCharacterController>().CameraFollowPoint);
+            //camera.GetComponent<FinalCharacterCamera>().SetRotation(motor.TransientRotation * rotation);
         }
 
         public static void MoveAndRotatePlayer(Vector3 distance, Vector3 rotation, KinematicCharacterMotor motor, Camera camera)
