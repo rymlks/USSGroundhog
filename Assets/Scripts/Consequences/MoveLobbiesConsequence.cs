@@ -32,23 +32,17 @@ namespace Consequences
             swapDestinations();
             if (bringPlayerAlong)
             {
-                Vector3 positionRelativeToStartElevator = GameManager.instance.PlayerHandler.transform.position - toSwap.position;
-                float rotateBy = Quaternion.Angle(toSwap.rotation, toSwapWith.rotation);
-                Debug.Log(rotateBy);
-                Vector3 positionRelativeToEndElevator = Quaternion.AngleAxis(rotateBy, Vector3.up) * positionRelativeToStartElevator;
-                Vector3 PositionInEndElevtor = toSwapWith.transform.position + positionRelativeToEndElevator;
-                Vector3 distanceToMove = PositionInEndElevtor - GameManager.instance.PlayerHandler.transform.position;
-
-                Debug.Log("Distances: ");
-                Debug.Log("positionRelativeToStartElevator: ");
-                Debug.Log(positionRelativeToStartElevator);
-                Debug.Log("positionRelativeToEndElevator: ");
-                Debug.Log(positionRelativeToEndElevator);
-
+                Vector3 myPosition = GameObject.Find("Character").transform.position;
+                Vector3 positionRelativeToStartElevator = myPosition - toSwapWith.position;
                 Vector3 initialRotation = toSwap.transform.rotation.eulerAngles;
                 Vector3 finalRotation = toSwapWith.transform.rotation.eulerAngles;
-                UnityUtil.MoveAndRotatePlayer(toSwap.transform.position - toSwapWith.transform.position, Quaternion.Euler(initialRotation - finalRotation), playerMotor, playerCamera);
-                //UnityUtil.MoveAndRotatePlayer(distanceToMove, Quaternion.Euler(initialRotation - finalRotation), playerMotor, playerCamera);
+                // Don't use Quaternion.Angles(), it can't be negative :((((
+                Quaternion rotateBy = Quaternion.Euler(initialRotation - finalRotation);
+                Vector3 positionRelativeToEndElevator = rotateBy * positionRelativeToStartElevator;
+                Vector3 PositionInEndElevtor = toSwap.transform.position + positionRelativeToEndElevator;
+                Vector3 distanceToMove = PositionInEndElevtor - myPosition;
+
+                UnityUtil.MoveAndRotatePlayer(distanceToMove, Quaternion.Euler(initialRotation - finalRotation), playerMotor, playerCamera);
             }
         }
 

@@ -649,6 +649,9 @@ namespace KinematicCharacterController
             _transientPosition = position;
             TransientRotation = rotation;
 
+            _moveRotationDirty = true;
+            _moveRotationTarget = rotation;
+
             if (bypassInterpolation)
             {
                 InitialTickPosition = position;
