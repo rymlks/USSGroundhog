@@ -13,6 +13,8 @@ namespace Consequences
     {
         public Vector2Int destinationLobbyGridCoordinates;
         public bool bringPlayerAlong = true;
+        public GameObject playerCharacter = null;
+        
         protected KinematicCharacterMotor playerMotor = null;
         protected Camera playerCamera = null;
         
@@ -22,6 +24,9 @@ namespace Consequences
             {
                 playerMotor = FindObjectOfType<KinematicCharacterMotor>();
                 playerCamera = Camera.main != null ? Camera.main : FindObjectOfType<FinalCharacterCamera>().Camera;
+                if(playerCharacter == null){
+                    playerCharacter = GameObject.Find("Character");
+                }
             }
         }
 
@@ -32,15 +37,15 @@ namespace Consequences
             swapDestinations();
             if (bringPlayerAlong)
             {
-                Vector3 myPosition = GameObject.Find("Character").transform.position;
+                Vector3 myPosition = playerCharacter.transform.position;
                 Vector3 positionRelativeToStartElevator = myPosition - toSwapWith.position;
                 Vector3 initialRotation = toSwap.transform.rotation.eulerAngles;
                 Vector3 finalRotation = toSwapWith.transform.rotation.eulerAngles;
                 // Don't use Quaternion.Angles(), it can't be negative :((((
                 Quaternion rotateBy = Quaternion.Euler(initialRotation - finalRotation);
                 Vector3 positionRelativeToEndElevator = rotateBy * positionRelativeToStartElevator;
-                Vector3 PositionInEndElevtor = toSwap.transform.position + positionRelativeToEndElevator;
-                Vector3 distanceToMove = PositionInEndElevtor - myPosition;
+                Vector3 PositionInEndElevator = toSwap.transform.position + positionRelativeToEndElevator;
+                Vector3 distanceToMove = PositionInEndElevator - myPosition;
 
                 UnityUtil.MoveAndRotatePlayer(distanceToMove, Quaternion.Euler(initialRotation - finalRotation), playerMotor, playerCamera);
             }
