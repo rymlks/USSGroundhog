@@ -20,11 +20,16 @@ public class ElevatorConnectedNodeGrid : MonoBehaviour
 
     void Start()
     {
+        if (nodePrefab == null)
+        {
+            Debug.Log("Elevator node grid cannot be generated: node prefab not present");
+            Destroy(this);
+            return;
+        }
         if (goalPrefab == null)
         {
             goalPrefab = nodePrefab;
         }
-
         Generate();
     }
 
@@ -38,13 +43,31 @@ public class ElevatorConnectedNodeGrid : MonoBehaviour
     private void DesignateGoalElevator()
     {
         Random random = new Random();
-        //TODO: this should not be actually random and should privilege the center of the grid over the sides
-        Vector2Int goalElevatorCoordinates =
-            new Vector2Int(random.Next(this.gridDimensions.x), random.Next(gridDimensions.y));
         Vector2Int goalElevatorDirection = (Vector2Int) MathUtil.chooseRandom<Vector2Int>(random, gridDirections.ToList());
+        Vector2Int validRandomCoordinates = new Vector2Int(random.Next(this.gridDimensions.x), random.Next(gridDimensions.y));
+        Vector2Int goalElevatorCoordinates = travelToEdge(validRandomCoordinates, goalElevatorDirection);
         string cardinalDirectionToString2D = UnityUtil.cardinalDirectionToString2D(goalElevatorDirection) + "Elevator";
         Transform elevators = GameObject.Find(coordinatesToName(goalElevatorCoordinates)).transform.Find("ElevatorLobbyElevators");
         SetElevatorDestination(elevators, cardinalDirectionToString2D, 999, 999);
+    }
+
+    private Vector2Int travelToEdge(Vector2Int goalElevatorCoordinates, Vector2Int goalElevatorDirection)
+    {
+        if (goalElevatorDirection.x > 0)
+        {
+            return new Vector2Int(this.gridDimensions.x - 1, goalElevatorCoordinates.y);
+        }
+        else if (goalElevatorDirection.x < 0)
+        {
+            return new Vector2Int(0, goalElevatorCoordinates.y);
+        } else if (goalElevatorDirection.y > 0)
+        {
+            return new Vector2Int(goalElevatorCoordinates.x, this.gridDimensions.y - 1);
+        }
+        else
+        {
+            return new Vector2Int(goalElevatorDirection.x, 0);
+        }
     }
 
     private GameObject GenerateGoalNode()

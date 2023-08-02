@@ -71,7 +71,7 @@ namespace StaticUtils
             return parent.GetChild(RandomNumberBetweenZeroAnd(parent.childCount));
         }
 
-        public static string cardinalDirectionToString2D(Vector2Int direction)
+        public static string  cardinalDirectionToString2D(Vector2Int direction)
         {
             if (direction == Vector2Int.down)
             {
