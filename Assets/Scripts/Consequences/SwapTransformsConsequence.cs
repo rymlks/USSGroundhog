@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class SwapTransformsConsequence : AbstractCancelableConsequence
 {
-    public Transform toSwap;
-    public Transform toSwapWith;
+    public Transform toSwapStart;
+    public Transform toSwapEnd;
     public bool swapParentsToo = false;
     protected TransformData original;
 
@@ -19,9 +19,9 @@ public class SwapTransformsConsequence : AbstractCancelableConsequence
 
     protected void performSwap()
     {
-        original = new TransformData(toSwap);
-        new TransformData(toSwapWith).ToTransform(toSwap);
-        original.ToTransform(toSwapWith);
+        original = new TransformData(toSwapStart);
+        new TransformData(toSwapEnd).ToTransform(toSwapStart);
+        original.ToTransform(toSwapEnd);
         if (swapParentsToo)
         {
             swapParents();
@@ -30,9 +30,9 @@ public class SwapTransformsConsequence : AbstractCancelableConsequence
 
     private void swapParents()
     {
-        Transform temp = toSwap.parent;
-        toSwap.SetParent(toSwapWith.parent);
-        toSwapWith.SetParent(temp);
+        Transform temp = toSwapStart.parent;
+        toSwapStart.SetParent(toSwapEnd.parent);
+        toSwapEnd.SetParent(temp);
     }
 
     public override void Cancel(TriggerData? data)

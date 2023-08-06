@@ -117,11 +117,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e5aa5752b1412796109a71c8c06d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toSwap: {fileID: 5413155520309275383}
-  toSwapWith: {fileID: 0}
+  toSwapStart: {fileID: 5413155520309275383}
+  toSwapEnd: {fileID: 0}
   swapParentsToo: 1
   destinationLobbyGridCoordinates: {x: 0, y: -1}
   bringPlayerAlong: 1
+  bringEverythingAlong: 1
+  playerCharacter: {fileID: 0}
 --- !u!4 &5413155520309275383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5362806023153631280, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
@@ -209,11 +211,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e5aa5752b1412796109a71c8c06d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toSwap: {fileID: 5253826850766117231}
-  toSwapWith: {fileID: 0}
+  toSwapStart: {fileID: 5253826850766117231}
+  toSwapEnd: {fileID: 0}
   swapParentsToo: 1
   destinationLobbyGridCoordinates: {x: 1, y: 0}
   bringPlayerAlong: 1
+  bringEverythingAlong: 1
+  playerCharacter: {fileID: 0}
 --- !u!4 &5253826850766117231 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5362806023153631280, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
@@ -301,11 +305,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e5aa5752b1412796109a71c8c06d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toSwap: {fileID: 6545336371450011161}
-  toSwapWith: {fileID: 0}
+  toSwapStart: {fileID: 6545336371450011161}
+  toSwapEnd: {fileID: 0}
   swapParentsToo: 1
   destinationLobbyGridCoordinates: {x: -1, y: 0}
   bringPlayerAlong: 1
+  bringEverythingAlong: 1
+  playerCharacter: {fileID: 0}
 --- !u!4 &6545336371450011161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5362806023153631280, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
@@ -393,11 +399,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e5aa5752b1412796109a71c8c06d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toSwap: {fileID: 9071848092604382385}
-  toSwapWith: {fileID: 0}
+  toSwapStart: {fileID: 9071848092604382385}
+  toSwapEnd: {fileID: 0}
   swapParentsToo: 1
   destinationLobbyGridCoordinates: {x: 0, y: 1}
   bringPlayerAlong: 1
+  bringEverythingAlong: 1
+  playerCharacter: {fileID: 0}
 --- !u!4 &9071848092604382385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5362806023153631280, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
