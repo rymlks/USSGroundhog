@@ -10,6 +10,7 @@ namespace Consequences
     {
         public float waitTimeSeconds = 2f;
         public bool includeChildren = false;
+        public bool useFixedUpdate = false;
 
         public GameObject consequenceObject;
         
@@ -27,6 +28,22 @@ namespace Consequences
         }
 
         void Update()
+        {
+            if (!useFixedUpdate)
+            {
+                this.checkForTimeElapsed();
+            }
+        }
+
+        void FixedUpdate()
+        {
+            if (useFixedUpdate)
+            {
+                this.checkForTimeElapsed();
+            }
+        }
+
+        private void checkForTimeElapsed()
         {
             if (this.isActive && Time.time > this.startTime + this.waitTimeSeconds)
             {
