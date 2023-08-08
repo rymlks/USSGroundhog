@@ -65,10 +65,16 @@ namespace StaticUtils
         {
             return UnityEngine.Random.Range(0, maxExclusive);
         }
+        
 
         public static Transform SelectRandomChild(Transform parent)
         {
             return parent.GetChild(RandomNumberBetweenZeroAnd(parent.childCount));
+        }
+
+        public static Quaternion RandomQuaternion()
+        {
+            return UnityEngine.Random.rotation;
         }
     }
 }
