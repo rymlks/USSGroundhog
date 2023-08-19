@@ -72,5 +72,15 @@ namespace StaticUtils
         {
             return UnityEngine.Random.rotation;
         }
+
+        public static Vector3 getPlayerPosition()
+        {
+            return Object.FindObjectOfType<FinalCharacterController>().gameObject.transform.position;
+        }
+        
+        public static Transform getCameraTransform()
+        {
+            return Object.FindObjectOfType<FinalCharacterCamera>().gameObject.transform;
+        }
     }
 }
