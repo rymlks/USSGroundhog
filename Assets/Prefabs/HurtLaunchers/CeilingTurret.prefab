@@ -5086,7 +5086,7 @@ GameObject:
   - component: {fileID: 5822169482762704051}
   - component: {fileID: 1465472114}
   - component: {fileID: 1465472115}
-  - component: {fileID: 1465472116}
+  - component: {fileID: 2207884315050923767}
   m_Layer: 0
   m_Name: SM_Prop_Turret_Small_Gun_Ceiling_01
   m_TagString: Untagged
@@ -5187,12 +5187,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
   tagToWatchFor: Player
   viewpoint: {fileID: 5776128200829657276}
   maximumDistanceToSee: 100
   turretLeftRightPivot: {fileID: 5776781881043030389}
   turretUpDownPivot: {fileID: 5777787307877335001}
-  speed: 20
+  speed: 40
 --- !u!114 &1465472115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5208,7 +5210,7 @@ MonoBehaviour:
   secondsToFire: 1
   casings: {fileID: 7273235423688240264}
   bullets: {fileID: 9042165978409950526}
---- !u!114 &1465472116
+--- !u!114 &2207884315050923767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5217,19 +5219,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5777787307877335001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1db552021a6e65746973ce26b9fdfba0, type: 3}
+  m_Script: {fileID: 11500000, guid: b8bc56e4a63e9d04fa70809b78b88557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioListener: {fileID: 0}
-  _audioSource: {fileID: 0}
   Small_explosion: {fileID: 0}
   Tank_explosion: {fileID: 0}
   Crate_explosion: {fileID: 0}
   Door_Slide: {fileID: 0}
   PA_Jingle: {fileID: 0}
-  Ship_Alarm: {fileID: 0}
-  Turret_Firing: {fileID: 0}
-  Turret_Firing_Tail: {fileID: 0}
+  Turret_Firing: {fileID: 8300000, guid: cd7e4239dabbb8146b7f5dded979957f, type: 3}
+  Turret_Firing_Tail: {fileID: 8300000, guid: 6f356545fdf32e445b210fab432bee05, type: 3}
 --- !u!1001 &5776128199517487204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5997,6 +5996,10 @@ PrefabInstance:
       propertyPath: ShapeModule.type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198736734031831898, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 198840909020946268, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -6119,6 +6122,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1074764981724890, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
   m_PrefabInstance: {fileID: 9204431659357350936}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1435826611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205186859970939586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a12beae7751bc847abb80df0ce63bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toPlay: {fileID: 0}
 --- !u!114 &2582673175408702645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6132,6 +6148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
   particleSystem: {fileID: 0}
   tagToTriggerOn: Player
 --- !u!114 &4801727196445422810
@@ -6147,16 +6165,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusEffectName: bleeding
---- !u!114 &1435826611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9205186859970939586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a12beae7751bc847abb80df0ce63bf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toPlay: {fileID: 0}
