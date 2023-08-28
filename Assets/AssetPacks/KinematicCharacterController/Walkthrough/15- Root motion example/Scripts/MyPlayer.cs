@@ -4,6 +4,8 @@ using UnityEngine;
 using KinematicCharacterController;
 using KinematicCharacterController.Examples;
 using System.Linq;
+using UnityEngine.InputSystem;
+using Triggers;
 
 namespace KinematicCharacterController.Walkthrough.RootMotionExample
 {
@@ -12,12 +14,17 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
         public ExampleCharacterCamera OrbitCamera;
         public Transform CameraFollowPoint;
         public MonoBehaviour Character;
+        public PlayerInput playerInput;
+
+        public List<TriggerOnInputKeyPressed> inputKeyTriggers = new List<TriggerOnInputKeyPressed>();
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
         private const string MouseScrollInput = "Mouse ScrollWheel";
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
+
+        protected bool isClimbing = false;
 
         private void Start()
         {
@@ -79,6 +86,7 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
         {
             PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
 
+            
             // Build the CharacterInputs struct
             characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
             if (!((MyCharacterController)Character).useMouse)
@@ -92,7 +100,44 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
             // Apply inputs to character
             ((MyCharacterController)Character).SetInputs(ref characterInputs);
 
+        }
 
+
+        public void ToggleClimbing(GameObject toClimb)
+        {
+            if (((Player.FinalCharacterController)Character).CurrentCharacterState == Player.CharacterState.Climbing)
+            {
+                StopClimbing();
+            } else
+            {
+                StartClimbing(toClimb);
+            }
+        }
+
+        public void StartClimbing(GameObject toClimb)
+        { 
+            isClimbing = true;
+            ((Player.FinalCharacterController)Character).TransitionToState(Player.CharacterState.Climbing);
+
+            Vector3 climbPosition = new Vector3();
+            climbPosition.Set(toClimb.transform.position.x, transform.position.y, toClimb.transform.position.z);
+            climbPosition = climbPosition - toClimb.transform.forward * (toClimb.GetComponent<BoxCollider>().size.z * 0.5f);
+            Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPositionAndRotation(climbPosition, toClimb.transform.rotation);
+
+            //playerInput.SwitchCurrentActionMap("KeyboardClimbingControls");
+
+            Character.GetComponent<KinematicCharacterMotor>().HasPlanarConstraint = true;
+            Character.GetComponent<Rigidbody>().useGravity = false;
+        }
+
+        public void StopClimbing()
+        {
+            isClimbing = false;
+            ((Player.FinalCharacterController)Character).TransitionToState(Player.CharacterState.Default);
+            //playerInput.SwitchCurrentActionMap("KeyboardDefaultControls");
+            Character.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            Character.GetComponent<KinematicCharacterMotor>().HasPlanarConstraint = false;
+            Character.GetComponent<Rigidbody>().useGravity = true;
         }
     }
 }

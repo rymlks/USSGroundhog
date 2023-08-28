@@ -1,5 +1,7 @@
-﻿using KinematicCharacterController;
+using KinematicCharacterController;
 using KinematicCharacterController.Walkthrough.RootMotionExample;
+using Triggers;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 namespace Player
@@ -14,6 +16,7 @@ namespace Player
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
 
+
         private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -24,6 +27,11 @@ namespace Player
             // Ignore the character's collider(s) for camera obstruction checks
             CharacterCamera.IgnoredColliders.Clear();
             CharacterCamera.IgnoredColliders.AddRange(((FinalCharacterController)Character).GetComponentsInChildren<Collider>());
+            
+            if (playerInput == null)
+            {
+                playerInput = GetComponent<PlayerInput>();
+            }
         }
 
         private void Update()
@@ -63,9 +71,9 @@ namespace Player
 
             // Input for zooming the camera (disabled in WebGL because it can cause problems)
             float scrollInput = -Input.GetAxis(MouseScrollInput);
-            #if UNITY_WEBGL
-                scrollInput = 0f;
-            #endif
+#if UNITY_WEBGL
+            scrollInput = 0f;
+#endif
 
             // Apply inputs to the camera
             CharacterCamera.UpdateWithInput(Time.deltaTime, scrollInput, lookInputVector);
@@ -75,6 +83,7 @@ namespace Player
             {
                 CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 0f) ? CharacterCamera.DefaultDistance : 0f;
             }
+            
         }
 
         private void HandleCharacterInput()
@@ -91,6 +100,30 @@ namespace Player
 
             // Apply inputs to character
             ((FinalCharacterController)Character).SetInputs(ref characterInputs);
+        }
+
+
+        public void OnInteract()
+        {
+            foreach (TriggerOnInputKeyPressed trigger in inputKeyTriggers)
+            {
+                trigger.Engage();
+            }
+        }
+
+        public void OnClimbUp()
+        {
+            Character.GetComponent<KinematicCharacterMotor>().SetPosition(Character.transform.position + new Vector3(0, 0.1f, 0));
+        }
+
+        public void OnClimbDown()
+        {
+            Character.GetComponent<KinematicCharacterMotor>().SetPosition(Character.transform.position + new Vector3(0, -0.1f, 0));
+        }
+
+        public void OnStopClimbing()
+        {
+            StopClimbing();
         }
 
     }

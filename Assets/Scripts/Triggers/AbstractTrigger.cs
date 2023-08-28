@@ -11,9 +11,10 @@ namespace Triggers
         public bool destroy = false;
         public GameObject consequenceObject;
         public bool findConsequencesInChildren = false;
-        private List<IConsequence> _allConsequences = new List<IConsequence>();
         private AudioSource _audioSource;
-    
+
+        protected List<IConsequence> _allConsequences = new List<IConsequence>();
+
         protected virtual void Start()
         {
             if (this.consequenceObject == null)
