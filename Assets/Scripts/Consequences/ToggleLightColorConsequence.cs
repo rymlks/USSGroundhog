@@ -31,8 +31,6 @@ namespace Consequences
             {
                 this.lightToToggle.color = this.comingFrom;
             }
-
-            Debug.Log("Toggling light to " + this.lightToToggle.color);
         }
     }
 }
