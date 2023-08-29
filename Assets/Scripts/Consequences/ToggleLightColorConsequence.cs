@@ -15,9 +15,8 @@ namespace Consequences
             if (this.lightToToggle == null)
             {
                 this.lightToToggle = this.GetComponent<Light>();
-                this.comingFrom = this.lightToToggle.color;
             }
-            
+            this.comingFrom = this.lightToToggle.color;
         }
 
         public override void Execute(TriggerData? data)
@@ -32,6 +31,8 @@ namespace Consequences
             {
                 this.lightToToggle.color = this.comingFrom;
             }
+
+            Debug.Log("Toggling light to " + this.lightToToggle.color);
         }
     }
 }
