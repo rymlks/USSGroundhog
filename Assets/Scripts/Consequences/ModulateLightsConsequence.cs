@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class BlinkLightsConsequence : MonoBehaviour, IConsequence
+    public class ModulateLightsConsequence : MonoBehaviour, IConsequence
     {
         private class LightBlinkData
         {
