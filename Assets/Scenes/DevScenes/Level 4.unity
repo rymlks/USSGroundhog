@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12071059, g: 0.07374712, b: 0.18219492, a: 1}
+  m_IndirectSpecularColor: {r: 0.13693506, g: 0.08810855, b: 0.20532241, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1812,7 +1812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117601847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.8102894, y: 1.470156, z: -4.4910607}
+  m_LocalPosition: {x: 21.270144, y: 5.870466, z: -1.1403337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2177,6 +2177,11 @@ MonoBehaviour:
     _visibilityToggleIndent: 0
     _indentContent: 0
     _surroundWithBox: 0
+--- !u!1 &154982939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1734237436760426, guid: 2b58d0b3fe7ca6a42bc23d936b7f83bc, type: 3}
+  m_PrefabInstance: {fileID: 1121194856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &155333624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9152,7 +9157,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1302729527}
+  - {fileID: 990383477}
+  - {fileID: 1259746894}
   m_Father: {fileID: 0}
   m_RootOrder: 123
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10790,6 +10796,37 @@ MonoBehaviour:
       _indentContent: 0
       _surroundWithBox: 0
       _viewData: {fileID: 1492910978}
+--- !u!1 &796493854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 796493855}
+  m_Layer: 0
+  m_Name: CrewQuartersSuppressors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &796493855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796493854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1259746894}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &798564539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12949,6 +12986,38 @@ MonoBehaviour:
     _indentContent: 0
     _surroundWithBox: 1
     _viewData: {fileID: 0}
+--- !u!1 &990383476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 990383477}
+  m_Layer: 0
+  m_Name: Fires
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &990383477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990383476}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1302729527}
+  m_Father: {fileID: 657015239}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &990466272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14336,7 +14405,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1734237436760426, guid: 2b58d0b3fe7ca6a42bc23d936b7f83bc, type: 3}
       propertyPath: m_Name
-      value: SM_Bld_Wall_04
+      value: QuartersFireDoor
       objectReference: {fileID: 0}
     - target: {fileID: 1734237436760426, guid: 2b58d0b3fe7ca6a42bc23d936b7f83bc, type: 3}
       propertyPath: m_IsActive
@@ -14576,6 +14645,27 @@ MonoBehaviour:
     _visibilityToggleIndent: 0
     _indentContent: 0
     _surroundWithBox: 0
+--- !u!1 &1132108924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1490314612059029684, guid: 9a4f7f8a88e6a8e498c4f963ac75578e, type: 3}
+  m_PrefabInstance: {fileID: 1844503531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1132108926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132108924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8aad1556a0f6345a5387b86f2ed64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toToggle:
+  - {fileID: 1302729526}
+  - {fileID: 796493854}
+  - {fileID: 154982939}
 --- !u!4 &1134338186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3206006630267341572, guid: 2bd06e4a1a2a655419044aff30ef3bec, type: 3}
@@ -16540,6 +16630,38 @@ MonoBehaviour:
     _visibilityToggleIndent: 0
     _indentContent: 0
     _surroundWithBox: 0
+--- !u!1 &1259746893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1259746894}
+  m_Layer: 0
+  m_Name: FireSuppressors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1259746894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259746893}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 796493855}
+  m_Father: {fileID: 657015239}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1259801189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16972,7 +17094,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302729526}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16983,7 +17105,7 @@ Transform:
   - {fileID: 2028243525}
   - {fileID: 1972859866}
   - {fileID: 1869760974}
-  m_Father: {fileID: 657015239}
+  m_Father: {fileID: 990383477}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1309701344
@@ -17149,6 +17271,10 @@ PrefabInstance:
     - target: {fileID: 6951260207055103783, guid: 44a71d4d3b67e5a44a198c9994ba0935, type: 3}
       propertyPath: m_Name
       value: BigFIreHurtPill (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951260207055103783, guid: 44a71d4d3b67e5a44a198c9994ba0935, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a71d4d3b67e5a44a198c9994ba0935, type: 3}
@@ -21886,6 +22012,27 @@ MonoBehaviour:
     _visibilityToggleIndent: 0
     _indentContent: 0
     _surroundWithBox: 1
+--- !u!1 &1727497084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7224297172586269771, guid: 9a4f7f8a88e6a8e498c4f963ac75578e, type: 3}
+  m_PrefabInstance: {fileID: 1844503531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1727497086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727497084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8aad1556a0f6345a5387b86f2ed64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toToggle:
+  - {fileID: 1302729526}
+  - {fileID: 796493854}
+  - {fileID: 154982939}
 --- !u!1 &1728934763
 GameObject:
   m_ObjectHideFlags: 0
@@ -23361,6 +23508,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2127400780183139666}
     m_Modifications:
+    - target: {fileID: 2020471621376395528, guid: 9a4f7f8a88e6a8e498c4f963ac75578e, type: 3}
+      propertyPath: toChangeTo
+      value: 'Fires Suppressed In: Security'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275967741723766398, guid: 9a4f7f8a88e6a8e498c4f963ac75578e, type: 3}
+      propertyPath: toChangeTo
+      value: 'Fires Suppressed In: Medical'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661172170654912982, guid: 9a4f7f8a88e6a8e498c4f963ac75578e, type: 3}
+      propertyPath: toChangeTo
+      value: 'Fires Suppressed In: Quarters'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829886385604420341, guid: 9a4f7f8a88e6a8e498c4f963ac75578e, type: 3}
+      propertyPath: toChangeTo
+      value: 'Fires Suppressed In: Mess'
+      objectReference: {fileID: 0}
     - target: {fileID: 3523767967483071825, guid: 9a4f7f8a88e6a8e498c4f963ac75578e, type: 3}
       propertyPath: m_Name
       value: FireSuppressionControls
@@ -24136,7 +24299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd15cbbeb80414648bab7c15830b8255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allWindows: []
+  _allWindows:
+  - {fileID: 0}
   _prefabManagementWindow: {fileID: 0}
   _objectPlacementSettingsWindow: {fileID: 0}
   _prefabsToCategoryDropSettingsWindow: {fileID: 0}
@@ -29190,6 +29354,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4198830070427056538}
   - component: {fileID: 2760289452544982765}
+  - component: {fileID: 8189908079898887213}
+  - component: {fileID: 8189908079898887212}
   m_Layer: 0
   m_Name: Point light (55)
   m_TagString: Untagged
@@ -29197,6 +29363,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8189908079898887212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189908079898887211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b56fc371fbf8c4d80e0245173696d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
+--- !u!114 &8189908079898887213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189908079898887211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19d4512d00bb734497b0f100f48c55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSecondsBetweenSwitching: 2
+  maxSecondsBetweenSwitching: 4
+  toBlink: {fileID: 0}
 --- !u!1001 &8223392239508880478
 PrefabInstance:
   m_ObjectHideFlags: 0
