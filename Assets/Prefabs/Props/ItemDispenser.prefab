@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 2034710320076452961}
   - component: {fileID: 4126851870621861726}
   - component: {fileID: 1020442166128501478}
+  - component: {fileID: 5468070180969798131}
   m_Layer: 0
   m_Name: SampleLight
   m_TagString: Untagged
@@ -156,9 +157,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19d4512d00bb734497b0f100f48c55a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSecondsBetweenSwitching: 0.1
-  maxSecondsBetweenSwitching: 0.2
-  toBlink: {fileID: 0}
+  minSecondsBetweenSwitching: 3
+  maxSecondsBetweenSwitching: 3
+  toBlink: {fileID: 1457680391364603577}
+--- !u!114 &5468070180969798131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457680391364603577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b56fc371fbf8c4d80e0245173696d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
 --- !u!1 &2547389002722567087
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsWithConsequences:
-  - {fileID: 1457680391364603577}
+  - {fileID: 7084323296392024827}
   executeInChildren: 0
 --- !u!1 &8749266787600346185
 GameObject:
@@ -1038,7 +1054,7 @@ MonoBehaviour:
   consequenceObject: {fileID: 1200646113139625372}
   findConsequencesInChildren: 0
   activatingKey: 117
-  maxDistance: 1
+  maxDistance: 1.3
 --- !u!1001 &9164961939911253061
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,20 +7,20 @@ namespace Consequences
 {
     public class DoASkySpinnyConsequence : DoASpinnyConsequence
     {
-        private float rotato = 0;
+        private float rotatoo = 0;
 
 
         void FixedUpdate()
         {
             if (started)
             {
-                rotato += rotationScalar;
-                if (Mathf.Abs(rotato) >= Mathf.Abs(max))
+                rotatoo += rotationScalar;
+                if (Mathf.Abs(rotatoo) >= Mathf.Abs(max))
                 {
-                    rotato = max;
+                    rotatoo = max;
                 }
 
-                RenderSettings.skybox.SetFloat("_Rotation", rotato);
+                RenderSettings.skybox.SetFloat("_Rotation", rotatoo);
             }
         }
     }

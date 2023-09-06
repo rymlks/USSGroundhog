@@ -11,6 +11,7 @@ namespace Triggers
         public GameObject turretLeftRightPivot;
         public GameObject turretUpDownPivot;
         public float speed = 20;
+        public Vector3 targetOffset = Vector3.zero;
 
         protected override void Start()
         {
@@ -35,7 +36,7 @@ namespace Triggers
         private void TurnToFace()
         {
                 
-            Quaternion rotTarget = Quaternion.LookRotation(_target.transform.position - this.transform.position);
+            Quaternion rotTarget = Quaternion.LookRotation(_target.transform.position - this.transform.position + this.targetOffset);
 
             this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotTarget, speed * Time.deltaTime);
 

@@ -10,18 +10,30 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class MoveLobbiesConsequence : SwapTransformsConsequence
+    public class SwapWithElevatorConsequence : SwapTransformsConsequence
     {
-        public Vector2Int destinationLobbyGridCoordinates;
+        public GameObject otherElevator;
         public bool bringPlayerAlong = true;
         public bool bringEverythingAlong = true;
         public GameObject playerCharacter = null;
         
         protected KinematicCharacterMotor playerMotor = null;
         protected Camera playerCamera = null;
+        protected SwapWithElevatorConsequence oppositeNumber = null;
         
         void Start()
         {
+            if (otherElevator == null)
+            {
+                otherElevator = GameObject.FindObjectOfType<SwapWithElevatorConsequence>().gameObject;
+            }
+
+            oppositeNumber = otherElevator.GetComponentInChildren<SwapWithElevatorConsequence>();
+            if (this.oppositeNumber == this)
+            {
+                Destroy(this);
+            }
+
             if (bringPlayerAlong)
             {
                 playerMotor = FindObjectOfType<KinematicCharacterMotor>();
@@ -34,9 +46,8 @@ namespace Consequences
 
         public override void Execute(TriggerData? data)
         {
-            chooseElevatorToSwapWith();
+            this.toSwapEnd = otherElevator.transform;
             performSwap();
-            swapDestinations();
 
             // Pick which objects we want to bring with us
             List<string> physicsLayersToBring = new List<string>();
@@ -80,38 +91,9 @@ namespace Consequences
             }
         }
 
-        private void swapDestinations()
-        {
-            MoveLobbiesConsequence otherConsequence = toSwapEnd.Find("TeleportElevatorSwitch/TeleportElevatorUp")
-                .GetComponent<MoveLobbiesConsequence>();
-            if (otherConsequence == null)
-                throw new ICantEvenRightNowException();
-            Vector2Int temp = otherConsequence.destinationLobbyGridCoordinates;
-            otherConsequence.destinationLobbyGridCoordinates = this.destinationLobbyGridCoordinates;
-            this.destinationLobbyGridCoordinates = temp;
-        }
-
-        private void chooseElevatorToSwapWith()
-        {
-            string nameOfDestinationLobby = coordinatesToName(destinationLobbyGridCoordinates);
-            this.toSwapEnd = UnityUtil.SelectRandomChild(GameObject.Find(nameOfDestinationLobby).transform.Find("ElevatorLobbyElevators"));
-        }
-
-        protected string coordinatesToName(Vector2Int coordinates)
-        {
-            return coordinates.Equals(Vector2Int.zero) ? "PuzzleStart" : 
-                coordinates.Equals(new Vector2Int(999,999)) ? "PuzzleGoal" :
-                (coordinates.x == 0 ? "" : coordinates.x.ToString() + "X") +
-                (coordinates.y == 0 ? "" : coordinates.y.ToString() + "Z");
-        }
-
         public override void Cancel(TriggerData? data)
         {
             throw new NotImplementedException();
         }
-    }
-
-    internal class ICantEvenRightNowException : Exception
-    {
     }
 }

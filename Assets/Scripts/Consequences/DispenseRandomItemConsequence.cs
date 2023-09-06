@@ -26,7 +26,6 @@ namespace Consequences
 
         public override void Execute(TriggerData? data)
         {
-            Debug.Log("Executing");
             this.spawned =
                 Instantiate(itemPrefabsToDispense[UnityUtil.RandomNumberBetweenZeroAnd(itemPrefabsToDispense.Length)],
                     locationToDispenseAt, UnityUtil.RandomQuaternion());

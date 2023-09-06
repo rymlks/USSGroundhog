@@ -4579,7 +4579,7 @@ GameObject:
   - component: {fileID: 2221745449212453629}
   - component: {fileID: 5480895772805945998}
   m_Layer: 0
-  m_Name: BigFIreHurtPill
+  m_Name: BigFireHurtPill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9269,8 +9269,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroy: 0
   consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
   CustomTag: Player
+  AdditionalTagsToDetect: []
   acceptTagInParent: 1
+  alwaysAcceptInParent:
+  - Player
+  - Corpse
   RequireItem: 
-  OnStay: 1
+  reEngageOnStay: 1
+  reverseOnExit: 0
   requireComponentsEnabled: []
+  onTrigger: 1
+  onCollision: 0
