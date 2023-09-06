@@ -76,10 +76,6 @@ namespace Consequences
                 {
                     rb.MovePosition(rb.position + distanceToMove);
                     rb.MoveRotation(rotateBy * rb.rotation);
-                } else
-                {
-                    col.transform.position += distanceToMove;
-                    col.transform.rotation = rotateBy * col.transform.rotation;
                 }
             }
         }
