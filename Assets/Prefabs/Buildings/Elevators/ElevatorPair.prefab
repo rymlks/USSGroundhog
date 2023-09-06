@@ -40,6 +40,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3068269994732734459}
     m_Modifications:
+    - target: {fileID: 56164681, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436009076, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2114741941722466264, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
       propertyPath: m_Name
       value: PairedElevator1
@@ -113,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e347e989a54e941b99caf47c844414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toSwapStart: {fileID: 0}
+  toSwapStart: {fileID: 2692009678114958004}
   toSwapEnd: {fileID: 0}
   swapParentsToo: 0
   otherElevator: {fileID: 7339720222854128082}
@@ -132,6 +140,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3068269994732734459}
     m_Modifications:
+    - target: {fileID: 56164681, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436009076, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2114741941722466264, guid: 89bac4246122bfd4ab34dcb96c9f4433, type: 3}
       propertyPath: m_Name
       value: PairedElevator2
@@ -205,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e347e989a54e941b99caf47c844414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toSwapStart: {fileID: 0}
+  toSwapStart: {fileID: 3670008850546796090}
   toSwapEnd: {fileID: 0}
   swapParentsToo: 0
   otherElevator: {fileID: 8245635407600790876}
