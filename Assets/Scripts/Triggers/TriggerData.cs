@@ -6,6 +6,7 @@ namespace Triggers
     {
         public string triggerDescription;
         public Vector3? triggerLocation;
+        public GameObject? triggeringObject;
 
         public TriggerData(string name)
         {
@@ -17,6 +18,13 @@ namespace Triggers
         {
             this.triggerDescription = name;
             this.triggerLocation = location;
+        }
+
+        public TriggerData(string name, Vector3 location, GameObject triggeringObject)
+        {
+            this.triggerDescription = name;
+            this.triggerLocation = location;
+            this.triggeringObject = triggeringObject;
         }
     }
 }

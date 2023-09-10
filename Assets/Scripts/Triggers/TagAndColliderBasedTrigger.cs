@@ -103,7 +103,7 @@ namespace Triggers
 
                 beginTrackingCollider(other);
                 
-                Engage(new TriggerData(CustomTag + " contacted", other.transform.position));
+                Engage(new TriggerData(CustomTag + " contacted", other.transform.position, other.gameObject));
                 if (destroy)
                 {
                     Destroy(gameObject);
