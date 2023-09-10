@@ -56,6 +56,12 @@ namespace StaticUtils
             List<GameObject> parents = GetParentGameObjects(baby);
             return parents.Any(parent => parent.CompareTag(tag));
         }
+            
+        public static GameObject FindParentWithTag(GameObject baby, string tag)
+        {
+            List<GameObject> parents = GetParentGameObjects(baby);
+            return parents.FirstOrDefault(parent => parent.CompareTag(tag));
+        }   
 
         public static int RandomNumberBetweenZeroAnd(int maxExclusive)
         {
