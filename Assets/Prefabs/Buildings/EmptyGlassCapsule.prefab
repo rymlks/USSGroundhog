@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3137532710765007257}
   - component: {fileID: 3166423613467082033}
   - component: {fileID: 3157239520732160235}
+  - component: {fileID: 872351835406591263}
   m_Layer: 0
   m_Name: SM_Prop_CenterTube_Glass_01
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &872351835406591263
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134532580709976679}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: e19ea463faef7494480b9c6020d71082, type: 3}
 --- !u!1 &5131241068934093439
 GameObject:
   m_ObjectHideFlags: 0
