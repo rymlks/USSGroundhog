@@ -53,7 +53,6 @@ namespace Consequences
 
             BoxCollider hitbox = toSwapEnd.transform.Find("ContentCheckBox").GetComponent<BoxCollider>();
             Collider[] elevatorContents = Physics.OverlapBox(hitbox.center + hitbox.transform.position, hitbox.size * 0.5f, hitbox.transform.rotation, objectFilter.value);
-            Debug.Log(elevatorContents);
             foreach (Collider col in elevatorContents)
             {
                 Vector3 myPosition = col.transform.position;
@@ -77,10 +76,6 @@ namespace Consequences
                 {
                     rb.MovePosition(rb.position + distanceToMove);
                     rb.MoveRotation(rotateBy * rb.rotation);
-                } else
-                {
-                    col.transform.position += distanceToMove;
-                    col.transform.rotation = rotateBy * col.transform.rotation;
                 }
             }
         }

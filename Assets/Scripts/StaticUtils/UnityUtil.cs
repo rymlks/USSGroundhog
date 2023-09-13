@@ -56,15 +56,37 @@ namespace StaticUtils
             List<GameObject> parents = GetParentGameObjects(baby);
             return parents.Any(parent => parent.CompareTag(tag));
         }
+            
+        public static GameObject FindParentWithTag(GameObject baby, string tag)
+        {
+            List<GameObject> parents = GetParentGameObjects(baby);
+            return parents.FirstOrDefault(parent => parent.CompareTag(tag));
+        }   
 
         public static int RandomNumberBetweenZeroAnd(int maxExclusive)
         {
             return UnityEngine.Random.Range(0, maxExclusive);
         }
+        
 
         public static Transform SelectRandomChild(Transform parent)
         {
             return parent.GetChild(RandomNumberBetweenZeroAnd(parent.childCount));
+        }
+
+        public static Quaternion RandomQuaternion()
+        {
+            return UnityEngine.Random.rotation;
+        }
+
+        public static Vector3 getPlayerPosition()
+        {
+            return Object.FindObjectOfType<FinalCharacterController>().gameObject.transform.position;
+        }
+        
+        public static Transform getCameraTransform()
+        {
+            return Object.FindObjectOfType<FinalCharacterCamera>().gameObject.transform;
         }
     }
 }

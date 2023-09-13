@@ -62,12 +62,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroy: 0
   consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
   CustomTag: Player
+  AdditionalTagsToDetect: []
   acceptTagInParent: 0
+  alwaysAcceptInParent:
+  - Player
+  - Corpse
   RequireItem: 
   reEngageOnStay: 1
   reverseOnExit: 0
   requireComponentsEnabled: []
+  onTrigger: 1
+  onCollision: 0
 --- !u!114 &6479387274388438003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 1
-  damageType: freezing
+  damageType: suffocation
 --- !u!1 &3967358688842517278
 GameObject:
   m_ObjectHideFlags: 0
