@@ -17,6 +17,12 @@ namespace UI
             this.setUIValues(LevelScoreManager.instance.getLevelScore());
         }
 
+        protected override void DisableUI()
+        {
+            base.DisableUI();
+            SceneManager.LoadScene("Location Menu");
+        }
+
         private void setUIValues(LevelScore levelScore)
         {
             this.textMesh.text = SceneManager.GetActiveScene().name +
