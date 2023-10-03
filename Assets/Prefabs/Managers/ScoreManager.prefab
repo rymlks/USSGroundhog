@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 512156222203597393}
   - component: {fileID: 512156222203597398}
+  - component: {fileID: 5487940851064105481}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -48,3 +49,18 @@ MonoBehaviour:
   scoreScreenAudio: {fileID: 8300000, guid: d93eaa7cc3cf7a84b9e72039a9f267f8, type: 3}
   secondsScorePersists: 45
   levelParDeaths: 5
+  breakForEasy: 2
+  penaltyForHard: -1
+  levelName: 
+--- !u!114 &5487940851064105481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512156222203597399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616c010df83c455cae4c3f74f6652328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
