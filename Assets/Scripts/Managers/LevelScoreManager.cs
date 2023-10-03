@@ -23,6 +23,9 @@ namespace Managers
 
         [Tooltip("How to adjust par deaths for harder difficulty")]
         public int penaltyForHard = -1;
+
+        [Tooltip("Which level should be reported as completed if the player wins")]
+        public string levelName;
         
         protected Dictionary<float, DeathCharacteristics> allDeaths;
 
@@ -73,6 +76,7 @@ namespace Managers
             this.allDeaths.Add(Time.time, death);
             if (!death.shouldRespawn())
             {
+                ProgressManager.instance.completeLevel(levelName);
                 uiController.secondsMessagePersists = secondsScorePersists;
                 FindObjectOfType<MusicStack>().PushMusicToStack(scoreScreenAudio, secondsScorePersists);
                 uiController.ShowNextFrame();
