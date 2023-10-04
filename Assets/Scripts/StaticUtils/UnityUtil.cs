@@ -3,6 +3,7 @@ using System.Linq;
 using KinematicCharacterController;
 using Player;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace StaticUtils
 {
@@ -14,6 +15,12 @@ namespace StaticUtils
         {
             return NullColor;
             
+        }
+
+        public static ColorBlock getBlockWithHighlightColorChanged(ColorBlock block, Color newColor)
+        {
+            block.highlightedColor = newColor;
+            return block;
         }
 
         public static List<GameObject> GetImmediateChildGameObjects(GameObject parent)

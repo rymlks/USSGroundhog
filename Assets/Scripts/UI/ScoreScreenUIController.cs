@@ -20,7 +20,7 @@ namespace UI
         protected override void DisableUI()
         {
             base.DisableUI();
-            SceneManager.LoadScene("Location Menu");
+            SceneManager.LoadScene("Location Menu", LoadSceneMode.Single);
         }
 
         private void setUIValues(LevelScore levelScore)
