@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14040613, g: 0.09018312, b: 0.2100147, a: 1}
+  m_IndirectSpecularColor: {r: 0.13718125, g: 0.08762152, b: 0.20620817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1836,7 +1836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2523,18 +2523,18 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393543361}
   m_LocalRotation: {x: 0.08632671, y: 0.5693291, z: -0.028612081, w: 0.8170639}
-  m_LocalPosition: {x: 0, y: 0, z: 43.649963}
+  m_LocalPosition: {x: 0, y: 0, z: 946.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1412951482}
-  m_Father: {fileID: 595708437}
-  m_RootOrder: 2
+  m_Father: {fileID: 6833129557549032458}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10, y: 70, z: 3}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1351.7, y: 687.75}
-  m_SizeDelta: {x: -4682.8, y: -1998.3}
+  m_AnchoredPosition: {x: 415.90002, y: -155.59998}
+  m_SizeDelta: {x: 180, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &393543363
 MonoBehaviour:
@@ -2580,7 +2580,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 395761684}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelLoadingMenu, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 5
@@ -2686,6 +2686,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb401606545d9240a30b8deb059d3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelNames:
+  - USS Groundhog
+  - Punxsutawney Station
+  - Level 3
+  - Level 4
+  - Level 5
+  - Level 6
+  - Level 7
+  - Level 8
+  LevelFilenames:
+  - Level 1
+  - Elevator Maze
+  - Level 3
+  - Level 4
+  - Level 5
+  - Level 6
+  - Level 7
+  - Level 8
+  locationMenuButtonsParent: {fileID: 0}
+  accessibleColor: {r: 0.3137255, g: 0.8117648, b: 1, a: 1}
+  unknownColor: {r: 0.5294118, g: 0.18039216, b: 0.18039216, a: 1}
+  passedColor: {r: 0, g: 1, b: 0, a: 1}
+  completedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1001 &397955764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2806,7 +2829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3785,7 +3808,6 @@ RectTransform:
   m_Children:
   - {fileID: 947769511}
   - {fileID: 1826239037}
-  - {fileID: 393543362}
   - {fileID: 1034136912}
   - {fileID: 406134082}
   - {fileID: 852019961}
@@ -5309,7 +5331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5940,9 +5962,8 @@ GameObject:
   - component: {fileID: 947769512}
   - component: {fileID: 947769515}
   - component: {fileID: 947769516}
-  - component: {fileID: 947769517}
   m_Layer: 5
-  m_Name: GoToGroundhogButton
+  m_Name: GoToLevel1Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6013,7 +6034,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 395761684}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelLoadingMenu, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 5
@@ -6062,23 +6083,6 @@ MonoBehaviour:
   destroy: 0
   consequenceObject: {fileID: 0}
   findConsequencesInChildren: 0
---- !u!114 &947769517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 947769510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d36bc6ad61ae35b45830adea7fda172c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  locationName: U.S.S. Groundhog
-  levelName: Level 1
-  oneHundredPercentCompletionColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  minimumCompletionColor: {r: 0, g: 1, b: 0, a: 1}
-  availableColor: {r: 0.3137255, g: 0.8117648, b: 1, a: 1}
 --- !u!4 &948490220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4507997359314912, guid: 909e2c7775ffdbd4992cd487afb004f0, type: 3}
@@ -9235,6 +9239,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4c5f8c2218dfeb4d93995f3d754a722, type: 3}
+--- !u!1 &1473238654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1473238656}
+  - component: {fileID: 1473238655}
+  m_Layer: 0
+  m_Name: FakeProgressManagerForTesting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1473238655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473238654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616c010df83c455cae4c3f74f6652328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1473238656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473238654}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1488109061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4707158679270136, guid: 84c87c5cabcd16746934df7fda1708c2, type: 3}
@@ -9786,7 +9834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -12040,7 +12088,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 395761684}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelLoadingMenu, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 5
@@ -13083,7 +13131,7 @@ GameObject:
   - component: {fileID: 2025275324}
   - component: {fileID: 2025275323}
   m_Layer: 5
-  m_Name: GroundhogButtonText
+  m_Name: Level1ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13861,7 +13909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -14258,7 +14306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1193434159275057091, guid: a5bf3d9fceb9de647b0663a7411133f6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -14443,6 +14491,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 595708437}
+  - {fileID: 393543362}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

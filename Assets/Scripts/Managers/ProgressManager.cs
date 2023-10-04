@@ -51,11 +51,40 @@ namespace Managers
             completeLevel(levelName, new Dictionary<string, bool>());
         }
 
+        public bool isLevelAvailable(int levelIndex)
+        {
+            return levelIndex == 0 || this.isLevelCompleted(levelIndex - 1);
+        }
+
         public bool isLevelCompleted(string levelName)
         {
             try
             {
                 return this.objectivesAchieved[levelName][LEVEL_COMPLETED];
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool isLevelCompleted(int levelIndex)
+        {
+            try
+            {
+                return this.objectivesAchieved["Level "+ (levelIndex + 1)][LEVEL_COMPLETED];
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool areAllOptionalObjectivesCompleted(int levelIndex)
+        {
+            try
+            {
+                return this.objectivesAchieved["Level "+ (levelIndex + 1)][LEVEL_COMPLETED];
             }
             catch
             {
