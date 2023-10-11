@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06628647, g: 0.04621707, b: 0.12219364, a: 1}
+  m_IndirectSpecularColor: {r: 0.14450628, g: 0.09300769, b: 0.21491101, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1339,6 +1339,26 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_PlayableAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8dddf493b560ffe49867248a3919f3c8, type: 2}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_SceneBindings.Array.data[3].key
+      value: 
+      objectReference: {fileID: -5430409994743192402, guid: 8dddf493b560ffe49867248a3919f3c8, type: 2}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_SceneBindings.Array.data[4].key
+      value: 
+      objectReference: {fileID: -3209224151970632503, guid: 8dddf493b560ffe49867248a3919f3c8, type: 2}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value
       value: 
       objectReference: {fileID: 1139717286}
@@ -1396,7 +1416,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 380934681228939238, guid: 146fced0ac4d8624792524b97b009418, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409792643839545497, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: monologueName
+      value: Level 2 intro monologue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 146fced0ac4d8624792524b97b009418, type: 3}

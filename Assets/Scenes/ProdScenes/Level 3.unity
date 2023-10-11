@@ -3922,6 +3922,30 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_PlayableAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 63b3392de7035b341b03e1ab0bdccd7a, type: 2}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_SceneBindings.Array.data[3].key
+      value: 
+      objectReference: {fileID: 114464085180535546, guid: 4c496c870871c1a4faf9ac8d4540bcc1, type: 2}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_SceneBindings.Array.data[4].key
+      value: 
+      objectReference: {fileID: -5430409994743192402, guid: 63b3392de7035b341b03e1ab0bdccd7a, type: 2}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: m_SceneBindings.Array.data[5].key
+      value: 
+      objectReference: {fileID: -3209224151970632503, guid: 63b3392de7035b341b03e1ab0bdccd7a, type: 2}
+    - target: {fileID: 380934681228939236, guid: 146fced0ac4d8624792524b97b009418, type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value
       value: 
       objectReference: {fileID: 1139717286}
@@ -3979,7 +4003,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 380934681228939238, guid: 146fced0ac4d8624792524b97b009418, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409792643839545497, guid: 146fced0ac4d8624792524b97b009418, type: 3}
+      propertyPath: monologueName
+      value: Level 3 intro monologue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 146fced0ac4d8624792524b97b009418, type: 3}
