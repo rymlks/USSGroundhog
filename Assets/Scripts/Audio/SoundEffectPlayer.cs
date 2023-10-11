@@ -10,7 +10,7 @@ namespace Audio
         public AudioClip Small_explosion, Tank_explosion, 
             Crate_explosion, Door_Slide, 
             PA_Jingle, Turret_Firing, 
-            Turret_Firing_Tail;
+            Turret_Firing_Tail, Character_Speaking;
 
 
         protected AudioSource source;
@@ -35,9 +35,10 @@ namespace Audio
         
         }
 
-        public void PlaySound(AudioClip toPlay)
+        public void PlaySound(AudioClip toPlay, bool loop = false)
         {
             source.clip = toPlay;
+            source.loop = loop;
             source.Play();
         }
 
@@ -51,6 +52,11 @@ namespace Audio
         {
             source.clip = Turret_Firing_Tail;
             source.Play();
+        }
+
+        public void Stop()
+        {
+            source.Stop();
         }
 
         public void SetSFXVolume()
