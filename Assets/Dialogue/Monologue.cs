@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Audio;
 using TMPro;
 using UnityEngine;
 
@@ -11,12 +12,21 @@ namespace Dialogue
         public string monologueName;
         public float timeToDisplayEachSentence = 8f;
         public TMP_Text monologueText;
+        
         private List<string> statements = null;
         private float startTime = float.PositiveInfinity;
+        private SoundEffectPlayer speechSfxPlayer;
+        private bool isComplete = false;
+
 
         void Start()
         {
             readFromJson(monologueName);
+            if (speechSfxPlayer == null)
+            {
+                speechSfxPlayer = FindObjectOfType<SoundEffectPlayer>();
+            }
+
             if (statements == null || statements == null || statements.Count < 1)
             {
                 Destroy(this);
@@ -37,8 +47,9 @@ namespace Dialogue
             {
                 displayMonologue();
             }
-            else
+            else if (!isComplete)
             {
+                isComplete = true;
                 hideMonologue();
             }
         }
@@ -46,12 +57,14 @@ namespace Dialogue
         private void hideMonologue()
         {
             this.monologueText.enabled = false;
+            this.speechSfxPlayer.Stop();
         }
 
         private void BeginMonologue()
         {
             this.startTime = Time.time;
             this.monologueText.enabled = true;
+            this.speechSfxPlayer.PlaySound(this.speechSfxPlayer.Character_Speaking, true);
         }
         
         private void displayMonologue()
