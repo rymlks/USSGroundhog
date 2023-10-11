@@ -55,6 +55,10 @@ namespace Player
         public float OrientationSharpness = 10f;
         public OrientationMethod OrientationMethod = OrientationMethod.TowardsCamera;
 
+        // sawalls special
+        [Header("Crouch Modifier")]
+        public float CrouchSpeedScale = 0.35f;
+
         [Header("Air Movement")]
         public float MaxAirMoveSpeed = 15f;
         public float AirAccelerationSpeed = 15f;
@@ -282,7 +286,7 @@ namespace Player
             CharacterAnimator.SetFloat("Strafe", _rightAxis);
             CharacterAnimator.SetBool("OnGround", Motor.GroundingStatus.IsStableOnGround);
             CharacterAnimator.SetFloat("xLook", _mouseXAxis);
-            
+            CharacterAnimator.SetFloat("CrouchSpeedScale", CrouchSpeedScale); // sawalls this shouldn't probably be sent every update?
         }
 
         /// <summary>
@@ -373,7 +377,7 @@ namespace Player
                         // Calculate target velocity
                         Vector3 inputRight = Vector3.Cross(_moveInputVector, Motor.CharacterUp);
                         Vector3 reorientedInput = Vector3.Cross(effectiveGroundNormal, inputRight).normalized * _moveInputVector.magnitude;
-                        Vector3 targetMovementVelocity = reorientedInput * MaxStableMoveSpeed;
+                        Vector3 targetMovementVelocity = reorientedInput * MaxStableMoveSpeed * (_isCrouching ? CrouchSpeedScale : 1f);
 
                         // Smooth movement Velocity
                         currentVelocity = Vector3.Lerp(currentVelocity, targetMovementVelocity, 1f - Mathf.Exp(-StableMovementSharpness * deltaTime));
