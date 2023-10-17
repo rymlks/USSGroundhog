@@ -33,5 +33,9 @@ namespace Consequences
         {
             return toCycleBetween[currentIndex].GetComponents<AbstractConsequence>().Where(cons => cons.enabled).Cast<IConsequence>().ToList();
         }
+
+        public int GetCurrentIndex() {
+            return currentIndex;
+        }
     }
 }
