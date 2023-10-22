@@ -39,7 +39,7 @@ namespace Dialogue
 
         void Update()
         {
-            if (Time.time < startTime)
+            if (isComplete || Time.time < startTime)
             {
                 return;
             }
@@ -66,7 +66,13 @@ namespace Dialogue
             this.monologueText.enabled = true;
             this.speechSfxPlayer.PlaySound(this.speechSfxPlayer.Character_Speaking, true);
         }
-        
+
+        public void EndMonologue()
+        {
+            isComplete = true;
+            hideMonologue();
+        }
+
         private void displayMonologue()
         {
             string toDisplay = selectStatement();
