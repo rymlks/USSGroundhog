@@ -55,7 +55,7 @@ namespace Consequences
                     rotato = max;
                 }
 
-                toSpin.transform.localRotation *= Quaternion.Euler(rotationScalar * axis.x, rotationScalar * axis.y, rotationScalar * axis.z);
+                toSpin.transform.localRotation = this.initialRotation * Quaternion.Euler(rotato * axis.x, rotato * axis.y, rotato * axis.z);
             }
         }
     }
