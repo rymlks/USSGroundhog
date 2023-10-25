@@ -34,6 +34,7 @@ public class CutsceneSkipper : MonoBehaviour
         {
             this.heldLengthCurently += Time.deltaTime;
             ToggleSkipIndicator(true);
+            UpdateProgressBar();
             if (this.heldLengthCurently >= holdLengthBeforeSkip)
             {
                 SkipCutscene();
@@ -46,14 +47,20 @@ public class CutsceneSkipper : MonoBehaviour
         }
     }
 
+    private void UpdateProgressBar()
+    {
+        this.skipIndicatorObject.GetComponentInChildren<Image>().fillAmount = GetSkipProgressPercentageNormalized();
+    }
+
     private void ToggleSkipIndicator(bool onOrOff)
     {
         this.skipIndicatorObject.GetComponentInChildren<TextMeshProUGUI>().enabled = onOrOff;
+        this.skipIndicatorObject.GetComponentInChildren<Image>().enabled = onOrOff;
     }
 
     public float GetSkipProgressPercentageNormalized()
     {
-        return Mathf.Max(1.0f, this.heldLengthCurently / this.holdLengthBeforeSkip);
+        return Mathf.Min(1.0f, this.heldLengthCurently / this.holdLengthBeforeSkip);
     }
 
     protected void SkipCutscene()
