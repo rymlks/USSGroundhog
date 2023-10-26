@@ -73,6 +73,11 @@ namespace Dialogue
             hideMonologue();
         }
 
+        public bool IsComplete()
+        {
+            return isComplete;
+        }
+
         private void displayMonologue()
         {
             string toDisplay = selectStatement();
