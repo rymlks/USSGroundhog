@@ -124,7 +124,9 @@ namespace Managers
                     return audioClipArray[2];
                 case "electrocution":
                     return audioClipArray[3];
-                default: Debug.LogWarning($"{reason} is not defined for sound on death;");
+                case "poison":
+                    return audioClipArray[4];
+                default: Debug.LogWarning("No corresponding sound effect for death type: " + reason);
                     return null;
             }
         }
@@ -170,15 +172,4 @@ namespace Managers
             return this.playerInventory;
         }
     }
-
-    /*
-    [CustomEditor(typeof(GameManager))]
-    public class SFXRoster : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            
-        }
-    }
-    */
 }

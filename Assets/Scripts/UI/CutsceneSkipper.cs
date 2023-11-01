@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Dialogue;
 using TMPro;
 using UnityEngine;
@@ -12,8 +10,9 @@ public class CutsceneSkipper : MonoBehaviour
     public GameObject cutsceneObject;
     public GameObject skipIndicatorObject;
 
+    protected Monologue cutsceneMonologue;
     protected float heldLengthCurently = 0.0f;
-    
+
     void Start()
     {
         this.heldLengthCurently = 0.0f;
@@ -21,6 +20,8 @@ public class CutsceneSkipper : MonoBehaviour
         {
             cutsceneObject = GetComponentInParent<Monologue>().gameObject;
         }
+
+        cutsceneMonologue = cutsceneObject.GetComponent<Monologue>();
 
         if (skipIndicatorObject == null)
         {
@@ -30,10 +31,11 @@ public class CutsceneSkipper : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Escape) && !cutsceneMonologue.IsComplete())
         {
             this.heldLengthCurently += Time.deltaTime;
             ToggleSkipIndicator(true);
+            UpdateProgressBar();
             if (this.heldLengthCurently >= holdLengthBeforeSkip)
             {
                 SkipCutscene();
@@ -46,19 +48,25 @@ public class CutsceneSkipper : MonoBehaviour
         }
     }
 
+    private void UpdateProgressBar()
+    {
+        this.skipIndicatorObject.GetComponentInChildren<Image>().fillAmount = GetSkipProgressPercentageNormalized();
+    }
+
     private void ToggleSkipIndicator(bool onOrOff)
     {
         this.skipIndicatorObject.GetComponentInChildren<TextMeshProUGUI>().enabled = onOrOff;
+        this.skipIndicatorObject.GetComponentInChildren<Image>().enabled = onOrOff;
     }
 
     public float GetSkipProgressPercentageNormalized()
     {
-        return Mathf.Max(1.0f, this.heldLengthCurently / this.holdLengthBeforeSkip);
+        return Mathf.Min(1.0f, this.heldLengthCurently / this.holdLengthBeforeSkip);
     }
 
     protected void SkipCutscene()
     {
-        cutsceneObject.GetComponent<Monologue>().EndMonologue();
+        cutsceneMonologue.EndMonologue();
         cutsceneObject.GetComponent<PlayableDirector>().Stop();
         ToggleSkipIndicator(false);
         this.enabled = false;

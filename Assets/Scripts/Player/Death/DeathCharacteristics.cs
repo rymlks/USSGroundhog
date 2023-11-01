@@ -22,6 +22,11 @@ namespace Player.Death
         {
             return _deathCharacteristics.Keys.Contains("nocorpse") ? !(bool)_deathCharacteristics["nocorpse"] : true;
         }
+        
+        public bool shouldProduceBloatedCorpse()
+        {
+            return _deathCharacteristics.Keys.Contains("poison");
+        }
 
         public bool shouldProduceCrouchedCorpse()
         {
