@@ -50,7 +50,7 @@ namespace Triggers
         {
             var hitInfo = turretLock();
 
-            if (hitInfo.transform.CompareTag(tagToWatchFor))
+            if (hitInfo.transform != null && hitInfo.transform.CompareTag(tagToWatchFor))
             {
 
                 return true;

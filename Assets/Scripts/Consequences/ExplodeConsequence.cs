@@ -12,6 +12,7 @@ namespace Consequences
         public float explosionStrength = 10;
         public bool persist = true;
         public bool corpseShouldRagdoll = true;
+        public bool produceCorpse = true;
         public GameObject ExplosionPrefab;
 
         public bool dontRespawn = false;
@@ -29,16 +30,26 @@ namespace Consequences
         public override void Execute(TriggerData? data)
         {
             instantiateExplosion();
-        
-            GameManager.instance.CommitDie(new Dictionary<string, object>()
+
+            if (data.triggeringObject.CompareTag("Player"))
             {
-                {"explosion", explosionVector3(data).normalized * explosionStrength},
-                {"ragdoll", corpseShouldRagdoll},
-                {"dontRespawn", dontRespawn}
-            });
+                GameManager.instance.CommitDie(new Dictionary<string, object>()
+                {
+                    {"explosion", explosionVector3(data).normalized * explosionStrength},
+                    {"ragdoll", corpseShouldRagdoll},
+                    {"nocorpse", !produceCorpse},
+                    {"dontRespawn", dontRespawn}
+                });
+            }
+
             if (!persist)
             {
                 die = true;
+            }
+
+            if (!data.triggeringObject.CompareTag("Player"))
+            {
+                data.triggeringObject.GetComponent<Rigidbody>().velocity = explosionVector3(data).normalized * explosionStrength;
             }
         }
 
