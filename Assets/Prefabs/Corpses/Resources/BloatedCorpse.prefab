@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7301173822749655896}
   - component: {fileID: 2728845335359086374}
-  - component: {fileID: 6557030201868503199}
+  - component: {fileID: 4252489502035536554}
   m_Layer: 0
   m_Name: RunOnStart
   m_TagString: Untagged
@@ -48,7 +48,7 @@ MonoBehaviour:
   destroy: 0
   consequenceObject: {fileID: 0}
   findConsequencesInChildren: 0
---- !u!114 &6557030201868503199
+--- !u!114 &4252489502035536554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,12 +57,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7212618669387959587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfc770ef95ec978499b1b8684af0d435, type: 3}
+  m_Script: {fileID: 11500000, guid: 16414e2fb0f0444696be86ccbe0b287c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   force: {x: 0, y: 0, z: 0}
   forceMode: 2
   toApplyTo: {fileID: 6483545076249123042}
+  minimumAdditionalTorque: {x: -15, y: 0, z: -15}
+  maximumAdditionalTorque: {x: 15, y: 0, z: 15}
 --- !u!1 &7435193690548425914
 GameObject:
   m_ObjectHideFlags: 0
