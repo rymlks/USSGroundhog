@@ -172,15 +172,4 @@ namespace Managers
             return this.playerInventory;
         }
     }
-
-    /*
-    [CustomEditor(typeof(GameManager))]
-    public class SFXRoster : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            
-        }
-    }
-    */
 }
