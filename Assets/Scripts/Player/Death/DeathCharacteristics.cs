@@ -17,6 +17,11 @@ namespace Player.Death
         {
             return _deathCharacteristics.Keys.Contains("ragdoll");
         }
+        
+        public bool shouldProduceBloatedCorpse()
+        {
+            return _deathCharacteristics.Keys.Contains("poison");
+        }
 
         public bool shouldProduceCrouchedCorpse()
         {
