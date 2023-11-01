@@ -126,7 +126,7 @@ namespace Managers
                     return audioClipArray[3];
                 case "poison":
                     return audioClipArray[4];
-                default: Debug.LogWarning($"{reason} is not defined for sound on death;");
+                default: Debug.LogWarning("No corresponding sound effect for death type: " + reason);
                     return null;
             }
         }
