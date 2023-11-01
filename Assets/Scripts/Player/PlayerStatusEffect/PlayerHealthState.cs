@@ -107,6 +107,7 @@ public class PlayerHealthState : MonoBehaviour
         statusTrackers.Add(new StatusTracker("freezing", 3f));
         statusTrackers.Add(new StatusTracker("burning", 2f));
         statusTrackers.Add(new StatusTracker("bleeding", 10f, true));
+        statusTrackers.Add(new StatusTracker("poison", 6f));
     }
 
     void Update()

@@ -1,12 +1,12 @@
 using Triggers;
 using UnityEngine;
 
-namespace Consequences
+namespace Consequences.RigidPhysics
 {
     public class ActivateRigidbodyConsequence : AbstractConsequence
     {
         public bool destroy = false;
-        public Rigidbody rb;
+        public UnityEngine.Rigidbody rb;
         public Vector3 angularForce;
     
         public override void Execute(TriggerData? data)
