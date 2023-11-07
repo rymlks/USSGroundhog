@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Triggers
 {
-    public class TriggerWhenTagImpactedDownwards : AbstractTrigger
+    public class TriggerWhenObjectNameImpactedDownwards : AbstractTrigger
     {
         public float heightOffset = -1f;
-        public string tagToDetect = "Player";
+        public string nameFragmentToDetect = "FrozenCorpse";
 
         protected bool isAboveObject(Collision collision)
         {
@@ -22,8 +22,12 @@ namespace Triggers
         {
             if (ShouldActOnObject(other))
             {
+                Debug.Log("yoo");
+                Debug.Log("is above: " + isAboveObject(other));
+                Debug.Log("is moving down: " + isMovingDown());
                 if (isAboveObject(other) && isMovingDown())
                 {
+                    Debug.Log("engaging");
                     this.Engage(new TriggerData(other.gameObject.name + " struck by " + this.gameObject.name, other.contacts[0].point, other.gameObject));
                 }
             }
@@ -31,7 +35,7 @@ namespace Triggers
 
         private bool ShouldActOnObject(Collision other)
         {
-            return other.gameObject.CompareTag(tagToDetect);
+            return other.gameObject.name.Contains(this.nameFragmentToDetect);
         }
     }
 }
