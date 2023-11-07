@@ -4835,7 +4835,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977331019}
-  m_LocalRotation: {x: 0.11236386, y: 0.080495305, z: -0.009132809, w: 0.9903593}
+  m_LocalRotation: {x: 0.11236387, y: 0.08049527, z: -0.009132805, w: 0.9903593}
   m_LocalPosition: {x: -8.549999, y: 1.932, z: 15.622}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5339,7 +5339,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089052054}
-  m_LocalRotation: {x: 0.09187628, y: 0.7929433, z: -0.123580776, w: 0.5895147}
+  m_LocalRotation: {x: 0.09187628, y: 0.7929433, z: -0.12358078, w: 0.5895147}
   m_LocalPosition: {x: 17.885, y: 1.932, z: 23.424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11949,7 +11949,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008892662}
-  m_LocalRotation: {x: 0.040843323, y: 0.74395674, z: -0.04566433, w: 0.66541344}
+  m_LocalRotation: {x: 0.040843323, y: 0.74395674, z: -0.045664333, w: 0.66541344}
   m_LocalPosition: {x: 16.885, y: 1.932, z: 23.424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12802,8 +12802,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelName
+      value: Level 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelMinDeaths
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
       propertyPath: levelParDeaths
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelParDeathsEasy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelParDeathsHard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelParDeathsNormal
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 512156222203597399, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
       propertyPath: m_Name
