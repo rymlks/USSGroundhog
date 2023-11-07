@@ -22,10 +22,10 @@ namespace Managers
         [Tooltip("The 'par' number of deaths for this level on Normal difficulty.")]
         public int levelParDeathsNormal = 5;
 
-        [Tooltip("How to adjust par deaths for easier difficulty")]
+        [Tooltip("The 'par' number of deaths for this level on Easy difficulty")]
         public int levelParDeathsEasy = 8;
 
-        [Tooltip("How to adjust par deaths for harder difficulty")]
+        [Tooltip("The 'par' number of deaths for this level on harder difficulty")]
         public int levelParDeathsHard = 3;
 
         [Tooltip("Which level should be reported as completed if the player wins")]
