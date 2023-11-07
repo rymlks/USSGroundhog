@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12807429, g: 0.07903703, b: 0.19149774, a: 1}
+  m_IndirectSpecularColor: {r: 0.10512116, g: 0.07292708, b: 0.172032, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -101588,15 +101588,15 @@ PrefabInstance:
       objectReference: {fileID: 1105063245}
     - target: {fileID: 380934681701234727, guid: 146fced0ac4d8624792524b97b009418, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -3.118858e-23
+      value: 3.2910853e-15
       objectReference: {fileID: 0}
     - target: {fileID: 380934681701234727, guid: 146fced0ac4d8624792524b97b009418, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.37664413
+      value: 0.3766441
       objectReference: {fileID: 0}
     - target: {fileID: 380934681701234727, guid: 146fced0ac4d8624792524b97b009418, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.224324e-23
+      value: -1.3381088e-15
       objectReference: {fileID: 0}
     - target: {fileID: 380934682546780805, guid: 146fced0ac4d8624792524b97b009418, type: 3}
       propertyPath: m_LookAt
@@ -101668,8 +101668,24 @@ PrefabInstance:
       value: Level 1
       objectReference: {fileID: 0}
     - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelMinDeaths
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
       propertyPath: levelParDeaths
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelParDeathsEasy
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelParDeathsHard
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelParDeathsNormal
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 512156222203597399, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
       propertyPath: m_Name
