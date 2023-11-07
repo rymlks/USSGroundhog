@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14545462, g: 0.0941231, b: 0.21724021, a: 1}
+  m_IndirectSpecularColor: {r: 0.10512116, g: 0.07292708, b: 0.172032, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2692,8 +2692,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelName
+      value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
       propertyPath: levelParDeaths
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelParDeathsEasy
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelParDeathsHard
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 512156222203597398, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
+      propertyPath: levelParDeathsNormal
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 512156222203597399, guid: 71afed70350f95a498f8edb55d751afd, type: 3}
       propertyPath: m_Name
@@ -2978,15 +2994,15 @@ PrefabInstance:
       objectReference: {fileID: 1859685627}
     - target: {fileID: 727522127, guid: a4770789e873d40499e2f7a46be9ea66, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.020062564
+      value: 0.0200626
       objectReference: {fileID: 0}
     - target: {fileID: 727522127, guid: a4770789e873d40499e2f7a46be9ea66, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00088711205
+      value: -0.00088711304
       objectReference: {fileID: 0}
     - target: {fileID: 727522127, guid: a4770789e873d40499e2f7a46be9ea66, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.044165205
+      value: 0.044165187
       objectReference: {fileID: 0}
     - target: {fileID: 1273219131, guid: a4770789e873d40499e2f7a46be9ea66, type: 3}
       propertyPath: m_LookAt
