@@ -22,12 +22,8 @@ namespace Triggers
         {
             if (ShouldActOnObject(other))
             {
-                Debug.Log("yoo");
-                Debug.Log("is above: " + isAboveObject(other));
-                Debug.Log("is moving down: " + isMovingDown());
                 if (isAboveObject(other) && isMovingDown())
                 {
-                    Debug.Log("engaging");
                     this.Engage(new TriggerData(other.gameObject.name + " struck by " + this.gameObject.name, other.contacts[0].point, other.gameObject));
                 }
             }
