@@ -27,10 +27,14 @@ namespace Triggers
 
             if (other.CompareTag(tagToTriggerOn))
             {
-
-                this.Engage(new TriggerData(this.tagToTriggerOn+ " object collided with " + this.particleSystem.name + " particle", collisionEvents[^1].intersection));
+                this.Engage(new TriggerData(
+                    this.tagToTriggerOn + " object collided with " + this.particleSystem.name + " particle",
+                    collisionEvents[^1].intersection));
+                if (this.destroy)
+                {
+                    Destroy(this.gameObject);
+                }
             }
-
         }
 
     }

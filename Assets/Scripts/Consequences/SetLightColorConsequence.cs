@@ -11,7 +11,6 @@ namespace Consequences
             if (!lightToToggle) return;
 
                 this.lightToToggle.color = goingTo;
-                Debug.Log("bingo");
         }
     }
 }
