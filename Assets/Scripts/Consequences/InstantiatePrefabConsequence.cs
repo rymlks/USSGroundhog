@@ -10,11 +10,20 @@ namespace Consequences
         public Transform parentToInstantiateUnder;
         public Transform transformToAppearAt;
 
-        protected Object instantiated;
-        
+        protected GameObject instantiated;
+
         public override void Execute(TriggerData? data)
         {
-            instantiated = GameObject.Instantiate(toInstantiate, transformToAppearAt.position, transformToAppearAt.rotation, parentToInstantiateUnder);
+            if (data?.triggerLocation == null)
+            {
+                instantiated = GameObject.Instantiate(toInstantiate, transformToAppearAt.position,
+                    transformToAppearAt.rotation, parentToInstantiateUnder);
+            }
+            else
+            {
+                instantiated = GameObject.Instantiate(toInstantiate, data.triggerLocation.Value,
+                    transformToAppearAt.rotation, parentToInstantiateUnder);
+            }
         }
 
         public override void Cancel(TriggerData? data)

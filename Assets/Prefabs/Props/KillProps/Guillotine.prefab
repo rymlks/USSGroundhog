@@ -228,6 +228,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4178817863307832592}
   - component: {fileID: 4269470424299745467}
+  - component: {fileID: 3194697850052970451}
+  - component: {fileID: 7036446484147260379}
   m_Layer: 0
   m_Name: FrozenCorpseShatterConsequence
   m_TagString: Untagged
@@ -262,6 +264,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3bf5d2a38102a94da7d9c6f9405511d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3194697850052970451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609688314488511400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0020cb6c62e33489bd5b98a03df877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toInstantiate: {fileID: 7616986204699044703, guid: 347d25d20a926a04ca24066f9112bc2b, type: 3}
+  parentToInstantiateUnder: {fileID: 0}
+  transformToAppearAt: {fileID: 4178817863307832592}
+--- !u!114 &7036446484147260379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609688314488511400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661cc7bf50956c04a811d719d90e311f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: fba0eab66dec60449bb871ff74339379, type: 3}
 --- !u!1 &6514060221300395835
 GameObject:
   m_ObjectHideFlags: 0
