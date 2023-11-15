@@ -10,6 +10,8 @@ namespace Consequences
     public class ToggleGameObjectsConsequence : AbstractCancelableConsequence
     {
         public GameObject[] toToggle;
+        public bool disableOnly = false;
+        public bool enableOnly = false;
 
         public void Start()
         {
@@ -23,13 +25,36 @@ namespace Consequences
         {
             foreach (GameObject gobject in toToggle)
             {
-                gobject.SetActive(!gobject.activeInHierarchy);
+                if (this.enableOnly)
+                {
+                    gobject.SetActive(true);
+                } else if (this.disableOnly)
+                {
+                    gobject.SetActive(false);
+                }
+                else
+                {
+                    gobject.SetActive(!gobject.activeInHierarchy);
+                }
             }
         }
         
         public override void Cancel(TriggerData? data)
         {
-            Execute(data);
+            foreach (GameObject gobject in toToggle)
+            {
+                if (this.enableOnly)
+                {
+                    gobject.SetActive(false);
+                } else if (this.disableOnly)
+                {
+                    gobject.SetActive(true);
+                }
+                else
+                {
+                    gobject.SetActive(!gobject.activeInHierarchy);
+                }
+            }
         }
     }
 }

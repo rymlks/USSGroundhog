@@ -152,6 +152,7 @@ MonoBehaviour:
   StableMovementSharpness: 15
   OrientationSharpness: 30
   OrientationMethod: 0
+  CrouchSpeedScale: 0.35
   MaxAirMoveSpeed: 3
   AirAccelerationSpeed: 15
   Drag: 0.1
@@ -2417,6 +2418,40 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2842167278985861042, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
   m_PrefabInstance: {fileID: 2968713311231529874}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2968713311231529881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027829052630434848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 0
+    m_Time: 8
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2968713311231529886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,40 +2490,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 0}
---- !u!114 &2968713311231529881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027829052630434848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
-  m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
-  m_DefaultBlend:
-    m_Style: 0
-    m_Time: 8
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_CameraCutEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_CameraActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1028359511706259373 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2843893972458839103, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
@@ -2568,22 +2569,6 @@ PrefabInstance:
       propertyPath: CharacterAnimator
       value: 
       objectReference: {fileID: 2968713311084376492}
-    - target: {fileID: 3970301704183298975, guid: b4c4872fd7e8b2743bfa322ff40139c7, type: 3}
-      propertyPath: audioClipArray.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3970301704183298975, guid: b4c4872fd7e8b2743bfa322ff40139c7, type: 3}
-      propertyPath: audioClipArray.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: ee2ee5fafc1e3fc4a972ed8992ab5f9f, type: 3}
-    - target: {fileID: 3970301704183298975, guid: b4c4872fd7e8b2743bfa322ff40139c7, type: 3}
-      propertyPath: audioClipArray.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: d75dea82a4747794a8ccd4d2d7117b88, type: 3}
-    - target: {fileID: 3970301704183298975, guid: b4c4872fd7e8b2743bfa322ff40139c7, type: 3}
-      propertyPath: audioClipArray.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 341ce21f95f58d240a65693db57709d0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c4872fd7e8b2743bfa322ff40139c7, type: 3}
 --- !u!4 &2174013052474799825 stripped
