@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 3378931814483474277}
   - component: {fileID: 1715270558117722603}
   m_Layer: 5
-  m_Name: RescueShipText
+  m_Name: SwitchText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 5892062973978129078}
   - component: {fileID: 5768210020504278242}
   m_Layer: 5
-  m_Name: RescueShipTextReverse
+  m_Name: SwitchTextReverse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toSpin: {fileID: 0}
   speed: 0
+  maxSpeed: -Infinity
   max: Infinity
   axis: {x: 0, y: 1, z: 0}
 --- !u!4 &623907962170053008 stripped
