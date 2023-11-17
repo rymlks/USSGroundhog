@@ -10,7 +10,7 @@ namespace Audio
         public AudioClip Small_explosion, Tank_explosion, 
             Crate_explosion, Door_Slide, 
             PA_Jingle, Turret_Firing, 
-            Turret_Firing_Tail, Character_Speaking;
+            Turret_Firing_Tail, Character_Speaking, Glass_Breaking;
 
 
         protected AudioSource source;

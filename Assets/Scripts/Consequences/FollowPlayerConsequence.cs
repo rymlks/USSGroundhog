@@ -1,18 +1,16 @@
+using KinematicCharacterController;
 using UnityEngine;
 
 namespace Consequences
 {
-    public class FollowObjectConsequence : AbstractInterruptibleConsequence
+    public class FollowPlayerConsequence : FollowObjectConsequence
     {
-        public GameObject player;
-        public GameObject toMove;
-        public float speed;
-
-        protected virtual void Start()
+        protected override void Start()
         {
-            if (this.toMove == null)
+            base.Start();
+            if (this.player == null)
             {
-                this.toMove = this.gameObject;
+                this.player = GameObject.FindObjectOfType<KinematicCharacterMotor>().gameObject;
             }
         }
 

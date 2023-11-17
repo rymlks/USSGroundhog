@@ -15,14 +15,18 @@ namespace Managers
         public AudioClip scoreScreenAudio;
         public float secondsScorePersists = 40f;
 
-        [Tooltip("The number of deaths considered ideal for this level assuming zero explicit mistakes.")]
-        public int levelParDeaths = 5;
+        [Tooltip("The number of deaths considered ideal for this level assuming zero explicit mistakes and perfect foreknowledge.")]
+        public int levelMinDeaths = 3;
 
-        [Tooltip("How to adjust par deaths for easier difficulty")]
-        public int breakForEasy = 2;
+        
+        [Tooltip("The 'par' number of deaths for this level on Normal difficulty.")]
+        public int levelParDeathsNormal = 5;
 
-        [Tooltip("How to adjust par deaths for harder difficulty")]
-        public int penaltyForHard = -1;
+        [Tooltip("The 'par' number of deaths for this level on Easy difficulty")]
+        public int levelParDeathsEasy = 8;
+
+        [Tooltip("The 'par' number of deaths for this level on harder difficulty")]
+        public int levelParDeathsHard = 3;
 
         [Tooltip("Which level should be reported as completed if the player wins")]
         public string levelName;
@@ -48,22 +52,17 @@ namespace Managers
             this.allDeaths = new Dictionary<float, DeathCharacteristics>();
         }
 
-        public int getLevelParDeathsAtCurrentDifficulty()
-        {
-            return levelParDeaths + getParPenaltiesAndBonuses();
-        }
-
-        protected int getParPenaltiesAndBonuses()
+        protected int getLevelParDeathsAtCurrentDifficulty()
         {
             if (GameSettings.instance.Difficulty == GameSettings.DIFFICULTIES[0])
             {
-                return this.breakForEasy;
+                return this.levelParDeathsEasy;
             }
             else if (GameSettings.instance.Difficulty == GameSettings.DIFFICULTIES[2])
             {
-                return this.penaltyForHard;
+                return this.levelParDeathsHard;
             }
-            return 0;
+            return this.levelParDeathsNormal;
         }
 
         public LevelScore getLevelScore()

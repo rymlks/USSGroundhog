@@ -6,35 +6,41 @@ namespace Consequences
 {
     public class ChangeTextureConsequence : AbstractCancelableConsequence
     {
+        public SkinnedMeshRenderer toChangeTextureOf;
         public Material newMat;
         public bool toggle = false;
 
         protected Material startMat;
-
-        public void Start()
+        
+        void Start()
         {
-            startMat = GetComponentInChildren<SkinnedMeshRenderer>().material;
+            if (toChangeTextureOf == null)
+            {
+                toChangeTextureOf = GetComponentInChildren<SkinnedMeshRenderer>();
+            }
+            startMat = toChangeTextureOf.material;
         }
+
         public override void Execute(TriggerData? data)
         {
             if (newMat != null)
             {
-                GetComponentInChildren<SkinnedMeshRenderer>().material = newMat;
+                toChangeTextureOf.material = newMat;
                 if (toggle)
                 {
                     newMat = startMat;
-                    startMat = GetComponentInChildren<SkinnedMeshRenderer>().material;
+                    startMat = toChangeTextureOf.material;
                 }
             }
         }
 
         public override void Cancel(TriggerData? data)
         {
-			if(toggle) {
-				this.Execute(data);
-			} else {
-				GetComponentInChildren<SkinnedMeshRenderer>().material = startMat;
-			}
+			    if(toggle) {
+				    this.Execute(data);
+			    } else {
+				    GetComponentInChildren<SkinnedMeshRenderer>().material = startMat;
+			    }
         }
     }
 }

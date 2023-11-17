@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3896475147343583067}
   - component: {fileID: 3936742400694875071}
   - component: {fileID: 3936742400694875057}
-  - component: {fileID: 3936742400694875056}
+  - component: {fileID: 6201743901002982563}
   m_Layer: 0
   m_Name: Guillotine
   m_TagString: Untagged
@@ -35,6 +35,8 @@ Transform:
   m_Children:
   - {fileID: 3911211590110888795}
   - {fileID: 3911211589620290666}
+  - {fileID: 1802950794777048734}
+  - {fileID: 4178817863307832592}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -115,10 +117,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroy: 0
-  consequenceObject: {fileID: 0}
+  consequenceObject: {fileID: 6514060221300395835}
+  findConsequencesInChildren: 0
   heightOffset: -1
-  tagToKill: Player
---- !u!114 &3936742400694875056
+  tagToDetect: Player
+--- !u!114 &6201743901002982563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,10 +130,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3910067307726277213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb210ed58c54d9d4b93e8f6626e5339f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fdaa408d6ff4f31a4e26710b5cfc844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathReason: crushing
+  destroy: 0
+  consequenceObject: {fileID: 5609688314488511400}
+  findConsequencesInChildren: 0
+  heightOffset: 0
+  nameFragmentToDetect: FrozenCorpse
 --- !u!1 &3911211589620290667
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,3 +218,122 @@ Transform:
   m_Father: {fileID: 3915357179063252563}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5609688314488511400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4178817863307832592}
+  - component: {fileID: 4269470424299745467}
+  - component: {fileID: 3194697850052970451}
+  - component: {fileID: 7036446484147260379}
+  m_Layer: 0
+  m_Name: FrozenCorpseShatterConsequence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4178817863307832592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609688314488511400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3915357179063252563}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4269470424299745467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609688314488511400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3bf5d2a38102a94da7d9c6f9405511d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3194697850052970451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609688314488511400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0020cb6c62e33489bd5b98a03df877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toInstantiate: {fileID: 7616986204699044703, guid: 347d25d20a926a04ca24066f9112bc2b, type: 3}
+  parentToInstantiateUnder: {fileID: 0}
+  transformToAppearAt: {fileID: 0}
+--- !u!114 &7036446484147260379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609688314488511400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661cc7bf50956c04a811d719d90e311f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: fba0eab66dec60449bb871ff74339379, type: 3}
+--- !u!1 &6514060221300395835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1802950794777048734}
+  - component: {fileID: 8749913068468791766}
+  m_Layer: 0
+  m_Name: PlayerDeathConsequence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1802950794777048734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6514060221300395835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3915357179063252563}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8749913068468791766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6514060221300395835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb210ed58c54d9d4b93e8f6626e5339f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathReason: crushing

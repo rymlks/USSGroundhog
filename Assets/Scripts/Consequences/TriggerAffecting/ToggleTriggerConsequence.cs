@@ -1,7 +1,7 @@
 #nullable enable
 using Triggers;
 
-namespace Consequences
+namespace Consequences.TriggerAffecting
 {
     public class ToggleTriggerConsequence : AbstractTriggerAffectingConsequence
     {
