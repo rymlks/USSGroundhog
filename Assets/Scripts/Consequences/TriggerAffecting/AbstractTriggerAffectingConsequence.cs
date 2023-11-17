@@ -1,6 +1,6 @@
 using Triggers;
 
-namespace Consequences
+namespace Consequences.TriggerAffecting
 {
     public abstract class AbstractTriggerAffectingConsequence : AbstractConsequence
     {
