@@ -29,7 +29,7 @@ namespace Consequences
             else if (data?.triggerLocation != null)
             {
                 instantiated = GameObject.Instantiate(toInstantiate, data.triggerLocation.Value,
-                    transformOverride.rotation, parentToInstantiateUnder);
+                    Quaternion.identity, parentToInstantiateUnder);
             }
             else
             {
