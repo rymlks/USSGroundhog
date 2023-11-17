@@ -1,6 +1,8 @@
+#nullable enable
 using Triggers;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Consequences
 {
@@ -8,27 +10,44 @@ namespace Consequences
     {
         public GameObject toInstantiate;
         public Transform parentToInstantiateUnder;
-        public Transform transformToAppearAt;
+        [Tooltip("Normally the Trigger will dictate what location a Consequence should occur at, but this allows for overriding that.")]
+        public Transform transformOverride;
+        
+        public ParticleSystem cancelEffect;
 
         protected GameObject instantiated;
 
         public override void Execute(TriggerData? data)
         {
-            if (data?.triggerLocation == null)
+
+            if (transformOverride != null)
             {
-                instantiated = GameObject.Instantiate(toInstantiate, transformToAppearAt.position,
-                    transformToAppearAt.rotation, parentToInstantiateUnder);
+                instantiated = GameObject.Instantiate(toInstantiate, transformOverride.position,
+                    transformOverride.rotation, parentToInstantiateUnder);
+            }
+
+            else if (data?.triggerLocation != null)
+            {
+                instantiated = GameObject.Instantiate(toInstantiate, data.triggerLocation.Value,
+                    transformOverride.rotation, parentToInstantiateUnder);
             }
             else
             {
-                instantiated = GameObject.Instantiate(toInstantiate, data.triggerLocation.Value,
-                    transformToAppearAt.rotation, parentToInstantiateUnder);
+                instantiated = GameObject.Instantiate(toInstantiate, parentToInstantiateUnder);
             }
         }
 
         public override void Cancel(TriggerData? data)
         {
-            Destroy(instantiated);
+            if (instantiated != null)
+            {
+                if (cancelEffect != null)
+                {
+                    cancelEffect.transform.position = instantiated.transform.position;
+                    cancelEffect.Play();
+                }
+                Destroy(instantiated);
+            }
         }
     }
 }

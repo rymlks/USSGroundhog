@@ -14,7 +14,6 @@ namespace Consequences
         private List<GameObject> allRoots;
         public string componentType = "light";
         public bool inChildren = true;
-
         public void Start()
         {
             if (this.componentRoot == null)
