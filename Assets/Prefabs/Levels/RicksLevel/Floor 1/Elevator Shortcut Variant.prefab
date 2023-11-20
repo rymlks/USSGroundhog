@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elevator Shortcut Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 794986298315797213, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+      propertyPath: waypoints.Array.data[0].x
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 2692009678114958004, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.50001
@@ -119,8 +123,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 4704576673203855164, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+      propertyPath: waypoints.Array.data[0].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704576673203855164, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+      propertyPath: waypoints.Array.data[0].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899255367086865289, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899255367086865289, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00008034706
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899255367086865289, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.500016
+      objectReference: {fileID: 0}
     - target: {fileID: 6073152323477468935, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268886015586505650, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+      propertyPath: waypoints.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268886015586505650, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+      propertyPath: waypoints.Array.data[0].y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7339720222854128082, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
@@ -131,11 +163,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor 1 Elevator
       objectReference: {fileID: 0}
+    - target: {fileID: 8688372451631546779, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+      propertyPath: objectsWithConsequences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688372451631546779, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+      propertyPath: objectsWithConsequences.Array.data[2]
+      value: 
+      objectReference: {fileID: 8650508136832182448}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
 --- !u!4 &2688004744041933323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3068269994732734459, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
+  m_PrefabInstance: {fileID: 1141971878276492784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8650508136832182448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8635052012710774080, guid: cbe4b0577ee694e478819759e3abc0d3, type: 3}
   m_PrefabInstance: {fileID: 1141971878276492784}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5886202880863755243
