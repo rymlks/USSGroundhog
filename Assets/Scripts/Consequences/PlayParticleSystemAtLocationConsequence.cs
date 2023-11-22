@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Consequences
 {
-    public class PlayParticleSystemAtLocationConsequence : AbstractConsequence
+    public class PlayParticleSystemAtLocationConsequence : DetachableConsequence
     {
         public ParticleSystem toPlay;
 
@@ -27,6 +27,10 @@ namespace Consequences
             }
 
             toPlay.transform.position = positionToSplatAt;
+            if (detachBeforePlaying)
+            {
+                toPlay.transform.SetParent(new GameObject().transform, true);
+            }
 
             toPlay.Play();
 

@@ -519,7 +519,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.83053446, y: 0, z: -0.83401036, w: -0.5899539}
+  m_margin: {x: -0.83053446, y: 0, z: -0.29773617, w: -0.5899539}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1182,6 +1182,7 @@ GameObject:
   - component: {fileID: 7111794238284748833}
   - component: {fileID: 6018899126819377822}
   - component: {fileID: 4957655708013441052}
+  - component: {fileID: 5644048125506773329}
   m_Layer: 0
   m_Name: ConfirmationConsoleConsequences
   m_TagString: Untagged
@@ -1234,8 +1235,21 @@ MonoBehaviour:
   TagToDetect: Corpse
   AdditionalTagsToDetect: []
   acceptTagInParent: 0
-  effectToPlayAtDestruction: {fileID: 0}
-  audioToPlayAtDestruction: {fileID: 0}
+  effectToPlayAtDestruction: {fileID: 8780206335515497385, guid: e6702309abec2494e8b8d4ff3b245091, type: 3}
+  audioToPlayAtDestruction: {fileID: 8300000, guid: 4d710d8732e6b494d9c1aae0e973b2b8, type: 3}
+--- !u!114 &5644048125506773329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133630954274305556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661cc7bf50956c04a811d719d90e311f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: 7b4b631570d363942b7f54bd8553536a, type: 3}
 --- !u!1 &7482300068873117105
 GameObject:
   m_ObjectHideFlags: 0
