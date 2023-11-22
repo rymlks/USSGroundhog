@@ -1,6 +1,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using KinematicCharacterController;
 using Managers;
 using Player;
@@ -85,7 +86,7 @@ namespace Consequences
             MoveLobbiesConsequence otherConsequence = toSwapEnd.Find("TeleportElevatorSwitch/TeleportElevatorUp")
                 .GetComponent<MoveLobbiesConsequence>();
             if (otherConsequence == null)
-                throw new ICantEvenRightNowException();
+                throw new NullReferenceException("Cannot swap elevator cars' destinations: other car not found");
             Vector2Int temp = otherConsequence.destinationLobbyGridCoordinates;
             otherConsequence.destinationLobbyGridCoordinates = this.destinationLobbyGridCoordinates;
             this.destinationLobbyGridCoordinates = temp;
@@ -109,9 +110,5 @@ namespace Consequences
         {
             throw new NotImplementedException();
         }
-    }
-
-    internal class ICantEvenRightNowException : Exception
-    {
     }
 }
