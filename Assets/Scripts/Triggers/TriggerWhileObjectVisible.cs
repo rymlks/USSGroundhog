@@ -52,7 +52,6 @@ namespace Triggers
 
             if (hitInfo.transform != null && hitInfo.transform.CompareTag(tagToWatchFor))
             {
-
                 return true;
 
             } else
@@ -64,8 +63,10 @@ namespace Triggers
 
         private RaycastHit turretLock()
         {
-            Physics.Raycast(new Ray(this.viewpoint.position, _target.transform.position - this.viewpoint.position),
-                out RaycastHit hitInfo, maximumDistanceToSee);
+            Debug.DrawLine(this.viewpoint.position, _target.transform.position + targetOffset);
+            LayerMask mask = ~LayerMask.GetMask("InvisibleToTurrets");  // ~ means "everything but"
+            Physics.Raycast(new Ray(this.viewpoint.position, _target.transform.position + targetOffset - this.viewpoint.position),
+                out RaycastHit hitInfo, maximumDistanceToSee, mask);
 
             return hitInfo;
         }
