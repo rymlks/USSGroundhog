@@ -61,6 +61,7 @@ namespace Player.Death
 
             if (deathCharacteristics.shouldRespawn())
             {
+                resetPlayerHealthState();
                 yield return new WaitForSeconds(deathSeconds);
                 player.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(this.getRespawnLocation());
                 resetPlayerHealthState();
