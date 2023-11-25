@@ -9288,7 +9288,7 @@ ParticleSystem:
   lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
@@ -18981,7 +18981,7 @@ ParticleSystem:
   lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
@@ -28583,6 +28583,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42cde395659793d46be0c7b629337f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
   particleSystem: {fileID: 118963888737477652}
   tagToTriggerOn: Player
 --- !u!114 &-55568715121341892

@@ -64,9 +64,10 @@ namespace Triggers
         private RaycastHit turretLock()
         {
             Debug.DrawLine(this.viewpoint.position, _target.transform.position + targetOffset);
-            LayerMask mask = ~LayerMask.GetMask("InvisibleToTurrets");  // ~ means "everything but"
-            Physics.Raycast(new Ray(this.viewpoint.position, _target.transform.position + targetOffset - this.viewpoint.position),
-                out RaycastHit hitInfo, maximumDistanceToSee, mask);
+            int mask = LayerMask.GetMask("InvisibleToTurrets");
+            Physics.Raycast(
+                new Ray(this.viewpoint.position, _target.transform.position + targetOffset - this.viewpoint.position),
+                out RaycastHit hitInfo, maximumDistanceToSee, ~mask);
 
             return hitInfo;
         }
