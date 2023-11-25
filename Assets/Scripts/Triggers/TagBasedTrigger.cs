@@ -22,6 +22,27 @@ namespace Triggers
                    (this.acceptTagInParent || alwaysAcceptInParent.Contains(tagInQuestion)) &&
                    TagAppearsInParent(other.gameObject, tagInQuestion);
         }
+        protected virtual bool tagIsRelevant(Transform other, string tagInQuestion)
+        {
+            return (tagInQuestion == "" ||
+                    other.CompareTag(tagInQuestion)) ||
+                   (this.acceptTagInParent || alwaysAcceptInParent.Contains(tagInQuestion)) &&
+                   TagAppearsInParent(other.gameObject, tagInQuestion);
+        }
+
+        protected virtual bool transformIsRelevant(Transform other)
+        {
+            List<string> allTags = this.AdditionalTagsToDetect.ToList();
+            allTags.Add(CustomTag);
+            foreach (var relevantTag in allTags)
+            {
+                if (tagIsRelevant(other, relevantTag))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         protected virtual bool intersectingRelevantObject(Collider other)
         {

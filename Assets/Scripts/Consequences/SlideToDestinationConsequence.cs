@@ -11,6 +11,7 @@ namespace Consequences
         public bool forward = true;
         public Transform objectToSlide = null;
         public bool shouldReturn = true;
+        public bool shouldReturnOnce = false;
         protected Vector3 startPos;
         protected bool started = false;
 
@@ -53,6 +54,10 @@ namespace Consequences
                     if (shouldReturn)
                     {
                         forward = !forward;
+                        if (shouldReturnOnce && forward)
+                        {
+                            started = false;
+                        }
                     }
                     else
                     {

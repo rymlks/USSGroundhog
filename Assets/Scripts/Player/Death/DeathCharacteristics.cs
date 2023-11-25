@@ -15,7 +15,12 @@ namespace Player.Death
 
         public bool shouldProduceRagdollCorpse()
         {
-            return _deathCharacteristics.Keys.Contains("ragdoll");
+            return _deathCharacteristics.Keys.Contains("ragdoll") ? (bool)_deathCharacteristics["ragdoll"] : false;
+        }
+
+        public bool shouldProduceAnyCorpse()
+        {
+            return _deathCharacteristics.Keys.Contains("nocorpse") ? !(bool)_deathCharacteristics["nocorpse"] : true;
         }
         
         public bool shouldProduceBloatedCorpse()

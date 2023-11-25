@@ -1,11 +1,12 @@
 using System;
 using StaticUtils;
+using Triggers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Consequences
 {
-    public class DoASpinnyConsequence : AbstractInterruptibleConsequence
+    public class DoASpinnyConsequence : AbstractInterruptibleConsequence, ICancelableConsequence
     {
         public GameObject toSpin;
         public float speed;
@@ -15,8 +16,9 @@ namespace Consequences
 
         protected Quaternion initialRotation;
         protected float rotationScalar;
-    
+
         private float rotato = 0;
+        private bool goBack = false;
 
         protected virtual void Start()
         {
@@ -47,16 +49,42 @@ namespace Consequences
 
         void FixedUpdate()
         {
-            if (started)
+            if (started && !goBack)
             {
                 rotato += rotationScalar;
                 if (Mathf.Abs(rotato) >= Mathf.Abs(max))
                 {
                     rotato = max;
+                    if (speed < 0)
+                    {
+                        rotato = -rotato;
+                    }
                 }
 
-                toSpin.transform.localRotation *= Quaternion.Euler(rotationScalar * axis.x, rotationScalar * axis.y, rotationScalar * axis.z);
+                toSpin.transform.localRotation = this.initialRotation * Quaternion.Euler(rotato * axis.x, rotato * axis.y, rotato * axis.z);
+            } else if (started && goBack)
+            {
+                float oldRotato = rotato;
+                rotato -= rotationScalar;
+                if (rotato * oldRotato <= 0)
+                {
+                    rotato = 0;
+                }
+
+                toSpin.transform.localRotation = this.initialRotation * Quaternion.Euler(rotato * axis.x, rotato * axis.y, rotato * axis.z);
+
             }
+        }
+
+        public void Cancel(TriggerData data)
+        {
+            goBack = true;
+        }
+
+        public override void Execute(TriggerData data)
+        {
+            base.Execute(data);
+            goBack = false;
         }
     }
 }
