@@ -23,16 +23,27 @@ namespace Consequences.UI
             if (cameraToUse == null)
             {
                 cameraToUse = GameObject.Find("PictureInPictureCamera").GetComponent<Camera>();
+                if (cameraToUse == null)
+                {
+                    Debug.Log("Picture in Picture Consequence failed, no camera found.");
+                    Destroy(this);
+                }
             }
+            
         }
 
         void Update()
         {
-            if(started && Time.time - _startTime > duration)
+            if(startedAndElapsed())
             {
-                cameraToUse.enabled = false;
-                started = false;
+                turnOff();
             }
+        }
+        
+        public override void Interrupt(TriggerData? data)
+        {
+            base.Interrupt(data);
+            turnOff();
         }
 
         public override void Execute(TriggerData? data)
@@ -40,13 +51,29 @@ namespace Consequences.UI
             base.Execute(data);
             if (objectToLookAt != null)
             {
-                cameraToUse.transform.position =
-                    objectToLookAt.position;
-                cameraToUse.transform.SetParent(objectToLookAt);
-                cameraToUse.transform.Translate( positionOffsetDirection.normalized * distance, Space.Self);
-                cameraToUse.transform.LookAt(objectToLookAt);
-                cameraToUse.enabled = true;
+                turnOn();
             }
+        }
+
+        protected bool startedAndElapsed()
+        {
+            return started && Time.time - _startTime > duration;
+        }
+
+        protected void turnOff()
+        {
+            cameraToUse.enabled = false;
+            started = false;
+        }
+
+        protected void turnOn()
+        {
+            cameraToUse.transform.position =
+                objectToLookAt.position;
+            cameraToUse.transform.SetParent(objectToLookAt);
+            cameraToUse.transform.Translate(positionOffsetDirection.normalized * distance, Space.Self);
+            cameraToUse.transform.LookAt(objectToLookAt);
+            cameraToUse.enabled = true;
         }
     }
 }

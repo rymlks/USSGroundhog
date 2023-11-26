@@ -10,7 +10,7 @@ namespace Consequences
         protected float _startTime = float.PositiveInfinity;
 
         
-        public void Interrupt(TriggerData? data)
+        public virtual void Interrupt(TriggerData? data)
         {
             this.started = false;
         }
