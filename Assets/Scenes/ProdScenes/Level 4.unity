@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14545462, g: 0.0941231, b: 0.21724021, a: 1}
+  m_IndirectSpecularColor: {r: 0.12909225, g: 0.08031831, b: 0.19341329, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2679,6 +2679,8 @@ MonoBehaviour:
   toToggle:
   - {fileID: 1490086249}
   - {fileID: 257046827}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!114 &110546686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9641,31 +9643,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2844301721570044450, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.967
+      value: -7.386362
       objectReference: {fileID: 0}
     - target: {fileID: 2844301721570044450, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.6820002
+      value: 2.8782246
       objectReference: {fileID: 0}
     - target: {fileID: 2844301721570044450, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.435
+      value: 6.2293854
       objectReference: {fileID: 0}
     - target: {fileID: 2844301721570044450, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9659258
+      value: 0.9947097
       objectReference: {fileID: 0}
     - target: {fileID: 2844301721570044450, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2588191
+      value: 0.10272292
       objectReference: {fileID: 0}
     - target: {fileID: 2844301721570044450, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.00082250737
       objectReference: {fileID: 0}
     - target: {fileID: 2844301721570044450, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.00023097893
       objectReference: {fileID: 0}
     - target: {fileID: 2844301721570044450, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14497,6 +14499,37 @@ MonoBehaviour:
       _indentContent: 0
       _surroundWithBox: 0
       _viewData: {fileID: 1202053803}
+--- !u!1 &670228840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 670228841}
+  m_Layer: 0
+  m_Name: PictureInPictureTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &670228841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670228840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5, y: 1.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1315091735}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &670812472
 GameObject:
   m_ObjectHideFlags: 0
@@ -14948,6 +14981,8 @@ MonoBehaviour:
   toToggle:
   - {fileID: 55271901}
   - {fileID: 1960687601}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!114 &693982674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21756,6 +21791,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3be44fa30f4edf4a873039939619be6, type: 3}
+--- !u!4 &1022959637 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8640298933976273362, guid: 67f9559328ae7a24a939ba9ee9d9df52, type: 3}
+  m_PrefabInstance: {fileID: 467259050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1025087047
 GameObject:
   m_ObjectHideFlags: 0
@@ -24373,6 +24413,8 @@ MonoBehaviour:
   - {fileID: 1302729526}
   - {fileID: 796493854}
   - {fileID: 1734238479827458}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!1001 &1132388132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24628,7 +24670,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139717275}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
@@ -24658,7 +24700,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 0}
+  m_ComponentOwner: {fileID: 1022959637}
 --- !u!114 &1141113037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28002,6 +28044,11 @@ MonoBehaviour:
     _visibilityToggleIndent: 0
     _indentContent: 0
     _surroundWithBox: 0
+--- !u!4 &1315091735 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4082242796742872106, guid: 201db067397b15d43b0b50debb9f0043, type: 3}
+  m_PrefabInstance: {fileID: 547529132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1323460493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29745,6 +29792,8 @@ MonoBehaviour:
   toToggle:
   - {fileID: 55271901}
   - {fileID: 1960687601}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!114 &1410193745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29909,6 +29958,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2790203831107959852, guid: 201db067397b15d43b0b50debb9f0043, type: 3}
   m_PrefabInstance: {fileID: 547529132}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1421089640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421089639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a70ac816971ea48be41a02bf35fbec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToLookAt: {fileID: 670228841}
+  positionOffsetDirection: {x: 0, y: 0, z: 1}
+  distance: 4
+  duration: 3
+  cameraToUse: {fileID: 0}
 --- !u!1001 &1421931932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32848,6 +32914,8 @@ MonoBehaviour:
   toToggle:
   - {fileID: 1490086249}
   - {fileID: 257046827}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!4 &1536751372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4103563368343568, guid: 5b1cf2e426ba48546af6d6d5e3e9b2f1, type: 3}
@@ -35796,6 +35864,8 @@ MonoBehaviour:
   - {fileID: 1302729526}
   - {fileID: 796493854}
   - {fileID: 1734238479827458}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!1 &1728934763
 GameObject:
   m_ObjectHideFlags: 0
