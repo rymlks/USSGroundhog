@@ -8,10 +8,13 @@ namespace Consequences.UI
     public class PictureInPictureConsequence : AbstractInterruptibleConsequence
     {
         public Transform objectToLookAt;
+        public bool parentToLookedAtObject = false;
         public Vector3 positionOffsetDirection = Vector3.forward;
         public float distance = 3f;
         public float duration = 2f;
         public Camera cameraToUse;
+        public Space space = Space.World;
+        public bool onlyHappenOnce = false;
 
         void Start()
         {
@@ -48,6 +51,7 @@ namespace Consequences.UI
 
         public override void Execute(TriggerData? data)
         {
+            if (!this.isActiveAndEnabled) return;
             base.Execute(data);
             if (objectToLookAt != null)
             {
@@ -64,6 +68,10 @@ namespace Consequences.UI
         {
             cameraToUse.enabled = false;
             started = false;
+            if (onlyHappenOnce)
+            {
+                this.enabled = false;
+            }
         }
 
         protected void turnOn()
@@ -71,8 +79,13 @@ namespace Consequences.UI
             cameraToUse.transform.position =
                 objectToLookAt.position;
             cameraToUse.transform.SetParent(objectToLookAt);
-            cameraToUse.transform.Translate(positionOffsetDirection.normalized * distance, Space.Self);
+            cameraToUse.transform.Translate(positionOffsetDirection.normalized * distance, space);
             cameraToUse.transform.LookAt(objectToLookAt);
+            if (!parentToLookedAtObject)
+            {
+                cameraToUse.transform.SetParent(null);
+            }
+
             cameraToUse.enabled = true;
         }
     }
