@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 1
-  damageType: freezing
+  damageType: poison
 --- !u!114 &4018171717782583701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 3876221525699137034}
   - component: {fileID: 3877200568226444376}
   m_Layer: 0
-  m_Name: MediumFreezeJet
+  m_Name: MediumPoisonJet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -313,7 +313,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.24857599, g: 0.8892909, b: 0.9245283, a: 1}
+      maxColor: {r: 0.38449347, g: 0.5849056, b: 0.09104664, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
