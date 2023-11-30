@@ -18,6 +18,7 @@ namespace Triggers
         protected HashSet<Collider> entered;
         public bool onTrigger = true;
         public bool onCollision = false;
+        public bool onParticle = false;
 
         protected virtual void Start()
         {
@@ -78,38 +79,64 @@ namespace Triggers
                 OnStay(other.collider);
             }
         }
+        
+        public virtual void OnParticleCollision(GameObject other)
+        {
+            if (this.RespondsToParticles())
+            {
+                Debug.Log("Particle collided from " + other.name);
+                OnParticleEnter(other);
+            }
+        }
 
         protected void OnEnter(Collider other)
         {
             if (enabled &&
-                this.intersectingRelevantObject(other))
+                this.isRelevantObject(other.gameObject))
             {
-                if (RequireItem != "" && !GameManager.instance.getInventory().IsItemPossessed(RequireItem))
+                if (!meetsRequirements())
                 {
-                    this.keyUI.ShowNextFrame();
                     return;
-                }
-
-                foreach (Behaviour compo in requireComponentsEnabled)
-                {
-                    if (!compo.isActiveAndEnabled)
-                    {
-                        return;
-                    }
                 }
 
                 initializeTrackedColliders();
 
                 beginTrackingCollider(other);
-                
+
                 Engage(new TriggerData(CustomTag + " contacted", other.transform.position, other.gameObject));
-                if (destroy)
+            }
+        }
+        
+        protected void OnParticleEnter(GameObject withParticleSystem)
+        {
+            if (enabled &&
+                this.isRelevantObject(withParticleSystem))
+            {
+                if (!meetsRequirements())
                 {
-                    Destroy(gameObject);
+                    return;
                 }
+
+                Engage(new TriggerData(CustomTag + " contacted via particle", withParticleSystem.transform.position, withParticleSystem));
             }
         }
 
+
+        protected override bool meetsRequirements()
+        {
+            if (!base.meetsRequirements())
+            {
+                return false;
+            }
+            if (RequireItem != "" && !GameManager.instance.getInventory().IsItemPossessed(RequireItem))
+            {
+                this.keyUI.ShowNextFrame();
+                return false;
+            }
+
+            return true;
+        }
+        
         private void beginTrackingCollider(Collider other)
         {
             if (!entered.Contains(other))
@@ -157,6 +184,11 @@ namespace Triggers
         public virtual bool RespondsToColliders()
         {
             return this.onCollision;
+        }
+        
+        public virtual bool RespondsToParticles()
+        {
+            return this.onParticle;
         }
     }
 }

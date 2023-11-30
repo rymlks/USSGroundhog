@@ -17,7 +17,7 @@ namespace Triggers
             this.onCollision = true;
         }
 
-        protected override bool intersectingRelevantObject(Collider other)
+        protected override bool isRelevantObject(GameObject other)
         {
             return true;
         }

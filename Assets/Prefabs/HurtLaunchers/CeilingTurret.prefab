@@ -5284,6 +5284,8 @@ MonoBehaviour:
   destroy: 0
   consequenceObject: {fileID: 0}
   findConsequencesInChildren: 0
+  requireComponentsEnabled: []
+  requireComponentsDisabled: []
   tagToWatchFor: Player
   viewpoint: {fileID: 5776128200829657276}
   maximumDistanceToSee: 100
@@ -5325,6 +5327,8 @@ MonoBehaviour:
   PA_Jingle: {fileID: 0}
   Turret_Firing: {fileID: 8300000, guid: cd7e4239dabbb8146b7f5dded979957f, type: 3}
   Turret_Firing_Tail: {fileID: 8300000, guid: 6f356545fdf32e445b210fab432bee05, type: 3}
+  Character_Speaking: {fileID: 0}
+  Glass_Breaking: {fileID: 0}
 --- !u!1001 &5776128199517487204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5697,6 +5701,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1074764981724890, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
+      propertyPath: m_TagString
+      value: Bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 1124643296073240, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5708,6 +5716,10 @@ PrefabInstance:
     - target: {fileID: 1510478111459396, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
       propertyPath: m_Name
       value: BulletParticleSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1510478111459396, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1751718829286632, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
       propertyPath: m_IsActive
@@ -6142,6 +6154,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198840909020946268, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
+      propertyPath: CollisionModule.maxCollisionShapes
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 198840909020946268, guid: c0507a544f1ee7e4caa7785ef90ff92a, type: 3}
       propertyPath: EmissionModule.rateOverDistance.scalar
       value: 1
       objectReference: {fileID: 0}
@@ -6259,6 +6275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a12beae7751bc847abb80df0ce63bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detachBeforePlaying: 0
   toPlay: {fileID: 5951264329633065110}
 --- !u!114 &2582673175408702645
 MonoBehaviour:
@@ -6275,6 +6292,8 @@ MonoBehaviour:
   destroy: 0
   consequenceObject: {fileID: 0}
   findConsequencesInChildren: 0
+  requireComponentsEnabled: []
+  requireComponentsDisabled: []
   particleSystem: {fileID: 0}
   tagToTriggerOn: Player
 --- !u!114 &4801727196445422810

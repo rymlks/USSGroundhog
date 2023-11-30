@@ -15,7 +15,7 @@ namespace Triggers
         public bool acceptTagInParent = false;
         public string[] alwaysAcceptInParent = {"Player", "Corpse"};
 
-        protected virtual bool tagIsRelevant(Collider other, string tagInQuestion)
+        protected virtual bool tagIsRelevant(GameObject other, string tagInQuestion)
         {
             return (tagInQuestion == "" ||
                     other.CompareTag(tagInQuestion)) ||
@@ -23,7 +23,7 @@ namespace Triggers
                    TagAppearsInParent(other.gameObject, tagInQuestion);
         }
 
-        protected virtual bool intersectingRelevantObject(Collider other)
+        protected virtual bool isRelevantObject(GameObject other)
         {
             List<string> allTags = this.AdditionalTagsToDetect.ToList();
             allTags.Add(CustomTag);

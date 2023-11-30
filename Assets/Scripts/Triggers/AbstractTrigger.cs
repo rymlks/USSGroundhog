@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Consequences;
+using O3DWB;
 using UnityEngine;
 
 namespace Triggers
@@ -59,7 +60,14 @@ namespace Triggers
 
         public virtual void Engage()
         {
-            this.ExecuteAllConsequences();
+            if (meetsRequirements())
+            {
+                this.ExecuteAllConsequences();
+                if (destroy)
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
         
         public virtual void Disengage(TriggerData data)
@@ -69,7 +77,14 @@ namespace Triggers
 
         public virtual void Engage(TriggerData data)
         {
-            this.ExecuteAllConsequences(data);
+            if (meetsRequirements())
+            {
+                this.ExecuteAllConsequences(data);
+                if (destroy)
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
 
         private void playSoundIfSourcePresent()
@@ -78,6 +93,25 @@ namespace Triggers
             {
                 _audioSource.Play();
             }
+        }
+
+        protected virtual bool meetsRequirements()
+        {
+            foreach (Behaviour compo in requireComponentsEnabled)
+            {
+                if (!compo.isActiveAndEnabled)
+                {
+                    return false;
+                }
+            }
+            foreach (Behaviour compo in requireComponentsDisabled)
+            {
+                if (compo.isActiveAndEnabled)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
