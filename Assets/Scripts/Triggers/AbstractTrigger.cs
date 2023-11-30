@@ -12,6 +12,7 @@ namespace Triggers
         public GameObject consequenceObject;
         public bool findConsequencesInChildren = false;
         public Behaviour[] requireComponentsEnabled;
+        public Behaviour[] requireComponentsDisabled;
         private List<IConsequence> _allConsequences = new List<IConsequence>();
         private AudioSource _audioSource;
     
