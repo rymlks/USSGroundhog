@@ -11,12 +11,14 @@ namespace Consequences
     {
         public float explosionStrength = 10;
         public bool persist = true;
+        public bool disappear = false;
         public bool corpseShouldRagdoll = true;
         public bool produceCorpse = true;
         public GameObject ExplosionPrefab;
 
         public bool dontRespawn = false;
         protected bool die = false;
+        protected bool _disappear = false;
 
         protected void instantiateExplosion()
         {
@@ -47,6 +49,11 @@ namespace Consequences
                 die = true;
             }
 
+            if (disappear)
+            {
+                _disappear = true;
+            }
+
             if (!data.triggeringObject.CompareTag("Player"))
             {
                 data.triggeringObject.GetComponent<Rigidbody>().velocity = explosionVector3(data).normalized * explosionStrength;
@@ -58,6 +65,21 @@ namespace Consequences
             if (die)
             {
                 Destroy(gameObject);
+            }
+
+            if (_disappear)
+            {
+                /*
+                foreach (var renderer in GetComponents<MeshRenderer>())
+                {
+                    renderer.enabled = false;
+                }
+                foreach (var collider in GetComponents<Collider>())
+                {
+                    collider.enabled = false;
+                }
+                */
+                gameObject.SetActive(false);
             }
         }
 
