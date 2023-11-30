@@ -15,7 +15,6 @@ namespace Triggers
         private KeyStatusUIController keyUI;
         public bool reEngageOnStay = true;
         public bool reverseOnExit = false;
-        public Behaviour[] requireComponentsEnabled;
         protected HashSet<Collider> entered;
         public bool onTrigger = true;
         public bool onCollision = false;
