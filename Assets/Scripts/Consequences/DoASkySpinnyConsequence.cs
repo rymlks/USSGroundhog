@@ -8,7 +8,13 @@ namespace Consequences
     public class DoASkySpinnyConsequence : DoASpinnyConsequence
     {
         private float rotatoo = 0;
+        protected float initialRotation = -1f;
 
+        protected override void Start()
+        {
+            base.Start();
+            initialRotation = RenderSettings.skybox.GetFloat("_Rotation");
+        }
 
         void FixedUpdate()
         {
@@ -22,6 +28,11 @@ namespace Consequences
 
                 RenderSettings.skybox.SetFloat("_Rotation", rotatoo);
             }
+        }
+
+        protected void OnDestroy()
+        {
+            RenderSettings.skybox.SetFloat("_Rotation", initialRotation);
         }
     }
 }
