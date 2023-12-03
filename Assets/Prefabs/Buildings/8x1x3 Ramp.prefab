@@ -28,6 +28,38 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4223429677747084953}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4190306739332703629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4223429677747084953}
+  m_Layer: 0
+  m_Name: Geometry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4223429677747084953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190306739332703629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
   - {fileID: 3676558405034957382}
   - {fileID: 8581398571364489253}
   - {fileID: 7200951682351030575}
@@ -36,7 +68,7 @@ Transform:
   - {fileID: 23929277044193832}
   - {fileID: 5244226589186119989}
   - {fileID: 4514103424870675834}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1529041773495352732}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &530165452034953942
@@ -44,7 +76,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1529041773495352732}
+    m_TransformParent: {fileID: 4223429677747084953}
     m_Modifications:
     - target: {fileID: 8760014032636312305, guid: f849e3ed970a4774c9d1731186e2cac4, type: 3}
       propertyPath: m_RootOrder
@@ -110,7 +142,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1529041773495352732}
+    m_TransformParent: {fileID: 4223429677747084953}
     m_Modifications:
     - target: {fileID: 8760014032636312305, guid: f849e3ed970a4774c9d1731186e2cac4, type: 3}
       propertyPath: m_RootOrder
@@ -180,7 +212,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1529041773495352732}
+    m_TransformParent: {fileID: 4223429677747084953}
     m_Modifications:
     - target: {fileID: 8760014032636312305, guid: f849e3ed970a4774c9d1731186e2cac4, type: 3}
       propertyPath: m_RootOrder
@@ -246,7 +278,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1529041773495352732}
+    m_TransformParent: {fileID: 4223429677747084953}
     m_Modifications:
     - target: {fileID: 8760014032636312305, guid: f849e3ed970a4774c9d1731186e2cac4, type: 3}
       propertyPath: m_RootOrder
@@ -312,7 +344,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1529041773495352732}
+    m_TransformParent: {fileID: 4223429677747084953}
     m_Modifications:
     - target: {fileID: 8760014032636312305, guid: f849e3ed970a4774c9d1731186e2cac4, type: 3}
       propertyPath: m_RootOrder
@@ -382,7 +414,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1529041773495352732}
+    m_TransformParent: {fileID: 4223429677747084953}
     m_Modifications:
     - target: {fileID: 8760014032636312305, guid: f849e3ed970a4774c9d1731186e2cac4, type: 3}
       propertyPath: m_RootOrder
@@ -452,7 +484,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1529041773495352732}
+    m_TransformParent: {fileID: 4223429677747084953}
     m_Modifications:
     - target: {fileID: 8760014032636312305, guid: f849e3ed970a4774c9d1731186e2cac4, type: 3}
       propertyPath: m_RootOrder
@@ -522,7 +554,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1529041773495352732}
+    m_TransformParent: {fileID: 4223429677747084953}
     m_Modifications:
     - target: {fileID: 8760014032636312305, guid: f849e3ed970a4774c9d1731186e2cac4, type: 3}
       propertyPath: m_RootOrder
