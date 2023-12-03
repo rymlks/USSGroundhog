@@ -986,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8199800779061340778, guid: 139401ac6ee160f44b626ebc72a942fd, type: 3}
       propertyPath: m_Name
-      value: LockDoorAndRemoveLaserConsole
+      value: RemoveLaserConsole
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 139401ac6ee160f44b626ebc72a942fd, type: 3}
@@ -1015,21 +1015,6 @@ MonoBehaviour:
   toEnable:
   - {fileID: 719201162}
   disableInstead: 1
---- !u!114 &64021429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64021422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0239cfaec97c744aa530583d2443299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsWithConsequences:
-  - {fileID: 1678310869}
-  executeInChildren: 0
 --- !u!1001 &71327426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21391,7 +21376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678310869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4999924, y: 3.09, z: -0.0000030947456}
+  m_LocalPosition: {x: -2.4999924, y: -0.002, z: -0.0000030947456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
