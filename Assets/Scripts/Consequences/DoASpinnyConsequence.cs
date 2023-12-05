@@ -12,6 +12,7 @@ namespace Consequences
         public float maxSpeed = float.NegativeInfinity;
         public float max = float.PositiveInfinity;
         public Vector3 axis = Vector3.up;
+        public bool shouldReturn = false;
 
         protected Quaternion initialRotation;
         protected float rotationScalar;
@@ -53,6 +54,11 @@ namespace Consequences
                 if (Mathf.Abs(rotato) >= Mathf.Abs(max))
                 {
                     rotato = max;
+                    if (shouldReturn)
+                    {
+                        rotationScalar *= -1;
+                        max *= -1;
+                    }
                 }
 
                 toSpin.transform.localRotation *= Quaternion.Euler(rotationScalar * axis.x, rotationScalar * axis.y, rotationScalar * axis.z);
