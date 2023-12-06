@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14032501, g: 0.08928617, b: 0.20924586, a: 1}
+  m_IndirectSpecularColor: {r: 0.09764, g: 0.0699441, b: 0.16266558, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -621,7 +621,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117601847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.602459, y: 0.9540117, z: -20.38706}
+  m_LocalPosition: {x: -6.5049624, y: 0.6358077, z: -17.76827}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4778,5 +4778,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: SphereRespawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8462197966440469848, guid: 9b3f250a7915e4944b7d79a386c8d14e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: cee3efbaed29fe140b543b6f623f35e2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b3f250a7915e4944b7d79a386c8d14e, type: 3}
