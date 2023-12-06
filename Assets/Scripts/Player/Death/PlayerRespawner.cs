@@ -56,11 +56,19 @@ namespace Player.Death
 
         public IEnumerator Respawn_Coroutine(DeathCharacteristics deathCharacteristics)
         {
-            spawnAndAnimateCorpse(deathCharacteristics);
+            if (deathCharacteristics.shouldProduceAnyCorpse())
+            {
+                spawnAndAnimateCorpse(deathCharacteristics);
+            }
+            else
+            {
+                Debug.Log("Not making corpse");
+            }
             player.Character.gameObject.SetActive(false);
 
             if (deathCharacteristics.shouldRespawn())
             {
+                resetPlayerHealthState();
                 yield return new WaitForSeconds(deathSeconds);
                 player.Character.gameObject.GetComponent<KinematicCharacterMotor>().SetPosition(this.getRespawnLocation());
                 resetPlayerHealthState();

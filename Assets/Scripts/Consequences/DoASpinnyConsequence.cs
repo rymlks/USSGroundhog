@@ -1,23 +1,27 @@
 using System;
 using StaticUtils;
+using Triggers;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Consequences
 {
-    public class DoASpinnyConsequence : AbstractInterruptibleConsequence
+    public class DoASpinnyConsequence : AbstractInterruptibleConsequence, ICancelableConsequence
     {
         public GameObject toSpin;
         public float speed;
         public float maxSpeed = float.NegativeInfinity;
         public float max = float.PositiveInfinity;
         public Vector3 axis = Vector3.up;
-        public bool shouldReturn = false;
+        public bool loop = false;
 
         protected Quaternion initialRotation;
         protected float rotationScalar;
-    
+
         private float rotato = 0;
+        private bool goBack = false;
 
         protected virtual void Start()
         {
@@ -30,7 +34,9 @@ namespace Consequences
             {
                 max = float.PositiveInfinity;
             }
-            if(speed == 0){
+
+            if (speed == 0)
+            {
                 speed = 1;
             }
 
@@ -40,7 +46,7 @@ namespace Consequences
             }
 
             this.rotationScalar =
-                Math.Abs(maxSpeed - speed) < 0.001 ? speed : speed + (Random.value * (maxSpeed - speed)); 
+                Math.Abs(maxSpeed - speed) < 0.001 ? speed : speed + (Random.value * (maxSpeed - speed));
 
             this.initialRotation = this.toSpin.transform.localRotation;
         }
@@ -50,19 +56,61 @@ namespace Consequences
         {
             if (started)
             {
-                rotato += rotationScalar;
-                if (Mathf.Abs(rotato) >= Mathf.Abs(max))
+                if (!goBack)
                 {
-                    rotato = max;
-                    if (shouldReturn)
+                    rotato += rotationScalar;
+                    if (Mathf.Abs(rotato) >= Mathf.Abs(max))
                     {
-                        rotationScalar *= -1;
-                        max *= -1;
+                        DestinationReached();
+                    }
+                }
+                else
+                {
+                    float oldRotato = rotato;
+                    rotato -= rotationScalar;
+                    if (rotato * oldRotato <= 0)
+                    {
+                        DestinationReached();
                     }
                 }
 
-                toSpin.transform.localRotation *= Quaternion.Euler(rotationScalar * axis.x, rotationScalar * axis.y, rotationScalar * axis.z);
+                toSpin.transform.localRotation = this.initialRotation *
+                                                 Quaternion.Euler(rotato * axis.x, rotato * axis.y,
+                                                     rotato * axis.z);
             }
+        }
+
+        public void DestinationReached()
+        {
+            if (goBack)
+            {
+                rotato = 0;
+            }
+            else
+            {
+                rotato = max;
+            }
+
+            if (loop)
+            {
+                rotationScalar *= -1;
+                max *= -1;
+            }
+            else
+            {
+                started = false;
+            }
+        }
+
+        public void Cancel(TriggerData? data)
+        {
+            goBack = true;
+        }
+
+        public override void Execute(TriggerData data)
+        {
+            base.Execute(data);
+            goBack = false;
         }
     }
 }

@@ -102,8 +102,22 @@ namespace Triggers
                 initializeTrackedColliders();
 
                 beginTrackingCollider(other);
-
-                Engage(new TriggerData(CustomTag + " contacted", other.transform.position, other.gameObject));
+                
+                Transform triggerTransform = other.transform;
+                if (acceptTagInParent)
+                {
+                    while (triggerTransform.parent != null && transformIsRelevant(triggerTransform.parent))
+                    {
+                        triggerTransform = triggerTransform.parent;
+                    }
+                }
+                
+                Engage(new TriggerData(CustomTag + " contacted", triggerTransform.position, triggerTransform.gameObject));
+                if (destroy)
+                {
+                    Destroy(this.gameObject);
+                
+                }
             }
         }
         

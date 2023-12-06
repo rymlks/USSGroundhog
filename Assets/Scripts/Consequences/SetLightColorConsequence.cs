@@ -11,6 +11,6 @@ namespace Consequences
             if (!lightToToggle) return;
 
                 this.lightToToggle.color = goingTo;
-            }
+        }
     }
 }

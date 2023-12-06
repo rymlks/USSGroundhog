@@ -9288,7 +9288,7 @@ ParticleSystem:
   lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
@@ -14047,6 +14047,7 @@ GameObject:
   - component: {fileID: 222593537969583968}
   - component: {fileID: 133756386076110602}
   - component: {fileID: 134184650829501122}
+  - component: {fileID: 6965305159626064635}
   m_Layer: 0
   m_Name: FX_PowerBeam_Glow_01
   m_TagString: Untagged
@@ -18937,6 +18938,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6965305159626064635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224163066671585584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fa0fe8d83213e40ace52aa0cad7c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &224472881920259138
 GameObject:
   m_ObjectHideFlags: 0
@@ -18981,7 +18994,7 @@ ParticleSystem:
   lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
@@ -28583,6 +28596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42cde395659793d46be0c7b629337f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy: 0
+  consequenceObject: {fileID: 0}
+  findConsequencesInChildren: 0
   particleSystem: {fileID: 118963888737477652}
   tagToTriggerOn: Player
 --- !u!114 &-55568715121341892
