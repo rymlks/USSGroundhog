@@ -11474,7 +11474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4203310101477330, guid: 0064841a1e2884b40804207eacfcf1ae, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.013
+      value: 5.928
       objectReference: {fileID: 0}
     - target: {fileID: 4203310101477330, guid: 0064841a1e2884b40804207eacfcf1ae, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11530,7 +11530,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 124
+  m_Constraints: 118
   m_CollisionDetection: 0
 --- !u!114 &695627703
 MonoBehaviour:
@@ -21404,7 +21404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toToggle:
-  - {fileID: 0}
+  - {fileID: 1775232801}
   - {fileID: 467538607}
   disableOnly: 0
   enableOnly: 0
@@ -26374,6 +26374,11 @@ MonoBehaviour:
       _indentContent: 0
       _surroundWithBox: 0
       _viewData: {fileID: 1489040428}
+--- !u!1 &1775232801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5777654773363294221, guid: da7352b2322e0584698b63887381b532, type: 3}
+  m_PrefabInstance: {fileID: 662276444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1775232802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5780836704117580413, guid: da7352b2322e0584698b63887381b532, type: 3}
