@@ -28968,7 +28968,7 @@ GameObject:
   - component: {fileID: 3758294266246547115}
   m_Layer: 0
   m_Name: FX_Gunshot_Tracer_MachineGun_01
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33844,6 +33844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a12beae7751bc847abb80df0ce63bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detachBeforePlaying: 0
   toPlay: {fileID: 2602005986710264551}
 --- !u!114 &6150916917765801668
 MonoBehaviour:
@@ -33860,6 +33861,8 @@ MonoBehaviour:
   destroy: 0
   consequenceObject: {fileID: 0}
   findConsequencesInChildren: 0
+  requireComponentsEnabled: []
+  requireComponentsDisabled: []
   particleSystem: {fileID: 0}
   tagToTriggerOn: Player
 --- !u!114 &3758294266246547115

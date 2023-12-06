@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14545462, g: 0.0941231, b: 0.21724021, a: 1}
+  m_IndirectSpecularColor: {r: 0.09903636, g: 0.07046538, b: 0.16484898, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -674,6 +674,8 @@ MonoBehaviour:
   toToggle:
   - {fileID: 1918677020}
   - {fileID: 876246343}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!114 &43440829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,6 +1242,8 @@ MonoBehaviour:
   - {fileID: 1457343737}
   - {fileID: 912428624}
   - {fileID: 1556925181}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!1001 &79066740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2438,10 +2442,7 @@ MonoBehaviour:
   consequenceObject: {fileID: 0}
   findConsequencesInChildren: 0
   requireComponentsEnabled: []
-  requireComponentsDisabled:
-  - {fileID: 1181802277}
-  - {fileID: 1628924978}
-  - {fileID: 1510326297}
+  requireComponentsDisabled: []
   onTime: 0
   offTime: 0
   repeat: 0
@@ -5284,15 +5285,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1529041773495352732, guid: 7bc441743789ab04fa9ce272d3e2bd17, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1529041773495352732, guid: 7bc441743789ab04fa9ce272d3e2bd17, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1529041773495352732, guid: 7bc441743789ab04fa9ce272d3e2bd17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1529041773495352732, guid: 7bc441743789ab04fa9ce272d3e2bd17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -5490,7 +5491,7 @@ MonoBehaviour:
   maxSpeed: -Infinity
   max: Infinity
   axis: {x: 1, y: 0, z: 0}
-  shouldReturn: 0
+  loop: 0
 --- !u!114 &349507855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5714,7 +5715,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 266334146855832805, guid: 4ea92b25cefc0e74a9c1063ac6fb88cb, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 266334146855832805, guid: 4ea92b25cefc0e74a9c1063ac6fb88cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5998,6 +5999,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1109474450630053754, guid: 35184ee3f931b5b47a3f0f5391585645, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1849263
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109474450630053754, guid: 35184ee3f931b5b47a3f0f5391585645, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.338
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109474450630053754, guid: 35184ee3f931b5b47a3f0f5391585645, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.08
+      objectReference: {fileID: 0}
     - target: {fileID: 6281298179749502688, guid: 35184ee3f931b5b47a3f0f5391585645, type: 3}
       propertyPath: m_Name
       value: HallwayPowerupCubby
@@ -7623,6 +7636,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toToggle:
   - {fileID: 1628924976}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!1001 &517622950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10737,6 +10752,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1900118375}
     m_Modifications:
+    - target: {fileID: 1465472114, guid: da7352b2322e0584698b63887381b532, type: 3}
+      propertyPath: speed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5777654773363294221, guid: da7352b2322e0584698b63887381b532, type: 3}
       propertyPath: m_Name
       value: CeilingTurret
@@ -10785,18 +10804,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5780875798764790690, guid: da7352b2322e0584698b63887381b532, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da7352b2322e0584698b63887381b532, type: 3}
---- !u!4 &662276445 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5780836704117580413, guid: da7352b2322e0584698b63887381b532, type: 3}
-  m_PrefabInstance: {fileID: 662276444}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &662276446 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5777654773363294221, guid: da7352b2322e0584698b63887381b532, type: 3}
-  m_PrefabInstance: {fileID: 662276444}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &664939834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11629,7 +11642,7 @@ MonoBehaviour:
   maxSpeed: -Infinity
   max: 30
   axis: {x: 0, y: 1, z: 0}
-  shouldReturn: 1
+  loop: 0
 --- !u!4 &705496436
 Transform:
   m_ObjectHideFlags: 0
@@ -14143,6 +14156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toToggle:
   - {fileID: 1181802275}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!114 &876246354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16741,6 +16756,8 @@ MonoBehaviour:
   - {fileID: 1654634204}
   - {fileID: 535457901}
   - {fileID: 1961528871}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!114 &1075883960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16775,11 +16792,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toSpin: {fileID: 0}
-  speed: 0.1
+  speed: 0.2
   maxSpeed: -Infinity
   max: Infinity
   axis: {x: 0.5, y: 1, z: 0.5}
-  shouldReturn: 0
+  loop: 0
 --- !u!114 &1078074263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17298,11 +17315,8 @@ MonoBehaviour:
   destroy: 0
   consequenceObject: {fileID: 0}
   findConsequencesInChildren: 0
-  requireComponentsEnabled:
-  - {fileID: 1181802277}
-  requireComponentsDisabled:
-  - {fileID: 1628924978}
-  - {fileID: 1510326297}
+  requireComponentsEnabled: []
+  requireComponentsDisabled: []
   onTime: 0
   offTime: 0
   repeat: 0
@@ -17482,7 +17496,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139717275}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
@@ -18488,15 +18502,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4247930483994950, guid: 171e3465d94d3cf43963826ab7829553, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40.408012
+      value: -40.65
       objectReference: {fileID: 0}
     - target: {fileID: 4247930483994950, guid: 171e3465d94d3cf43963826ab7829553, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99144495
       objectReference: {fileID: 0}
     - target: {fileID: 4247930483994950, guid: 171e3465d94d3cf43963826ab7829553, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.13052596
       objectReference: {fileID: 0}
     - target: {fileID: 4247930483994950, guid: 171e3465d94d3cf43963826ab7829553, type: 3}
       propertyPath: m_LocalRotation.y
@@ -18508,7 +18522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4247930483994950, guid: 171e3465d94d3cf43963826ab7829553, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4247930483994950, guid: 171e3465d94d3cf43963826ab7829553, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -20877,10 +20891,7 @@ MonoBehaviour:
   destroy: 1
   consequenceObject: {fileID: 1432695422}
   findConsequencesInChildren: 0
-  requireComponentsEnabled:
-  - {fileID: 1556925183}
-  - {fileID: 924096044}
-  - {fileID: 1961528873}
+  requireComponentsEnabled: []
   requireComponentsDisabled: []
 --- !u!1 &1371583430
 GameObject:
@@ -21330,7 +21341,7 @@ MonoBehaviour:
   maxSpeed: -Infinity
   max: Infinity
   axis: {x: 0, y: 1, z: 0}
-  shouldReturn: 0
+  loop: 0
 --- !u!4 &1430821409
 Transform:
   m_ObjectHideFlags: 0
@@ -21393,8 +21404,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toToggle:
-  - {fileID: 662276446}
+  - {fileID: 0}
   - {fileID: 467538607}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!114 &1432695425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23551,7 +23564,7 @@ MonoBehaviour:
   maxSpeed: -Infinity
   max: Infinity
   axis: {x: 1, y: 0, z: 0}
-  shouldReturn: 0
+  loop: 0
 --- !u!114 &1572616327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25027,6 +25040,7 @@ MonoBehaviour:
   forward: 1
   objectToSlide: {fileID: 1678310870}
   shouldReturn: 0
+  shouldReturnOnce: 0
 --- !u!64 &1678310873
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25190,11 +25204,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toSpin: {fileID: 0}
-  speed: 0.1
+  speed: 0.2
   maxSpeed: -Infinity
   max: Infinity
   axis: {x: 0, y: -1, z: 0}
-  shouldReturn: 0
+  loop: 0
 --- !u!4 &1691305285
 Transform:
   m_ObjectHideFlags: 0
@@ -26360,6 +26374,11 @@ MonoBehaviour:
       _indentContent: 0
       _surroundWithBox: 0
       _viewData: {fileID: 1489040428}
+--- !u!4 &1775232802 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5780836704117580413, guid: da7352b2322e0584698b63887381b532, type: 3}
+  m_PrefabInstance: {fileID: 662276444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1780641549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28038,7 +28057,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 467538606}
-  - {fileID: 662276445}
+  - {fileID: 1775232802}
   - {fileID: 2103026881}
   - {fileID: 1947135564}
   - {fileID: 1075864492}
@@ -28245,6 +28264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toToggle:
   - {fileID: 1181802275}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!114 &1918677027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28570,6 +28591,8 @@ MonoBehaviour:
   - {fileID: 1068156717}
   - {fileID: 1547786860}
   - {fileID: 924096042}
+  disableOnly: 0
+  enableOnly: 0
 --- !u!114 &1953875240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29775,7 +29798,7 @@ MonoBehaviour:
   maxSpeed: -Infinity
   max: Infinity
   axis: {x: 0, y: 1, z: 0}
-  shouldReturn: 0
+  loop: 0
 --- !u!114 &2036738598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30424,7 +30447,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionStrength: 10
   persist: 1
+  disappear: 0
   corpseShouldRagdoll: 1
+  produceCorpse: 1
   ExplosionPrefab: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
   dontRespawn: 0
 --- !u!4 &2103026881 stripped
