@@ -7,7 +7,12 @@ namespace Consequences.RigidPhysics
     {
         public override void Execute(TriggerData? data)
         {
-            toApplyTo.AddForce(force * Time.fixedDeltaTime, forceMode);
+            applyForce(force);
+        }
+
+        protected void applyForce(Vector3 toApply)
+        {
+            toApplyTo.AddForce(toApply * Time.fixedDeltaTime, forceMode);
         }
     }
 }

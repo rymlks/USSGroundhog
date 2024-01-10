@@ -264,7 +264,7 @@ MonoBehaviour:
   findConsequencesInChildren: 0
   activatingKey: 107
   maxDistance: 3
---- !u!114 &5176291439616921736
+--- !u!114 &2392799118920634085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,12 +273,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 328861475392642029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0aed3d0fa2692541b0173b6cecb2a6b, type: 3}
+  m_Script: {fileID: 11500000, guid: a5adf79d7f6940fba7be08cc2e444384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: 0, y: 300, z: 0}
-  forceMode: 0
+  force: {x: 0, y: 2, z: 4}
+  forceMode: 1
   toApplyTo: {fileID: 6244932296812348021}
+  relativeTo: {fileID: 0}
 --- !u!4 &331556713796164039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7762485614529232663, guid: ac099152c12a3024a96272bc54489457, type: 3}
