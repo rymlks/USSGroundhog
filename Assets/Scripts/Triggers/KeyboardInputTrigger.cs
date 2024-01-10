@@ -9,7 +9,15 @@ namespace Triggers
         public KeyCode activatingKey = KeyCode.E;
         public float maxDistance = 5f;
 
-
+        void Update()
+        {
+            Debug.Log(Input.GetKeyUp(activatingKey) + " + " + playerIsWithinDistance() + " + " + playerIsLookingAtThis());
+            if (playerIsMakingInput() && playerIsWithinDistance() && playerIsLookingAtThis())
+            {
+                this.Engage();
+            }
+        }
+        
         protected bool playerIsLookingAtThis()
         {
             Transform cameraTransform = UnityUtil.getCameraTransform();
@@ -22,12 +30,9 @@ namespace Triggers
             return isWithinDistance;
         }
 
-        void Update()
+        protected bool playerIsMakingInput()
         {
-            if (Input.GetKeyUp(activatingKey) && playerIsWithinDistance() && playerIsLookingAtThis())
-            {
-                this.Engage();
-            }
+            return Input.GetKeyUp(activatingKey);
         }
     }
 }
