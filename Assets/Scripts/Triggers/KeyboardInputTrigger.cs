@@ -11,7 +11,6 @@ namespace Triggers
 
         void Update()
         {
-            Debug.Log(Input.GetKeyUp(activatingKey) + " + " + playerIsWithinDistance() + " + " + playerIsLookingAtThis());
             if (playerIsMakingInput() && playerIsWithinDistance() && playerIsLookingAtThis())
             {
                 this.Engage();

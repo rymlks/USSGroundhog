@@ -20,7 +20,7 @@ namespace Consequences.RigidPhysics
         public override void Execute(TriggerData? data)
         {
             var vectorUntoTarget = (this.transform.position - relativeTo.position).normalized;
-            toApplyTo.AddForce(vectorUntoTarget + force, forceMode);
+            toApplyTo.AddForce((vectorUntoTarget + force.normalized).normalized * force.magnitude, forceMode);
         }
     }
 }
