@@ -56,7 +56,12 @@ namespace Consequences
 
             if (!data.triggeringObject.CompareTag("Player"))
             {
-                data.triggeringObject.GetComponent<Rigidbody>().velocity = explosionVector3(data).normalized * explosionStrength;
+                Rigidbody rb = data.triggeringObject.GetComponent<Rigidbody>();
+                if (rb == null)
+                {
+                    rb = data.triggeringObject.GetComponentInChildren<Rigidbody>();
+                }
+                rb.velocity = explosionVector3(data).normalized * explosionStrength;
             }
         }
 

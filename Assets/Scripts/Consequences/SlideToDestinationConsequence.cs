@@ -14,6 +14,7 @@ namespace Consequences
         public bool shouldReturnOnce = false;
         protected Vector3 startPos;
         protected bool started = false;
+        public bool sinusoidal = false;
 
         private void Start()
         {
@@ -44,8 +45,15 @@ namespace Consequences
                 Vector3 dest = forward ? destination.position : startPos;
                 if ((dest - getTransform().position).magnitude > speed)
                 {
-                    getTransform().position +=
-                        (dest - getTransform().position).normalized * speed * Time.deltaTime * 50;
+                    if (sinusoidal)
+                    {
+                        getTransform().position = startPos + (startPos - destination.position)*(1 + Mathf.Sin(speed * Time.deltaTime));
+                    }
+                    else
+                    {
+                        Vector3 dist = (dest - getTransform().position).normalized * speed * Time.deltaTime * 50;
+                        getTransform().position += dist;
+                    }
                 }
                 else
                 {

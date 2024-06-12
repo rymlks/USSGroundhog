@@ -211,7 +211,7 @@ namespace Player
                     // Kick
                     if (Input.GetKeyDown(KickButton))
                     {
-                        Physics.Raycast(Motor.Transform.position + Motor.CharacterTransformToCapsuleBottomHemi,
+                        Physics.SphereCast(Motor.Transform.position + new Vector3(0, 0.3f, 0), 0.25f,
                             Motor.CharacterForward, out RaycastHit hit, maxDistance: KickDistance);
                         if (hit.transform != null)
                         {
@@ -220,7 +220,8 @@ namespace Player
                             if (body != null)
                             {
                                 Debug.Log("Smackin dat boy");
-                                body.AddForce(Motor.CharacterForward * KickForce);
+                                //body.AddForce(Motor.CharacterForward * KickForce);
+                                body.velocity = Motor.CharacterForward * KickForce;
                             }
                         }
                     }

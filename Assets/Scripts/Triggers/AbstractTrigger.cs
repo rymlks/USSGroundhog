@@ -46,10 +46,9 @@ namespace Triggers
         {
             foreach (IConsequence consequence in this._allConsequences)
             {
-                ICancelableConsequence cancelable = (ICancelableConsequence) consequence;
-                if (cancelable != null)
+                if (consequence is ICancelableConsequence)
                 {
-                    cancelable.Cancel(data);
+                    ((ICancelableConsequence)consequence).Cancel(data);
                 }
             }
             playSoundIfSourcePresent();
