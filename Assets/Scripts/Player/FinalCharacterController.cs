@@ -58,6 +58,12 @@ namespace Player
         // sawalls special
         [Header("Crouch Modifier")]
         public float CrouchSpeedScale = 0.35f;
+        
+        // rick special
+        [Header("Kick Options")]
+        public KeyCode KickButton = KeyCode.Space;
+        [Range(0.0f, 1000.0f)] public float KickForce = 5;
+        [Range(0.0f, 1.0f)] public float KickDistance = 0.25f;
 
         [Header("Air Movement")]
         public float MaxAirMoveSpeed = 15f;
@@ -200,6 +206,24 @@ namespace Player
                         case OrientationMethod.TowardsMovement:
                             _lookInputVector = _moveInputVector.normalized;
                             break;
+                    }
+                    
+                    // Kick
+                    if (Input.GetKeyDown(KickButton))
+                    {
+                        Physics.SphereCast(Motor.Transform.position + new Vector3(0, 0.3f, 0), 0.25f,
+                            Motor.CharacterForward, out RaycastHit hit, maxDistance: KickDistance);
+                        if (hit.transform != null)
+                        {
+                            Debug.Log("Hitting " + hit.transform.name);
+                            Rigidbody body = hit.transform.gameObject.GetComponent<Rigidbody>();
+                            if (body != null)
+                            {
+                                Debug.Log("Smackin dat boy");
+                                //body.AddForce(Motor.CharacterForward * KickForce);
+                                body.velocity = Motor.CharacterForward * KickForce;
+                            }
+                        }
                     }
 
                     // Jumping input
