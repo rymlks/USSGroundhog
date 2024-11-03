@@ -19,8 +19,8 @@ namespace UI
                 {
                     Debug.Log("Masked text controller cannot find RectMask2D as parent of text!");
                 }
-                this.maxMaskWidth = this.mask.rectTransform.rect.width;
             }
+            this.maxMaskWidth = this.mask.rectTransform.rect.width;
         }
 
         protected void MaskText(float widthScalar)
