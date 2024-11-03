@@ -22,12 +22,13 @@ namespace UI
 
         protected virtual void Update()
         {
-            var statusEffectProgressScalar = healthState.Diagnose(statusName);
-            if(statusEffectProgressScalar >= 0.01f)
+            if (healthState == null)
             {
-                this.ShowNextFrame();
-                this.MaskText(statusEffectProgressScalar);
+                healthState = FindObjectOfType<PlayerHealthState>();
             }
+            var statusEffectProgressScalar = healthState.Diagnose(statusName);
+            this.ShowNextFrame();
+            this.MaskText(Mathf.Max(statusEffectProgressScalar, 0));
         }
 
         public static StatusEffectUIController GetByStatusName(string status)
