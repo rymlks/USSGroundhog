@@ -95,5 +95,13 @@ namespace StaticUtils
         {
             return Object.FindObjectOfType<FinalCharacterCamera>().gameObject.transform;
         }
+
+        public static void PlayParticlesIfNotPlaying(ParticleSystem system)
+        {
+            if (!system.isPlaying)
+            {
+                system.Play();
+            }
+        }
     }
 }
